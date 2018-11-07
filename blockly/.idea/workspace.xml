@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5538f421-3661-4a05-87d9-c6eb43c892fc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/blockly_compressed.js" beforeDir="false" afterPath="$PROJECT_DIR$/blockly_compressed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockly_uncompressed.js" beforeDir="false" afterPath="$PROJECT_DIR$/blockly_uncompressed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/corgis.js" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/corgis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/dicts.js" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/dicts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks_compressed.js" beforeDir="false" afterPath="$PROJECT_DIR$/blocks_compressed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.py" beforeDir="false" afterPath="$PROJECT_DIR$/build.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/generator.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/generator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generators/javascript/text.js" beforeDir="false" afterPath="$PROJECT_DIR$/generators/javascript/text.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generators/python/corgis.js" beforeDir="false" afterPath="$PROJECT_DIR$/generators/python/corgis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generators/python/dicts.js" beforeDir="false" afterPath="$PROJECT_DIR$/generators/python/dicts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript_compressed.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript_compressed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/ar.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/ar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/az.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/az.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/ba.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/ba.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/bcc.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/bcc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/be-tarask.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/be-tarask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/bg.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/bg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/bn.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/bn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/br.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/br.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/ca.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/ca.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/cs.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/cs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/da.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/da.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/de.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/de.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/diq.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/diq.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/el.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/el.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/en-gb.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/en-gb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/en.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/en.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/es.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/es.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/et.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/et.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/fa.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/fa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/fi.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/fi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/fr.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/fr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/he.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/he.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/hi.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/hi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/hrx.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/hrx.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/hu.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/hu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/ia.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/ia.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/id.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/id.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/is.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/is.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/it.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/it.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/ja.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/ja.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/ko.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/ko.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/lb.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/lb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/lki.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/lki.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/lrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/lrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/lt.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/lt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/mk.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/mk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/ms.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/ms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/nb.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/nb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/nl.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/nl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/oc.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/oc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/pl.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/pl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/pms.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/pms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/pt-br.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/pt-br.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/pt.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/pt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/ro.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/ro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/ru.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/ru.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/sc.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/sc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/sd.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/sd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/shn.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/shn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/sk.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/sk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/sl.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/sl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/sq.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/sq.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/sr.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/sr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/sv.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/sv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/ta.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/ta.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/tcy.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/tcy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/th.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/th.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/tl.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/tl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/tlh.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/tlh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/tr.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/tr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/uk.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/uk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/vi.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/vi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/zh-hans.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/zh-hans.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/js/zh-hant.js" beforeDir="false" afterPath="$PROJECT_DIR$/msg/js/zh-hant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msg/json/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/msg/json/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pseudo_compressed.js" beforeDir="false" afterPath="$PROJECT_DIR$/pseudo_compressed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_compressed.js" beforeDir="false" afterPath="$PROJECT_DIR$/python_compressed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blockpy_new.html" beforeDir="false" afterPath="$PROJECT_DIR$/../blockpy_new.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../closure-library" beforeDir="false" afterPath="$PROJECT_DIR$/../closure-library" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/blockly$airlines.coverage" NAME="airlines Coverage Results" MODIFIED="1539745112684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-232138317">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.16" value="1" />
+          <entry key="project.open.time.17" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="js" value="39" />
+          <entry key="png" value="3" />
+          <entry key="py" value="3" />
+          <entry key="svg" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Image" value="3" />
+          <entry key="JavaScript" value="39" />
+          <entry key="Python" value="3" />
+          <entry key="SVG" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="js" value="256" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JavaScript" value="256" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/generator.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4446">
+              <caret line="234" column="22" selection-start-line="234" selection-start-column="22" selection-end-line="234" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/javascript_compressed.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1406">
+              <caret line="74" column="313" selection-start-line="74" selection-start-column="313" selection-end-line="74" selection-end-column="313" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1729">
+              <caret line="175" column="19" selection-start-line="175" selection-start-column="19" selection-end-line="175" selection-end-column="19" />
+              <folding>
+                <element signature="e#2932#5754#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/generators/javascript/text.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5225">
+              <caret line="275" column="67" selection-start-line="275" selection-start-column="67" selection-end-line="275" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blocks/dicts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3230">
+              <caret line="170" column="65" lean-forward="true" selection-start-line="170" selection-start-column="65" selection-end-line="170" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/generators/python/dicts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="703">
+              <caret line="37" column="2" lean-forward="true" selection-start-line="37" selection-start-column="2" selection-end-line="37" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/generators/python/text.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1672">
+              <caret line="88" column="33" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/generators/lua.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/generators/javascript/colour.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="722">
+              <caret line="38" column="30" lean-forward="true" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/generators/javascript.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4769">
+              <caret line="251" column="41" selection-start-line="251" selection-start-column="41" selection-end-line="251" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>controls_if</find>
+      <find>blockly.inject</find>
+      <find>workspacetocode</find>
+      <find>workspaceToCode</find>
+      <find>domToWorkspace</find>
+      <find>STATES</find>
+      <find>DATA_HUE</find>
+      <find>book</find>
+      <find>does not know how to generate code for bloc</find>
+      <find>get</find>
+      <find>_sql</find>
+      <find>&quot;PROPERTY&quot;,</find>
+      <find>Expecting string from statement block</find>
+      <find>type</find>
+      <find>scrub_</find>
+      <find>Blockly.JavaScript.scrub_</find>
+      <find>text_print</find>
+      <find>console.fu</find>
+      <find>register</find>
+      <find>window.alert(&quot;+(Blockly.JavaScript.valueToCode(a,&quot;TEXT&quot;,Blockly.JavaScript.ORDER_NONE)||&quot;''&quot;)+&quot;);\n&quot;</find>
+      <find>window.alert(&quot;+(Blockly.JavaScript.valueToCode</find>
+      <find>_Constants._DATABASE</find>
+      <find>blockToCode</find>
+      <find>airlines_get</find>
+      <find>ORDER_FUNCTION_CALL</find>
+      <find>console.log</find>
+      <find>javascript_com</find>
+      <find>PythonToBlocks</find>
+      <find>create_with</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/blocks/corgis.js" />
+        <option value="$PROJECT_DIR$/generators/python/corgis.js" />
+        <option value="$PROJECT_DIR$/blocks/colour.js" />
+        <option value="$PROJECT_DIR$/build.py" />
+        <option value="$PROJECT_DIR$/core/generator.js" />
+        <option value="$PROJECT_DIR$/generators/javascript/text.js" />
+        <option value="$PROJECT_DIR$/generators/python/dicts.js" />
+        <option value="$PROJECT_DIR$/blocks/dicts.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="926" />
+    <option name="y" value="24" />
+    <option name="width" value="928" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="blockly" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockly" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockly" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockly" type="462c0819:PsiDirectoryNode" />
+              <item name="blocks" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockly" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockly" type="462c0819:PsiDirectoryNode" />
+              <item name="generators" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockly" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockly" type="462c0819:PsiDirectoryNode" />
+              <item name="generators" type="462c0819:PsiDirectoryNode" />
+              <item name="javascript" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockly" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockly" type="462c0819:PsiDirectoryNode" />
+              <item name="generators" type="462c0819:PsiDirectoryNode" />
+              <item name="python" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockly" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockly" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../blockpy/blockpy/skulpt" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="airlines" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="blockly" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/airlines.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.airlines" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5538f421-3661-4a05-87d9-c6eb43c892fc" name="Default Changelist" comment="" />
+      <created>1537932838341</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1537932838341</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1770546" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3298647" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3298647" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="R Graphics" order="4" />
+      <window_info anchor="right" id="R Packages" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/msg/js/zh-hans.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-152">
+          <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/sprites.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/sprites.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/quote1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/quote0.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generators/javascript/variables.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-80" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blockly_compressed.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generators/python/variables.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="44" column="39" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/workspace.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3249">
+          <caret line="171" column="40" selection-start-line="171" selection-start-column="28" selection-end-line="171" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/xml.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="277" column="12" selection-start-line="277" selection-start-column="12" selection-end-line="277" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/plot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="103" column="36" selection-start-line="103" selection-start-column="36" selection-end-line="103" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/utility.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2090">
+          <caret line="110" column="40" selection-start-line="110" selection-start-column="40" selection-end-line="110" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks_compressed.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-57" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blockly_uncompressed.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-456" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/math.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="425" column="12" selection-start-line="425" selection-start-column="12" selection-end-line="425" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generators/python.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="272" column="13" selection-start-line="272" selection-start-column="6" selection-end-line="272" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/text.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3838">
+          <caret line="44" column="37" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/inject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="285" column="30" selection-start-line="285" selection-start-column="30" selection-end-line="285" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/flyout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="538">
+          <caret line="678" column="48" selection-start-line="678" selection-start-column="48" selection-end-line="678" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/loops.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/logic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/block.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="758">
+          <caret line="207" column="39" selection-start-line="207" selection-start-column="39" selection-end-line="207" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/airlines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="205" column="10" selection-start-line="205" selection-start-column="10" selection-end-line="205" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/corgis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9956">
+          <caret line="524" column="36" selection-start-line="524" selection-start-column="36" selection-end-line="524" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generators/python/corgis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3116">
+          <caret line="164" column="55" selection-start-line="164" selection-start-column="55" selection-end-line="164" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/colour.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2527">
+          <caret line="133" selection-start-line="133" selection-end-line="133" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/blocks.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/generator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4446">
+          <caret line="234" column="22" selection-start-line="234" selection-start-column="22" selection-end-line="234" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript_compressed.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1406">
+          <caret line="74" column="313" selection-start-line="74" selection-start-column="313" selection-end-line="74" selection-end-column="313" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1729">
+          <caret line="175" column="19" selection-start-line="175" selection-start-column="19" selection-end-line="175" selection-end-column="19" />
+          <folding>
+            <element signature="e#2932#5754#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generators/javascript/text.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5225">
+          <caret line="275" column="67" selection-start-line="275" selection-start-column="67" selection-end-line="275" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generators/python/dicts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="703">
+          <caret line="37" column="2" lean-forward="true" selection-start-line="37" selection-start-column="2" selection-end-line="37" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generators/python/text.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1672">
+          <caret line="88" column="33" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generators/lua.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generators/javascript/colour.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="38" column="30" lean-forward="true" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generators/javascript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4769">
+          <caret line="251" column="41" selection-start-line="251" selection-start-column="41" selection-end-line="251" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocks/dicts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3230">
+          <caret line="170" column="65" lean-forward="true" selection-start-line="170" selection-start-column="65" selection-end-line="170" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: corgis.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: corgis.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>_IMPORTED_DATASETS = {};
+
+/**
+ * Module that connects to the CORGIS datasets and manages interactions
+ * with them. This includes loading in datasets at launch and on-the-fly.
+ * Note that this has no presence on screen, so it does not have a tag.
+ *
+ * @constructor
+ * @this {BlockPyCorgis}
+ * @param {Object} main - The main BlockPy instance
+ */
+function BlockPyCorgis(main) {
+    this.main = main;
+    
+    this.loadedDatasets = [];
+    
+    // Load in each the datasets
+    var corgis = this;
+    var imports = [];
+    this.main.model.assignment.modules().forEach(function(name) {
+        var post_prefix = name.substring(7).replace(/\s/g, '_').toLowerCase();
+        if (!(name in BlockPyEditor.CATEGORY_MAP)) {
+            imports.push.apply(imports, corgis.importDataset(post_prefix, name));
+        }
+    });
+    
+    // When datasets are loaded, update the toolbox.
+    $.when.apply($, imports).done(function() {
+        if (main.model.settings.editor() == "Blocks") {
+            main.components.editor.updateBlocksFromModel();
+        }
+        main.components.editor.updateToolbox(true);
+    }).fail(function(e) {
+        console.error(e);
+    }).always(function() {
+        main.components.server.finalizeSubscriptions();
+    });
+}
+
+/**
+ * Loads the definitions for a dataset into the environment, including
+ * the dataset (as a JS file), the skulpt bindings, and the blockly
+ * bindings. This requires access to a CORGIS server, and occurs
+ * asynchronously. The requests are fired and their deferred objects
+ * are returned - callers can use this information to perform an action
+ * on completion of the import.
+ *
+ * @param {String} slug - The URL safe version of the dataset name
+ * @param {String} name - The user-friendly version of the dataset name.
+ * @returns {Array.&lt;Deferred>} - Returns the async requests as deferred objects.
+ */
+BlockPyCorgis.prototype.importDataset = function(slug, name) {
+    var url_retrievals = [];
+    if (this.main.model.server_is_connected('import_datasets')) {
+        var root = this.main.model.constants.urls.import_datasets+'blockpy/'+slug+'/'+slug;
+        this.main.model.status.dataset_loading.push(name);
+        // Actually get data
+        var get_dataset = $.getScript(root+'_dataset.js');
+        var get_skulpt = $.get(root+'_skulpt.js', function(data) {
+            Sk.builtinFiles['files']['src/lib/'+slug+'/__init__.js'] = data;
+        });
+        var get_blockly = $.getScript(root+'_blockly.js');
+        // On completion, update menus.
+        var corgis = this;
+        $.when(get_dataset, get_skulpt, get_blockly).done(function() {
+            corgis.loadedDatasets.push(slug);
+            corgis.main.model.assignment.modules.push(name);
+            corgis.main.components.editor.addAvailableModule(name);
+            corgis.main.model.status.dataset_loading.pop();
+        });
+        url_retrievals.push(get_dataset, get_skulpt, get_blockly);
+    }
+    return url_retrievals;
+}
+
+/**
+ * Opens a dialog box to present the user with the datasets available
+ * through the CORGIS server. This requires a call, so this method
+ * completes asynchronously. The dialog is composed of a table with
+ * buttons to load the datasets (More than one dataset can be loaded
+ * from within the dialog at a time).
+ * 
+ * @param {String} name - The name of the dataset to open. This is basically the user friendly version of the name, though it will be mangled into a slug.
+ */
+BlockPyCorgis.prototype.openDialog = function(name) {
+    var corgis = this;
+    if (this.main.model.server_is_connected('import_datasets')) {
+        var root = this.main.model.constants.urls.import_datasets;
+        $.getJSON(root+'index.json', function(data) {
+            // Make up the Body
+            var datasets = data.blockpy.datasets;
+            var start = $("&lt;p>Documentation is available at url&lt;/p>");
+            var body = $('&lt;table>&lt;/table>', {'class': 'table-bordered table-condensed table-striped'});
+            Object.keys(datasets).map(function(name) {
+                var title_name = name;
+                name = name.replace(/\s/g, '_').toLowerCase();
+                var btn = $('&lt;button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Load&lt;/button>');
+                if (corgis.loadedDatasets.indexOf(name) > -1) {
+                    set_button_loaded(btn);
+                } else {
+                    btn.click(function() {
+                        corgis.importDataset(name.toLowerCase(), 'Data - '+title_name);
+                        set_button_loaded(btn);
+                    });
+                }
+                $("&lt;tr>&lt;/tr>")
+                    .append($("&lt;td class='col-md-4'>"+title_name+"&lt;/td>"))
+                    .append($("&lt;td>"+datasets[title_name]['short']+"&lt;/td>"))
+                    .append($("&lt;td class='col-md-2'>&lt;/td>").append(btn))
+                    .appendTo(body);
+            });
+            // Show the actual dialog
+            var editor = corgis.main.components.editor;
+            corgis.main.components.dialog.show("Import Datasets", body, function() {
+                if (editor.main.model.settings.editor() == "Blocks") {
+                    editor.updateBlocksFromModel();
+                }
+            });
+        });
+    }
+};
+
+/**
+ * This is a very simplistic helper function that will transform
+ * a given button into a "Loaded" state (disabled, pressed state, etc.).
+ *
+ * @param {HTMLElement} btn - An HTML element to change the text of.
+ */
+var set_button_loaded = function(btn) {
+    btn.addClass("active")
+       .addClass('btn-success')
+       .removeClass('btn-primary')
+       .prop("disabled", true)
+       .text("Loaded")
+       .attr("aria-pressed", "true");
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BlockPy.html">BlockPy</a></li><li><a href="BlockPyCorgis.html">BlockPyCorgis</a></li><li><a href="BlockPyDialog.html">BlockPyDialog</a></li><li><a href="BlockPyEditor.html">BlockPyEditor</a></li><li><a href="BlockPyEngine.html">BlockPyEngine</a></li><li><a href="BlockPyEnglish.html">BlockPyEnglish</a></li><li><a href="BlockPyFeedback.html">BlockPyFeedback</a></li><li><a href="BlockPyHistory.html">BlockPyHistory</a></li><li><a href="BlockPyPresentation.html">BlockPyPresentation</a></li><li><a href="BlockPyPrinter.html">BlockPyPrinter</a></li><li><a href="BlockPyServer.html">BlockPyServer</a></li><li><a href="BlockPyToolbar.html">BlockPyToolbar</a></li><li><a href="LocalStorageWrapper.html">LocalStorageWrapper</a></li><li><a href="PythonToBlocks.html">PythonToBlocks</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BlockPyInterface">BlockPyInterface</a></li><li><a href="global.html#cloneNode">cloneNode</a></li><li><a href="global.html#encodeHTML">encodeHTML</a></li><li><a href="global.html#expandArray">expandArray</a></li><li><a href="global.html#EXTENDED_ERROR_EXPLANATION">EXTENDED_ERROR_EXPLANATION</a></li><li><a href="global.html#indent">indent</a></li><li><a href="global.html#instructor_module">instructor_module</a></li><li><a href="global.html#prettyPrintDateTime">prettyPrintDateTime</a></li><li><a href="global.html#randomInteger">randomInteger</a></li><li><a href="global.html#set_button_loaded">set_button_loaded</a></li><li><a href="global.html#timerGuard">timerGuard</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Mar 26 2017 09:45:03 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

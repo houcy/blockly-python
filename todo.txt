@@ -1,0 +1,80 @@
+Table Block
+Assessment API/Blocks
+
+Unrolled Loop mode
+Time rewinder
+Tooltips over errors
+Multiple block levels by manipulating the paths in the block.js file
+    Remove color, reduce padding, simplify text
+    Swap append order
+    Drop "set" from assignment
+    Add colons onto the end of lines
+    create empty list becomes []
+Add in variable dictionary access block
+Tabular block
+Call friend
+    Identifies students in the cohort who are on the same problem
+    Signals to the TA that the student has an issue
+    Emails a question to the TA
+Popup question dialog
+    Fill in the blank
+    Multiple choice
+        What variable is a dictionary (selectable list of variables) - optionally show type.
+    TAs see answers to questions
+
+If then else - logic for instructor API
+    Allowed to write python snippets
+    Should the whole thing translate to python?
+
+Turn off name wrangler? It might be better to let them make mistakes and then point them out.
+Highlight parser error line in the code block!
+
+Instead of having it shown as a value changing, visualize it as a cursor moving through list
+    Integrate with JSAV
+Predict the next value of the trace
+Explain a given line of code
+"All the variables you need are here" <-- prevent them from creating new variables.
+
+Slowmode - when you run, it executes the code but "plays" its results slightly slowed down, so you can see the code highlighting.
+
+Multiple levels of blocks (Block sets)
+
+URL shortened forms
+
+NameError
+    Have they defined the variable after use? (differentiate between an update and an initialization)
+        Line X attempts to use the variable <A> before it is declared. You have a declaration on Line Y. However, remember that your program executes top-to-bottom.
+        
+        If line X and line Y are equal
+            Line X attempts to update the variable <A> with itself. You must initialize a variable before you can update it. Remember that the RIGHT-side of assignment statements are evaluate BEFORE the LEFT-side.
+        
+        Check to see if the usage is within a loop
+            
+    Have they possibly typo'd it?
+        You attempted to use a variable <A> on line X. You have not declared a variable with that name. However, there is an <integer> variable named <A'>.
+        
+    Is there just nothing about it anywhere?
+        You attempted to use the variable <A> before it is declared. Currently, you have not declared the variable anywhere. Remember that your program executes top-to-bottom.
+        
+TypeError
+    Addition/Subtraction between list and number
+    Addition/Subtraction between string and number
+    Iterating over integer
+        
+    
+ZeroDivisionError
+    This error occurs because you attempted to divide by zero.
+    It looks like you are using an empty list 
+    
+
+Using color heatmaps to teach students about iteration and decision- can we demonstrate how some code paths are explored more often? 
+
+Color code (site creations) and (site overwrites)
+
+For testing:
+airlines.get_all(testing=True)
+
+For production:
+airlines.get_all()
+
+
