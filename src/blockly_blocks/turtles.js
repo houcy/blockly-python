@@ -197,8 +197,9 @@ PythonToBlocks.KNOWN_ATTR_FUNCTIONS['shape'] = function(func, args, keywords, st
     if (args.length != 1) {
         throw new Error("Incorrect number of arguments to turtle.shape!");
     }
-    var shape = "\'" + eval(this.convert(args[0])) + "\'";
-    return [block("turtle_shape", func.lineno, {'OP':shape}, {
+    //var shape = "\'" + eval(this.convert(args[0])) + "\'";
+    //console.log("aaaaa "+args[0]);
+    return [block("turtle_shape", func.lineno, {'OP':this.convert(args[0])}, {
         "TURTLE": this.convert(func.value)
     }, {"inline": "true"})];
 }
@@ -207,6 +208,7 @@ PythonToBlocks.KNOWN_ATTR_FUNCTIONS['color'] = function(func, args, keywords, st
     if (args.length != 1) {
         throw new Error("Incorrect number of arguments to turtle.color!");
     }
+    //console.log("bbbbb "+this.convert(args[0]));
     return [block("turtle_color", func.lineno, {}, {
         "COLOR": this.convert(args[0]),
         "TURTLE": this.convert(func.value)

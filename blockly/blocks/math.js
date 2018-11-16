@@ -41,7 +41,7 @@ Blockly.Blocks['math_number'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.MATH_NUMBER_HELPURL);
-    this.setColour(DATA_HUE);
+    this.setColour(270);
     this.appendDummyInput()
         .appendField(new Blockly.FieldNumber('0'), 'NUM');
     this.setOutput(true, 'Number');
@@ -328,7 +328,7 @@ Blockly.Blocks['math_change'] = {
       ],
       "previousStatement": null,
       "nextStatement": null,
-      "colour": VARIABLE_HUE,
+      "colour": 270,
       "helpUrl": Blockly.Msg.MATH_CHANGE_HELPURL
     });
     // Assign 'this' to a variable for use in the tooltip closure below.
@@ -391,7 +391,7 @@ Blockly.Blocks['math_on_list'] = {
     // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     this.setHelpUrl(Blockly.Msg.MATH_ONLIST_HELPURL);
-    this.setColour(DATA_HUE);
+    this.setColour(270);
     this.setOutput(true, 'Number');
     var dropdown = new Blockly.FieldDropdown(OPERATORS, function(newOp) {
       thisBlock.updateType_(newOp);

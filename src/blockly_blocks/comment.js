@@ -6,7 +6,7 @@ Blockly.Blocks['comment_single'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(60);
+    this.setColour(0);
     this.setTooltip('This is a comment, which will be ignored when you execute your code.');
     this.setHelpUrl('');
   }
@@ -28,8 +28,11 @@ Blockly.Blocks['string_multiline'] = {
         .appendField(this.newQuote_(true))
         .appendField(new Blockly.FieldTextArea(''), 'TEXT')
         .appendField(this.newQuote_(false));
-    this.setColour(Blockly.Blocks.texts.HUE);
-    this.setOutput(true, 'String');
+    this.setPreviousStatement(true, null);
+    //this.setNextStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+    //this.setOutput(true, 'String');
   },
   newQuote_: function(open) {
     if (open == this.RTL) {
@@ -46,4 +49,25 @@ Blockly.Python['string_multiline'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
   var code = '"""'+text_body+'"""\n';
   return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Blocks['program_start'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("程序开始:")
+        .appendField(new Blockly.FieldTextInput("主程序从此开始执行"), "BODY");
+    this.setInputsInline(true);
+    //this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+    this.setTooltip('This is a comment, which will be ignored when you execute your code.');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Python['program_start'] = function(block) {
+  var text_body = block.getFieldValue('BODY');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '### '+text_body+' ###\n';
+  return code;
 };

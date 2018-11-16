@@ -851,14 +851,18 @@ BlockPyEditor.prototype.setLevel = function() {
  * for managing the different categories, and doesn't allow us to specify
  * individual blocks.
  */
+
+
 BlockPyEditor.CATEGORY_MAP = {
     'Program': '<category name="主程序" colour="0">'+
-                   '<block type="string_multiline"></block>'+
+                   '<block type="program_start"></block>'+
                    '<block type="comment_single"></block>'+
+                   '<block type="string_multiline"></block>'+
               '</category>',
-    'IO': '<category name="输入输出" colour="70">'+
+    'IO': '<category name="输入输出" colour="75">'+
                 '<block type="text_input"></block>'+
                 '<block type="text_print"></block>'+
+                '<block type="text_comma"></block>'+
               '</category>',
     'Math': '<category name="数值" colour="270">'+
                     '<block type="math_number"></block>'+
@@ -874,6 +878,7 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="math_constrain"></block>'+
                     '<block type="math_random_int"></block>'+
                     '<block type="math_random_float"></block>'+
+                    //'<block type="conversion_int"></block>'+
                     //'<block type="math_modulo"></block>'+
                 '</category>',
     'Text':   '<category name="字符串" colour="100">'+
@@ -890,7 +895,8 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="text_changeCase"></block>'+
                     '<block type="text_trim"></block>'+
                     '<block type="text_count"></block>'+
-                    '<block type="text_comma"></block>'+
+                    //'<block type="conversion_float"></block>'+
+                    //'<block type="conversion_str"></block>'+
                     //'<block type="text_prompt_ext"></block>'+
                     //'<block type="text_prompt"></block>'+
                 '</category>',
@@ -900,6 +906,7 @@ BlockPyEditor.CATEGORY_MAP = {
                     //'<block type="controls_if_better"><mutation else="1"></mutation></block>'+
                     //'<block type="controls_if"></block>'+
                     //'<block type="controls_if"><mutation else="1"></mutation></block>'+
+                    //'<block type="controls_if"><mutation else="1"></mutation></block>'+
                     '<block type="logic_compare"></block>'+
                     '<block type="logic_operation"></block>'+
                     '<block type="logic_negate"></block>'+
@@ -907,6 +914,8 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="logic_null"></block>'+
                     '<block type="logic_ternary"></block>'+
                     '<block type="logic_isIn"></block>'+
+                    //'<block type="conversion_bool"></block>'+
+                    //'<block type="conversion_type"></block>'+
                   '</category>',
     'Lists':    '<category name="列表" colour="30">'+
                     //'<block type="lists_create"></block>'+
@@ -954,7 +963,7 @@ BlockPyEditor.CATEGORY_MAP = {
                 '</category>',
     'Variables': '<category name="变量" custom="VARIABLE" colour="240">'+
                   '</category>',
-    'Dictionaries': '<category name="字典" colour="0">'+
+    'Dictionaries': '<category name="字典" colour="280">'+
                     '<block type="dicts_create_with"></block>'+
                     '<block type="dict_get_literal"></block>'+
                     //'<block type="dict_keys"></block>'+
@@ -990,11 +999,16 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="plot_lineXY"></block>'+
                     '<block type="plot_legend"></block>'+
                 '</category>',
-    'Tuples': '<category name="Tuples" colour="40">'+
+    'Tuples': '<category name="Tuples" colour="60">'+
                 '<block type="tuple_create"></block>'+
               '</category>',
-    'Conversion': '<category name="Conversion" colour="110">'+
-                '<block type="tuple_create"></block>'+
+    'Conversion': '<category name="类型转换" colour="125">'+
+                '<block type="conversion_int"></block>'+
+                '<block type="conversion_float"></block>'+
+                '<block type="conversion_str"></block>'+
+                '<block type="conversion_bool"></block>'+
+                '<block type="conversion_type"></block>'+
+                '<block type="conversion_eval"></block>'+
               '</category>',
     /*
     'Data - Weather': '<category name="Data - Weather" colour="70">'+

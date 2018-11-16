@@ -50,7 +50,7 @@ Blockly.Blocks['colour_picker'] = {
         }
       ],
       "output": "Colour",
-      "colour": Blockly.Blocks.colour.HUE,
+      "colour": 180,
       "helpUrl": Blockly.Msg.COLOUR_PICKER_HELPURL
     });
     // Assign 'this' to a variable for use in the tooltip closure below.
@@ -73,7 +73,7 @@ Blockly.Blocks['colour_random'] = {
     this.jsonInit({
       "message0": Blockly.Msg.COLOUR_RANDOM_TITLE,
       "output": "Colour",
-      "colour": Blockly.Blocks.colour.HUE,
+      "colour": 180,
       "tooltip": Blockly.Msg.COLOUR_RANDOM_TOOLTIP,
       "helpUrl": Blockly.Msg.COLOUR_RANDOM_HELPURL
     });

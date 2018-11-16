@@ -32,7 +32,7 @@ goog.require('Blockly.Blocks');
 /**
  * Common HSV hue for all blocks in this category.
  */
-Blockly.Blocks.texts.HUE = 270;
+Blockly.Blocks.texts.HUE = 100;
 var DATA_HUE = 100;
 var UTILITY_HUE = 160;
 
@@ -596,7 +596,7 @@ Blockly.Blocks['text_print'] = {
       ],
       "previousStatement": null,
       "nextStatement": null,
-      "colour": UTILITY_HUE,
+      "colour": 75,
       "tooltip": Blockly.Msg.TEXT_PRINT_TOOLTIP,
       "helpUrl": Blockly.Msg.TEXT_PRINT_HELPURL
     });

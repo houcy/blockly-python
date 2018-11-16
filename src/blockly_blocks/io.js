@@ -1,12 +1,12 @@
 Blockly.Blocks['text_input'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("input")
+        .appendField("输入")
         .appendField(this.newQuote_(true))
         .appendField(new Blockly.FieldTextInput("with prompt"), "MESSAGE")
         .appendField(this.newQuote_(false));
     this.setOutput(true, "String");
-    this.setColour(230);
+    this.setColour(75);
     this.setTooltip('');
     this.setHelpUrl('');
   },

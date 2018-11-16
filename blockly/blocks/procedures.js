@@ -1,4 +1,4 @@
-11/**
+/**
  * @license
  * Visual Blocks Editor
  *

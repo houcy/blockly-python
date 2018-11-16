@@ -16,7 +16,7 @@ Blockly.Blocks['text_count'] = {
         .appendField("中返回子串的数量");
     this.setInputsInline(true);
     this.setOutput(true, null);
-    this.setColour(230);
+    this.setColour(100);
     this.setTooltip('');
     this.setHelpUrl('');
   }
@@ -50,7 +50,7 @@ Blockly.Blocks['text_comma'] = {
         .appendField(",");
     this.setInputsInline(true);
     this.setOutput(true, null);
-    this.setColour(230);
+    this.setColour(75);
     this.setTooltip('');
     this.setHelpUrl('');
   }

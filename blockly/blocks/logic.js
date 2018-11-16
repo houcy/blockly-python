@@ -33,7 +33,7 @@ goog.require('Blockly.Blocks');
  * Common HSV hue for all blocks in this category.
  */
 var DATA_HUE = 230;
-Blockly.Blocks.logic.HUE = 0;
+Blockly.Blocks.logic.HUE = 330;
 
 Blockly.Blocks['controls_if'] = {
   /**
@@ -414,7 +414,7 @@ Blockly.Blocks['logic_boolean'] = {
         }
       ],
       "output": "Boolean",
-      "colour": DATA_HUE,
+      "colour": Blockly.Blocks.logic.HUE,
       "tooltip": Blockly.Msg.LOGIC_BOOLEAN_TOOLTIP,
       "helpUrl": Blockly.Msg.LOGIC_BOOLEAN_HELPURL
     });
@@ -430,7 +430,7 @@ Blockly.Blocks['logic_null'] = {
     this.jsonInit({
       "message0": Blockly.Msg.LOGIC_NULL,
       "output": null,
-      "colour": DATA_HUE,
+      "colour": Blockly.Blocks.logic.HUE,
       "tooltip": Blockly.Msg.LOGIC_NULL_TOOLTIP,
       "helpUrl": Blockly.Msg.LOGIC_NULL_HELPURL
     });
