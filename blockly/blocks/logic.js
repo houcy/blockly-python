@@ -495,8 +495,8 @@ Blockly.Blocks['logic_isIn'] = {
    */
   init: function() {
     var OPERATORS =
-        [["is in", 'IN'],
-         ["is not in", 'NOTIN']];
+        [["在", 'IN'],
+         ["不在", 'NOTIN']];
     this.setColour(Blockly.Blocks.logic.HUE);
     this.setOutput(true, 'Boolean');
     this.appendValueInput('ITEM');
