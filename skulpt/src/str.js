@@ -206,6 +206,8 @@ Sk.builtin.str.prototype["$r"] = function () {
         }
     }
     ret += quote;
+    //Sk.Debugger.prototype.print("str.js"+ret);
+    //console.log("str.js "+ret);
     return new Sk.builtin.str(ret);
 };
 

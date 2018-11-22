@@ -202,9 +202,9 @@ BlockPy.prototype.initModel = function(settings) {
         // Programs' actual code
         'programs': {
             "__main__": ko.observable(''),
-            //"starting_code": ko.observable(''),
-            //"give_feedback": ko.observable(''),
-            //"on_change": ko.observable(''),
+            "starting_code": ko.observable(''),
+            "give_feedback": ko.observable(''),
+            "on_change": ko.observable(''),
             "answer": ko.observable('')
         },
         // Information about the current run of the program

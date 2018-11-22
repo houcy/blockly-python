@@ -290,7 +290,7 @@ Blockly.Python['lists_getSublist'] = function(block) {
   }
   switch (where2) {
     case 'FROM_START':
-      var at2 = Blockly.Python.getAdjustedInt(block, 'AT2', 1);
+      var at2 = Blockly.Python.getAdjustedInt(block, 'AT2', 0);
       break;
     case 'FROM_END':
       var at2 = Blockly.Python.getAdjustedInt(block, 'AT2', 0, true);

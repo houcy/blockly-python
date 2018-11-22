@@ -882,7 +882,7 @@ BlockPyEditor.CATEGORY_MAP = {
                     //'<block type="math_modulo"></block>'+
                 '</category>',
     'Text':   '<category name="字符串" colour="100">'+
-                    '<block type="text"></block>'+
+                    '<block type="text_"></block>'+
                     '<block type="text_join"></block>'+
                     //'<block type="text_create_join_container"></block>'+
                     //'<block type="text_create_join_item"></block>'+
@@ -903,7 +903,8 @@ BlockPyEditor.CATEGORY_MAP = {
     'Logics': '<category name="逻辑" colour="330">'+
                     //'<block type="controls_if_better"></block>'+
                     '<block type="controls_if"></block>'+
-                    //'<block type="controls_if_better"><mutation else="1"></mutation></block>'+
+                    //'<block type="controls_if_better"></block>'+
+                    '<block type="controls_if_better"><mutation else="1"></mutation></block>'+
                     //'<block type="controls_if"></block>'+
                     //'<block type="controls_if"><mutation else="1"></mutation></block>'+
                     //'<block type="controls_if"><mutation else="1"></mutation></block>'+
@@ -955,7 +956,7 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="controls_repeat_ext"></block>'+
                     '<block type="controls_repeat"></block>'+
                     '<block type="controls_whileUntil"></block>'+
-                    '<block type="controls_while"></block>'+
+                    //'<block type="controls_while"></block>'+
                     '<block type="controls_for"></block>'+
                     '<block type="controls_forEach"></block>'+
                     '<block type="controls_pass"></block>'+
