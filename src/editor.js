@@ -896,6 +896,8 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="text_changeCase"></block>'+
                     '<block type="text_trim"></block>'+
                     '<block type="text_count"></block>'+
+                    '<block type="text_replace"></block>'+
+                    '<block type="text_join"></block>'+
                     //'<block type="text_prompt_ext"></block>'+
                     //'<block type="text_prompt"></block>'+
                 '</category>',

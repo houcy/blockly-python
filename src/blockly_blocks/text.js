@@ -284,3 +284,84 @@ Blockly.Python['text_chr'] = function(block) {
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Blocks['text_chr'] = {
+  init: function() {
+    this.appendValueInput("FIRST")
+        .setCheck(null)
+        .appendField("将");
+    this.appendDummyInput("TAIL")
+        .appendField("按ASCII码编码");
+    this.setInputsInline(true);
+    this.setOutput(true, 'Number');
+    this.setColour(125);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['text_replace'] = {
+  /**
+   * Block for text value.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.setHelpUrl(Blockly.Msg.TEXT_TEXT_HELPURL);
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.appendValueInput("OLD_STR")
+        .setCheck('String')
+        .appendField("将");
+    this.appendValueInput("NOT_REPLACED_STR")
+        .setCheck('String')
+        .appendField("中的");
+    this.appendValueInput("REPLACED_STR")
+        .setCheck('String')
+        .appendField("替换为");
+    this.setInputsInline(true);
+    this.setOutput(true, 'String');
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Python['text_replace'] = function(block) {
+  var old_str = Blockly.Python.valueToCode(block, 'OLD_STR', Blockly.Python.ORDER_ATOMIC) || '___';
+  var first = Blockly.Python.valueToCode(block, 'NOT_REPLACED_STR', Blockly.Python.ORDER_ATOMIC) || '___';
+  var second = Blockly.Python.valueToCode(block, 'REPLACED_STR', Blockly.Python.ORDER_ATOMIC) || '___';
+
+  var code =  old_str + ".replace(" + first +"," + second + ")";
+
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Blocks['text_join'] = {
+  /**
+   * Block for text value.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.setHelpUrl(Blockly.Msg.TEXT_TEXT_HELPURL);
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.appendValueInput("SUB_STRING")
+        .setCheck(['String','Array'])
+        .appendField("将");
+    this.appendValueInput("JOIN_STR")
+        .setCheck('String')
+        .appendField("用");
+    this.appendDummyInput("TAIL")
+        .appendField("连接起来");
+    this.setInputsInline(true);
+    this.setOutput(true, 'String');
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Python['text_join'] = function(block) {
+  var first = Blockly.Python.valueToCode(block, 'SUB_STRING', Blockly.Python.ORDER_ATOMIC) || '___';
+  var second = Blockly.Python.valueToCode(block, 'JOIN_STR', Blockly.Python.ORDER_ATOMIC) || '___';
+
+  var code =  second + ".join(" + first + ")";
+
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};

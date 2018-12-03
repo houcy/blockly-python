@@ -135,6 +135,13 @@ Blockly.Blocks['conversion_chr'] = {
   }
 };
 
+Blockly.Python['conversion_chr'] = function(block) {
+  var value_first = Blockly.Python.valueToCode(block, 'FIRST', Blockly.Python.ORDER_ATOMIC) || '___';
+  var code = 'chr(' + value_first + ')' ;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python['conversion_ord'] = function(block) {
   var value_first = Blockly.Python.valueToCode(block, 'FIRST', Blockly.Python.ORDER_ATOMIC) || '___';
   var code = 'ord(' + value_first + ')' ;

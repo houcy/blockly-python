@@ -183,29 +183,24 @@ Blockly.Python['math_number_property'] = function(block) {
   var code;
   if (dropdown_property == 'PRIME') {
     Blockly.Python.definitions_['import_math'] = 'import math';
-    Blockly.Python.definitions_['from_numbers_import_Number'] =
-        'from numbers import Number';
+    //Blockly.Python.definitions_['from_numbers_import_Number'] =
+    //    'from numbers import Number';
     var functionName = Blockly.Python.provideFunction_(
         'math_isPrime',
         ['def ' + Blockly.Python.FUNCTION_NAME_PLACEHOLDER_ + '(n):',
-         '  # https://en.wikipedia.org/wiki/Primality_test#Naive_methods',
-         '  # If n is not a number but a string, try parsing it.',
-         '  if not isinstance(n, Number):',
-         '    try:',
-         '      n = float(n)',
-         '    except:',
-         '      return False',
-         '  if n == 2 or n == 3:',
-         '    return True',
-         '  # False if n is negative, is 1, or not whole,' +
-             ' or if n is divisible by 2 or 3.',
-         '  if n <= 1 or n % 1 != 0 or n % 2 == 0 or n % 3 == 0:',
+         '  if n <= 1 or n % 1 != 0:',
          '    return False',
-         '  # Check all the numbers of form 6k +/- 1, up to sqrt(n).',
-         '  for x in range(6, int(math.sqrt(n)) + 2, 6):',
-         '    if n % (x - 1) == 0 or n % (x + 1) == 0:',
+         '  if n%2 == 0:',
+         '    return n==2',
+         '  if n%3 == 0:',
+         '    return n==3',
+         '  if n%5 == 0:',
+         '    return n==5',
+         '  for p in range(7,int(math.sqrt(n))+1,2):',
+         '    if n%p == 0:',
          '      return False',
-         '  return True']);
+         '  return True'
+        ]);
     code = functionName + '(' + number_to_check + ')';
     return [code, Blockly.Python.ORDER_FUNCTION_CALL];
   }
