@@ -1,0 +1,58 @@
+{
+  "real_estate": {
+    "description": "Real Estate Across the United States (REXUS) is the primary tool used by PBS to track and manage the government's real property assets and to store inventory data, building data, customer data, and lease information. STAR manages aspects of real property space management, including identification of all building space and daily management of 22,000 assignments for all property to its client Federal agencies. This data set contains PBS building inventory that consists of both owned and leased buildings with active and excess status.\n", 
+    "dicts": {
+      "count": 6, 
+      "levels": {
+        "1": {
+          "lengths": 2, 
+          "key lengths": 8
+        }, 
+        "2": {
+          "lengths": 5, 
+          "key lengths": 6
+        }, 
+        "3": {
+          "lengths": 3, 
+          "key lengths": 8
+        }
+      }, 
+      "inconsistent": {}, 
+      "average branching factor": 3
+    }, 
+    "tags": [
+      "real", 
+      "estate", 
+      "buildings", 
+      "government", 
+      "building"
+    ], 
+    "atomics": {
+      "count": 18, 
+      "nones": 0, 
+      "ints": 1, 
+      "booleans": 0, 
+      "longs": 0, 
+      "unknown": 0, 
+      "strings": 17, 
+      "floats": 0
+    }, 
+    "lists": {
+      "count": 1, 
+      "lengths": 9315, 
+      "complex": 1
+    }, 
+    "heights": 4, 
+    "unions": {
+      "count": 0, 
+      "keys": {}, 
+      "sizes": 0
+    }, 
+    "length": 9315, 
+    "indexes": [
+      1
+    ], 
+    "locals": 0, 
+    "size": 4443172
+  }
+}

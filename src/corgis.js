@@ -12,13 +12,14 @@ _IMPORTED_COMPLETE_DATASETS = {};
  */
 function BlockPyCorgis(main) {
     this.main = main;
-    
+
     this.loadedDatasets = [];
     this.loadDatasets();
 }
 
 BlockPyCorgis.prototype.loadDatasets = function(silently) {
     // Load in each the datasets
+    console.log("loadDatasets");
     var corgis = this,
         model = this.main.model,
         editor = this.main.components.editor,
@@ -26,11 +27,12 @@ BlockPyCorgis.prototype.loadDatasets = function(silently) {
     var imports = [];
     model.assignment.modules().forEach(function(name) {
         var post_prefix = name.substring(7).replace(/\s/g, '_').toLowerCase();
+        console.log("post_prefix "+post_prefix);
         if (!(name in BlockPyEditor.CATEGORY_MAP)) {
             imports.push.apply(imports, corgis.importDataset(post_prefix, name, silently));
         }
     });
-    
+    console.log("imports "+imports);
     // When datasets are loaded, update the toolbox.
     $.when.apply($, imports).done(function() {
         if (model.settings.editor() == "Blocks") {
@@ -65,27 +67,41 @@ BlockPyCorgis.prototype.importDataset = function(slug, name, silently) {
         var get_dataset = $.getScript(root+'_dataset.js');
         var get_complete = $.getScript(root+'_complete.js');
         // Load get_complete silently in the background
-        var get_skulpt = $.get(root+'_skulpt.js', function(data) {
+        /*var get_skulpt = $.get(root+'_skulpt.js', function(data) {
             Sk.builtinFiles['files']['src/lib/'+slug+'/__init__.js'] = data;
-        });
+        });*/
+        /*var get_skulpt_ = $.getScript(root+'_skulpt.js',function(){
+  console.log("get_skulpt_.");
+});*/
+        var get_skulpt_ = $.getScript(root+'_skulpt.js')
+            .done(function(data) {
+                console.log(data);
+                Sk.builtinFiles['files']['src/lib/'+slug+'/__init__.js'] = data;
+            })
+            .fail(function(jqxhr, settings, exception) {
+               console.log(exception);
+              //$( "div.log" ).text( "Triggered ajaxError handler." );
+            });
+
+
         var get_blockly = $.getScript(root+'_blockly.js');
         // On completion, update menus.
         var corgis = this;
-        $.when(get_dataset, get_skulpt, 
+        $.when(get_dataset,get_skulpt_,
                get_blockly).done(function() {
             corgis.loadedDatasets.push(slug);
             if (silently) {
                 corgis.main.model.settings.server_connected(false);
                 corgis.main.model.assignment.modules.push(name);
-                corgis.main.components.editor.addAvailableModule(name);
+                //corgis.main.components.editor.addAvailableModule(name); //不知道干嘛的 但是会造成错误
                 corgis.main.model.settings.server_connected(true);
             } else {
                 corgis.main.model.assignment.modules.push(name);
-                corgis.main.components.editor.addAvailableModule(name);
+                //corgis.main.components.editor.addAvailableModule(name);  //不知道干嘛的 但是会造成错误
             }
             corgis.main.model.status.dataset_loading.pop();
         });
-        url_retrievals.push(get_dataset, get_skulpt, get_blockly);
+        url_retrievals.push(get_dataset, get_skulpt_, get_blockly);
     }
     return url_retrievals;
 }
@@ -96,7 +112,7 @@ BlockPyCorgis.prototype.importDataset = function(slug, name, silently) {
  * completes asynchronously. The dialog is composed of a table with
  * buttons to load the datasets (More than one dataset can be loaded
  * from within the dialog at a time).
- * 
+ *
  * @param {String} name - The name of the dataset to open. This is basically the user friendly version of the name, though it will be mangled into a slug.
  */
 BlockPyCorgis.prototype.openDialog = function(name) {

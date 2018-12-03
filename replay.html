@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>BlockPy Replay</title>
-    
+
     <link rel="stylesheet" href="libs/bootstrap.min.css">
     <link rel="stylesheet" href="libs/codemirror/codemirror.css">
     <link rel="stylesheet" href="libs/font-awesome.min.css">
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="libs/multi-select.css">
     <link rel="stylesheet" href="src/blockpy.css">
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">-->
-    
+
     <!-- JQuery, D3, Math.js, Bootstrap -->
     <script type="text/javascript" src="libs/jquery.js"></script>
     <script type="text/javascript" src="libs/jquery-ui.min.js"></script>
@@ -27,12 +27,12 @@
     <script type="text/javascript" src="libs/codemirror/htmlmixed.js"></script>
     <script type="text/javascript" src="libs/codemirror/xml.js"></script>
     <script type="text/javascript" src="libs/knockout-3.4.0.js"></script>
-    
+
     <!-- Summernote, a rich text editor -->
     <script type="text/javascript" src="libs/summernote/summernote.min.js"></script>
     <script type="text/javascript" src="libs/summernote/summernote-ext-hint.js"></script>
     <script type="text/javascript" src="libs/summernote/summernote-ext-video.js"></script>
-    
+
     <!-- Blockly -->
     <script type="text/javascript" src="blockly/blockly_uncompressed.js"></script>
     <script type="text/javascript" src="blockly/blocks_compressed.js"></script>
@@ -40,11 +40,11 @@
     <script type="text/javascript" src="blockly/pseudo_compressed.js"></script>
     <script type="text/javascript" src="blockly/javascript_compressed.js"></script>
     <script type="text/javascript" src="blockly/msg/js/en.js"></script>
-    
+
     <!-- Skulpt -->
     <script type="text/javascript" src="skulpt/dist/skulpt.min.js"></script>
     <script type="text/javascript" src="skulpt/dist/skulpt-stdlib.js"></script>
-    
+
     <!-- Source Code -->
     <script type="text/javascript" src="src/utilities.js"></script>
     <script type="text/javascript" src="src/python_errors.js"></script>
@@ -85,11 +85,11 @@
     <script type="text/javascript" src="src/sk_mod_instructor.js"></script>
     <script type="text/javascript" src="src/engine.js"></script>
     <script type="text/javascript" src="src/main.js"></script>
-    
+
     <!--<script type="text/javascript" src="test_corgis/blockpy/tate/tate_blockly.js"></script>
     <script type="text/javascript" src="test_corgis/blockpy/tate/tate_skulpt.js"></script>
     <script type="text/javascript" src="test_corgis/blockpy/tate/tate_dataset.js"></script>-->
-    
+
     <style>
 
     </style>
@@ -102,7 +102,7 @@
             'developer': true,
             'editor': 'Text',
             'urls': {
-                'import_datasets': 'https://think.cs.vt.edu/blockpy/load_corgis/',
+                'import_datasets': './test_corgis/',
                 //'walk_old_code': 'http://localhost:8000/walk_code/',
                 //'log_event': 'http://localhost:8000/save_events/'
                 /*'save_code': 'http://localhost:8000/save_code/',
@@ -136,7 +136,7 @@
                 '__main__': 'import matplotlib.pyplot as plt\nquakes = [1,2,3,4]\nquakes_in_miles = []\nfor quake in quakes:\n    quakes_in_miles.append(quake * 0.62)\nplt.hist(quakes_in_miles)\nplt.xlabel("Depth in Miles")\nplt.ylabel("Number of Earthquakes")\nplt.title("Distribution of Depth in Miles of Earthquakes")\nplt.show()\n'
             }
         )
-        
+
         function inIframe () {
             try {
                 return window.self !== window.top;
@@ -163,7 +163,7 @@
         var global_scrubing = STOP_SCRUB;
         var speed = 50;
         document.onkeydown = navigationStroke;
-        
+
         function pauseEvent(){
             global_isPaused = !global_isPaused;
             updatePauseButton();
@@ -215,7 +215,7 @@
         $('#backward-button').click(function() {
             backEvent();
         });
-        
+
         function handleCodeEvents(record){
             switch (record.action.toLowerCase()) {
                 case "set":

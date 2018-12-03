@@ -249,6 +249,7 @@ BlockPyEditor.prototype.addAvailableModule = function(name) {
     this.availableModules.multiSelect('addOption', {
         'value': name, 'text': name
     });
+    console.log("111111111111111111111111111111111");
     this.availableModules.multiSelect('select', name);
 };
 
@@ -891,12 +892,10 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="text_isEmpty"></block>'+
                     '<block type="text_indexOf"></block>'+
                     '<block type="text_charAt"></block>'+
-                    '<block type="text_getSubstring"></block>'+
+                    '<block type="text_getSubstring_"></block>'+
                     '<block type="text_changeCase"></block>'+
                     '<block type="text_trim"></block>'+
                     '<block type="text_count"></block>'+
-                    //'<block type="conversion_float"></block>'+
-                    //'<block type="conversion_str"></block>'+
                     //'<block type="text_prompt_ext"></block>'+
                     //'<block type="text_prompt"></block>'+
                 '</category>',
@@ -1010,15 +1009,17 @@ BlockPyEditor.CATEGORY_MAP = {
                 '<block type="conversion_bool"></block>'+
                 '<block type="conversion_type"></block>'+
                 '<block type="conversion_eval"></block>'+
+                '<block type="conversion_chr"></block>'+
+                '<block type="conversion_ord"></block>'+
               '</category>',
-    /*
     'Data - Weather': '<category name="Data - Weather" colour="70">'+
-                    '<block type="weather_temperature"></block>'+
+                    /*'<block type="weather_temperature"></block>'+
                     '<block type="weather_report"></block>'+
                     '<block type="weather_forecasts"></block>'+
                     '<block type="weather_report_forecasts"></block>'+
                     '<block type="weather_all_forecasts"></block>'+
-                    '<block type="weather_highs_lows"></block>'+
+                    '<block type="weather_highs_lows"></block>'+*/
+                    '<block type="weather_get"></block>'+
                 '</category>',
     'Data - Stocks': '<category name="Data - Stock" colour="65">'+
                     '<block type="stocks_current"></block>'+
@@ -1036,7 +1037,7 @@ BlockPyEditor.CATEGORY_MAP = {
                 '</category>',
     'Data - Books': '<category name="Data - Books" colour="50">'+
                     '<block type="books_get"></block>'+
-                '</category>',*/
+                '</category>',
     'Data - Parking': '<category name="Data - Parking" colour="45">'+
                     '<block type="datetime_day"></block>'+
                     '<block type="datetime_time"></block>'+
@@ -1081,7 +1082,7 @@ BlockPyEditor.prototype.updateToolbox = function(only_set) {
         started_data = false;
     for (var i = 0, length = modules.length; i < length; i = i+1) {
         var module = modules[i];
-        if (!started_misc && ['Calculation', 'IO', 'Python'].indexOf(module) != -1) {
+        if (!started_misc && ['Calculation', 'Output', 'Python'].indexOf(module) != -1) {
             started_misc = true;
             xml += BlockPyEditor.CATEGORY_MAP['Separator'];
         }
@@ -1113,7 +1114,6 @@ BlockPyEditor.prototype.updateToolbox = function(only_set) {
         return xml;
     }
 };
-
 BlockPyEditor.prototype.DOCTYPE = '<?xml version="1.0" standalone="no"?>' + '<' + '!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">';
 BlockPyEditor.prototype.cssData = null;
 BlockPyEditor.prototype.loadCss = function() {

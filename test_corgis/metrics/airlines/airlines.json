@@ -1,0 +1,63 @@
+{
+  "airlines": {
+    "description": "This dataset is all about flights in the united states, including information about the number, length, and type of delays. The data is reported for individual months at every major airport for every carrier.\nAdditional information is available: <a href=\"http://www.rita.dot.gov/bts/help/aviation/html/understanding.html\">http://www.rita.dot.gov/bts/help/aviation/html/understanding.html</a>\n", 
+    "dicts": {
+      "count": 8, 
+      "levels": {
+        "1": {
+          "lengths": 3, 
+          "key lengths": 8
+        }, 
+        "2": {
+          "lengths": 3, 
+          "key lengths": 7
+        }, 
+        "3": {
+          "lengths": 4, 
+          "key lengths": 10
+        }
+      }, 
+      "inconsistent": {}, 
+      "average branching factor": 3
+    }, 
+    "tags": [
+      "airplane", 
+      "airports", 
+      "travel", 
+      "plane", 
+      "air", 
+      "flights", 
+      "delays", 
+      "national", 
+      "united states", 
+      "transportation"
+    ], 
+    "atomics": {
+      "count": 24, 
+      "nones": 0, 
+      "ints": 19, 
+      "booleans": 0, 
+      "longs": 0, 
+      "unknown": 0, 
+      "strings": 5, 
+      "floats": 0
+    }, 
+    "lists": {
+      "count": 2, 
+      "lengths": 4408, 
+      "complex": 1
+    }, 
+    "heights": 5, 
+    "unions": {
+      "count": 0, 
+      "keys": {}, 
+      "sizes": 0
+    }, 
+    "length": 4408, 
+    "indexes": [
+      2
+    ], 
+    "locals": 0, 
+    "size": 3923354
+  }
+}

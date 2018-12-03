@@ -1,0 +1,92 @@
+{
+  "school": {
+    "description": "This dataset comes from the National Center for Educational Statistics' Common Core of Data. Data is available for every state and the District of Columbia from the 2009-2010 school year. The data is roughly categorized into four categories: funding, how much money is given to the school; score, how students perform academically; attendance, the rate at which students and teachers attend; enrollment, the size of the schools. Funding is given in dollars. The 'Year' field has records for Preschool, Kindergarten, and grades 1-12.\n", 
+    "dicts": {
+      "count": 15, 
+      "levels": {
+        "1": {
+          "lengths": 2, 
+          "key lengths": 12
+        }, 
+        "2": {
+          "lengths": 5, 
+          "key lengths": 4
+        }, 
+        "3": {
+          "lengths": 3, 
+          "key lengths": 8
+        }, 
+        "4": {
+          "lengths": 5, 
+          "key lengths": 8
+        }, 
+        "5": {
+          "lengths": 3, 
+          "key lengths": 5
+        }
+      }, 
+      "inconsistent": {}, 
+      "average branching factor": 3
+    }, 
+    "tags": [
+      "school", 
+      "education", 
+      "K-12", 
+      "kindergarten", 
+      "learning", 
+      "teaching"
+    ], 
+    "atomics": {
+      "count": 35, 
+      "nones": 0, 
+      "ints": 26, 
+      "booleans": 0, 
+      "longs": 0, 
+      "unknown": 0, 
+      "strings": 2, 
+      "floats": 7
+    }, 
+    "lists": {
+      "count": 6, 
+      "lengths": 51, 
+      "complex": 5
+    }, 
+    "heights": 6, 
+    "unions": {
+      "count": 6, 
+      "keys": {
+        "state record.[0].data.score.science.[0].scale score": [
+          "text", 
+          "number"
+        ], 
+        "state record.[0].data.score.writing.[0].scale score": [
+          "text", 
+          "number"
+        ], 
+        "state record.[0].data.attendance.average student rate": [
+          "none", 
+          "number"
+        ], 
+        "state record.[0].data.attendance.average minutes": [
+          "none", 
+          "number"
+        ], 
+        "state record.[0].data.attendance.average teacher rate": [
+          "none", 
+          "number"
+        ], 
+        "state record.[0].data.enrollment.students.other.ungraded students": [
+          "text", 
+          "number"
+        ]
+      }, 
+      "sizes": 2
+    }, 
+    "length": 51, 
+    "indexes": [
+      1
+    ], 
+    "locals": 0, 
+    "size": 60995
+  }
+}

@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>
+Immigration JSON Library (CORGIS Datasets Project)
+</title>
+    
+    <!-- JQuery UI CSS-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    
+    
+    
+    
+    <!-- JQuery JS -->
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    
+    <!-- JQuery UI JS -->
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    
+    <!-- Knockoutjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    
+    <!-- D3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    
+    
+    
+    
+    <style>
+    .dialog-opener {
+        cursor: pointer;
+    }
+    </style>
+    
+    <script>
+    $(document).ready(function() {
+        /*
+        function doPoll(){  
+            log('remain', '{ metadata.name }, '+$(document).scrollTop()+", "+$(document).height());
+        }
+        setInterval(doPoll, 5000);
+        */
+    });
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    </script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+
+    <script>
+/*$(document).ready(function() {
+    log('load', 'Immigration');
+});*/
+</script>
+<div class="page-header">
+    
+    <img class="img-rounded pull-right" src="immigration_splash.png" alt="immigration_splash.png" style="max-width: 256px; max-height: 256px;">
+    
+    <h1>Immigration JSON Library</h1>
+    <p class="lead">From the <a href="../index.html">CORGIS Dataset Project</a></p>
+    <span class="text-muted">By Austin Cory Bart (<a href="mailto:acbart@vt.edu">acbart@vt.edu</a>)</span><br>
+    <span class="text-muted">Version 3, created 11/1/2015</span><br>
+    <span class="text-muted">Tags: immigration, naturalization, permanants, united states, us</span><br>
+</div>
+    
+    <h3 id="overview">Overview</h3>
+<p>
+The Yearbook of Immigration Statistics is a compendium of tables that provides data on foreign nationals who, during a fiscal year, were granted lawful permanent residence (i.e., admitted as immigrants or became legal permanent residents), were admitted into the United States on a temporary basis (e.g., tourists, students, or workers), applied for asylum or refugee status, or were naturalized. The Yearbook also presents data on immigration enforcement actions, including alien apprehensions, removals, and returns. This data ranges from 2005-2014 and covers immigration from many countries.
+
+</p>
+
+<p>
+<i>http://www.dhs.gov/yearbook-immigration-statistics</i>
+</p>
+
+    
+    <h3 id="downloads">Downloads</h3>
+    
+<p>Download all of the following files.</p>
+
+<div class='row'>
+<div class="well col-md-6 col-md-offset-1">
+
+<ol>
+    
+    
+    <li><a href="immigration.json?forcedownload=1" download="immigration.json" target="_blank">
+        <strong>immigration.json</strong>
+        <span class='glyphicon glyphicon-download-alt' aria-hidden="true"></span>
+    </a></li>
+    
+</ol>
+</div>
+</div>
+    
+    
+    
+    <h3 id="field">Field Descriptions</h3>
+    
+    <table class='table table-condensed table-striped table-bordered table-hover'>
+    <tr>
+        <th class='col-md-2'>JSON Path</th>
+        <th class='col-md-2'>Type</th>
+        <th class='col-md-5'>Comment</th>
+        <th class='col-md-3'>Example Value</th>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Country</td>
+        <td>unicode</td> 
+        <td>The country that these immigrants came from to USA, or are going to from the USA.</td>
+        <td>Canada</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Data</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Enforcement': {u'Non-criminal': 1099, u'Criminal': 462, u'Apprehended': 1486, u'Inadmissable': 41861}, u'Legal permanant residences': {u'Birth': 21878, u'Last Residence': 29930}, u'Naturalizations (Birth)': 7815, u'Refugees': {u'Defensive Asylum': 4, u'Arrived': -1, u'Affirmative': -1}, u'Nonimmigrant Admissions': {u'Last Residence': 527264, u'Birth': 231171}}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Year</td>
+        <td>int</td> 
+        <td>The year that this immigration data comes from.</td>
+        <td>2005</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Data.Enforcement</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Non-criminal': 1099, u'Criminal': 462, u'Apprehended': 1486, u'Inadmissable': 41861}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Data.Legal permanant residences</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Birth': 21878, u'Last Residence': 29930}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Data.Naturalizations (Birth)</td>
+        <td>int</td> 
+        <td>Naturalization is the process by which U.S. citizenship is granted to a foreign citizen or national after he or she fulfills the requirements established by Congress in the Immigration and Nationality Act (INA). This is the number that became naturalized in this year from the associated country. Note that this is not the number of naturally-born citizens, which is a different form of citizenship.</td>
+        <td>7815</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Data.Refugees</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Defensive Asylum': 4, u'Arrived': -1, u'Affirmative': -1}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Data.Nonimmigrant Admissions</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Last Residence': 527264, u'Birth': 231171}</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Data.Refugees.Arrived</td>
+        <td>int</td> 
+        <td>Refugee status is a form of protection that may be granted to people who meet the definition of refugee and who are of special humanitarian concern to the United States. Refugees are generally people outside of their country who are unable or unwilling to return home because they fear serious harm. This is the number that have arrived from the associated country in this year seeking refugee status and asylum.</td>
+        <td>-1</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Data.Refugees.Defensive Asylum</td>
+        <td>int</td> 
+        <td>Asylum status is a form of protection available to people who: (1) Meet the definition of refugee, (2) Are already in the United States, and (3) Are seeking admission at a port of entry. This is the number of people who have been granted aslyum in the USA from the associated country in this year.</td>
+        <td>4</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Data.Refugees.Affirmative</td>
+        <td>int</td> 
+        <td>Refugee status is a form of protection that may be granted to people who meet the definition of refugee and who are of special humanitarian concern to the United States. Refugees are generally people outside of their country who are unable or unwilling to return home because they fear serious harm. This is the number that were granted refugee status from the associated country in this year.</td>
+        <td>-1</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Data.Legal permanant residences.Last Residence</td>
+        <td>int</td> 
+        <td>Lawful permanent residents (LPRs), also known as "green card" holders, are non-citizens who are lawfully authorized to live permanently within the United States. This is the number that had their last residence in the associated country.</td>
+        <td>29930</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Data.Legal permanant residences.Birth</td>
+        <td>int</td> 
+        <td>Lawful permanent residents (LPRs), also known as "green card" holders, are non-citizens who are lawfully authorized to live permanently within the United States. This is the number that were from the associated country where they were originally born.</td>
+        <td>21878</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Data.Nonimmigrant Admissions.Birth</td>
+        <td>int</td> 
+        <td>Nonimmigrants are foreign nationals granted temporary admission into the United States. The major purposes for which nonimmigrant admission may be authorized include temporary visits for business or pleasure, academic or vocational study, temporary employment, or to act as a representative of a foreign government or international organization, among others. This is the number that were entered this year from the associated country.</td>
+        <td>231171</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Data.Nonimmigrant Admissions.Last Residence</td>
+        <td>int</td> 
+        <td>Nonimmigrants are foreign nationals granted temporary admission into the United States. The major purposes for which nonimmigrant admission may be authorized include temporary visits for business or pleasure, academic or vocational study, temporary employment, or to act as a representative of a foreign government or international organization, among others. This is the number that had their last residence in the associated country.</td>
+        <td>527264</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Data.Enforcement.Non-criminal</td>
+        <td>int</td> 
+        <td>The number of aliens who were removed from the US without a prior criminal conviction (but were present in the USA illegaly).</td>
+        <td>1099</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Data.Enforcement.Criminal</td>
+        <td>int</td> 
+        <td>The number of aliens who were removed from the US for having prior criminal convictions (e.g., immigration-related offenses, dangerous drug crimes, criminal traffic offenses, and assault).</td>
+        <td>462</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Data.Enforcement.Apprehended</td>
+        <td>int</td> 
+        <td>The number of aliens who entered without inspection between ports of entry and are apprehended by U.S. Border Patrol (USBP).</td>
+        <td>1486</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Data.Enforcement.Inadmissable</td>
+        <td>int</td> 
+        <td>The number of aliens who were ineligible to receive a visa and ineligible to be admitted to the United States.</td>
+        <td>41861</td>
+    </tr>
+    
+    
+    
+    </table>
+
+    
+
+
+</div>

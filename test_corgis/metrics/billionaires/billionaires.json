@@ -1,0 +1,59 @@
+{
+  "billionaires": {
+    "description": "Researchers have compiled a multi-decade database of the super-rich. Building off the Forbes World's Billionaires lists from 1996-2014, scholars at Peterson Institute for International Economics have added a couple dozen more variables about each billionaire - including whether they were self-made or inherited their wealth. (Roughly half of European billionaires and one-third of U.S. billionaires got a significant financial boost from family, the authors estimate.)\n", 
+    "dicts": {
+      "count": 6, 
+      "levels": {
+        "1": {
+          "lengths": 7, 
+          "key lengths": 11
+        }, 
+        "2": {
+          "lengths": 3, 
+          "key lengths": 8
+        }, 
+        "3": {
+          "lengths": 6, 
+          "key lengths": 3
+        }
+      }, 
+      "inconsistent": {}, 
+      "average branching factor": 4
+    }, 
+    "tags": [
+      "money", 
+      "rich", 
+      "wealthy", 
+      "people", 
+      "person", 
+      "billionaire"
+    ], 
+    "atomics": {
+      "count": 22, 
+      "nones": 0, 
+      "ints": 4, 
+      "booleans": 3, 
+      "longs": 0, 
+      "unknown": 0, 
+      "strings": 13, 
+      "floats": 2
+    }, 
+    "lists": {
+      "count": 1, 
+      "lengths": 2614, 
+      "complex": 1
+    }, 
+    "heights": 4, 
+    "unions": {
+      "count": 0, 
+      "keys": {}, 
+      "sizes": 0
+    }, 
+    "length": 2614, 
+    "indexes": [
+      2
+    ], 
+    "locals": 0, 
+    "size": 1472292
+  }
+}

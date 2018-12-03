@@ -9,7 +9,6 @@
  * @param {Object} programs - Includes the source code of any programs to be loaded
  */
 function BlockPy(settings, assignment, programs) {
-    console.log('BlockPy(settings, assignment, programs)')
     this.localSettings = new LocalStorageWrapper('localSettings');
     this.initModel(settings);
     if (assignment !== undefined) {
@@ -511,7 +510,7 @@ BlockPy.prototype.setAssignment = function(settings, assignment, programs) {
 /**
  * Function for running any code that fixes bugs and stuff upstream.
  * Not pleasant that this exists, but better to have it isolated than
- * just lying about randomly...
+ * just lying about randomly...             BlockPy
  *
  */
 BlockPy.prototype.turnOnHacks = function() {

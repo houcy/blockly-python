@@ -1,0 +1,60 @@
+{
+  "construction_permits": {
+    "description": "This dataset provides data on the number and valuation of new housing units authorized by building permits. Data are available monthly at the national, regional, divisional, and state level. The data are from the Building Permits Survey. The United States Code, Title 13, authorizes this survey, provides for voluntary responses, and provides an exception to confidentiality for public records.\n", 
+    "dicts": {
+      "count": 4, 
+      "levels": {
+        "1": {
+          "lengths": 4, 
+          "key lengths": 6
+        }, 
+        "2": {
+          "lengths": 4, 
+          "key lengths": 11
+        }
+      }, 
+      "inconsistent": {}, 
+      "average branching factor": 4
+    }, 
+    "tags": [
+      "construction", 
+      "permits", 
+      "us", 
+      "united states", 
+      "america", 
+      "government", 
+      "buildings", 
+      "private", 
+      "units", 
+      "valuation", 
+      "housing"
+    ], 
+    "atomics": {
+      "count": 13, 
+      "nones": 0, 
+      "ints": 10, 
+      "booleans": 0, 
+      "longs": 0, 
+      "unknown": 0, 
+      "strings": 3, 
+      "floats": 0
+    }, 
+    "lists": {
+      "count": 1, 
+      "lengths": 7089, 
+      "complex": 1
+    }, 
+    "heights": 3, 
+    "unions": {
+      "count": 0, 
+      "keys": {}, 
+      "sizes": 0
+    }, 
+    "length": 7089, 
+    "indexes": [
+      2
+    ], 
+    "locals": 0, 
+    "size": 1965754
+  }
+}
