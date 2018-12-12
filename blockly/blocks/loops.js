@@ -86,6 +86,7 @@ Blockly.Blocks['controls_repeat'] = {
     this.appendStatementInput('DO')
         .appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
   }
+    //customContextMenu: Blockly.Blocks['controls_for'].customContextMenu
 };
 
 Blockly.Blocks['controls_whileUntil'] = {

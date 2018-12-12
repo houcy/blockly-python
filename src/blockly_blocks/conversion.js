@@ -126,7 +126,7 @@ Blockly.Blocks['conversion_chr'] = {
         .setCheck(null)
         .appendField("将");
     this.appendDummyInput("TAIL")
-        .appendField("按ASCII码编码");
+        .appendField("按Unicode码编码");
     this.setInputsInline(true);
     this.setOutput(true, 'Number');
     this.setColour(125);
@@ -155,7 +155,7 @@ Blockly.Blocks['conversion_ord'] = {
         .setCheck(null)
         .appendField("将");
     this.appendDummyInput("TAIL")
-        .appendField("按ASCII码解码");
+        .appendField("按Unicode码解码");
     this.setInputsInline(true);
     this.setOutput(true, 'Number');
     this.setColour(125);

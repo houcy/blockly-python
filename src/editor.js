@@ -898,6 +898,7 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="text_count"></block>'+
                     '<block type="text_replace"></block>'+
                     '<block type="text_join"></block>'+
+                    '<block type="text_three_quote"></block>'+
                     //'<block type="text_prompt_ext"></block>'+
                     //'<block type="text_prompt"></block>'+
                 '</category>',
@@ -955,13 +956,14 @@ BlockPyEditor.CATEGORY_MAP = {
                 '</category>',
     'Loops': '<category name="循环" colour="300">'+
                     '<block type="controls_repeat_ext"></block>'+
-                    '<block type="controls_repeat"></block>'+
+                    '<block type="controls_repeat_"></block>'+
                     '<block type="controls_whileUntil"></block>'+
                     //'<block type="controls_while"></block>'+
                     '<block type="controls_for"></block>'+
                     '<block type="controls_forEach"></block>'+
                     '<block type="controls_pass"></block>'+
                     '<block type="controls_flow_statements"></block>'+
+                    '<block type="loop_range"></block>'+
                 '</category>',
     'Variables': '<category name="变量" custom="VARIABLE" colour="240">'+
                   '</category>',

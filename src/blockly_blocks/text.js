@@ -13,7 +13,9 @@ Blockly.Blocks['text_count'] = {
         .appendField("在");
     this.appendValueInput("NEEDLE")
         .setCheck(null)
-        .appendField("中返回子串的数量");
+        .appendField("中返回子串");
+    this.appendDummyInput('DUMMY')
+        .appendField("的数量");
     this.setInputsInline(true);
     this.setOutput(true, null);
     this.setColour(100);
@@ -364,4 +366,52 @@ Blockly.Python['text_join'] = function(block) {
   var code =  second + ".join(" + first + ")";
 
   return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+/*PythonToBlocks.KNOWN_ATTR_FUNCTIONS['join'] = function(func, args, keywords, starargs, kwargs, node)
+{
+    if (args.length != 2) {
+        throw new Error("Incorrect number of arguments to text.join!");
+    }
+    return [block("text_join", func.lineno, {}, {
+        "JOIN_STR": this.convert(args[0]),
+        "SUB_STRING": this.convert(args[1]),
+        "TEXT": this.convert(func.value)
+    }, {"inline": "true"})];
+}*/
+
+Blockly.Blocks['text_three_quote'] = {
+  // Container.
+  init: function() {
+    this.appendDummyInput()
+        .appendField(this.newQuote_(true))
+        .appendField(this.newQuote_(true))
+        .appendField(this.newQuote_(true))
+        .appendField(new Blockly.FieldTextArea(''), 'TEXT')
+        .appendField(this.newQuote_(false))
+        .appendField(this.newQuote_(false))
+        .appendField(this.newQuote_(false));
+    //this.setPreviousStatement(true, null);
+    //this.setNextStatement(true, null);
+    //this.setOutput(true,null);
+    //this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.setOutput(true, 'String');
+  },
+  newQuote_: function(open) {
+    if (open == this.RTL) {
+      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAQAAAAqJXdxAAAAqUlEQVQI1z3KvUpCcRiA8ef9E4JNHhI0aFEacm1o0BsI0Slx8wa8gLauoDnoBhq7DcfWhggONDmJJgqCPA7neJ7p934EOOKOnM8Q7PDElo/4x4lFb2DmuUjcUzS3URnGib9qaPNbuXvBO3sGPHJDRG6fGVdMSeWDP2q99FQdFrz26Gu5Tq7dFMzUvbXy8KXeAj57cOklgA+u1B5AoslLtGIHQMaCVnwDnADZIFIrXsoXrgAAAABJRU5ErkJggg==';
+    } else {
+      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAQAAAAqJXdxAAAAn0lEQVQI1z3OMa5BURSF4f/cQhAKjUQhuQmFNwGJEUi0RKN5rU7FHKhpjEH3TEMtkdBSCY1EIv8r7nFX9e29V7EBAOvu7RPjwmWGH/VuF8CyN9/OAdvqIXYLvtRaNjx9mMTDyo+NjAN1HNcl9ZQ5oQMM3dgDUqDo1l8DzvwmtZN7mnD+PkmLa+4mhrxVA9fRowBWmVBhFy5gYEjKMfz9AylsaRRgGzvZAAAAAElFTkSuQmCC';
+    }
+    return new Blockly.FieldImage(file, 12, 12, '"');
+  }
+};
+
+Blockly.Python['text_three_quote'] = function(block) {
+  var text_body = block.getFieldValue('TEXT');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '"""'+text_body+'"""\n';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+  //return [code,;
 };

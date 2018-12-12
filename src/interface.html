@@ -10,7 +10,7 @@
                 </div>
                 <div class='modal-footer'>
                     <button type='button' class='btn btn-white' data-dismiss='modal'>Close</button>
-                </div>    
+                </div>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
     <div class='row blockpy-top-row' style='padding-bottom: 10px; border-bottom: 1px solid #faebcc; '>
         <div class='blockpy-content-top col-md-9 col-sm-9'>
             <span class='blockpy-alert pull-right text-muted' data-bind="visible: false, text: status.text"></span>
-            <strong>BlockPy: </strong> 
+            <strong>BlockPy: </strong>
             <span class='blockpy-presentation-name'
                   data-bind='text: assignment.name'></span>
             <div class='blockpy-presentation' data-bind="html: assignment.introduction">
@@ -64,7 +64,7 @@
             </div>
             <div data-bind="visible: settings.show_settings"  style='clear:both'>
                 <!--Disable Semantic Errors: <input type='checkbox' data-bind="checked: settings.disable_semantic_errors"><br>-->
-                
+
                 <!--Disable Typed Blocks: <input type='checkbox' data-bind="checked: settings.disable_variable_types"><br>-->
                 <div class='pull-right'>
                 <label>AID:</label> <span data-bind="text: assignment.assignment_id"></span>
@@ -72,21 +72,21 @@
                 <label>SID:</label> <span data-bind="text: assignment.student_id"></span>
                 <label>CID:</label> <span data-bind="text: assignment.course_id"></span>
                 </div>
-                
+
                 <label class='pull-right'>
                 Disable Timeout: <input type='checkbox' data-bind="checked: settings.disable_timeout"><br>
                 </label>
-                
+
                 <label class='pull-right blockpy-toolbar-instructor-mode' data-bind="visible: settings.instructor_initial">
-                Instructor mode: 
+                Instructor mode:
                 <input type='checkbox' data-bind="checked:settings.instructor"><br>
                 </label>
-                
+
                 <label class='pull-right blockpy-toolbar-auto-upload' data-bind="visible: settings.instructor">
                 Auto-save:
                 <input type='checkbox' data-bind="checked:settings.auto_upload"><br>
                 </label>
-                
+
                 <br>
             </div>
             <!--<img src="images/corgi.png" class='img-responsive' />-->
@@ -102,11 +102,11 @@
         <div class='blockpy-content-right col-md-6 col-sm-6 bubble'
              style='padding:10px'>
             <div class='blockpy-feedback'>
-                <button type='button' class='btn btn-sm btn-default blockpy-feedback-trace pull-right' 
+                <button type='button' class='btn btn-sm btn-default blockpy-feedback-trace pull-right'
                         data-bind="visible: !execution.show_trace() && (status.error() == 'feedback' || status.error() == 'no errors'|| status.error() == 'complete' || status.error() == 'semantic')">
                     <span class='glyphicon glyphicon-circle-arrow-down'></span> Trace Variables
                 </button>
-                
+
                 <strong>Feedback: </strong>
                 <span class='label blockpy-feedback-status' data-bind="css: status_feedback_class()[0], text: status_feedback_class()[1]">Runtime Error</span>
                 <br>
@@ -114,10 +114,10 @@
                 <strong class='blockpy-feedback-title'></strong>
                 <div class='blockpy-feedback-body'><i>Run your code to get feedback.</i></div>
                 <div class='blockpy-code-trace'></div>
-                
+
                 <!-- ko if: execution.show_trace -->
                 <div class="blockpy-feedback-traces">
-                
+
                 <div>
                     <button type='button' class='btn btn-default' data-bind="click: moveTraceFirst">
                         <span class='glyphicon glyphicon-step-backward'></span>
@@ -135,7 +135,7 @@
                         <span class='glyphicon glyphicon-step-forward'></span>
                     </button>
                 </div>
-                
+
                 <table class='table table-condensed table-striped table-bordered table-hover'>
                     <thead>
                         <tr><th>Name</th><th>Type</th><th>Value</th></tr>
@@ -155,26 +155,26 @@
                         </tr>
                     </tbody>
                 </table>
-                
+
                 </div>
                 <!-- /ko -->
-                
+
             </div>
         </div>
     </div>
     <div class="row blockpy-toolbar-row"
          style='background-color :#fcf8e3; padding-bottom: 10px; border: 1px solid #faebcc'>
         <div class='col-md-12 col-sm-12 blockpy-toolbar btn-toolbar' role='toolbar'>
-            
+
             <button type='button' class='btn blockpy-run' style='float:left',
                 data-bind='css: execution.status() == "running" ? "btn-info" :
                                 execution.status() == "error" ? "btn-danger" : "btn-success",
                            visible: settings.instructor() || !assignment.upload()' >
                 <span class='glyphicon glyphicon-play'></span> Run
             </button>
-            
+
             <div class="btn-group" data-toggle="buttons" data-bind="visible: !assignment.upload()">
-                <label class="btn btn-default blockpy-mode-set-blocks" 
+                <label class="btn btn-default blockpy-mode-set-blocks"
                        data-bind="css: {active: settings.editor() == 'Blocks',
                                         disabled: !areBlocksUpdating()}">
                     <span class='glyphicon glyphicon-th-large'></span>
@@ -192,20 +192,20 @@
                     <span class='glyphicon glyphicon-resize-horizontal'></span>
                     <input type="radio" name="blockpy-mode-set" autocomplete="off"> Split
                 </label>
-                <label class="btn btn-default blockpy-mode-set-text" 
+                <label class="btn btn-default blockpy-mode-set-text"
                        data-bind="css: {active: settings.editor() == 'Text'}">
                     <span class='glyphicon glyphicon-pencil'></span>
                     <input type="radio" name="blockpy-mode-set" autocomplete="off"> Text
                 </label>
             </div>
-            <button type='button' class='btn btn-default blockpy-toolbar-reset' 
+            <button type='button' class='btn btn-default blockpy-toolbar-reset'
                     data-bind="visible: !assignment.upload()">
                 <span class='glyphicon glyphicon-refresh'></span> Reset
             </button>
             <!--<button type='button' class='btn btn-default blockpy-toolbar-capture'>
                 <span class='glyphicon glyphicon-picture'></span> Capture
             </button>-->
-            <button type='button' class='btn btn-default blockpy-toolbar-import' 
+            <button type='button' class='btn btn-default blockpy-toolbar-import'
                     data-bind="visible: settings.instructor() || (!assignment.upload() && assignment.importable())">
                 <span class='glyphicon glyphicon-cloud-download'></span> Import Datasets
             </button>
@@ -219,7 +219,7 @@
             <button type='button' class='btn btn-default blockpy-toolbar-instructor' data-bind="visible: settings.instructor">
                 <span class='glyphicon glyphicon-list-alt'></span> Assignment
             </button>
-            
+
             <b class='blockpy-toolbar-feedback text-muted pull-right' style='z-index:100; margin-top:10px; right:0px; position:absolute; display: none; color: red'>New feedback &uarr;</b>
 
             <!--
@@ -230,7 +230,7 @@
             <div data-bind="visible: settings.instructor()"
                  style='clear:both'>
             <div class="btn-group blockpy-toolbar-filename-picker" data-toggle="buttons">
-                <label class="btn btn-default btn-sm blockpy-set-filename" 
+                <label class="btn btn-default btn-sm blockpy-set-filename"
                        data-bind="css: {active: settings.filename() == '__main__'}"
                        data-filename="__main__">
                     <input type="radio" name="blockpy-filename-set" autocomplete="off" checked> __main__
@@ -257,7 +257,7 @@
     <div class='row blockpy-content-bottom'
          style='padding-bottom: 10px; border: 1px solid #faebcc'>
         <div class='blockpy-editor col-md-12 col-sm-12'>
-            <div class='blockpy-blocks blockpy-editor-menu' 
+            <div class='blockpy-blocks blockpy-editor-menu'
                  style='height:100%'>
                 <div class='blockly-div' style='height:450px; width: 100%' '></div>
                 <!-- <div class='blockly-area'></div> -->
@@ -280,19 +280,19 @@
                             <h4 class='modal-title'>Assignment Settings</h4>
                         </div>
                         <div class='modal-body form-inline' style='width:100%'>
-                        
+
                             <!-- Name -->
                             <form class="form-inline" style='display:inline-block'>
                             <label>Name:</label>
                             <input type='text' class='blockpy-presentation-name-editor form-control'
-                                   data-bind='textInput: assignment.name'> 
+                                   data-bind='textInput: assignment.name'>
                             </form><br>
-                            
+
                             <!-- Introduction -->
                             <label>Introduction:</label>
-                            <div class='blockpy-presentation-body-editor'> 
+                            <div class='blockpy-presentation-body-editor'>
                             </div>
-                            
+
                             <!-- Initial mode -->
                             <label class='blockpy-presentation-text-first'>
                             Initial View:
@@ -305,28 +305,28 @@
                             </select>
                             </label>
                             <br>
-                            
+
                             <!-- Parsons -->
                             <label class='blockpy-presentation-parsons-check'>
                             Parsons:
                             <input type='checkbox' class='form-control' data-bind="checked:assignment.parsons">
                             </label>
                             <br>
-                            
+
                             <!-- Importable Datasets -->
                             <label class='blockpy-presentation-importable-check'>
                             Able to import datasets:
                             <input type='checkbox' class='form-control' data-bind="checked:assignment.importable">
-                            </label> 
+                            </label>
                             <br>
-                            
+
                             <!-- Importable Datasets -->
                             <label class='blockpy-presentation-timeoutable-check'>
                             Disable Timeouts:
                             <input type='checkbox' class='form-control' data-bind="checked:assignment.disable_timeout">
-                            </label> 
+                            </label>
                             <br>
-                        
+
                             <!-- Filesystem -->
                             <label class='blockpy-presentation-filesystem-controls'>
                             Filesystem:
@@ -340,14 +340,14 @@
                             </button>
                             <ul data-bind="foreach: assignment.files">
                                 <li>
-                                    <a href="#" target="_blank" 
+                                    <a href="#" target="_blank"
                                        data-bind="click: $parent.viewFile, text: $data"><span class='glyphicon glyphicon-new-window'></span></a>
                                     <button class='btn btn-sm btn-danger'
                                             data-bind="click: $parent.removeFile">
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                                 </li>
                             </ul>
-                            
+
                             <label>Available Modules</lable>
                             <select class='blockpy-available-modules' multiple='multiple'
                                     data-bind="selectedOptions: assignment.modules">
@@ -382,5 +382,5 @@
 <!--<div class='blockpy-explorer-errors alert alert-danger alert-dismissible' role='alert'>
                      <button type='button' class='blockpy-explorer-errors-hide close' aria-label='Close'><span  aria-hidden='true'>&times;</span></button>
                      <div class='blockpy-explorer-errors-body'>
-                     
+
                 </div>-->
