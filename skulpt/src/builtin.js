@@ -468,8 +468,8 @@ Sk.builtin.chr = function chr (x) {
     x = Sk.builtin.asnum$(x);
 
 
-    if ((x < 0) || (x > 255)) {
-        throw new Sk.builtin.ValueError("chr() arg not in range(256)");
+    if ((x < 0) || (x > 65536)) {
+        throw new Sk.builtin.ValueError("chr() arg not in range(65536)");
     }
 
     return new Sk.builtin.str(String.fromCharCode(x));
