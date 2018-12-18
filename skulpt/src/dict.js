@@ -2,6 +2,12 @@
  * @constructor
  * @param {Array.<Object>} L
  */
+    this.size = 0;
+    this.buckets = {};
+
+    if (Object.prototype.toString.apply(L) === "[object Array]") {
+        // Handle dictionary literals
+        for (i
 Sk.builtin.dict = function dict (L) {
     var v;
     var it, k;

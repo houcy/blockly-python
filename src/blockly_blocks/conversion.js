@@ -53,7 +53,7 @@ Blockly.Blocks['conversion_str'] = {
         .setCheck(null)
         .appendField("str");
     this.setInputsInline(true);
-    this.setOutput(true, 'string');
+    this.setOutput(true, 'String');
     this.setColour(125);
     this.setTooltip('');
     this.setHelpUrl('');

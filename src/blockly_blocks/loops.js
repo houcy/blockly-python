@@ -46,6 +46,7 @@ Blockly.Python['controls_forEach'] = function(block) {
   var branch = Blockly.Python.statementToCode(block, 'DO');
   branch = Blockly.Python.addLoopTrap(branch, block.id) ||
       Blockly.Python.PASS;
+  console.log("blockly_blocks loop python");
   var code = 'for ' + variable0 + ' in ' + argument0 + ':\n' + branch;
   return code;
 };
@@ -61,7 +62,7 @@ Blockly.Blocks['loop_range'] = {
         this.updateShape_();
         //this.setPreviousStatement(true);
         //this.setNextStatement(true);
-        this.setOutput(true,'Array');
+        this.setOutput(true, 'Array');
         this.setMutator(new Blockly.Mutator(['loop_range_item']));
         this.setInputsInline(true);
         this.setTooltip();
@@ -153,17 +154,14 @@ Blockly.Blocks['loop_range'] = {
      */
     updateShape_: function() {
         // Delete everything.
-        if (this.getInput('EMPTY')) {
-            this.removeInput('EMPTY');
-        } else {
-            if (this.getInput('Dummy')) {
-                this.removeInput('Dummy');
-            }
-            var i = 0;
-            while (this.getInput('PRINT' + i)) {
-                this.removeInput('PRINT' + i);
-                i++;
-            }
+
+        if (this.getInput('Dummy')) {
+            this.removeInput('Dummy');
+        }
+        var i = 0;
+        while (this.getInput('PRINT' + i)) {
+            this.removeInput('PRINT' + i);
+            i++;
         }
 /*
 
@@ -193,6 +191,7 @@ Blockly.Blocks['loop_range'] = {
         if(this.itemCount_ == 0||this.itemCount_ == 1)
         {
             var input = this.appendValueInput('PRINT0');
+            input.setCheck('Number')
             input.appendField("从范围 0 到");
             this.appendDummyInput('Dummy')
                 .appendField('前');
@@ -200,8 +199,10 @@ Blockly.Blocks['loop_range'] = {
         else if(this.itemCount_==2)
         {
             this.appendValueInput('PRINT1')
-                .appendField("从范围");
+                .appendField("从范围")
+                .setCheck('Number');
             this.appendValueInput('PRINT0')
+                .setCheck('Number')
                 .appendField("到");
             this.appendDummyInput('Dummy')
                 .appendField('前');
@@ -209,10 +210,13 @@ Blockly.Blocks['loop_range'] = {
         else if(this.itemCount_>=3)
         {
             this.appendValueInput('PRINT1')
+                .setCheck('Number')
                 .appendField("从范围");
             this.appendValueInput('PRINT0')
+                .setCheck('Number')
                 .appendField("到");
             this.appendValueInput('PRINT2')
+                .setCheck('Number')
                 .appendField("前每隔");
         }
 
@@ -277,83 +281,48 @@ Blockly.Python['loop_range'] = function(block) {
   }*/
   var code;
   if (block.itemCount_ == 1) {
-      code = 'range(' + inner_prints.join(', ') + ')\n';
+      code = 'range(' + inner_prints[0] + ')';
   } else {
-      code = 'range(' + inner_prints.join(', ') + ')\n';
+      code = 'range(' + inner_prints.join(', ') + ')';
   }
-  return code;
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Blocks['controls_repeat_'] = {
+Blockly.Blocks['math_pow'] = {
   /**
-   * Block for repeat n times (internal number).
-   * The 'controls_repeat_ext' block is preferred as it is more flexible.
+   * Block for advanced math operators with single operand.
    * @this Blockly.Block
    */
   init: function() {
     this.jsonInit({
-      "message0": "令变量 %1 重复 %2 次",
+      "message0": "%1 的 %2 次方",
       "args0": [
-          {
-              "type": "field_variable",
-              "name": "VAR",
-              "variable": null
-          },
-          {
-              "type": "field_number",
-              "name": "TIMES",
-              "value": 10,
-              "min": 0,
-              "precision": 1
-          }
+        {
+          "type": "input_value",
+          "name": "NUM1",
+          "check": "Number"
+        },
+        {
+          "type": "input_value",
+          "name": "NUM2",
+          "check": "Number"
+        }
       ],
-      "previousStatement": null,
-      "nextStatement": null,
-      "colour": Blockly.Blocks.loops.HUE,
-      "tooltip": Blockly.Msg.CONTROLS_REPEAT_TOOLTIP,
-      "helpUrl": Blockly.Msg.CONTROLS_REPEAT_HELPURL
+      "inputsInline": true,
+      "output": "Number",
+      "colour": Blockly.Blocks.math.HUE,
+      "helpUrl": Blockly.Msg.MATH_SINGLE_HELPURL
     });
-    this.appendStatementInput('DO')
-        .appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
-  },
-    //customContextMenu: Blockly.Blocks['controls_for'].customContextMenu
-    customContextMenu: function(options) {
-        if (!this.isCollapsed()) {
-          var option = {enabled: true};
-          var name = this.getFieldValue('VAR');
-          var workspace = this;
-          workspace.createVariable("count");
-          option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
-          var xmlField = goog.dom.createDom('field', null, name);
-          xmlField.setAttribute('name', 'VAR');
-          var xmlBlock = goog.dom.createDom('block', null, xmlField);
-          xmlBlock.setAttribute('type', 'variables_get');
-          option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
-          options.push(option);
-    }
   }
 };
 
-Blockly.Python['controls_repeat_'] = function(block) {
-  // Repeat n times.
-  if (block.getField('TIMES')) {
-    // Internal number.
-    var repeats = String(parseInt(block.getFieldValue('TIMES'), 10));
-  } else {
-    // External number.
-    var repeats = Blockly.Python.valueToCode(block, 'TIMES',
-        Blockly.Python.ORDER_NONE) || '___';
-  }
-  if (Blockly.isNumber(repeats)) {
-    repeats = parseInt(repeats, 10);
-  } else {
-    repeats = 'int(' + repeats + ')';
-  }
-  var branch = Blockly.Python.statementToCode(block, 'DO');
-  branch = Blockly.Python.addLoopTrap(branch, block.id) ||
-      Blockly.Python.PASS;
-  var loopVar = Blockly.Python.variableDB_.getName(
-      block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  var code = 'for ' + loopVar + ' in range(' + repeats + '):\n' + branch;
-  return code;
+Blockly.Python['math_pow'] = function(block) {
+  // Math operators with single operand.
+    arg1 = Blockly.Python.valueToCode(block, 'NUM1',
+        Blockly.Python.ORDER_MULTIPLICATIVE) || '___';
+    arg2 = Blockly.Python.valueToCode(block, 'NUM2',
+        Blockly.Python.ORDER_MULTIPLICATIVE) || '___';
+    code = 'pow(' + arg1 + ',' + arg2 + ')';
+
+    return [code, Blockly.Python.ORDER_MULTIPLICATIVE];
 };

@@ -79,6 +79,7 @@ Blockly.Blocks['math_arithmetic'] = {
              [Blockly.Msg.MATH_MULTIPLICATION_SYMBOL, 'MULTIPLY'],
              [Blockly.Msg.MATH_DIVISION_SYMBOL, 'DIVIDE'],
              [Blockly.Msg.MATH_POWER_SYMBOL, 'POWER'],
+             [Blockly.Msg.MATH_DIVISIBLEINT, 'DIVINT'],
              ['%', 'MODULO']]
         },
         {
@@ -102,6 +103,7 @@ Blockly.Blocks['math_arithmetic'] = {
         'MULTIPLY': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_MULTIPLY,
         'DIVIDE': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_DIVIDE,
         'POWER': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_POWER,
+        'DIVINT': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_DIVISIBLEINT,
         'MODULO': 'Computes the remainder of division.'
       };
       return TOOLTIPS[mode];
@@ -128,8 +130,7 @@ Blockly.Blocks['math_single'] = {
             ['-', 'NEG'],
             ['ln', 'LN'],
             ['log10', 'LOG10'],
-            ['e^', 'EXP'],
-            ['10^', 'POW10']
+            ['e^', 'EXP']
           ]
         },
         {
@@ -153,7 +154,6 @@ Blockly.Blocks['math_single'] = {
         'LN': Blockly.Msg.MATH_SINGLE_TOOLTIP_LN,
         'LOG10': Blockly.Msg.MATH_SINGLE_TOOLTIP_LOG10,
         'EXP': Blockly.Msg.MATH_SINGLE_TOOLTIP_EXP,
-        'POW10': Blockly.Msg.MATH_SINGLE_TOOLTIP_POW10
       };
       return TOOLTIPS[mode];
     });
@@ -224,8 +224,6 @@ Blockly.Blocks['math_constant'] = {
             ['\u03c0', 'PI'],
             ['e', 'E'],
             ['\u03c6', 'GOLDEN_RATIO'],
-            ['sqrt(2)', 'SQRT2'],
-            ['sqrt(\u00bd)', 'SQRT1_2'],
             ['\u221e', 'INFINITY']
           ]
         }
@@ -318,7 +316,7 @@ Blockly.Blocks['math_change'] = {
         {
           "type": "field_variable",
           "name": "VAR",
-          "variable": Blockly.Msg.MATH_CHANGE_TITLE_ITEM
+          "variable": "i"
         },
         {
           "type": "input_value",

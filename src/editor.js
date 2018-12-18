@@ -869,13 +869,14 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="math_number"></block>'+
                     '<block type="math_arithmetic"></block>'+
                     '<block type="math_single"></block>'+
+                    '<block type="math_pow"></block>'+
                     '<block type="math_trig"></block>'+
                     '<block type="math_constant"></block>'+
-                    '<block type="math_number_property"></block>'+
+                    //'<block type="math_number_property"></block>'+
                     '<block type="math_change"></block>'+
                     '<block type="math_round"></block>'+
                     '<block type="math_on_list"></block>'+
-                    '<block type="math_modulo"></block>'+
+                    //'<block type="math_modulo"></block>'+
                     '<block type="math_constrain"></block>'+
                     '<block type="math_random_int"></block>'+
                     '<block type="math_random_float"></block>'+
@@ -917,6 +918,7 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="logic_null"></block>'+
                     '<block type="logic_ternary"></block>'+
                     '<block type="logic_isIn"></block>'+
+                    //'<block type="attribute_access"></block>'+
                     //'<block type="conversion_bool"></block>'+
                     //'<block type="conversion_type"></block>'+
                   '</category>',
@@ -955,11 +957,11 @@ BlockPyEditor.CATEGORY_MAP = {
                     '</block>'+
                 '</category>',
     'Loops': '<category name="循环" colour="300">'+
+                    '<block type="controls_repeat"></block>'+
                     '<block type="controls_repeat_ext"></block>'+
-                    '<block type="controls_repeat_"></block>'+
                     '<block type="controls_whileUntil"></block>'+
                     //'<block type="controls_while"></block>'+
-                    '<block type="controls_for"></block>'+
+                    //'<block type="controls_for"></block>'+
                     '<block type="controls_forEach"></block>'+
                     '<block type="controls_pass"></block>'+
                     '<block type="controls_flow_statements"></block>'+

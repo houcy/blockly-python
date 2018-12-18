@@ -6,7 +6,7 @@ Blockly.Blocks['dicts_create_with'] = {
     init: function() {
         console.log("init");
         this.setInputsInline(false);
-        this.setColour(Blockly.Blocks.dicts.HUE);
+        this.setColour(280);
         this.itemCount_ = 1;
         this.updateShape_();
         this.setOutput(true, 'dict');
@@ -88,7 +88,7 @@ Blockly.Python.dicts_create_with = function(block) {
     var value_keys = Blockly.Python.valueToCode(block, 'keys', Blockly.   Python.ORDER_ATOMIC);
     // TODO: Assemble Python into code variable.
     var code = new Array(block.itemCount_);
-  
+
     for (var n = 1; n <= block.itemCount_; n++) {
         var key = Blockly.Python.quote_(block.getFieldValue('KEY' + n));
         var value = Blockly.Python.valueToCode(block, 'VALUE' + n,

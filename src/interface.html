@@ -15,7 +15,7 @@
         </div>
     </div>
     <canvas id='capture-canvas' style='display:none'></canvas>
-    <div class='row blockpy-top-row' style='padding-bottom: 10px; border-bottom: 1px solid #faebcc; '>
+    <!--<div class='row blockpy-top-row' style='padding-bottom: 10px; border-bottom: 1px solid #faebcc; '>
         <div class='blockpy-content-top col-md-9 col-sm-9'>
             <span class='blockpy-alert pull-right text-muted' data-bind="visible: false, text: status.text"></span>
             <strong>BlockPy: </strong>
@@ -63,10 +63,10 @@
             </button>
             </div>
             <div data-bind="visible: settings.show_settings"  style='clear:both'>
-                <!--Disable Semantic Errors: <input type='checkbox' data-bind="checked: settings.disable_semantic_errors"><br>-->
+                <!--!!!!Disable Semantic Errors: <input type='checkbox' data-bind="checked: settings.disable_semantic_errors"><br>-->
 
-                <!--Disable Typed Blocks: <input type='checkbox' data-bind="checked: settings.disable_variable_types"><br>-->
-                <div class='pull-right'>
+                <!--!!!!Disable Typed Blocks: <input type='checkbox' data-bind="checked: settings.disable_variable_types"><br>-->
+                <!--<div class='pull-right'>
                 <label>AID:</label> <span data-bind="text: assignment.assignment_id"></span>
                 <label>GID:</label> <span data-bind="text: assignment.group_id"></span>
                 <label>SID:</label> <span data-bind="text: assignment.student_id"></span>
@@ -89,13 +89,13 @@
 
                 <br>
             </div>
-            <!--<img src="images/corgi.png" class='img-responsive' />-->
-        </div>
-    </div>
+            <!--!!!!<img src="images/corgi.png" class='img-responsive' />-->
+        <!--</div>
+    </div>-->
     <div class='row blockpy-middle-row' style=''>
         <div class='blockpy-content-left col-md-6 col-sm-6'
              style='padding:10px'>
-            <strong>Printer</strong>
+            <strong>结果输出：</strong>
             <div class='blockpy-printer blockpy-printer-default'>
             </div>
         </div>
@@ -104,15 +104,15 @@
             <div class='blockpy-feedback'>
                 <button type='button' class='btn btn-sm btn-default blockpy-feedback-trace pull-right'
                         data-bind="visible: !execution.show_trace() && (status.error() == 'feedback' || status.error() == 'no errors'|| status.error() == 'complete' || status.error() == 'semantic')">
-                    <span class='glyphicon glyphicon-circle-arrow-down'></span> Trace Variables
+                    <span class='glyphicon glyphicon-circle-arrow-down'></span> 追踪变量
                 </button>
 
-                <strong>Feedback: </strong>
-                <span class='label blockpy-feedback-status' data-bind="css: status_feedback_class()[0], text: status_feedback_class()[1]">Runtime Error</span>
+                <strong>运行提示：</strong>
+                <span class='label blockpy-feedback-status' data-bind="css: status_feedback_class()[0], text: status_feedback_class()[1]">运行超时！</span>
                 <br>
                 <pre class='blockpy-feedback-original'></pre>
                 <strong class='blockpy-feedback-title'></strong>
-                <div class='blockpy-feedback-body'><i>Run your code to get feedback.</i></div>
+                <div class='blockpy-feedback-body'><i>执行你的代码得到运行提示。</i></div>
                 <div class='blockpy-code-trace'></div>
 
                 <!-- ko if: execution.show_trace -->
@@ -170,7 +170,7 @@
                 data-bind='css: execution.status() == "running" ? "btn-info" :
                                 execution.status() == "error" ? "btn-danger" : "btn-success",
                            visible: settings.instructor() || !assignment.upload()' >
-                <span class='glyphicon glyphicon-play'></span> Run
+                <span class='glyphicon glyphicon-play'></span> 执行
             </button>
 
             <div class="btn-group" data-toggle="buttons" data-bind="visible: !assignment.upload()">
@@ -178,7 +178,7 @@
                        data-bind="css: {active: settings.editor() == 'Blocks',
                                         disabled: !areBlocksUpdating()}">
                     <span class='glyphicon glyphicon-th-large'></span>
-                    <input type="radio" name="blockpy-mode-set" autocomplete="off" checked> Blocks
+                    <input type="radio" name="blockpy-mode-set" autocomplete="off" checked> 积木模式
                 </label>
                 <!--<label class="btn btn-default blockpy-mode-set-instructor"
                        data-bind="visible: settings.instructor,
@@ -190,34 +190,37 @@
                        data-bind="css: {active: settings.editor() == 'Split',
                                         disabled: !areBlocksUpdating()}">
                     <span class='glyphicon glyphicon-resize-horizontal'></span>
-                    <input type="radio" name="blockpy-mode-set" autocomplete="off"> Split
+                    <input type="radio" name="blockpy-mode-set" autocomplete="off"> 对照模式
                 </label>
                 <label class="btn btn-default blockpy-mode-set-text"
                        data-bind="css: {active: settings.editor() == 'Text'}">
                     <span class='glyphicon glyphicon-pencil'></span>
-                    <input type="radio" name="blockpy-mode-set" autocomplete="off"> Text
+                    <input type="radio" name="blockpy-mode-set" autocomplete="off"> 文本模式
                 </label>
             </div>
             <button type='button' class='btn btn-default blockpy-toolbar-reset'
                     data-bind="visible: !assignment.upload()">
-                <span class='glyphicon glyphicon-refresh'></span> Reset
+                <span class='glyphicon glyphicon-refresh'></span> 重置
             </button>
             <!--<button type='button' class='btn btn-default blockpy-toolbar-capture'>
                 <span class='glyphicon glyphicon-picture'></span> Capture
             </button>-->
             <button type='button' class='btn btn-default blockpy-toolbar-import'
                     data-bind="visible: settings.instructor() || (!assignment.upload() && assignment.importable())">
-                <span class='glyphicon glyphicon-cloud-download'></span> Import Datasets
+                <span class='glyphicon glyphicon-cloud-download'></span> 导入数据集
             </button>
             <label class="btn btn-default btn-file">
-                <span class='glyphicon glyphicon-upload'></span> Upload
+                <span class='glyphicon glyphicon-upload'></span> 上传
                 <input class="blockpy-toolbar-upload" type="file" style="display: none;">
             </label>
+           <button type="button" class="btn btn-default blockpy-toolbar-download">
+                <span class="glyphicon glyphicon-download"></span> 下载
+            </button>
             <button type='button' class='btn btn-default blockpy-toolbar-history'>
-                <span class='glyphicon glyphicon-hourglass'></span> History
+                <span class='glyphicon glyphicon-hourglass'></span> 历史记录
             </button>
             <button type='button' class='btn btn-default blockpy-toolbar-instructor' data-bind="visible: settings.instructor">
-                <span class='glyphicon glyphicon-list-alt'></span> Assignment
+                <span class='glyphicon glyphicon-list-alt'></span> 设置
             </button>
 
             <b class='blockpy-toolbar-feedback text-muted pull-right' style='z-index:100; margin-top:10px; right:0px; position:absolute; display: none; color: red'>New feedback &uarr;</b>
@@ -229,7 +232,7 @@
             -->
             <div data-bind="visible: settings.instructor()"
                  style='clear:both'>
-            <div class="btn-group blockpy-toolbar-filename-picker" data-toggle="buttons">
+            <!--<div class="btn-group blockpy-toolbar-filename-picker" data-toggle="buttons">
                 <label class="btn btn-default btn-sm blockpy-set-filename"
                        data-bind="css: {active: settings.filename() == '__main__'}"
                        data-filename="__main__">
@@ -250,7 +253,7 @@
                        data-filename="on_change">
                     <input type="radio" name="blockpy-filename-set" autocomplete="off"> on_change
                 </label>
-            </div>
+            </div>-->
             </div>
         </div>
     </div>

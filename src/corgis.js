@@ -119,8 +119,10 @@ BlockPyCorgis.prototype.openDialog = function(name) {
     var corgis = this;
     if (this.main.model.server_is_connected('import_datasets')) {
         var root = this.main.model.constants.urls.import_datasets;
+        console.log("test insex.json=========================");
         $.getJSON(root+'index.json', function(data) {
             // Make up the Body
+
             var datasets = data.blockpy.datasets;
             var start = $("<p>Documentation is available at url</p>");
             var body = $('<table></table>', {'class': 'table-bordered table-condensed table-striped'});
