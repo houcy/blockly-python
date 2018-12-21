@@ -36,7 +36,7 @@ Blockly.Blocks['plot_show'] = {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(Blockly.Blocks.plot.HUE);
     this.appendDummyInput()
-        .appendField("show plot canvas");
+        .appendField("显示图像");
     this.setInputsInline(false);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -52,10 +52,10 @@ Blockly.Blocks['plot_scatter'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.appendValueInput("x_values")
-        .appendField("plot scatter ")
+        .appendField("生成散点图 X轴为")
         .setCheck('Array');
     this.appendValueInput("y_values")
-        .appendField("vs. ")
+        .appendField("Y轴为 ")
         .setCheck('Array');
     this.setInputsInline(false);
     this.setOutput(false);
@@ -71,7 +71,7 @@ Blockly.Blocks['plot_title'] = {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(Blockly.Blocks.plot.HUE);
     this.appendDummyInput()
-        .appendField("make plot's title")
+        .appendField("将图像的标题设置为")
         .appendField(this.newQuote_(true))
         .appendField(new Blockly.FieldTextInput('title'), 'TEXT')
         .appendField(this.newQuote_(false));
@@ -96,7 +96,7 @@ Blockly.Blocks['plot_xlabel'] = {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(Blockly.Blocks.plot.HUE);
     this.appendDummyInput()
-        .appendField("make plot's x-axis label")
+        .appendField("将图像X轴名称设置为")
         .appendField(this.newQuote_(true))
         .appendField(new Blockly.FieldTextInput('title'), 'TEXT')
         .appendField(this.newQuote_(false));
@@ -121,7 +121,7 @@ Blockly.Blocks['plot_ylabel'] = {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(Blockly.Blocks.plot.HUE);
     this.appendDummyInput()
-        .appendField("make plot's y-axis label")
+        .appendField("将图像Y轴名称设置为")
         .appendField(this.newQuote_(true))
         .appendField(new Blockly.FieldTextInput('title'), 'TEXT')
         .appendField(this.newQuote_(false));
@@ -163,7 +163,7 @@ Blockly.Blocks['plot_hist'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.appendValueInput("values")
-        .appendField("plot histogram ")
+        .appendField("生成直方图 ")
         .setCheck('Array');
     this.setInputsInline(false);
     this.setOutput(false);

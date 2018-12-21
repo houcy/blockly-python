@@ -310,7 +310,7 @@ Blockly.Blocks['math_change'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.jsonInit({
+    /*this.jsonInit({
       "message0": "令变量 %1 自加 %2", //Blockly.Msg.MATH_CHANGE_TITLE,
       "args0": [
         {
@@ -328,7 +328,20 @@ Blockly.Blocks['math_change'] = {
       "nextStatement": null,
       "colour": 270,
       "helpUrl": Blockly.Msg.MATH_CHANGE_HELPURL
-    });
+    });*/
+    this.setColour(280);
+    this.setFieldValue()
+    this.appendValueInput('DICT')
+        //.appendField('get') // TODO: fix this to be outside
+        .appendField(this.newQuote_(true))
+        .appendField(new Blockly.FieldTextInput(
+                     Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY),
+                     'ITEM')
+        .appendField(this.newQuote_(false))
+        .setCheck('dict')
+        .appendField(Blockly.Msg.DICT_GET_TO);
+    this.setInputsInline(false);
+    this.setOutput(true);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     this.setTooltip(function() {
