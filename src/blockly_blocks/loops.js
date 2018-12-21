@@ -5,7 +5,7 @@ Blockly.Blocks['controls_forEach'] = {
    */
   init: function() {
     this.jsonInit({
-      "message0": "令循环变量 %1 在 %2 中 ", //Blockly.Msg.CONTROLS_FOREACH_TITLE,
+      "message0": "令变量 %1 在 %2 中 ", //Blockly.Msg.CONTROLS_FOREACH_TITLE,
       "args0": [
         {
           "type": "input_value",

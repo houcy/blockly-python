@@ -40,7 +40,7 @@ Blockly.Blocks['controls_repeat_ext'] = {
    */
   init: function() {
     this.jsonInit({
-      "message0": "令变量 %1 重复 %2 次",
+      "message0": "令变量 %1 在 循环 %2 次 中",
       "args0": [
         {
             "type": "field_variable",
@@ -50,8 +50,8 @@ Blockly.Blocks['controls_repeat_ext'] = {
         {
           "type": "input_value",
           "name": "TIMES",
-          "check": "Number",
-          "variable": "count"
+          "check": "Number"
+          //"variable": "count"
         }
       ],
       "previousStatement": null,
@@ -88,7 +88,7 @@ Blockly.Blocks['controls_repeat'] = {
    */
   init: function() {
     this.jsonInit({
-      "message0": "令变量 %1 重复 %2 次",
+      "message0": "令变量 %1 在 循环 %2 次 中",
       "args0": [
           {
               "type": "field_variable",
