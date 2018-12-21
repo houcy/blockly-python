@@ -570,6 +570,7 @@ PythonToBlocks.prototype.Delete = function(/* {asdl_seq *} */ targets)
  */
 PythonToBlocks.prototype.Assign = function(node)
 {
+    console.log(node);
     var targets = node.targets;
     var value = node.value;
     if (targets.length == 0) {
@@ -660,18 +661,35 @@ PythonToBlocks.prototype.For = function(node) {
         if(iter.args.length==1 && this.identifier(iter.func.id)=="range" )
         {
             console.log("3333333333333333333333333");
-            console.log(this.identifier(iter.args[0].n));
-            console.log(this.identifier(target.id));
-            return block("controls_repeat", node.lineno, {
-                "TIMES": this.identifier(iter.args[0].n),
-                "VAR": this.identifier(target.id)
-            }, {
+            //console.log(this.identifier(iter.args[0].n));
+            //console.log(this.identifier(target.id));
+            if(iter.args[0]._astname == 'Num')
+            {
+                console.log("555555555555555555555");
+                return block("controls_repeat", node.lineno, {
+                    "TIMES": this.identifier(iter.args[0].n),
+                    "VAR": this.identifier(target.id)
+                }, {}, {
+                    "inline": "true"
+                }, {}, {
+                    "DO": this.convertBody(body)
+                });
+            }
+            else if(iter.args[0]._astname == 'Name')
+            {
+                console.log("4444444444444444444444444444444");
+                console.log(this.convert(iter.args[0]));
+                return block("controls_repeat_ext", node.lineno, {
+                    "VAR": this.identifier(target.id)
+                }, {
+                    "TIMES": this.convert(iter.args[0])
+                }, {
+                    "inline": "true"
+                }, {}, {
+                    "DO": this.convertBody(body)
+                });
+            }
 
-            }, {
-                "inline": "true"
-            }, {}, {
-                "DO": this.convertBody(body)
-            });
 
         }
     }
@@ -980,6 +998,19 @@ PythonToBlocks.prototype.BinOp = function(node)
     var left = node.left;
     var op = node.op;
     var right = node.right;
+    console.log("777777777777777777");
+    console.log(left._astname);
+    console.log(this.binaryOperator(op));
+    if(left._astname == 'List' && this.binaryOperator(op) == 'MULTIPLY')
+    {
+        return block("lists_repeat", node.lineno, {}, {
+            "ITEM": this.convert(left),
+            "NUM": this.convert(right)
+        }, {
+            "inline": true
+        });
+    }
+        //console.log("777777777777777777");
     return block("math_arithmetic", node.lineno, {
         "OP": this.binaryOperator(op) // TODO
     }, {
@@ -996,9 +1027,30 @@ PythonToBlocks.prototype.BinOp = function(node)
  */
 PythonToBlocks.prototype.UnaryOp = function(node)
 {
+    console.log(node);
     var op = node.op;
     var operand = node.operand;
     if (op.name == "Not") {
+        if(operand.args != undefined )
+        {
+            if(operand.args[0]._astname == 'List')
+            {
+                return block("lists_isEmpty", node.lineno, {}, {
+                    "VALUE": this.convert(operand.args[0])
+                }, {
+                    "inline": "true"
+                });
+            }
+            else if(operand.args[0]._astname == 'Str')
+            {
+                return block("text_isEmpty", node.lineno, {}, {
+                    "VALUE": this.convert(operand.args[0])
+                }, {
+                    "inline": "true"
+                });
+            }
+        }
+
         return block("logic_negate", node.lineno, {}, {
             "BOOL": this.convert(operand)
         }, {
@@ -1251,8 +1303,6 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
     var name = this.identifier(func.attr);
     if (func.value._astname == "Name") {
         var module = this.identifier(func.value.id);
-        //console.log("^^^^^^^^^^^^^^^^^^^^^");
-        //console.log(module);
         if (module == "plt" && name == "plot") {
             if (args.length == 1) {
                 return [block("plot_line", func.lineno, {}, {
@@ -1626,13 +1676,14 @@ PythonToBlocks.prototype.Subscript = function(node)
 
     if (slice._astname == "Index") {
         if (slice.value._astname == "Str") {
+            console.log(node);
             return block("dict_get_literal", node.lineno, {
                 "ITEM": this.Str_value(slice.value)
             }, {
                 "DICT": this.convert(value)
             });
         } else if (slice.value._astname == "Num") {
-            return block("lists_index", node.lineno, {}, {
+            return block("lists_getIndex", node.lineno, {}, {
                 "ITEM": this.convert(slice.value),
                 "LIST": this.convert(value),
             });
