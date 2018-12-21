@@ -7,7 +7,7 @@ Blockly.Blocks['dicts_create_with'] = {
         console.log("init");
         this.setInputsInline(false);
         this.setColour(280);
-        this.itemCount_ = 1;
+        this.itemCount_ = 0;
         this.updateShape_();
         this.setOutput(true, 'dict');
         this.setTooltip(Blockly.Msg.DICTS_CREATE_WITH_TOOLTIP);
@@ -84,7 +84,7 @@ Blockly.Blocks['dicts_create_with'] = {
         }
     }
 };
-Blockly.Python.dicts_create_with = function(block) {
+Blockly.Python['dicts_create_with'] = function(block) {
     var value_keys = Blockly.Python.valueToCode(block, 'keys', Blockly.   Python.ORDER_ATOMIC);
     // TODO: Assemble Python into code variable.
     var code = new Array(block.itemCount_);
@@ -99,3 +99,488 @@ Blockly.Python.dicts_create_with = function(block) {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Blocks['dict_add'] = {
+  init: function() {
+       this.appendDummyInput()
+        .appendField("设置")
+        .appendField(new Blockly.FieldVariable(
+        "Dict"), 'VAR');
+    this.appendValueInput('VALUE')
+        .appendField("键")
+        .appendField(this.newQuote_(true))
+        .appendField(new Blockly.FieldTextInput(
+                     Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY),
+                     'ITEM')
+        .appendField(this.newQuote_(false))
+        .setCheck(['String','Number'])
+        .appendField("的值为");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setColour(280);
+    //this.setOutput(true);
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    //var thisBlock = this;
+    /*this.setTooltip(function() {
+      return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
+    });*/
+  },
+    newQuote_: function(open) {
+    if (open == this.RTL) {
+      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAA0UlEQVQY023QP0oDURSF8e8MImhlUIiCjWKhrUUK3YCIVkq6bMAF2LkCa8ENWLoNS1sLEQKprMQ/GBDks3kDM+Oc8nfPfTxuANQTYBeYAvdJLL4FnAFfwF2ST9Rz27kp5YH/kwrYp50LdaXHAU4rYNYzWAdeenx7AbgF5sAhcARsAkkyVQ+ACbAKjIGqta4+l78udXxc/LiJG+qvet0pV+q7+tHE+iJzdbGz8FhmOzVcqj/qq7rcKI7Ut1Leq70C1oCrJMMk343HB8ADMEzyVOMff72l48gwfqkAAAAASUVORK5CYII=';
+    } else {
+      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAAvklEQVQY022PoapCQRRF97lBVDRYhBcEQcP1BwS/QLAqr7xitZn0HzRr8Rts+htmQdCqSbQIwmMZPMIw3lVmZu0zG44UAFSBLdBVBDAFZqFo8eYKtANfBC7AE5h8ZNOHd1FrDnh4VgmDO3ADkujDHPgHfkLZ84bfaLjg/hD6RFLq9z6wBDr+rvuZB1bAEDABY76pA2mGHyWSjvqmIemc4WsCLKOp4nssIj8wD8qS/iSVJK3N7OTeJPV9n72ZbV7iDuSc2BaQBQAAAABJRU5ErkJggg==';
+    }
+    return new Blockly.FieldImage(file, 12, 12, '"');
+  },
+    customContextMenu: function(options) {
+        if (!this.isCollapsed()) {
+          var option = {enabled: true};
+          var name = this.getFieldValue('VAR');
+          var workspace = this;
+          workspace.createVariable("count");
+          option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
+          var xmlField = goog.dom.createDom('field', null, name);
+          xmlField.setAttribute('name', 'VAR');
+          var xmlBlock = goog.dom.createDom('block', null, xmlField);
+          xmlBlock.setAttribute('type', 'variables_get');
+          option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
+          options.push(option);
+        }
+    }
+};
+
+Blockly.Python['dict_add'] = function(block) {
+    var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
+      Blockly.Variables.NAME_TYPE);
+    var value = Blockly.Python.valueToCode(block, 'VALUE',
+      Blockly.Python.ORDER_NONE) || '___';
+    var key = Blockly.Python.quote_(block.getFieldValue('ITEM'));
+    var code = variable + '[' + key + ']' + ' = ' + value + '\n';
+    return code;
+};
+
+Blockly.Blocks['dict_delete'] = {
+  init: function() {
+       this.appendDummyInput()
+        .appendField("删除字典")
+        .appendField(new Blockly.FieldVariable(
+        "Dict"), 'VAR');
+    this.appendDummyInput('VALUE')
+        .appendField("中的键")
+        .appendField(this.newQuote_(true))
+        .appendField(new Blockly.FieldTextInput(
+                     Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY),
+                     'ITEM')
+        .appendField(this.newQuote_(false))
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setColour(280);
+    //this.setOutput(true);
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    //var thisBlock = this;
+    /*this.setTooltip(function() {
+      return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
+    });*/
+  },
+    newQuote_: function(open) {
+    if (open == this.RTL) {
+      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAA0UlEQVQY023QP0oDURSF8e8MImhlUIiCjWKhrUUK3YCIVkq6bMAF2LkCa8ENWLoNS1sLEQKprMQ/GBDks3kDM+Oc8nfPfTxuANQTYBeYAvdJLL4FnAFfwF2ST9Rz27kp5YH/kwrYp50LdaXHAU4rYNYzWAdeenx7AbgF5sAhcARsAkkyVQ+ACbAKjIGqta4+l78udXxc/LiJG+qvet0pV+q7+tHE+iJzdbGz8FhmOzVcqj/qq7rcKI7Ut1Leq70C1oCrJMMk343HB8ADMEzyVOMff72l48gwfqkAAAAASUVORK5CYII=';
+    } else {
+      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAAvklEQVQY022PoapCQRRF97lBVDRYhBcEQcP1BwS/QLAqr7xitZn0HzRr8Rts+htmQdCqSbQIwmMZPMIw3lVmZu0zG44UAFSBLdBVBDAFZqFo8eYKtANfBC7AE5h8ZNOHd1FrDnh4VgmDO3ADkujDHPgHfkLZ84bfaLjg/hD6RFLq9z6wBDr+rvuZB1bAEDABY76pA2mGHyWSjvqmIemc4WsCLKOp4nssIj8wD8qS/iSVJK3N7OTeJPV9n72ZbV7iDuSc2BaQBQAAAABJRU5ErkJggg==';
+    }
+    return new Blockly.FieldImage(file, 12, 12, '"');
+  },
+    customContextMenu: function(options) {
+        if (!this.isCollapsed()) {
+          var option = {enabled: true};
+          var name = this.getFieldValue('VAR');
+          var workspace = this;
+          workspace.createVariable("count");
+          option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
+          var xmlField = goog.dom.createDom('field', null, name);
+          xmlField.setAttribute('name', 'VAR');
+          var xmlBlock = goog.dom.createDom('block', null, xmlField);
+          xmlBlock.setAttribute('type', 'variables_get');
+          option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
+          options.push(option);
+        }
+    }
+};
+
+Blockly.Python['dict_delete'] = function(block) {
+    var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
+      Blockly.Variables.NAME_TYPE);
+    var key = Blockly.Python.quote_(block.getFieldValue('ITEM'));
+    var code = "del " + variable + '[' + key + ']\n';
+    return code;
+};
+
+Blockly.Blocks['dict_len'] = {
+  // Set element at index.
+  init: function() {
+    this.setColour(280);
+    this.appendValueInput('DICT')
+        //.appendField('get') // TODO: fix this to be outside
+        .setCheck('dict')
+        .appendField("获取字典");
+    this.appendDummyInput()
+        .appendField("的长度");
+    this.setInputsInline(false);
+    this.setOutput(true,'Number');
+    //this.setPreviousStatement(true);
+    //this.setNextStatement(true);
+  }
+};
+
+Blockly.Python['dict_len'] = function(block) {
+  var dict = Blockly.Python.valueToCode(block, 'DICT',
+      Blockly.Python.ORDER_MEMBER) || '___';
+  var code = 'len(' + dict + ')';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Blocks['dict_max'] = {
+  // Set element at index.
+  init: function() {
+    this.setColour(280);
+    this.appendValueInput('DICT')
+        //.appendField('get') // TODO: fix this to be outside
+        .setCheck('dict')
+        .appendField("获取字典");
+    this.appendDummyInput()
+        .appendField("的最大值");
+    this.setInputsInline(false);
+    this.setOutput(true,'Number');
+    //this.setPreviousStatement(true);
+    //this.setNextStatement(true);
+  }
+};
+
+Blockly.Python['dict_max'] = function(block) {
+  var dict = Blockly.Python.valueToCode(block, 'DICT',
+      Blockly.Python.ORDER_MEMBER) || '___';
+  var code = 'max(' + dict + ')';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Blocks['dict_min'] = {
+  // Set element at index.
+  init: function() {
+    this.setColour(280);
+    this.appendValueInput('DICT')
+        //.appendField('get') // TODO: fix this to be outside
+        .setCheck('dict')
+        .appendField("获取字典");
+    this.appendDummyInput()
+        .appendField("的最小值");
+    this.setInputsInline(false);
+    this.setOutput(true,'Number');
+    //this.setPreviousStatement(true);
+    //this.setNextStatement(true);
+  }
+};
+
+Blockly.Python['dict_min'] = function(block) {
+  var dict = Blockly.Python.valueToCode(block, 'DICT',
+      Blockly.Python.ORDER_MEMBER) || '___';
+  var code = 'min(' + dict + ')';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Blocks['dict_keys'] = {
+  init: function() {
+       this.appendDummyInput()
+        .appendField("获得字典")
+        .appendField(new Blockly.FieldVariable(
+        "Dict"), 'VAR');
+    this.appendDummyInput('VALUE')
+        .appendField("中的键");
+    //this.setPreviousStatement(true);
+    //this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setColour(280);
+    this.setOutput(true);
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    //var thisBlock = this;
+    /*this.setTooltip(function() {
+      return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
+    });*/
+  },
+    customContextMenu: function(options) {
+        if (!this.isCollapsed()) {
+          var option = {enabled: true};
+          var name = this.getFieldValue('VAR');
+          var workspace = this;
+          workspace.createVariable("count");
+          option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
+          var xmlField = goog.dom.createDom('field', null, name);
+          xmlField.setAttribute('name', 'VAR');
+          var xmlBlock = goog.dom.createDom('block', null, xmlField);
+          xmlBlock.setAttribute('type', 'variables_get');
+          option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
+          options.push(option);
+        }
+    }
+};
+
+Blockly.Python['dict_keys'] = function(block) {
+    var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
+      Blockly.Variables.NAME_TYPE);
+    var code =  variable + '.keys()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Blocks['dict_values'] = {
+  init: function() {
+       this.appendDummyInput()
+        .appendField("获得字典")
+        .appendField(new Blockly.FieldVariable(
+        "Dict"), 'VAR');
+    this.appendDummyInput('VALUE')
+        .appendField("中的值");
+    //this.setPreviousStatement(true);
+    //this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setColour(280);
+    this.setOutput(true);
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    //var thisBlock = this;
+    /*this.setTooltip(function() {
+      return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
+    });*/
+  },
+    customContextMenu: function(options) {
+        if (!this.isCollapsed()) {
+          var option = {enabled: true};
+          var name = this.getFieldValue('VAR');
+          var workspace = this;
+          workspace.createVariable("count");
+          option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
+          var xmlField = goog.dom.createDom('field', null, name);
+          xmlField.setAttribute('name', 'VAR');
+          var xmlBlock = goog.dom.createDom('block', null, xmlField);
+          xmlBlock.setAttribute('type', 'variables_get');
+          option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
+          options.push(option);
+        }
+    }
+};
+
+Blockly.Python['dict_values'] = function(block) {
+    var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
+      Blockly.Variables.NAME_TYPE);
+    var code =  variable + '.values()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Blocks['dict_items'] = {
+  init: function() {
+       this.appendDummyInput()
+        .appendField("获得字典")
+        .appendField(new Blockly.FieldVariable(
+        "Dict"), 'VAR');
+    this.appendDummyInput('VALUE')
+        .appendField("中的键值对");
+    //this.setPreviousStatement(true);
+    //this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setColour(280);
+    this.setOutput(true);
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    //var thisBlock = this;
+    /*this.setTooltip(function() {
+      return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
+    });*/
+  },
+    customContextMenu: function(options) {
+        if (!this.isCollapsed()) {
+          var option = {enabled: true};
+          var name = this.getFieldValue('VAR');
+          var workspace = this;
+          workspace.createVariable("count");
+          option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
+          var xmlField = goog.dom.createDom('field', null, name);
+          xmlField.setAttribute('name', 'VAR');
+          var xmlBlock = goog.dom.createDom('block', null, xmlField);
+          xmlBlock.setAttribute('type', 'variables_get');
+          option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
+          options.push(option);
+        }
+    }
+};
+
+Blockly.Python['dict_items'] = function(block) {
+    var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
+      Blockly.Variables.NAME_TYPE);
+    var code =  variable + '.items()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Blocks['dict_get'] = {
+  init: function() {
+       this.appendDummyInput()
+        .appendField("查找字典")
+        .appendField(new Blockly.FieldVariable(
+        "Dict"), 'VAR');
+    this.appendDummyInput()
+        .appendField("中的键")
+        .appendField(this.newQuote_(true))
+        .appendField(new Blockly.FieldTextInput(
+                     Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY),
+                     'KEY')
+        .appendField(this.newQuote_(false))
+        .appendField("的值");
+    //this.setPreviousStatement(true);
+    //this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setColour(280);
+    this.setOutput(true);
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    //var thisBlock = this;
+    /*this.setTooltip(function() {
+      return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
+    });*/
+  },
+    newQuote_: function(open) {
+    if (open == this.RTL) {
+      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAA0UlEQVQY023QP0oDURSF8e8MImhlUIiCjWKhrUUK3YCIVkq6bMAF2LkCa8ENWLoNS1sLEQKprMQ/GBDks3kDM+Oc8nfPfTxuANQTYBeYAvdJLL4FnAFfwF2ST9Rz27kp5YH/kwrYp50LdaXHAU4rYNYzWAdeenx7AbgF5sAhcARsAkkyVQ+ACbAKjIGqta4+l78udXxc/LiJG+qvet0pV+q7+tHE+iJzdbGz8FhmOzVcqj/qq7rcKI7Ut1Leq70C1oCrJMMk343HB8ADMEzyVOMff72l48gwfqkAAAAASUVORK5CYII=';
+    } else {
+      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAAvklEQVQY022PoapCQRRF97lBVDRYhBcEQcP1BwS/QLAqr7xitZn0HzRr8Rts+htmQdCqSbQIwmMZPMIw3lVmZu0zG44UAFSBLdBVBDAFZqFo8eYKtANfBC7AE5h8ZNOHd1FrDnh4VgmDO3ADkujDHPgHfkLZ84bfaLjg/hD6RFLq9z6wBDr+rvuZB1bAEDABY76pA2mGHyWSjvqmIemc4WsCLKOp4nssIj8wD8qS/iSVJK3N7OTeJPV9n72ZbV7iDuSc2BaQBQAAAABJRU5ErkJggg==';
+    }
+    return new Blockly.FieldImage(file, 12, 12, '"');
+  },
+    customContextMenu: function(options) {
+        if (!this.isCollapsed()) {
+          var option = {enabled: true};
+          var name = this.getFieldValue('VAR');
+          var workspace = this;
+          workspace.createVariable("count");
+          option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
+          var xmlField = goog.dom.createDom('field', null, name);
+          xmlField.setAttribute('name', 'VAR');
+          var xmlBlock = goog.dom.createDom('block', null, xmlField);
+          xmlBlock.setAttribute('type', 'variables_get');
+          option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
+          options.push(option);
+        }
+    }
+};
+
+Blockly.Python['dict_get'] = function(block) {
+    var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
+      Blockly.Variables.NAME_TYPE);
+    var key = Blockly.Python.quote_(block.getFieldValue('KEY'));
+    var code =  variable + '.get(' + key + ')\n';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Blocks['dict_pop'] = {
+  init: function() {
+       this.appendDummyInput()
+        .appendField("删除字典")
+        .appendField(new Blockly.FieldVariable(
+        "Dict"), 'VAR');
+    this.appendDummyInput()
+        .appendField("中的键")
+        .appendField(this.newQuote_(true))
+        .appendField(new Blockly.FieldTextInput(
+                     Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY),
+                     'KEY')
+        .appendField(this.newQuote_(false))
+        .appendField("的值");
+    //this.setPreviousStatement(true);
+    //this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setColour(280);
+    this.setOutput(true);
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    //var thisBlock = this;
+    /*this.setTooltip(function() {
+      return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
+    });*/
+  },
+    newQuote_: function(open) {
+    if (open == this.RTL) {
+      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAA0UlEQVQY023QP0oDURSF8e8MImhlUIiCjWKhrUUK3YCIVkq6bMAF2LkCa8ENWLoNS1sLEQKprMQ/GBDks3kDM+Oc8nfPfTxuANQTYBeYAvdJLL4FnAFfwF2ST9Rz27kp5YH/kwrYp50LdaXHAU4rYNYzWAdeenx7AbgF5sAhcARsAkkyVQ+ACbAKjIGqta4+l78udXxc/LiJG+qvet0pV+q7+tHE+iJzdbGz8FhmOzVcqj/qq7rcKI7Ut1Leq70C1oCrJMMk343HB8ADMEzyVOMff72l48gwfqkAAAAASUVORK5CYII=';
+    } else {
+      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAAvklEQVQY022PoapCQRRF97lBVDRYhBcEQcP1BwS/QLAqr7xitZn0HzRr8Rts+htmQdCqSbQIwmMZPMIw3lVmZu0zG44UAFSBLdBVBDAFZqFo8eYKtANfBC7AE5h8ZNOHd1FrDnh4VgmDO3ADkujDHPgHfkLZ84bfaLjg/hD6RFLq9z6wBDr+rvuZB1bAEDABY76pA2mGHyWSjvqmIemc4WsCLKOp4nssIj8wD8qS/iSVJK3N7OTeJPV9n72ZbV7iDuSc2BaQBQAAAABJRU5ErkJggg==';
+    }
+    return new Blockly.FieldImage(file, 12, 12, '"');
+  },
+    customContextMenu: function(options) {
+        if (!this.isCollapsed()) {
+          var option = {enabled: true};
+          var name = this.getFieldValue('VAR');
+          var workspace = this;
+          workspace.createVariable("count");
+          option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
+          var xmlField = goog.dom.createDom('field', null, name);
+          xmlField.setAttribute('name', 'VAR');
+          var xmlBlock = goog.dom.createDom('block', null, xmlField);
+          xmlBlock.setAttribute('type', 'variables_get');
+          option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
+          options.push(option);
+        }
+    }
+};
+
+Blockly.Python['dict_pop'] = function(block) {
+    var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
+      Blockly.Variables.NAME_TYPE);
+    var key = Blockly.Python.quote_(block.getFieldValue('KEY'));
+    var code =  variable + '.pop(' + key + ')\n';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Blocks['dict_clear'] = {
+  init: function() {
+       this.appendDummyInput()
+        .appendField("删除字典")
+        .appendField(new Blockly.FieldVariable(
+        "Dict"), 'VAR');
+    this.appendDummyInput('VALUE')
+        .appendField("中的所有元素");
+    //this.setPreviousStatement(true);
+    //this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setColour(280);
+    this.setOutput(true);
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    //var thisBlock = this;
+    /*this.setTooltip(function() {
+      return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
+    });*/
+  },
+    customContextMenu: function(options) {
+        if (!this.isCollapsed()) {
+          var option = {enabled: true};
+          var name = this.getFieldValue('VAR');
+          var workspace = this;
+          workspace.createVariable("count");
+          option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
+          var xmlField = goog.dom.createDom('field', null, name);
+          xmlField.setAttribute('name', 'VAR');
+          var xmlBlock = goog.dom.createDom('block', null, xmlField);
+          xmlBlock.setAttribute('type', 'variables_get');
+          option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
+          options.push(option);
+        }
+    }
+};
+
+Blockly.Python['dict_clear'] = function(block) {
+    var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
+      Blockly.Variables.NAME_TYPE);
+    var code =  variable + '.clear()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
