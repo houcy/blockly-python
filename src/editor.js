@@ -873,7 +873,7 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="math_trig"></block>'+
                     '<block type="math_constant"></block>'+
                     //'<block type="math_number_property"></block>'+
-                    '<block type="math_change"></block>'+
+                    //'<block type="math_change"></block>'+
                     '<block type="math_round"></block>'+
                     '<block type="math_on_list"></block>'+
                     //'<block type="math_modulo"></block>'+
@@ -972,6 +972,16 @@ BlockPyEditor.CATEGORY_MAP = {
     'Dictionaries': '<category name="字典" colour="280">'+
                     '<block type="dicts_create_with"></block>'+
                     '<block type="dict_get_literal"></block>'+
+                    '<block type="dict_add"></block>'+
+                    '<block type="dict_delete"></block>'+
+                    '<block type="dict_len"></block>'+
+                    '<block type="dict_max"></block>'+
+                    '<block type="dict_min"></block>'+
+                    '<block type="dict_keys"></block>'+
+                    '<block type="dict_values"></block>'+
+                    '<block type="dict_get"></block>'+
+                    '<block type="dict_pop"></block>'+
+                    '<block type="dict_clear"></block>'+
                     //'<block type="dict_keys"></block>'+
                 '</category>',
     'Functions': '<category name="函数" custom="PROCEDURE" colour="210">'+
@@ -995,15 +1005,16 @@ BlockPyEditor.CATEGORY_MAP = {
                 '</category>',
     'Plotting':   '<category name="曲线" colour="160">'+
                     //'<block type="text_print_multiple"></block>'+
-                    '<block type="plot_line"></block>'+
+                    '<block type="plot_"></block>'+
+                    //'<block type="plot_line"></block>'+
                     '<block type="plot_scatter"></block>'+
                     '<block type="plot_hist"></block>'+
                     '<block type="plot_show"></block>'+
                     '<block type="plot_title"></block>'+
                     '<block type="plot_xlabel"></block>'+
                     '<block type="plot_ylabel"></block>'+
-                    '<block type="plot_lineXY"></block>'+
-                    '<block type="plot_legend"></block>'+
+                    //'<block type="plot_lineXY"></block>'+
+                    //'<block type="plot_legend"></block>'+
                 '</category>',
     'Tuples': '<category name="Tuples" colour="60">'+
                 '<block type="tuple_create"></block>'+

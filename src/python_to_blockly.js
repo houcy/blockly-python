@@ -1046,8 +1046,9 @@ PythonToBlocks.prototype.Dict = function(node) {
         if (keys[i]._astname != "Str") {
             throw new Error("Dictionary Keys should be Strings.");
         }
-        keyList["KEY"+i] = this.Str_value(keys[i]);
-        valueList["VALUE"+i] = this.convert(values[i]);
+        var j = i+1;
+        keyList["KEY"+j] = this.Str_value(keys[i]);
+        valueList["VALUE"+j] = this.convert(values[i]);
     }
 
     return block("dicts_create_with", node.lineno, keyList, valueList, {
@@ -1250,6 +1251,8 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
     var name = this.identifier(func.attr);
     if (func.value._astname == "Name") {
         var module = this.identifier(func.value.id);
+        //console.log("^^^^^^^^^^^^^^^^^^^^^");
+        //console.log(module);
         if (module == "plt" && name == "plot") {
             if (args.length == 1) {
                 return [block("plot_line", func.lineno, {}, {
@@ -1264,6 +1267,7 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
                 throw new Error("Incorrect number of arguments to plt.plot");
             }
         } else if (module in PythonToBlocks.KNOWN_MODULES && name in PythonToBlocks.KNOWN_MODULES[module]) {
+            //console.log("*********************");
             var definition = PythonToBlocks.KNOWN_MODULES[module][name];
             var blockName = definition[0];
             var isExpression = true;
@@ -1323,6 +1327,15 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
             } else {
                 return [block(blockName, func.lineno, fields, values, [], mutations)];
             }
+        }
+        else if (module == "math") {
+            if(name == "sqrt")
+            {
+                return block("math_single", node.lineno, {"OP": "ROOT"}, {"NUM": this.convert(args[0])});
+                //console.log("*********************");
+            }
+            //else
+                //throw new Error("Incorrect number of arguments to plt.plot");
         }
     }
     if (this.KNOWN_FUNCTIONS.indexOf(name) > -1) {

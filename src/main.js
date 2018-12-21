@@ -23,9 +23,9 @@ function BlockPy(settings, assignment, programs) {
  *
  * @type Array.<String>
  */
-BlockPy.DEFAULT_MODULES = ['Program','IO','Math','Text',
+BlockPy.DEFAULT_MODULES = ['Program','IO','Variables','Math','Text',
                            'Logics', 'Lists', 'Loops',
-                           'Variables','Conversion','Dictionaries',
+                           'Conversion','Dictionaries',
                            'Functions','Turtle','Plotting']
 
 /**

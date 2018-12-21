@@ -11,7 +11,7 @@ Blockly.Blocks['conversion_int'] = {
         .setCheck(null)
         .appendField("将");
     this.appendDummyInput("name")
-        .appendField("变为整型")
+        .appendField("变为整型");
     this.setInputsInline(true);
     this.setOutput(true, 'Number');
     this.setColour(125);
@@ -31,7 +31,9 @@ Blockly.Blocks['conversion_float'] = {
   init: function() {
     this.appendValueInput("FIRST")
         .setCheck(null)
-        .appendField("float");
+        .appendField("将");
+    this.appendDummyInput("name")
+        .appendField("变为浮点型");
     this.setInputsInline(true);
     this.setOutput(true, 'string');
     this.setColour(125);
@@ -51,7 +53,9 @@ Blockly.Blocks['conversion_str'] = {
   init: function() {
     this.appendValueInput("FIRST")
         .setCheck(null)
-        .appendField("str");
+        .appendField("将");
+    this.appendDummyInput("name")
+        .appendField("变为字符串型");
     this.setInputsInline(true);
     this.setOutput(true, 'String');
     this.setColour(125);
@@ -71,7 +75,9 @@ Blockly.Blocks['conversion_bool'] = {
   init: function() {
     this.appendValueInput("FIRST")
         .setCheck(null)
-        .appendField("bool");
+        .appendField("将");
+    this.appendDummyInput("name")
+        .appendField("变为布尔型");
     this.setInputsInline(true);
     this.setOutput(true, 'Boolean');
     this.setColour(125);
@@ -91,7 +97,9 @@ Blockly.Blocks['conversion_type'] = {
   init: function() {
     this.appendValueInput("FIRST")
         .setCheck(null)
-        .appendField("type");
+        .appendField("返回");
+    this.appendDummyInput("name")
+        .appendField("的类型");
     this.setInputsInline(true);
     this.setOutput(true, null);
     this.setColour(125);
@@ -110,8 +118,10 @@ Blockly.Python['conversion_eval'] = function(block) {
 Blockly.Blocks['conversion_eval'] = {
   init: function() {
     this.appendValueInput("FIRST")
-        .setCheck(null)
-        .appendField("eval");
+        .setCheck('String')
+        .appendField("将");
+    this.appendDummyInput("name")
+        .appendField("求值并返回计算结果");
     this.setInputsInline(true);
     this.setOutput(true, null);
     this.setColour(125);
@@ -123,10 +133,10 @@ Blockly.Blocks['conversion_eval'] = {
 Blockly.Blocks['conversion_chr'] = {
   init: function() {
     this.appendValueInput("FIRST")
-        .setCheck(null)
+        .setCheck('Number')
         .appendField("将");
     this.appendDummyInput("TAIL")
-        .appendField("按Unicode码编码");
+        .appendField("按Unicode码解码");
     this.setInputsInline(true);
     this.setOutput(true, 'Number');
     this.setColour(125);
@@ -155,7 +165,7 @@ Blockly.Blocks['conversion_ord'] = {
         .setCheck(null)
         .appendField("将");
     this.appendDummyInput("TAIL")
-        .appendField("按Unicode码解码");
+        .appendField("按Unicode码编码");
     this.setInputsInline(true);
     this.setOutput(true, 'Number');
     this.setColour(125);

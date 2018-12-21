@@ -281,9 +281,9 @@ Blockly.Python['loop_range'] = function(block) {
   }*/
   var code;
   if (block.itemCount_ == 1) {
-      code = 'range(' + inner_prints[0] + ')';
+      code = 'plt.plot(' + inner_prints[0] + ')';
   } else {
-      code = 'range(' + inner_prints.join(', ') + ')';
+      code = 'plt.plot(' + inner_prints.join(', ') + ')';
   }
   return [code, Blockly.Python.ORDER_ATOMIC];
 };

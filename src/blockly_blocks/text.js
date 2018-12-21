@@ -247,7 +247,7 @@ Blockly.Python['text_getSubstring_'] = function(block) {
       }
       break;
     case 'FROM_END':
-      var at1 = Blockly.Python.getAdjustedInt(block, 'AT1', 1, true);
+      var at1 = Blockly.Python.getAdjustedInt(block, 'AT1', 0, true);
       break;
     case 'FIRST':
       var at1 = '';
@@ -257,7 +257,7 @@ Blockly.Python['text_getSubstring_'] = function(block) {
   }
   switch (where2) {
     case 'FROM_START':
-      var at2 = Blockly.Python.getAdjustedInt(block, 'AT2', 1);
+      var at2 = Blockly.Python.getAdjustedInt(block, 'AT2', 0);
       break;
     case 'FROM_END':
       var at2 = Blockly.Python.getAdjustedInt(block, 'AT2', 0, true);
@@ -279,6 +279,7 @@ Blockly.Python['text_getSubstring_'] = function(block) {
   var code = text + '[' + at1 + ' : ' + at2 + ']';
   return [code, Blockly.Python.ORDER_MEMBER];
 };
+
 
 Blockly.Python['text_chr'] = function(block) {
   var value_first = Blockly.Python.valueToCode(block, 'FIRST', Blockly.Python.ORDER_ATOMIC) || '___';
