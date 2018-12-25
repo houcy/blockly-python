@@ -249,7 +249,7 @@ BlockPyEditor.prototype.addAvailableModule = function(name) {
     this.availableModules.multiSelect('addOption', {
         'value': name, 'text': name
     });
-    console.log("111111111111111111111111111111111");
+    //console.log("111111111111111111111111111111111");
     this.availableModules.multiSelect('select', name);
 };
 
@@ -945,16 +945,17 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="lists_getSublist"></block>'+
                     '<block type="lists_split"></block>'+
                     '<block type="lists_sort"></block>'+
-                    '<block type="lists_append"></block>'+
+                    //'<block type="lists_append"></block>'+
                     '<block type="lists_length"></block>'+
+                    //'<block type="lists_getIndex_only"></block>'+
                     //'<block type="list_comprehension"></block>'+
-                    '<block type="lists_index">'+
+                    /*'<block type="lists_index">'+
                         '<value name="ITEM">'+
                           '<shadow type="math_number">'+
                             '<field name="NUM">0</field>'+
                           '</shadow>'+
                         '</value>'+
-                    '</block>'+
+                    '</block>'+*/
                 '</category>',
     'Loops': '<category name="循环" colour="300">'+
                     '<block type="controls_repeat"></block>'+
@@ -963,7 +964,7 @@ BlockPyEditor.CATEGORY_MAP = {
                     //'<block type="controls_while"></block>'+
                     //'<block type="controls_for"></block>'+
                     '<block type="controls_forEach"></block>'+
-                    '<block type="controls_pass"></block>'+
+                    //'<block type="controls_pass"></block>'+
                     '<block type="controls_flow_statements"></block>'+
                     '<block type="loop_range"></block>'+
                 '</category>',
@@ -977,6 +978,7 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="dict_len"></block>'+
                     '<block type="dict_max"></block>'+
                     '<block type="dict_min"></block>'+
+                    '<block type="dict_items"></block>'+
                     '<block type="dict_keys"></block>'+
                     '<block type="dict_values"></block>'+
                     '<block type="dict_get"></block>'+
