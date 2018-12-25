@@ -460,3 +460,100 @@ Blockly.Python['lists_getSublist'] = function(block) {
   var code = list + '[' + at1 + ' : ' + at2 + ']';
   return [code, Blockly.Python.ORDER_MEMBER];
 };
+
+Blockly.Blocks['lists_split'] = {
+  /**
+   * Block for splitting text into a list, or joining a list into text.
+   * @this Blockly.Block
+   */
+  init: function() {
+    // Assign 'this' to a variable for use in the closures below.
+    var thisBlock = this;
+    this.setHelpUrl(Blockly.Msg.LISTS_SPLIT_HELPURL);
+    this.setColour(Blockly.Blocks.lists.HUE);
+    this.appendValueInput('INPUT')
+        .setCheck(['Array', "String"])
+        .appendField("将列表");
+    this.appendDummyInput('DELIM')
+        .appendField("按空格分割");
+    this.setInputsInline(true);
+    this.setOutput(true, 'Array');
+    this.setTooltip(Blockly.Msg.LISTS_SPLIT_TOOLTIP_SPLIT);
+  }
+};
+
+Blockly.Python['lists_split'] = function(block) {
+  // Block for splitting text into a list, or joining a list into text.
+  var value_input = Blockly.Python.valueToCode(block, 'INPUT',
+        Blockly.Python.ORDER_MEMBER) || '___';
+  var code = value_input + '.split()';
+
+  return [code, Blockly.Python.ORDER_FUNCTION_CALL];
+};
+
+Blockly.Blocks['lists_split_more'] = {
+  /**
+   * Block for splitting text into a list, or joining a list into text.
+   * @this Blockly.Block
+   */
+  init: function() {
+    // Assign 'this' to a variable for use in the closures below.
+
+    this.setHelpUrl(Blockly.Msg.LISTS_SPLIT_HELPURL);
+    this.setColour(Blockly.Blocks.lists.HUE);
+    this.appendValueInput('INPUT')
+        .setCheck(['Array', "String"])
+        .appendField("将列表");
+    this.appendValueInput('DELIM')
+        .setCheck('String')
+        .appendField("按照");
+    this.appendDummyInput()
+        .appendField("分割");
+    this.setInputsInline(true);
+    this.setOutput(true, 'Array');
+    this.setTooltip(Blockly.Msg.LISTS_SPLIT_TOOLTIP_SPLIT);
+  }
+};
+
+Blockly.Python['lists_split_more'] = function(block) {
+  // Block for splitting text into a list, or joining a list into text.
+  var value_input = Blockly.Python.valueToCode(block, 'INPUT',
+        Blockly.Python.ORDER_MEMBER) || '___';
+  var value_delim = Blockly.Python.valueToCode(block, 'DELIM',
+      Blockly.Python.ORDER_NONE);
+  var code = value_input + '.split(' + value_delim + ')';
+  return [code, Blockly.Python.ORDER_FUNCTION_CALL];
+};
+
+Blockly.Blocks['lists_join'] = {
+  /**
+   * Block for splitting text into a list, or joining a list into text.
+   * @this Blockly.Block
+   */
+  init: function() {
+    // Assign 'this' to a variable for use in the closures below.
+    this.setHelpUrl(Blockly.Msg.LISTS_SPLIT_HELPURL);
+    this.setColour(Blockly.Blocks.lists.HUE);
+    this.appendValueInput('INPUT')
+        .setCheck(['Array', "String"])
+        .appendField("将列表");
+    this.appendValueInput('DELIM')
+        .setCheck('String')
+        .appendField("用");
+    this.appendDummyInput()
+        .appendField("链接");
+    this.setInputsInline(true);
+    this.setOutput(true, 'Array');
+    this.setTooltip(Blockly.Msg.LISTS_SPLIT_TOOLTIP_JOIN);
+  }
+};
+
+Blockly.Python['lists_join'] = function(block) {
+  // Block for splitting text into a list, or joining a list into text.
+  var value_input = Blockly.Python.valueToCode(block, 'INPUT',
+        Blockly.Python.ORDER_NONE) || '___';
+    var value_delim = Blockly.Python.valueToCode(block, 'DELIM',
+        Blockly.Python.ORDER_MEMBER) || '___';
+    var code = value_delim + '.join(' + value_input + ')';
+  return [code, Blockly.Python.ORDER_FUNCTION_CALL];
+};

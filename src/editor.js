@@ -924,17 +924,6 @@ BlockPyEditor.CATEGORY_MAP = {
                   '</category>',
     'Lists':    '<category name="列表" colour="30">'+
                     //'<block type="lists_create"></block>'+
-                    '<block type="lists_create_with">'+
-                        '<value name="ADD0">'+
-                          '<block type="math_number"><field name="NUM">0</field></block>'+
-                        '</value>'+
-                        '<value name="ADD1">'+
-                          '<block type="math_number"><field name="NUM">0</field></block>'+
-                        '</value>'+
-                        '<value name="ADD2">'+
-                          '<block type="math_number"><field name="NUM">0</field></block>'+
-                        '</value>'+
-                    '</block>'+
                     '<block type="lists_create_with"></block>'+
                     '<block type="lists_create_empty"></block>'+
                     '<block type="lists_repeat"></block>'+
@@ -944,6 +933,8 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="lists_setIndex"></block>'+
                     '<block type="lists_getSublist"></block>'+
                     '<block type="lists_split"></block>'+
+                    '<block type="lists_split_more"></block>'+
+                    '<block type="lists_join"></block>'+
                     '<block type="lists_sort"></block>'+
                     //'<block type="lists_append"></block>'+
                     '<block type="lists_length"></block>'+
@@ -958,7 +949,7 @@ BlockPyEditor.CATEGORY_MAP = {
                     '</block>'+*/
                 '</category>',
     'Loops': '<category name="循环" colour="300">'+
-                    '<block type="controls_repeat"></block>'+
+                    //'<block type="controls_repeat"></block>'+
                     '<block type="controls_repeat_ext"></block>'+
                     '<block type="controls_whileUntil"></block>'+
                     //'<block type="controls_while"></block>'+
