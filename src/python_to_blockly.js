@@ -677,8 +677,8 @@ PythonToBlocks.prototype.For = function(node) {
             }
             else if(iter.args[0]._astname == 'Name')
             {
-                console.log("4444444444444444444444444444444");
-                console.log(this.convert(iter.args[0]));
+                //console.log("4444444444444444444444444444444");
+                //console.log(this.convert(iter.args[0]));
                 return block("controls_repeat_ext", node.lineno, {
                     "VAR": this.identifier(target.id)
                 }, {
@@ -1033,7 +1033,7 @@ PythonToBlocks.prototype.UnaryOp = function(node)
     if (op.name == "Not") {
         if(operand.args != undefined )
         {
-            if(operand.args[0]._astname == 'List')
+            if(operand.args[0]._astname == 'List' || operand.args[0]._astname == 'Name')
             {
                 return block("lists_isEmpty", node.lineno, {}, {
                     "VALUE": this.convert(operand.args[0])
@@ -1509,6 +1509,22 @@ PythonToBlocks.prototype.Call = function(node) {
                             },{"inline": "true"
                             }, { "@items": 3});
                         }
+                        /*console.log(block("loop_range", node.lineno, {},
+                            this.convertElements("PRINT", args),
+                            {"inline": "true"
+                            }, { "@items": args.length}));*/
+
+                    }
+                case "pow":
+                    {
+                        //console.log("into the range*******************");
+                        /*if(args.length == 1)
+                            judge*/
+                        return block("math_pow", node.lineno, {}, {
+                            "NUM1": this.convert(args[0]),
+                            "NUM2": this.convert(args[1])
+                            },{"inline": "true"
+                            }, { "@items": args.length});
                         /*console.log(block("loop_range", node.lineno, {},
                             this.convertElements("PRINT", args),
                             {"inline": "true"

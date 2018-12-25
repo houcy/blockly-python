@@ -201,7 +201,8 @@
 
 </head>
 <body>
-<div style="width:1200px; margin-top:54px;  margin-left: auto;margin-right: auto;" id='blockpy-container'> <!-- 900px -->
+
+<div style="width:1200px;  margin:0 auto;" id='blockpy-container'> <!-- 900px -->
     <div id="blockpy-div" style='height:100%'></div>
 </div>
 <div id="blockpy-div2" style='height:100%'></div>

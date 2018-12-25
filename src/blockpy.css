@@ -1,3 +1,59 @@
+.title {
+  position: absolute;
+  top: 0px;
+  height:52px;
+  left: 0px;
+  right: 0px;
+  overflow: visible;
+  background-color: #000000;
+  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+  margin: 0px;
+}
+
+.title-container{
+  position: absolute;
+  left: 257px;
+  right: 250px;
+}
+
+.title-header {
+  position: absolute;
+  width:60px;
+}
+
+.title-logo {
+  position: absolute;
+  top:5px;
+  width:52px;
+}
+
+.navbar {
+  position: absolute;
+  left:30px;
+}
+
+.nav {
+  list-style: none;
+  position: absolute;
+  height: 52px;
+  top:5px;
+  width:800px;
+}
+
+.nav ul {
+  list-style: none;
+  line-height: 40px;
+  margin-left: 50px;
+}
+
+.nav li {
+  position: relative;
+  display: block;
+  float:left;
+  width:150px;
+
+}
+
 .blockpy-explorer {
     height: 100%;
 }
