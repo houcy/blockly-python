@@ -192,26 +192,22 @@ Blockly.Blocks['loop_range'] = {
         {
             var input = this.appendValueInput('PRINT0');
             input.setCheck('Number')
-            input.appendField("从范围 0 到");
-            this.appendDummyInput('Dummy')
-                .appendField('前');
+            input.appendField("遍历范围 0 到");
         }
         else if(this.itemCount_==2)
         {
             this.appendValueInput('PRINT1')
-                .appendField("从范围")
+                .appendField("遍历范围")
                 .setCheck('Number');
             this.appendValueInput('PRINT0')
                 .setCheck('Number')
                 .appendField("到");
-            this.appendDummyInput('Dummy')
-                .appendField('前');
         }
         else if(this.itemCount_>=3)
         {
             this.appendValueInput('PRINT1')
                 .setCheck('Number')
-                .appendField("从范围");
+                .appendField("遍历范围");
             this.appendValueInput('PRINT0')
                 .setCheck('Number')
                 .appendField("到");
@@ -286,6 +282,57 @@ Blockly.Python['loop_range'] = function(block) {
       code = 'range(' + inner_prints.join(', ') + ')';
   }
   return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Blocks['controls_repeat_ext'] = {
+  /**
+   * Block for repeat n times (external number).
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": "循环 %1 次 中",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "TIMES",
+          "check": "Number"
+          //"variable": "count"
+        }
+      ],
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": Blockly.Blocks.loops.HUE,
+      "tooltip": Blockly.Msg.CONTROLS_REPEAT_TOOLTIP,
+      "helpUrl": Blockly.Msg.CONTROLS_REPEAT_HELPURL
+    });
+    this.appendStatementInput('DO')
+        .appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
+  }
+};
+
+Blockly.Python['controls_repeat_ext'] = function(block) {
+  // Repeat n times.
+  if (block.getField('TIMES')) {
+    // Internal number.
+    var repeats = String(parseInt(block.getFieldValue('TIMES'), 10));
+  } else {
+    // External number.
+    var repeats = Blockly.Python.valueToCode(block, 'TIMES',
+        Blockly.Python.ORDER_NONE) || '___';
+  }
+  if (Blockly.isNumber(repeats)) {
+    repeats = parseInt(repeats, 10);
+  } else {
+    repeats = 'int(' + repeats + ')';
+  }
+  var branch = Blockly.Python.statementToCode(block, 'DO');
+  branch = Blockly.Python.addLoopTrap(branch, block.id) ||
+      Blockly.Python.PASS;
+  var loopVar = Blockly.Python.variableDB_.getDistinctName(
+      'count', Blockly.Variables.NAME_TYPE);
+  var code = 'for ' + loopVar + ' in range(' + repeats + '):\n' + branch;
+  return code;
 };
 
 Blockly.Blocks['math_pow'] = {

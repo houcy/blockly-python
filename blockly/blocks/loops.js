@@ -40,13 +40,8 @@ Blockly.Blocks['controls_repeat_ext'] = {
    */
   init: function() {
     this.jsonInit({
-      "message0": "令变量 %1 在 循环 %2 次 中",
+      "message0": "循环 %1 次 中",
       "args0": [
-        {
-            "type": "field_variable",
-            "name": "VAR",
-            "variable": "count"
-        },
         {
           "type": "input_value",
           "name": "TIMES",
@@ -62,21 +57,6 @@ Blockly.Blocks['controls_repeat_ext'] = {
     });
     this.appendStatementInput('DO')
         .appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
-  },
-    customContextMenu: function(options) {
-        if (!this.isCollapsed()) {
-          var option = {enabled: true};
-          var name = this.getFieldValue('VAR');
-          var workspace = this;
-          workspace.createVariable("count");
-          option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
-          var xmlField = goog.dom.createDom('field', null, name);
-          xmlField.setAttribute('name', 'VAR');
-          var xmlBlock = goog.dom.createDom('block', null, xmlField);
-          xmlBlock.setAttribute('type', 'variables_get');
-          option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
-          options.push(option);
-    }
   }
 };
 

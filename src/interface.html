@@ -115,171 +115,6 @@
             <!--!!!!<img src="images/corgi.png" class='img-responsive' />-->
         <!--</div>
     </div>-->
-    <div class='row blockpy-middle-row' style=''>
-        <div class='blockpy-content-left col-md-6 col-sm-6'
-             style='padding:10px'>
-            <strong>结果输出：</strong>
-            <div class='blockpy-printer blockpy-printer-default'>
-            </div>
-        </div>
-        <div class='blockpy-content-right col-md-6 col-sm-6 bubble'
-             style='padding:10px'>
-            <div class='blockpy-feedback'>
-                <button type='button' class='btn btn-sm btn-default blockpy-feedback-trace pull-right'
-                        data-bind="visible: !execution.show_trace() && (status.error() == 'feedback' || status.error() == 'no errors'|| status.error() == 'complete' || status.error() == 'semantic')">
-                    <span class='glyphicon glyphicon-circle-arrow-down'></span> 追踪变量
-                </button>
-
-                <strong>运行提示：</strong>
-                <span class='label blockpy-feedback-status' data-bind="css: status_feedback_class()[0], text: status_feedback_class()[1]">运行超时！</span>
-                <br>
-                <pre class='blockpy-feedback-original'></pre>
-                <strong class='blockpy-feedback-title'></strong>
-                <div class='blockpy-feedback-body'><i>执行你的代码得到运行提示。</i></div>
-                <div class='blockpy-code-trace'></div>
-
-                <!-- ko if: execution.show_trace -->
-                <div class="blockpy-feedback-traces">
-
-                <div>
-                    <button type='button' class='btn btn-default' data-bind="click: moveTraceFirst">
-                        <span class='glyphicon glyphicon-step-backward'></span>
-                    </button>
-                    <button type='button' class='btn btn-default' data-bind="click: moveTraceBackward">
-                        <span class='glyphicon glyphicon-backward'></span>
-                    </button>
-                    Step <span data-bind='text: execution.trace_step()'></span>
-                    / <span data-bind='text: execution.last_step()-1'></span>
-                    (<span data-bind='text: current_trace().line == -1 ? "The end" : "Line "+current_trace().line'></span>)
-                    <button type='button' class='btn btn-default' data-bind="click: moveTraceForward">
-                        <span class='glyphicon glyphicon-forward'></span>
-                    </button>
-                    <button type='button' class='btn btn-default' data-bind="click: moveTraceLast">
-                        <span class='glyphicon glyphicon-step-forward'></span>
-                    </button>
-                </div>
-
-                <table class='table table-condensed table-striped table-bordered table-hover'>
-                    <thead>
-                        <tr><th>Name</th><th>Type</th><th>Value</th></tr>
-                    </thead>
-                    <tbody data-bind="foreach: current_trace().properties">
-                        <tr data-bind="visible: name != '__file__' && name != '__path__'">
-                            <td data-bind="text: name"></td>
-                            <td data-bind="text: type"></td>
-                            <td>
-                                <code data-bind="text: value"></code>
-                                <!-- ko if: type == "List" -->
-                                <a href="" data-bind="click: $root.viewExactValue(type, exact_value)">
-                                <span class='glyphicon glyphicon-new-window'></span>
-                                </a>
-                                <!-- /ko -->
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                </div>
-                <!-- /ko -->
-
-            </div>
-        </div>
-    </div>
-    <div class="row blockpy-toolbar-row"
-         style='background-color :#fcf8e3; padding-bottom: 10px; border: 1px solid #faebcc'>
-        <div class='col-md-12 col-sm-12 blockpy-toolbar btn-toolbar' role='toolbar'>
-
-            <button type='button' class='btn blockpy-run' style='float:left',
-                data-bind='css: execution.status() == "running" ? "btn-info" :
-                                execution.status() == "error" ? "btn-danger" : "btn-success",
-                           visible: settings.instructor() || !assignment.upload()' >
-                <span class='glyphicon glyphicon-play'></span> 执行
-            </button>
-
-            <div class="btn-group" data-toggle="buttons" data-bind="visible: !assignment.upload()">
-                <label class="btn btn-default blockpy-mode-set-blocks"
-                       data-bind="css: {active: settings.editor() == 'Blocks',
-                                        disabled: !areBlocksUpdating()}">
-                    <span class='glyphicon glyphicon-th-large'></span>
-                    <input type="radio" name="blockpy-mode-set" autocomplete="off" checked> 积木模式
-                </label>
-                <!--<label class="btn btn-default blockpy-mode-set-instructor"
-                       data-bind="visible: settings.instructor,
-                                  css: {active: settings.editor() == 'Upload'}">
-                    <span class='glyphicon glyphicon-list-alt'></span>
-                    <input type="radio" name="blockpy-mode-set" autocomplete="off"> Instructor
-                </label>-->
-                <label class="btn btn-default blockpy-mode-set-split"
-                       data-bind="css: {active: settings.editor() == 'Split',
-                                        disabled: !areBlocksUpdating()}">
-                    <span class='glyphicon glyphicon-resize-horizontal'></span>
-                    <input type="radio" name="blockpy-mode-set" autocomplete="off"> 对照模式
-                </label>
-                <label class="btn btn-default blockpy-mode-set-text"
-                       data-bind="css: {active: settings.editor() == 'Text'}">
-                    <span class='glyphicon glyphicon-pencil'></span>
-                    <input type="radio" name="blockpy-mode-set" autocomplete="off"> 文本模式
-                </label>
-            </div>
-            <button type='button' class='btn btn-default blockpy-toolbar-reset'
-                    data-bind="visible: !assignment.upload()">
-                <span class='glyphicon glyphicon-refresh'></span> 重置
-            </button>
-            <!--<button type='button' class='btn btn-default blockpy-toolbar-capture'>
-                <span class='glyphicon glyphicon-picture'></span> Capture
-            </button>-->
-            <button type='button' class='btn btn-default blockpy-toolbar-import'
-                    data-bind="visible: settings.instructor() || (!assignment.upload() && assignment.importable())">
-                <span class='glyphicon glyphicon-cloud-download'></span> 导入数据集
-            </button>
-            <label class="btn btn-default btn-file">
-                <span class='glyphicon glyphicon-upload'></span> 上传
-                <input class="blockpy-toolbar-upload" type="file" style="display: none;">
-            </label>
-           <button type="button" class="btn btn-default blockpy-toolbar-download">
-                <span class="glyphicon glyphicon-download"></span> 下载
-            </button>
-            <button type='button' class='btn btn-default blockpy-toolbar-history'>
-                <span class='glyphicon glyphicon-hourglass'></span> 历史记录
-            </button>
-            <button type='button' class='btn btn-default blockpy-toolbar-instructor' data-bind="visible: settings.instructor">
-                <span class='glyphicon glyphicon-list-alt'></span> 设置
-            </button>
-
-            <b class='blockpy-toolbar-feedback text-muted pull-right' style='z-index:100; margin-top:10px; right:0px; position:absolute; display: none; color: red'>New feedback &uarr;</b>
-
-            <!--
-            <button type='button' class='btn btn-default blockpy-toolbar-english'>
-                <span class='glyphicon glyphicon-list-alt'></span> English
-            </button>
-            -->
-            <div data-bind="visible: settings.instructor()"
-                 style='clear:both'>
-            <!--<div class="btn-group blockpy-toolbar-filename-picker" data-toggle="buttons">
-                <label class="btn btn-default btn-sm blockpy-set-filename"
-                       data-bind="css: {active: settings.filename() == '__main__'}"
-                       data-filename="__main__">
-                    <input type="radio" name="blockpy-filename-set" autocomplete="off" checked> __main__
-                </label>
-                <label class="btn btn-default btn-sm blockpy-set-filename"
-                       data-bind="css: {active: settings.filename() == 'starting_code'}"
-                       data-filename="starting_code">
-                    <input type="radio" name="blockpy-filename-set" autocomplete="off"> on_start
-                </label>
-                <label class="btn btn-default btn-sm blockpy-set-filename"
-                       data-bind="css: {active: settings.filename() == 'give_feedback'}"
-                       data-filename="give_feedback">
-                    <input type="radio" name="blockpy-filename-set" autocomplete="off"> on_run
-                </label>
-                <label class="btn btn-default btn-sm blockpy-set-filename"
-                       data-bind="css: {active: settings.filename() == 'on_change'}"
-                       data-filename="on_change">
-                    <input type="radio" name="blockpy-filename-set" autocomplete="off"> on_change
-                </label>
-            </div>-->
-            </div>
-        </div>
-    </div>
     <div class='row blockpy-content-bottom'
          style='padding-bottom: 10px; border: 1px solid #faebcc'>
         <div class='blockpy-editor col-md-12 col-sm-12'>
@@ -403,6 +238,174 @@
             </div>
         </div>
     </div>
+
+    <div class="row blockpy-toolbar-row"
+         style='background-color :#fcf8e3; padding-bottom: 10px; border: 1px solid #faebcc'>
+        <div class='col-md-12 col-sm-12 blockpy-toolbar btn-toolbar' role='toolbar'>
+
+            <button type='button' class='btn blockpy-run' style='float:left',
+                data-bind='css: execution.status() == "running" ? "btn-info" :
+                                execution.status() == "error" ? "btn-danger" : "btn-success",
+                           visible: settings.instructor() || !assignment.upload()' >
+                <span class='glyphicon glyphicon-play'></span> 执行
+            </button>
+
+            <div class="btn-group" data-toggle="buttons" data-bind="visible: !assignment.upload()">
+                <label class="btn btn-default blockpy-mode-set-blocks"
+                       data-bind="css: {active: settings.editor() == 'Blocks',
+                                        disabled: !areBlocksUpdating()}">
+                    <span class='glyphicon glyphicon-th-large'></span>
+                    <input type="radio" name="blockpy-mode-set" autocomplete="off" checked> 积木模式
+                </label>
+                <!--<label class="btn btn-default blockpy-mode-set-instructor"
+                       data-bind="visible: settings.instructor,
+                                  css: {active: settings.editor() == 'Upload'}">
+                    <span class='glyphicon glyphicon-list-alt'></span>
+                    <input type="radio" name="blockpy-mode-set" autocomplete="off"> Instructor
+                </label>-->
+                <label class="btn btn-default blockpy-mode-set-split"
+                       data-bind="css: {active: settings.editor() == 'Split',
+                                        disabled: !areBlocksUpdating()}">
+                    <span class='glyphicon glyphicon-resize-horizontal'></span>
+                    <input type="radio" name="blockpy-mode-set" autocomplete="off"> 对照模式
+                </label>
+                <label class="btn btn-default blockpy-mode-set-text"
+                       data-bind="css: {active: settings.editor() == 'Text'}">
+                    <span class='glyphicon glyphicon-pencil'></span>
+                    <input type="radio" name="blockpy-mode-set" autocomplete="off"> 文本模式
+                </label>
+            </div>
+            <button type='button' class='btn btn-default blockpy-toolbar-reset'
+                    data-bind="visible: !assignment.upload()">
+                <span class='glyphicon glyphicon-refresh'></span> 重置
+            </button>
+            <!--<button type='button' class='btn btn-default blockpy-toolbar-capture'>
+                <span class='glyphicon glyphicon-picture'></span> Capture
+            </button>-->
+            <button type='button' class='btn btn-default blockpy-toolbar-import'
+                    data-bind="visible: settings.instructor() || (!assignment.upload() && assignment.importable())">
+                <span class='glyphicon glyphicon-cloud-download'></span> 导入数据集
+            </button>
+            <label class="btn btn-default btn-file">
+                <span class='glyphicon glyphicon-upload'></span> 上传
+                <input class="blockpy-toolbar-upload" type="file" style="display: none;">
+            </label>
+           <button type="button" class="btn btn-default blockpy-toolbar-download">
+                <span class="glyphicon glyphicon-download"></span> 下载
+            </button>
+            <!--<button type='button' class='btn btn-default blockpy-toolbar-history'>
+                <span class='glyphicon glyphicon-hourglass'></span> 历史记录
+            </button>
+            <button type='button' class='btn btn-default blockpy-toolbar-instructor' data-bind="visible: settings.instructor">
+                <span class='glyphicon glyphicon-list-alt'></span> 设置
+            </button>-->
+
+            <b class='blockpy-toolbar-feedback text-muted pull-right' style='z-index:100; margin-top:10px; right:0px; position:absolute; display: none; color: red'>New feedback &uarr;</b>
+
+            <!--
+            <button type='button' class='btn btn-default blockpy-toolbar-english'>
+                <span class='glyphicon glyphicon-list-alt'></span> English
+            </button>
+            -->
+            <div data-bind="visible: settings.instructor()"
+                 style='clear:both'>
+            <!--<div class="btn-group blockpy-toolbar-filename-picker" data-toggle="buttons">
+                <label class="btn btn-default btn-sm blockpy-set-filename"
+                       data-bind="css: {active: settings.filename() == '__main__'}"
+                       data-filename="__main__">
+                    <input type="radio" name="blockpy-filename-set" autocomplete="off" checked> __main__
+                </label>
+                <label class="btn btn-default btn-sm blockpy-set-filename"
+                       data-bind="css: {active: settings.filename() == 'starting_code'}"
+                       data-filename="starting_code">
+                    <input type="radio" name="blockpy-filename-set" autocomplete="off"> on_start
+                </label>
+                <label class="btn btn-default btn-sm blockpy-set-filename"
+                       data-bind="css: {active: settings.filename() == 'give_feedback'}"
+                       data-filename="give_feedback">
+                    <input type="radio" name="blockpy-filename-set" autocomplete="off"> on_run
+                </label>
+                <label class="btn btn-default btn-sm blockpy-set-filename"
+                       data-bind="css: {active: settings.filename() == 'on_change'}"
+                       data-filename="on_change">
+                    <input type="radio" name="blockpy-filename-set" autocomplete="off"> on_change
+                </label>
+            </div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class='row blockpy-middle-row' style=''>
+        <div class='blockpy-content-left col-md-6 col-sm-6'
+             style='padding:10px'>
+            <strong>结果输出：</strong>
+            <div class='blockpy-printer blockpy-printer-default'>
+            </div>
+        </div>
+        <div class='blockpy-content-right col-md-6 col-sm-6 bubble'
+             style='padding:10px'>
+            <div class='blockpy-feedback'>
+                <button type='button' class='btn btn-sm btn-default blockpy-feedback-trace pull-right'
+                        data-bind="visible: !execution.show_trace() && (status.error() == 'feedback' || status.error() == 'no errors'|| status.error() == 'complete' || status.error() == 'semantic')">
+                    <span class='glyphicon glyphicon-circle-arrow-down'></span> 追踪变量
+                </button>
+
+                <strong>运行提示：</strong>
+                <span class='label blockpy-feedback-status' data-bind="css: status_feedback_class()[0], text: status_feedback_class()[1]">运行超时！</span>
+                <br>
+                <pre class='blockpy-feedback-original'></pre>
+                <strong class='blockpy-feedback-title'></strong>
+                <div class='blockpy-feedback-body'><i>执行你的代码得到运行提示。</i></div>
+                <div class='blockpy-code-trace'></div>
+
+                <!-- ko if: execution.show_trace -->
+                <div class="blockpy-feedback-traces">
+
+                <div>
+                    <button type='button' class='btn btn-default' data-bind="click: moveTraceFirst">
+                        <span class='glyphicon glyphicon-step-backward'></span>
+                    </button>
+                    <button type='button' class='btn btn-default' data-bind="click: moveTraceBackward">
+                        <span class='glyphicon glyphicon-backward'></span>
+                    </button>
+                    Step <span data-bind='text: execution.trace_step()'></span>
+                    / <span data-bind='text: execution.last_step()-1'></span>
+                    (<span data-bind='text: current_trace().line == -1 ? "The end" : "Line "+current_trace().line'></span>)
+                    <button type='button' class='btn btn-default' data-bind="click: moveTraceForward">
+                        <span class='glyphicon glyphicon-forward'></span>
+                    </button>
+                    <button type='button' class='btn btn-default' data-bind="click: moveTraceLast">
+                        <span class='glyphicon glyphicon-step-forward'></span>
+                    </button>
+                </div>
+
+                <table class='table table-condensed table-striped table-bordered table-hover'>
+                    <thead>
+                        <tr><th>Name</th><th>Type</th><th>Value</th></tr>
+                    </thead>
+                    <tbody data-bind="foreach: current_trace().properties">
+                        <tr data-bind="visible: name != '__file__' && name != '__path__'">
+                            <td data-bind="text: name"></td>
+                            <td data-bind="text: type"></td>
+                            <td>
+                                <code data-bind="text: value"></code>
+                                <!-- ko if: type == "List" -->
+                                <a href="" data-bind="click: $root.viewExactValue(type, exact_value)">
+                                <span class='glyphicon glyphicon-new-window'></span>
+                                </a>
+                                <!-- /ko -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                </div>
+                <!-- /ko -->
+
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <!--<div class='blockpy-explorer-errors alert alert-danger alert-dismissible' role='alert'>
