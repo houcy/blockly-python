@@ -557,3 +557,139 @@ Blockly.Python['lists_join'] = function(block) {
     var code = value_delim + '.join(' + value_input + ')';
   return [code, Blockly.Python.ORDER_FUNCTION_CALL];
 };
+
+Blockly.Blocks['lists_append'] = {
+    // Set element at index.
+    init: function() {
+        this.setHelpUrl(Blockly.Msg.LISTS_APPEND_HELPURL);
+        this.setColour(Blockly.Blocks.lists.HUE);
+        this.appendValueInput('LIST')
+            .setCheck('Array')
+            .appendField(Blockly.Msg.LISTS_APPEND_TO);
+        this.appendValueInput('ITEM')
+            .appendField(Blockly.Msg.LISTS_APPEND);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Msg.LISTS_APPEND_TOOLTIP);
+    }
+};
+
+Blockly.Python['lists_append'] = function(block) {
+    // Append
+    var list = Blockly.Python.valueToCode(block, 'LIST',
+        Blockly.Python.ORDER_MEMBER) || '___';
+    var value = Blockly.Python.valueToCode(block, 'ITEM',
+        Blockly.Python.ORDER_NONE) || '___';
+    return list + '.append(' + value + ')\n';
+};
+
+Blockly.Blocks['lists_remove'] = {
+
+    init: function() {
+        this.setHelpUrl('');
+        this.setColour(Blockly.Blocks.lists.HUE);
+        this.appendValueInput('LIST')
+            .setCheck('Array')
+            .appendField(Blockly.Msg.LISTS_REMOVE_TO);
+        this.appendValueInput('ITEM')
+            .appendField(Blockly.Msg.LISTS_REMOVE);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Msg.LISTS_REMOVE_TOOLTIP);
+    }
+};
+
+Blockly.Python['lists_remove'] = function(block) {
+
+    var list = Blockly.Python.valueToCode(block, 'LIST',
+        Blockly.Python.ORDER_MEMBER) || '___';
+    var value = Blockly.Python.valueToCode(block, 'ITEM',
+        Blockly.Python.ORDER_NONE) || '___';
+    return list + '.remove(' + value + ')\n';
+};
+
+PythonToBlocks.KNOWN_ATTR_FUNCTIONS['remove'] = function(func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 1) {
+        throw new Error("Incorrect number of arguments to turtle.left!");
+    }
+    return [block("lists_remove", func.lineno, {}, {
+        "ITEM": this.convert(args[0]),
+        "LIST": this.convert(func.value)
+    }, {"inline": "true"})];
+}
+
+Blockly.Blocks['lists_reverse'] = {
+
+    init: function() {
+        // Assign 'this' to a variable for use in the closures below.
+        var thisBlock = this;
+        this.setHelpUrl('');
+        this.setColour(Blockly.Blocks.lists.HUE);
+        this.appendValueInput('LIST')
+            .setCheck('Array')
+            .appendField(Blockly.Msg.LISTS_REVERSE_TO);
+        this.appendDummyInput('REVERSE')
+            .appendField(Blockly.Msg.LISTS_REVERSE);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Msg.LISTS_REVERSE_TOOLTIP);
+    }
+};
+
+Blockly.Python['lists_reverse'] = function(block) {
+
+    var list = Blockly.Python.valueToCode(block, 'LIST',
+        Blockly.Python.ORDER_MEMBER) || '___';
+    return list + '.reverse()\n';
+};
+
+PythonToBlocks.KNOWN_ATTR_FUNCTIONS['reverse'] = function(func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 0) {
+        throw new Error("Incorrect number of arguments to lists.reverse!");
+    }
+    return [block("lists_reverse", func.lineno, {}, {
+        "LIST": this.convert(func.value)
+    }, {"inline": "true"})];
+}
+
+Blockly.Blocks['lists_sort'] = {
+    init: function() {
+        var OPERATORS =
+            [[Blockly.Msg.LISTS_SORT_FALSE,'False'],
+                [Blockly.Msg.LISTS_SORT_TRUE,'True']];
+        this.appendValueInput("LISTS")
+            .setCheck('Array')
+            .appendField(Blockly.Msg.LISTS_SORT_TO);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.LISTS_SORT);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setOutput(false);
+        this.setInputsInline(true);
+        this.setColour(Blockly.Blocks.lists.HUE);
+        this.setTooltip(Blockly.Msg.LISTS_SORT_TOOLTIP2);
+        this.setHelpUrl('');
+    }
+};
+
+Blockly.Python['lists_sort'] = function(block) {
+    var operator = block.getFieldValue('OP');
+    var lists = Blockly.Python.valueToCode(block, 'LISTS', Blockly.Python.ORDER_ATOMIC);
+    if (operator == 'False')
+      var code = lists+'.sort()\n';
+    else
+        var code = lists+'.sort(reverse='+ operator + ')\n';
+    return code;
+};
+
+PythonToBlocks.KNOWN_ATTR_FUNCTIONS['sort'] = function(func, args, keywords, starargs, kwargs, node) {
+    //console.log('hhh'+args.type);
+    return [block("lists_sort", func.lineno, {'OP':'False'}, {
+        "LISTS": this.convert(func.value)
+    }, {"inline": "true"})];
+}
