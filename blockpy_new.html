@@ -78,11 +78,12 @@
     <script type="text/javascript" src="src/server.js"></script>
     <script type="text/javascript" src="src/english.js"></script>
     <script type="text/javascript" src="src/corgis.js"></script>
-    <script type="text/javascript" src="src/history.js"></script>
+    <script type="text/javascript" src="src/myWork.js"></script>
     <script type="text/javascript" src="src/presentation.js"></script>
     <script type="text/javascript" src="src/editor.js"></script>
     <script type="text/javascript" src="src/feedback.js"></script>
     <script type="text/javascript" src="src/toolbar.js"></script>
+    <script type="text/javascript" src="src/history.js"></script>
     <script type="text/javascript" src="src/sk_mod_instructor_extended.js"></script>
     <script type="text/javascript" src="src/sk_mod_instructor.js"></script>
     <script type="text/javascript" src="src/engine.js"></script>
@@ -197,11 +198,14 @@
             $("#blockpy-container").width("100%");
         }
     });
+    clickUpload = function () {
+        document.getElementById("_upload").click();
+    }
     </script>
 
 </head>
 <body>
-<div style="width:1200px; margin-top:54px;  margin-left: auto;margin-right: auto;" id='blockpy-container'> <!-- 900px -->
+<div style="width:100%; margin-top:54px;  margin-left: auto;margin-right: auto;" id='blockpy-container'> <!-- 900px -->
     <div id="blockpy-div" style='height:100%'></div>
 </div>
 <div id="blockpy-div2" style='height:100%'></div>

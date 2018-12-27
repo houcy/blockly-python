@@ -294,7 +294,7 @@ BlockPyEditor.prototype.hideTextMenu = function() {
 BlockPyEditor.prototype.showTextMenu = function() {
     this.textTag.show();
     // Adjust height
-    this.textTag.css('height', '450px');
+    this.textTag.css('height', '880px');
     this.textTag.css('width', '100%');
     // Show CodeMirror
     $(this.codeMirror.getWrapperElement()).show();
@@ -316,7 +316,7 @@ BlockPyEditor.prototype.hideBlockMenu = function() {
 
     this.blocklyToolboxWidth = this.getToolbarWidth();
     this.blockTag.css('height', '0%');
-    this.blocklyDiv.css("width", "0");
+    this.blockTag.css('width', '0%');
     this.blockly.setVisible(false);
 }
 
