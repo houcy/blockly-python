@@ -1387,6 +1387,15 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
             //else
                 //throw new Error("Incorrect number of arguments to plt.plot");
         }
+        else if (module == "list") {
+            if(name == "index")
+            {
+                return block("lists_indexOf", node.lineno, {}, {"VALUE": this.convert(args[0]),"LIST": this.convert(func.value)});
+                //console.log("*********************");
+            }
+            //else
+            //throw new Error("Incorrect number of arguments to plt.plot");
+        }
     }
     if (this.KNOWN_FUNCTIONS.indexOf(name) > -1) {
         switch (name) {

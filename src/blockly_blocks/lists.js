@@ -660,7 +660,7 @@ Blockly.Blocks['lists_sort'] = {
         var OPERATORS =
             [[Blockly.Msg.LISTS_SORT_FALSE,'False'],
                 [Blockly.Msg.LISTS_SORT_TRUE,'True']];
-        this.appendValueInput("LISTS")
+        this.appendValueInput("LIST")
             .setCheck('Array')
             .appendField(Blockly.Msg.LISTS_SORT_TO);
         this.appendDummyInput()
@@ -679,7 +679,7 @@ Blockly.Blocks['lists_sort'] = {
 
 Blockly.Python['lists_sort'] = function(block) {
     var operator = block.getFieldValue('OP');
-    var lists = Blockly.Python.valueToCode(block, 'LISTS', Blockly.Python.ORDER_ATOMIC);
+    var lists = Blockly.Python.valueToCode(block, 'LIST', Blockly.Python.ORDER_ATOMIC);
     if (operator == 'False')
       var code = lists+'.sort()\n';
     else
@@ -688,8 +688,50 @@ Blockly.Python['lists_sort'] = function(block) {
 };
 
 PythonToBlocks.KNOWN_ATTR_FUNCTIONS['sort'] = function(func, args, keywords, starargs, kwargs, node) {
-    //console.log('hhh'+args.type);
-    return [block("lists_sort", func.lineno, {'OP':'False'}, {
-        "LISTS": this.convert(func.value)
+    if (args.length != 0) {
+        throw new Error("Incorrect number of arguments to lists.sort!");
+    }
+    if(keywords.length == 0){
+      var op = 'False';
+    }
+    else if(keywords.length == 1){
+      var op = 'True';
+    }
+    return [block("lists_sort", func.lineno, {'OP':op}, {
+        "LIST": this.convert(func.value)
     }, {"inline": "true"})];
 }
+
+Blockly.Blocks['lists_indexOf'] = {
+    /**
+     * Block for finding an item in the list.
+     * @this Blockly.Block
+     */
+    init: function() {
+        this.setHelpUrl(Blockly.Msg.LISTS_INDEX_OF_HELPURL);
+        this.setColour(Blockly.Blocks.lists.HUE);
+        this.setOutput(true, 'Number');
+        this.appendValueInput('LIST')
+            .setCheck('Array')
+            .appendField(Blockly.Msg.LISTS_INDEX_OF_INPUT_IN_LIST);
+        this.appendValueInput('VALUE')
+            .appendField(Blockly.Msg.LISTS_INDEX_OF_FIND);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.LISTS_INDEX_OF_FIRST);
+        this.setInputsInline(true);
+        // Assign 'this' to a variable for use in the tooltip closure below.
+        var thisBlock = this;
+        this.setTooltip(Blockly.Msg.LISTS_INDEX_OF_TOOLTIP);
+    }
+};
+
+Blockly.Python['lists_indexOf'] = function(block) {
+    // Find an item in the list.
+    var item = Blockly.Python.valueToCode(block, 'VALUE',
+        Blockly.Python.ORDER_NONE) || '___';
+    var list = Blockly.Python.valueToCode(block, 'LIST',
+        Blockly.Python.ORDER_NONE) || '___';
+
+    var code =  list + '.index(' + item + ')';
+    return [code, Blockly.Python.ORDER_FUNCTION_CALL];
+};
