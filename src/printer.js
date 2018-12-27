@@ -9,10 +9,10 @@
 function BlockPyPrinter(main, tag) {
     this.main = main;
     this.tag = tag;
-    
+
     /** Keep printer settings available for interested parties */
     this.printerSettings = {};
-    
+
     this.resetPrinter();
 };
 
@@ -25,13 +25,13 @@ BlockPyPrinter.prototype.resetPrinter = function() {
     this.main.model.execution.output.removeAll();
     this.printerSettings['width'] = Math.min(500, this.tag.width()-40);
     this.printerSettings['height'] = Math.min(500, this.tag.height()+40);
-    Sk.TurtleGraphics = {'target': this.tag[0], 
-                         'width': this.printerSettings['width']-40, 
+    Sk.TurtleGraphics = {'target': this.tag[0],
+                         'width': this.printerSettings['width']-40,
                          'height': this.printerSettings['height']-40};
 }
 
 /**
- * Update and return the current configuration of the printer. This 
+ * Update and return the current configuration of the printer. This
  * involves calculating its size, among other operations.
  *
  * @returns {Object} Returns an object with information about the printer.
@@ -48,7 +48,7 @@ BlockPyPrinter.prototype.getConfiguration = function() {
 }
 
 /**
- * Update and return a static disabled configuration of the printer. This 
+ * Update and return a static disabled configuration of the printer. This
  * printer will be unable to do most tasks.
  *
  * @returns {Object} Returns an object with information about the printer.
@@ -86,6 +86,7 @@ BlockPyPrinter.prototype.stepPrinter = function(step, page) {
  * @param {String} lineText - A line of text to be printed out.
  */
 BlockPyPrinter.prototype.print = function(lineText) {
+    console.log(lineText);
     // Should probably be accessing the model instead of a component...
     var stepNumber = this.main.components.engine.executionBuffer.step;
     var lineNumber = this.main.components.engine.executionBuffer.line_number;
@@ -114,7 +115,7 @@ BlockPyPrinter.prototype.print = function(lineText) {
  * Prints a successful HTML blob to the printer. This is typically charts,
  * but it can actually be any kind of HTML. This will probably be useful for
  * doing Turtle and Processing stuff down the road.
- * 
+ *
  * @param {HTML} html - A blob of HTML to render in the tag
  * @param {Anything} value - a value to push on the outputList for comparison. For instance, on charts this is typically the data of the chart.
  */
@@ -139,7 +140,7 @@ BlockPyPrinter.prototype.printHtml = function(chart, value) {
 
 /**
  * Creates an Input box for receiving input() from the user.
- * 
+ *
  * @param {String} promptMessage - a message to render before the input
  * @returns {String} Returns the handle on the message box.
  */
@@ -159,7 +160,7 @@ BlockPyPrinter.prototype.printInput = function(promptMessage) {
                         'data-toggle': 'tooltip',
                         'class': 'blockpy-printer-output',
                         'data-placement': 'left',
-                        'data-step': stepNumber,                                
+                        'data-step': stepNumber,
                         'title': "Step "+stepNumber + ", Line "+lineNumber
                     });
             inputBox.append(inputMsg)

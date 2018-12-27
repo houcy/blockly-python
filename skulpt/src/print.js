@@ -12,8 +12,8 @@ var print_f = function function_print(kwa) {
 
     // defaults, null for None
     var kw_list = {
-        "sep": " ",
-        "end": "\n",
+        "sep": "##",
+        "end": "**",
         "file": null
     };
 

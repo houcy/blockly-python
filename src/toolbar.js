@@ -124,4 +124,25 @@ BlockPyToolbar.prototype.activateToolbar = function() {
     this.tag.find('.blockpy-toolbar-filename-picker label').click(function() {
         main.model.settings.filename($(this).data('filename'))
     });
+    var myWorkButton = this.tag.find('.blockpy-toolbar-myWork');
+    myWorkButton.click(function() {
+        console.log("6666666666666666666666");
+        new MyLayer({
+        top:"15%",
+        left:"25%",
+        width:"50%",
+        height:"70%",
+        title:"我的作品"
+        //content:"暂时没有数据集"
+        }).openLayer();
+        /*var fr = new FileReader();
+        var files = uploadButton[0].files;
+        fr.onload = function(e) {
+            main.setCode(e.target.result)
+            main.components.server.logEvent('editor', 'upload')
+            main.components.engine.on_run();
+        };
+        fr.readAsText(files[0]);
+        uploadButton.val("");*/
+    });
 }
