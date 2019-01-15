@@ -325,10 +325,8 @@ Blockly.Blocks['lists_getSublist'] = {
         .appendField(Blockly.Msg.LISTS_GET_SUBLIST_INPUT_IN_LIST);
     this.appendDummyInput('AT1');
     this.appendDummyInput('AT2');
-    if (Blockly.Msg.LISTS_GET_SUBLIST_TAIL) {
-      this.appendDummyInput('TAIL')
-          .appendField(Blockly.Msg.LISTS_GET_SUBLIST_TAIL);
-    }
+    this.appendDummyInput('TAIL')
+        .appendField(Blockly.Msg.LISTS_GET_SUBLIST_TAIL);
     this.setInputsInline(true);
     this.setOutput(true, 'Array');
     this.updateAt_(1, true);
