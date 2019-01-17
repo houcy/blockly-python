@@ -970,18 +970,18 @@ BlockPyEditor.CATEGORY_MAP = {
                   '</category>',
     'Dictionaries': '<category name="字典" colour="280">'+
                     '<block type="dicts_create_with"></block>'+
-                    '<block type="dict_get_literal"></block>'+
                     '<block type="dict_add"></block>'+
+                    '<block type="dict_get_literal"></block>'+
                     '<block type="dict_delete"></block>'+
+                    '<block type="dict_pop"></block>'+
+                    '<block type="dict_get"></block>'+
                     '<block type="dict_len"></block>'+
-                    '<block type="dict_max"></block>'+
                     '<block type="dict_min"></block>'+
-                    '<block type="dict_items"></block>'+
+                    '<block type="dict_max"></block>'+
                     '<block type="dict_keys"></block>'+
                     '<block type="dict_values"></block>'+
-                    '<block type="dict_get"></block>'+
-                    '<block type="dict_pop"></block>'+
-                    '<block type="dict_clear"></block>'+
+                    //'<block type="dict_items"></block>'+
+        '<block type="dict_clear"></block>'+
                     //'<block type="dict_keys"></block>'+
                 '</category>',
     'Functions': '<category name="函数" custom="PROCEDURE" colour="210">'+
