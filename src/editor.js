@@ -930,7 +930,11 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="lists_repeat"></block>'+
                     '<block type="lists_isEmpty"></block>'+
                     '<block type="lists_indexOf"></block>'+
-                    '<block type="lists_getIndex"></block>'+
+                    '<block type="lists_getIndex">' +
+                        '<value name="AT">'+
+                        '<block type="math_number"><field name="NUM">0</field></block>'+
+                        '</value>'+
+                    '</block>'+
                     '<block type="lists_setIndex"></block>'+
                     '<block type="lists_getSublist"></block>'+
                     '<block type="lists_split"></block>'+
