@@ -317,6 +317,7 @@ BlockPyEditor.prototype.hideBlockMenu = function() {
     this.blocklyToolboxWidth = this.getToolbarWidth();
     this.blockTag.css('height', '0%');
     this.blockTag.css('width', '0%');
+    this.blocklyDiv.css('height', '0%');
     this.blockly.setVisible(false);
 }
 

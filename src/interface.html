@@ -1,61 +1,60 @@
 <nav class="title">
     <div class="title-container">
-        <div class="title-header">
-            <!--<a class="title-logo">
-              <img alt="block-python" src="./python.png" height="40" width="40"/>
-            </a>-->
-            <div class="navbar blockpy-toolbar btn-toolbar">
-                <ul class="nav col-md-12 col-sm-12">
-                    <li>
-                        <a href="/" style="color: #ffffee; font-size: 16px">
-                            <span class='glyphicon glyphicon-home'></span>
-                            <strong>首页</strong>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" onclick="clickUpload()" style="color: #ffffee; font-size: 16px;">
-                            <span class='glyphicon glyphicon-upload'></span>
-                            <strong>从本地加载</strong>
-                            <input id="_upload" class="blockpy-toolbar-upload" type="file" style="display: none;">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="blockpy-toolbar-download" style="color: #ffffee; font-size: 16px;cursor:pointer;">
-                            <span class="glyphicon glyphicon-download"></span>
-                            <strong>保存到本地</strong>
-                        </a>
-                    </li>
-                    <li>
-                        <a class='blockpy-toolbar-import'
-                           data-bind="visible: settings.instructor() || (!assignment.upload() && assignment.importable())"
-                           style="color: #ffffee; font-size: 16px">
-                            <span class='glyphicon glyphicon-cloud-download'></span>
-                            <strong>导入数据集</strong>
-                        </a>
-                    </li>
-                    <li>
-                        <input size="15" type="text" id="production_name" name="production_name" value="新的作品"/>
-                    </li>
-                    <li>
-                        <a href="#" style="color: #ffffee; font-size: 16px">
-                            <span class="glyphicon glyphicon-cloud-upload"></span>
-                            <strong>保存</strong>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="blockpy-toolbar-myWork" style="color: #ffffee; font-size: 16px;cursor:pointer;">
-                            <span class="glyphicon glyphicon-thumbs-up"></span>
-                            <strong>我的作品</strong>
-                        </a>
-                    </li>
-                    <li class="right">
-                        <a href="/" style="color: #ffffee; font-size: 16px">
-                            <span class="glyphicon glyphicon-user"></span>
-                            <strong>登录</strong>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+      <div class="title-header">
+        <!--<a class="title-logo">
+          <img alt="block-python" src="./python.png" height="40" width="40"/>
+        </a>-->
+        <div class="navbar blockpy-toolbar btn-toolbar">
+          <ul class="nav col-md-12 col-sm-12">
+            <li>
+                <a href="#" style="color: #ffffee; font-size: 16px">
+                    <span class='glyphicon glyphicon-home'></span>
+                    <strong>首页</strong>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" onclick="clickUpload()" style="color: #ffffee; font-size: 16px;">
+                    <span class='glyphicon glyphicon-upload'></span>
+                    <strong>从本地打开</strong>
+                    <input id="_upload" class="blockpy-toolbar-upload" type="file" style="display: none;">
+                </a>
+            </li>
+            <li>
+                <a class="blockpy-toolbar-download" style="color: #ffffee; font-size: 16px;cursor:pointer;">
+                    <span class="glyphicon glyphicon-download"></span>
+                    <strong>保存到本地</strong>
+                </a>
+            </li>
+            <li>
+                <a class='blockpy-toolbar-import'
+                   data-bind="visible: settings.instructor() || (!assignment.upload() && assignment.importable())"
+                   style="color: #ffffee; font-size: 16px;cursor:pointer;">
+                    <span class='glyphicon glyphicon-cloud-download'></span>
+                    <strong>导入数据集</strong>
+                </a>
+            </li>
+              <li>
+                  <input size="15" type="text" id="production_name" name="production_name" value="新的作品"/>
+              </li>
+              <li>
+                <a href="#" style="color: #ffffee; font-size: 16px">
+                    <span class="glyphicon glyphicon-cloud-upload"></span>
+                    <strong>保存</strong>
+                </a>
+            </li>
+              <li>
+                <a class="blockpy-toolbar-myWork" style="color: #ffffee; font-size: 16px;cursor:pointer;">
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                    <strong>我的作品</strong>
+                </a>
+            </li>
+              <li class="right">
+                <a href="/" style="color: #ffffee; font-size: 16px">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>登录</strong>
+                </a>
+            </li>
+          </ul>
         </div>
     </div>
 </nav>
@@ -168,22 +167,23 @@
                                 </li>
                             </ul>
 
-                            <label>Available Modules</lable>
-                                <select class='blockpy-available-modules' multiple='multiple'
-                                        data-bind="selectedOptions: assignment.modules">
-                                    <option>Variables</option>
-                                    <option>Decisions</option>
-                                    <option>Iteration</option>
-                                    <option>Functions</option>
-                                    <option>Calculation</option>
-                                    <option>Output</option>
-                                    <option>Turtles</option>
-                                    <option>Python</option>
-                                    <option>Values</option>
-                                    <option>Lists</option>
-                                    <option>Dictionaries</option>
-                                    <option>Data - Parking</option>
-                                </select>
+                            <label>Available Modules</label>
+                            <select class='blockpy-available-modules' multiple='multiple'
+                                    data-bind="selectedOptions: assignment.modules">
+                                <option>Variables</option>
+                                <option>Decisions</option>
+                                <option>Iteration</option>
+                                <option>Functions</option>
+                                <option>Calculation</option>
+                                <option>Output</option>
+                                <option>Turtles</option>
+                                <option>Python</option>
+                                <option>Values</option>
+                                <option>Lists</option>
+                                <option>Dictionaries</option>
+                                <option>Data - Parking</option>
+                            </select>
+
                         </div>
                         <div class='modal-footer'>
                             <button type='button' class='btn btn-white' data-dismiss='modal'>Close</button>
@@ -292,6 +292,10 @@
                     <span class='glyphicon glyphicon-pencil'></span>
                     <input type="radio" name="blockpy-mode-set" autocomplete="off"> 文本模式
                 </label>
+                <button type='button' class='btn btn-default blockpy-toolbar-import'
+                    data-bind="visible: settings.instructor() || (!assignment.upload() && assignment.importable())">
+                <span class='glyphicon glyphicon-cloud-download'></span> 导入数据集
+            </button>
             </div>
             <!--<button type='button' class='btn btn-default blockpy-toolbar-history'>
                 <span class='glyphicon glyphicon-hourglass'></span> 历史记录

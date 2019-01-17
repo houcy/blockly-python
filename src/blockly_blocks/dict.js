@@ -4,7 +4,6 @@ Blockly.Blocks['dicts_create_with'] = {
      * @this Blockly.Block
      */
     init: function() {
-        console.log("init");
         this.setInputsInline(false);
         this.setColour(280);
         this.itemCount_ = 0;
@@ -33,13 +32,13 @@ Blockly.Blocks['dicts_create_with'] = {
     },
     fixEmpty_: function() {
         if (this.itemCount_ > 0) {
-            this.getInput("START").fieldRow[0].setText("dictionary of");
+            this.getInput("START").fieldRow[0].setText("创建字典");
         } else {
-            this.getInput("START").fieldRow[0].setText(Blockly.Msg.DICTS_CREATE_EMPTY_TITLE);
+            this.getInput("START").fieldRow[0].setText("创建空字典");
         }
     },
     addRow: function(i) {
-        if (!this.getInput('VALUE'+i)) {
+        if (!this.getInput('VALUE'+ i)) {
             this.appendValueInput('VALUE' + i)
                 .setCheck(null)
                 .setAlign(Blockly.ALIGN_RIGHT)
@@ -99,23 +98,25 @@ Blockly.Python['dicts_create_with'] = function(block) {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-/*Blockly.Blocks['dict_add'] = {
+Blockly.Blocks['dict_get_literal'] = {
   init: function() {
        this.appendDummyInput()
-        .appendField("设置")
+        .appendField("获取字典")
         .appendField(new Blockly.FieldVariable(
         "Dict"), 'VAR');
     this.appendValueInput('VALUE')
-        .appendField("键")
-        .appendField(this.newQuote_(true))
-        .appendField(new Blockly.FieldTextInput(
-                     Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY),
-                     'ITEM')
-        .appendField(this.newQuote_(false))
-        .setCheck(['String','Number'])
-        .appendField("的值为");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+        .appendField("中键")
+        // .appendField(this.newQuote_(true))
+        // .appendField(new Blockly.FieldTextInput(
+        //              Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY),
+        //              'ITEM')
+        // .appendField(this.newQuote_(false))
+        .setCheck(['String','Number']);
+    this.appendDummyInput()
+        .appendField("的值");
+    this.setOutput(true);
+    //this.setPreviousStatement(true);
+    //this.setNextStatement(true);
     this.setInputsInline(true);
     this.setColour(280);
     //this.setOutput(true);
@@ -125,14 +126,6 @@ Blockly.Python['dicts_create_with'] = function(block) {
       return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
           thisBlock.getFieldValue('VAR'));
     });*/
-  /*},
-    newQuote_: function(open) {
-    if (open == this.RTL) {
-      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAA0UlEQVQY023QP0oDURSF8e8MImhlUIiCjWKhrUUK3YCIVkq6bMAF2LkCa8ENWLoNS1sLEQKprMQ/GBDks3kDM+Oc8nfPfTxuANQTYBeYAvdJLL4FnAFfwF2ST9Rz27kp5YH/kwrYp50LdaXHAU4rYNYzWAdeenx7AbgF5sAhcARsAkkyVQ+ACbAKjIGqta4+l78udXxc/LiJG+qvet0pV+q7+tHE+iJzdbGz8FhmOzVcqj/qq7rcKI7Ut1Leq70C1oCrJMMk343HB8ADMEzyVOMff72l48gwfqkAAAAASUVORK5CYII=';
-    } else {
-      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAAvklEQVQY022PoapCQRRF97lBVDRYhBcEQcP1BwS/QLAqr7xitZn0HzRr8Rts+htmQdCqSbQIwmMZPMIw3lVmZu0zG44UAFSBLdBVBDAFZqFo8eYKtANfBC7AE5h8ZNOHd1FrDnh4VgmDO3ADkujDHPgHfkLZ84bfaLjg/hD6RFLq9z6wBDr+rvuZB1bAEDABY76pA2mGHyWSjvqmIemc4WsCLKOp4nssIj8wD8qS/iSVJK3N7OTeJPV9n72ZbV7iDuSc2BaQBQAAAABJRU5ErkJggg==';
-    }
-    return new Blockly.FieldImage(file, 12, 12, '"');
   },
     customContextMenu: function(options) {
         if (!this.isCollapsed()) {
@@ -149,7 +142,16 @@ Blockly.Python['dicts_create_with'] = function(block) {
           options.push(option);
         }
     }
-};*/
+};
+
+Blockly.Python['dict_get_literal'] = function(block) {
+    var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
+      Blockly.Variables.NAME_TYPE);
+    var key = Blockly.Python.valueToCode(block, 'VALUE',
+      Blockly.Python.ORDER_NONE) || '___';
+    var code = variable + '[' + key + ']';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
 
 Blockly.Blocks['dict_add'] = {
     init: function() {
@@ -271,7 +273,7 @@ Blockly.Blocks['dict_len'] = {
         .appendField("获取字典");
     this.appendDummyInput()
         .appendField("的长度");
-    this.setInputsInline(false);
+    this.setInputsInline(true);
     this.setOutput(true,'Number');
     //this.setPreviousStatement(true);
     //this.setNextStatement(true);
@@ -295,7 +297,7 @@ Blockly.Blocks['dict_max'] = {
         .appendField("获取字典");
     this.appendDummyInput()
         .appendField("的最大值");
-    this.setInputsInline(false);
+    this.setInputsInline(true);
     this.setOutput(true,'Number');
     //this.setPreviousStatement(true);
     //this.setNextStatement(true);
@@ -319,7 +321,7 @@ Blockly.Blocks['dict_min'] = {
         .appendField("获取字典");
     this.appendDummyInput()
         .appendField("的最小值");
-    this.setInputsInline(false);
+    this.setInputsInline(true);
     this.setOutput(true,'Number');
     //this.setPreviousStatement(true);
     //this.setNextStatement(true);
