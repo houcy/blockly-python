@@ -91,7 +91,7 @@ BlockPyEngine.prototype.setInstructorEnvironment = function() {
         Sk.builtinFiles['files']['src/lib/'+module_name] = $INSTRUCTOR_MODULES_EXTENDED[module_name];
     }
     // Mute everything
-    Sk.console.skipDrawing = true;
+    Sk.console.skipDrawing = false;
     this.main.model.settings.mute_printer(true);
     // Disable input box
     Sk.queuedInput = [];

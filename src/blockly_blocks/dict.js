@@ -211,13 +211,13 @@ Blockly.Blocks['dict_delete'] = {
         .appendField("删除字典")
         .appendField(new Blockly.FieldVariable(
         "Dict"), 'VAR');
-    this.appendDummyInput('VALUE')
-        .appendField("中的键")
-        .appendField(this.newQuote_(true))
-        .appendField(new Blockly.FieldTextInput(
-                     Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY),
-                     'ITEM')
-        .appendField(this.newQuote_(false))
+    this.appendValueInput('ITEM')
+        .appendField("中的键");
+        // .appendField(this.newQuote_(true))
+        // .appendField(new Blockly.FieldTextInput(
+        //              Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY),
+        //              'ITEM')
+        // .appendField(this.newQuote_(false))
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setInputsInline(true);
@@ -229,14 +229,6 @@ Blockly.Blocks['dict_delete'] = {
       return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
           thisBlock.getFieldValue('VAR'));
     });*/
-  },
-    newQuote_: function(open) {
-    if (open == this.RTL) {
-      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAA0UlEQVQY023QP0oDURSF8e8MImhlUIiCjWKhrUUK3YCIVkq6bMAF2LkCa8ENWLoNS1sLEQKprMQ/GBDks3kDM+Oc8nfPfTxuANQTYBeYAvdJLL4FnAFfwF2ST9Rz27kp5YH/kwrYp50LdaXHAU4rYNYzWAdeenx7AbgF5sAhcARsAkkyVQ+ACbAKjIGqta4+l78udXxc/LiJG+qvet0pV+q7+tHE+iJzdbGz8FhmOzVcqj/qq7rcKI7Ut1Leq70C1oCrJMMk343HB8ADMEzyVOMff72l48gwfqkAAAAASUVORK5CYII=';
-    } else {
-      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAAvklEQVQY022PoapCQRRF97lBVDRYhBcEQcP1BwS/QLAqr7xitZn0HzRr8Rts+htmQdCqSbQIwmMZPMIw3lVmZu0zG44UAFSBLdBVBDAFZqFo8eYKtANfBC7AE5h8ZNOHd1FrDnh4VgmDO3ADkujDHPgHfkLZ84bfaLjg/hD6RFLq9z6wBDr+rvuZB1bAEDABY76pA2mGHyWSjvqmIemc4WsCLKOp4nssIj8wD8qS/iSVJK3N7OTeJPV9n72ZbV7iDuSc2BaQBQAAAABJRU5ErkJggg==';
-    }
-    return new Blockly.FieldImage(file, 12, 12, '"');
   },
     customContextMenu: function(options) {
         if (!this.isCollapsed()) {
@@ -258,7 +250,8 @@ Blockly.Blocks['dict_delete'] = {
 Blockly.Python['dict_delete'] = function(block) {
     var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
       Blockly.Variables.NAME_TYPE);
-    var key = Blockly.Python.quote_(block.getFieldValue('ITEM'));
+    var key = Blockly.Python.valueToCode(block, 'ITEM',
+        Blockly.Python.ORDER_NONE) || '___';
     var code = "del " + variable + '[' + key + ']\n';
     return code;
 };
@@ -470,16 +463,12 @@ Blockly.Python['dict_items'] = function(block) {
 Blockly.Blocks['dict_get'] = {
   init: function() {
        this.appendDummyInput()
-        .appendField("查找字典")
+        .appendField("获取字典")
         .appendField(new Blockly.FieldVariable(
         "Dict"), 'VAR');
+       this.appendValueInput('KEY')
+           .appendField("中的键");
     this.appendDummyInput()
-        .appendField("中的键")
-        .appendField(this.newQuote_(true))
-        .appendField(new Blockly.FieldTextInput(
-                     Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY),
-                     'KEY')
-        .appendField(this.newQuote_(false))
         .appendField("的值");
     //this.setPreviousStatement(true);
     //this.setNextStatement(true);
@@ -492,14 +481,6 @@ Blockly.Blocks['dict_get'] = {
       return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
           thisBlock.getFieldValue('VAR'));
     });*/
-  },
-    newQuote_: function(open) {
-    if (open == this.RTL) {
-      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAA0UlEQVQY023QP0oDURSF8e8MImhlUIiCjWKhrUUK3YCIVkq6bMAF2LkCa8ENWLoNS1sLEQKprMQ/GBDks3kDM+Oc8nfPfTxuANQTYBeYAvdJLL4FnAFfwF2ST9Rz27kp5YH/kwrYp50LdaXHAU4rYNYzWAdeenx7AbgF5sAhcARsAkkyVQ+ACbAKjIGqta4+l78udXxc/LiJG+qvet0pV+q7+tHE+iJzdbGz8FhmOzVcqj/qq7rcKI7Ut1Leq70C1oCrJMMk343HB8ADMEzyVOMff72l48gwfqkAAAAASUVORK5CYII=';
-    } else {
-      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAAvklEQVQY022PoapCQRRF97lBVDRYhBcEQcP1BwS/QLAqr7xitZn0HzRr8Rts+htmQdCqSbQIwmMZPMIw3lVmZu0zG44UAFSBLdBVBDAFZqFo8eYKtANfBC7AE5h8ZNOHd1FrDnh4VgmDO3ADkujDHPgHfkLZ84bfaLjg/hD6RFLq9z6wBDr+rvuZB1bAEDABY76pA2mGHyWSjvqmIemc4WsCLKOp4nssIj8wD8qS/iSVJK3N7OTeJPV9n72ZbV7iDuSc2BaQBQAAAABJRU5ErkJggg==';
-    }
-    return new Blockly.FieldImage(file, 12, 12, '"');
   },
     customContextMenu: function(options) {
         if (!this.isCollapsed()) {
@@ -521,7 +502,8 @@ Blockly.Blocks['dict_get'] = {
 Blockly.Python['dict_get'] = function(block) {
     var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
       Blockly.Variables.NAME_TYPE);
-    var key = Blockly.Python.quote_(block.getFieldValue('KEY'));
+    var key = Blockly.Python.valueToCode(block, 'KEY',
+        Blockly.Python.ORDER_NONE) || '___';
     var code =  variable + '.get(' + key + ')\n';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
@@ -529,17 +511,13 @@ Blockly.Python['dict_get'] = function(block) {
 Blockly.Blocks['dict_pop'] = {
   init: function() {
        this.appendDummyInput()
-        .appendField("删除字典")
+        .appendField("删除并返回字典")
         .appendField(new Blockly.FieldVariable(
         "Dict"), 'VAR');
+       this.appendValueInput('KEY')
+           .appendField("中的键");
     this.appendDummyInput()
-        .appendField("中的键")
-        .appendField(this.newQuote_(true))
-        .appendField(new Blockly.FieldTextInput(
-                     Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY),
-                     'KEY')
-        .appendField(this.newQuote_(false))
-        .appendField("的值");
+        .appendField("对应的值");
     //this.setPreviousStatement(true);
     //this.setNextStatement(true);
     this.setInputsInline(true);
@@ -551,14 +529,6 @@ Blockly.Blocks['dict_pop'] = {
       return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
           thisBlock.getFieldValue('VAR'));
     });*/
-  },
-    newQuote_: function(open) {
-    if (open == this.RTL) {
-      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAA0UlEQVQY023QP0oDURSF8e8MImhlUIiCjWKhrUUK3YCIVkq6bMAF2LkCa8ENWLoNS1sLEQKprMQ/GBDks3kDM+Oc8nfPfTxuANQTYBeYAvdJLL4FnAFfwF2ST9Rz27kp5YH/kwrYp50LdaXHAU4rYNYzWAdeenx7AbgF5sAhcARsAkkyVQ+ACbAKjIGqta4+l78udXxc/LiJG+qvet0pV+q7+tHE+iJzdbGz8FhmOzVcqj/qq7rcKI7Ut1Leq70C1oCrJMMk343HB8ADMEzyVOMff72l48gwfqkAAAAASUVORK5CYII=';
-    } else {
-      var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAAvklEQVQY022PoapCQRRF97lBVDRYhBcEQcP1BwS/QLAqr7xitZn0HzRr8Rts+htmQdCqSbQIwmMZPMIw3lVmZu0zG44UAFSBLdBVBDAFZqFo8eYKtANfBC7AE5h8ZNOHd1FrDnh4VgmDO3ADkujDHPgHfkLZ84bfaLjg/hD6RFLq9z6wBDr+rvuZB1bAEDABY76pA2mGHyWSjvqmIemc4WsCLKOp4nssIj8wD8qS/iSVJK3N7OTeJPV9n72ZbV7iDuSc2BaQBQAAAABJRU5ErkJggg==';
-    }
-    return new Blockly.FieldImage(file, 12, 12, '"');
   },
     customContextMenu: function(options) {
         if (!this.isCollapsed()) {
@@ -580,7 +550,8 @@ Blockly.Blocks['dict_pop'] = {
 Blockly.Python['dict_pop'] = function(block) {
     var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
       Blockly.Variables.NAME_TYPE);
-    var key = Blockly.Python.quote_(block.getFieldValue('KEY'));
+    var key = Blockly.Python.valueToCode(block, 'KEY',
+        Blockly.Python.ORDER_NONE) || '___';
     var code =  variable + '.pop(' + key + ')\n';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
@@ -593,11 +564,11 @@ Blockly.Blocks['dict_clear'] = {
         "Dict"), 'VAR');
     this.appendDummyInput('VALUE')
         .appendField("中的所有元素");
-    //this.setPreviousStatement(true);
-    //this.setNextStatement(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
     this.setInputsInline(true);
     this.setColour(280);
-    this.setOutput(true);
+    //this.setOutput(true);
     // Assign 'this' to a variable for use in the tooltip closure below.
     //var thisBlock = this;
     /*this.setTooltip(function() {
@@ -626,5 +597,5 @@ Blockly.Python['dict_clear'] = function(block) {
     var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
       Blockly.Variables.NAME_TYPE);
     var code =  variable + '.clear()';
-    return [code, Blockly.Python.ORDER_ATOMIC];
+    return code;
 };
