@@ -102,23 +102,29 @@ BlockPyToolbar.prototype.activateToolbar = function() {
     var downloadButton = this.tag.find('.blockpy-toolbar-download');
     downloadButton.click(function() {
         var data = main.model.programs['__main__']();
-        var filename='blockpy_'+main.model.assignment.name();
+        //var filename='blockpy_'+main.model.assignment.name();
         // Make safe
-        filename = filename.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+        //filename = filename.replace(/[^a-z0-9]/gi, '_').toLowerCase();
         // Make the data download as a file
-        var blob = new Blob([data], {type: 'text/plain'});
-        if(window.navigator.msSaveOrOpenBlob) {
-            window.navigator.msSaveBlob(blob, filename);
+        var filename = document.getElementById("production_name").value;
+        if (filename == '') {
+            alert("请输入作品名称");
         }
         else{
-            var elem = window.document.createElement('a');
-            elem.href = window.URL.createObjectURL(blob);
-            elem.download = filename;
-            document.body.appendChild(elem);
-            elem.click();
-            document.body.removeChild(elem);
+            var blob = new Blob([data], {type: 'text/plain'});
+            if(window.navigator.msSaveOrOpenBlob) {
+                window.navigator.msSaveBlob(blob, filename);
+            }
+            else{
+                var elem = window.document.createElement('a');
+                elem.href = window.URL.createObjectURL(blob);
+                elem.download = filename;
+                document.body.appendChild(elem);
+                elem.click();
+                document.body.removeChild(elem);
+            }
+            main.components.server.logEvent('editor', 'download')
         }
-        main.components.server.logEvent('editor', 'download')
     });
 
     this.tag.find('.blockpy-toolbar-filename-picker label').click(function() {
@@ -128,12 +134,12 @@ BlockPyToolbar.prototype.activateToolbar = function() {
     myWorkButton.click(function() {
         console.log("6666666666666666666666");
         new MyLayer({
-        top:"15%",
-        left:"25%",
-        width:"50%",
-        height:"70%",
-        title:"我的作品"
-        //content:"暂时没有数据集"
+            top:"15%",
+            left:"25%",
+            width:"50%",
+            height:"70%",
+            title:"我的作品"
+            //content:"暂时没有数据集"
         }).openLayer();
         /*var fr = new FileReader();
         var files = uploadButton[0].files;
