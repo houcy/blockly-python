@@ -1,0 +1,62 @@
+{
+  "retail_services": {
+    "description": "The Advance Monthly and Monthly Retail Trade Surveys (MARTS and MRTS), the Annual Retail Trade Survey (ARTS), and the Quarterly E-Commerce Report work together to produce the most comprehensive data available on retail economic activity in the United States. More detailed descriptions of these programs can be found by choosing one of the links to the left.\nRegular quality control and verification takes place between MARTS, MRTS, and ARTS annually and between these programs and the Economic Census of Retail Trade every five years. Each year when annual data become available, we compare and resolve differences between the data collected on the monthly and annual surveys. We refer to this process as the monthly-to-annual reconciliation. At the same time, we benchmark the monthly estimates using results of the annual survey. ARTS estimates are then benchmarked to data maintained by the Economic Census of Retail Trade. This process of benchmarking retail data over all four programs ensures consistency in our estimates.\nThe Business Expenses Supplement is an addition to the 2007 Annual Retail Trade Survey. Its purpose is to compile statistics on detailed business operating expenses. The United States Code, Title 13, authorizes this program as part of the Economic Census. This coverage was previously part of the predecessor Business Expenses Survey. Detailed expenses are collected every five years. \n", 
+    "dicts": {
+      "count": 6, 
+      "levels": {
+        "1": {
+          "lengths": 2, 
+          "key lengths": 6
+        }, 
+        "2": {
+          "lengths": 4, 
+          "key lengths": 4
+        }, 
+        "3": {
+          "lengths": 64, 
+          "key lengths": 7
+        }
+      }, 
+      "inconsistent": {}, 
+      "average branching factor": 33
+    }, 
+    "tags": [
+      "retail", 
+      "services", 
+      "government", 
+      "united states", 
+      "usa", 
+      "us", 
+      "trade", 
+      "food", 
+      "services"
+    ], 
+    "atomics": {
+      "count": 197, 
+      "nones": 0, 
+      "ints": 186, 
+      "booleans": 0, 
+      "longs": 0, 
+      "unknown": 0, 
+      "strings": 2, 
+      "floats": 9
+    }, 
+    "lists": {
+      "count": 1, 
+      "lengths": 289, 
+      "complex": 1
+    }, 
+    "heights": 4, 
+    "unions": {
+      "count": 0, 
+      "keys": {}, 
+      "sizes": 0
+    }, 
+    "length": 289, 
+    "indexes": [
+      2
+    ], 
+    "locals": 0, 
+    "size": 2507176
+  }
+}

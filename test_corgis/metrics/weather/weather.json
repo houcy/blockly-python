@@ -1,0 +1,63 @@
+{
+  "weather": {
+    "description": "Under the National Oceanic and Atmpospheric Administration, the National Weather Service provides daily weather reports for cities across the county.  This is done through the use of 122 different Weather Forcast Offices throughout the country.  These WFOs are responsible for the daily weather reports for serveral cities throughout their region of coverage.  This data set takes the information from these WFO reports for cities across the country and summarizes it at the weekly level for all of 2016.\n", 
+    "dicts": {
+      "count": 6, 
+      "levels": {
+        "1": {
+          "lengths": 3, 
+          "key lengths": 6
+        }, 
+        "2": {
+          "lengths": 3, 
+          "key lengths": 5
+        }, 
+        "3": {
+          "lengths": 2, 
+          "key lengths": 7
+        }
+      }, 
+      "inconsistent": {}, 
+      "average branching factor": 3
+    }, 
+    "tags": [
+      "weather", 
+      "rain", 
+      "snow", 
+      "sleet", 
+      "fog", 
+      "temperature", 
+      "wind", 
+      "climate", 
+      "environment", 
+      "geology"
+    ], 
+    "atomics": {
+      "count": 14, 
+      "nones": 0, 
+      "ints": 7, 
+      "booleans": 0, 
+      "longs": 0, 
+      "unknown": 0, 
+      "strings": 5, 
+      "floats": 2
+    }, 
+    "lists": {
+      "count": 1, 
+      "lengths": 16743, 
+      "complex": 1
+    }, 
+    "heights": 4, 
+    "unions": {
+      "count": 0, 
+      "keys": {}, 
+      "sizes": 0
+    }, 
+    "length": 16743, 
+    "indexes": [
+      2
+    ], 
+    "locals": 0, 
+    "size": 5240891
+  }
+}

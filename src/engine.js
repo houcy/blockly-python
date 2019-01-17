@@ -13,11 +13,11 @@
 function BlockPyEngine(main) {
     this.main = main;
     this.configureSkulpt();
-    
+
     // Keeps track of the tracing while the program is executing
     this.executionBuffer = {};
     this.abstractInterpreter = new Tifa();
-    
+
     this.openedFiles = {};
 }
 
@@ -61,8 +61,8 @@ BlockPyEngine.prototype.configureSkulpt = function() {
 BlockPyEngine.prototype.setStudentEnvironment = function() {
     // Limit execution to 5 seconds
     var settings = this.main.model.settings;
-    Sk.execLimitFunction = function() { 
-        return settings.disable_timeout() ? Infinity : 10000; 
+    Sk.execLimitFunction = function() {
+        return settings.disable_timeout() ? Infinity : 10000;
     };
     Sk.execLimit = Sk.execLimitFunction();
     // Identify the location to put new charts
@@ -117,7 +117,7 @@ BlockPyEngine.prototype.readFile = function(filename) {
 /**
  * Creates and registers a Promise from the Input box
  * @param {String} promptMessage - Message to display to the user.
- * 
+ *
  */
 BlockPyEngine.prototype.inputFunction = function(promptMessage) {
     var printer = this.main.components.printer;
@@ -229,7 +229,7 @@ BlockPyEngine.prototype.resetExecution = function() {
 /**
  * "Steps" the execution of the code, meant to be used as a callback to the Skulpt
  * environment.
- * 
+ *
  * @param {Object} variables - Hash that maps the names of variables (Strings) to their Skulpt representation.
  * @param {Number} lineNumber - The corresponding line number in the source code that is being executed.
  * @param {Number} columnNumber - The corresponding column number in the source code that is being executed. Think of it as the "X" position to the lineNumber's "Y" position.
@@ -304,7 +304,7 @@ BlockPyEngine.prototype.on_run = function(afterwards) {
             }
         });
     });
-    this.main.components.server.logEvent('engine', 'on_run')
+    this.main.components.server.logEvent('engine', 'on_run');
 }
 /**
  * Activated whenever the Python code changes
@@ -515,6 +515,8 @@ BlockPyEngine.prototype.runInstructorCode = function(filename, after) {
         //'complete': false // Actually, let's use undefined for now.
     };
     Sk.misceval.asyncToPromise(function() {
+        console.log("filename::::::::::::::");
+        console.log(filename);
         return Sk.importMainWithBody(filename, false, instructorCode, true);
     }).then(
         // Success
@@ -566,7 +568,7 @@ BlockPyEngine.prototype.parseGlobals = function(variables) {
 
 /**
  * Convert a Skulpt value into a more easily printable object.
- * 
+ *
  * @param {String} property
  * @param {Object} value - the skulpt value
  */
@@ -581,7 +583,7 @@ BlockPyEngine.prototype.parseValue = function(property, value) {
         case Sk.builtin.func:
             return {'name': property,
                     'type': "Function",
-                    "value":  
+                    "value":
                         (value.func_code.co_varnames !== undefined ?
                          " Arguments: "+value.func_code.co_varnames.join(", ") :
                          ' No arguments')

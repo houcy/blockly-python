@@ -86,28 +86,71 @@ BlockPyPrinter.prototype.stepPrinter = function(step, page) {
  * @param {String} lineText - A line of text to be printed out.
  */
 BlockPyPrinter.prototype.print = function(lineText) {
-    console.log(lineText);
+    console.log(lineText.slice(0, -1));
+    var re=/\n/;
+    //console.log(lineText.replace(re,"@"));
     // Should probably be accessing the model instead of a component...
     var stepNumber = this.main.components.engine.executionBuffer.step;
     var lineNumber = this.main.components.engine.executionBuffer.line_number;
+    console.log(stepNumber);
     // Perform any necessary cleaning
     if (lineText !== "\n") {
         this.main.model.execution.output.push(lineText.slice(0, -1));
         var encodedText = encodeHTML(lineText);
+        console.log("~~~~~~~~~~~~");
+        //console.log(lineText.replace(re,"@"));
         if (!(this.main.model.settings.mute_printer())) {
-            var lineContainer = $("<div class='blockpy-printer-output' >");
-            var lineData = $("<samp></samp>", {
-                'data-toggle': 'tooltip',
-                'data-placement': 'left',
-                'data-step': stepNumber,
-                "html": encodedText,
-                'title': "Step "+stepNumber + ", Line "+lineNumber,
-            })
-            lineContainer.append(lineData);
-            // Append to the current text
-            this.tag.append(lineContainer);
-            lineData.tooltip();
+            if(lineText.indexOf("\n")==-1)
+            {
+                var lineContainer = $("<div class='blockpy-printer-output' >");
+                var lineData = $("<samp></samp>", {
+                    'data-toggle': 'tooltip',
+                    'data-placement': 'left',
+                    'data-step': stepNumber,
+                    "html": encodedText,
+                    'title': "Step "+stepNumber + ", Line "+lineNumber,
+                });
+                console.log(lineData);
+                //$("#aaa")
+                lineContainer.append(lineData);
+                console.log(lineContainer);
+                // Append to the current text
+                this.tag.append(lineContainer);
+                //this.tag.append($("<div class='blockpy-printer-border-bottom' >"));
+                //this.tag.append("<br>");
+                console.log(this.tag);
+                lineData.tooltip();
+            }
+            else {
+                var lineContainer = $("<div class='blockpy-printer-output' >");
+                var lineData = $("<samp></samp>", {
+                    'data-toggle': 'tooltip',
+                    'data-placement': 'left',
+                    'data-step': stepNumber,
+                    "html": encodedText,
+                    'title': "Step "+stepNumber + ", Line "+lineNumber,
+                });
+                console.log(lineData);
+                //$("#aaa")
+                lineContainer.append(lineData);
+                console.log(lineContainer);
+                // Append to the current text
+                this.tag.append(lineContainer);
+                this.tag.append($("<div class='blockpy-printer-border-bottom' >"));
+                //this.tag.append("<br>");
+                console.log(this.tag);
+                lineData.tooltip();
+            }
+
         }
+
+    }
+    else if((lineText == "\n")){
+        if (!(this.main.model.settings.mute_printer())) {
+            this.tag.append("<br>");
+            this.tag.append($("<div class='blockpy-printer-border-bottom' >"));
+        }
+
     }
 }
 
@@ -123,6 +166,7 @@ BlockPyPrinter.prototype.printHtml = function(chart, value) {
     var step = this.main.model.execution.step();
     var line = this.main.model.execution.line_number();
     this.main.model.execution.output.push(value);
+    console.log("turtle");
     if (!(this.main.model.settings.mute_printer())) {
         var outerDiv = $(Sk.console.png_mode ? chart : chart[0]);//.parent();
         outerDiv.parent().show();
@@ -149,6 +193,7 @@ BlockPyPrinter.prototype.printInput = function(promptMessage) {
     var stepNumber = this.main.components.engine.executionBuffer.step;
     var lineNumber = this.main.components.engine.executionBuffer.line_number;
     // Perform any necessary cleaning
+    console.log("input");
     if (promptMessage !== "\n") {
         var encodedText = encodeHTML(promptMessage);
         if (!(this.main.model.settings.mute_printer())) {

@@ -1,0 +1,62 @@
+{
+  "graduates": {
+    "description": "The data in this library comes from the National Survey of Recent College Graduates.  Included is information about employment numbers, major information, and the earnings of different majors. Many majors were not available before 2010, so their values have been recorded as 0 (note that this may affect the averages shown in the bar charts).\n", 
+    "dicts": {
+      "count": 13, 
+      "levels": {
+        "1": {
+          "lengths": 5, 
+          "key lengths": 10
+        }, 
+        "2": {
+          "lengths": 4, 
+          "key lengths": 9
+        }, 
+        "3": {
+          "lengths": 5, 
+          "key lengths": 13
+        }
+      }, 
+      "inconsistent": {}, 
+      "average branching factor": 4
+    }, 
+    "tags": [
+      "graduation", 
+      "grads", 
+      "majors", 
+      "education", 
+      "college", 
+      "university", 
+      "higher education", 
+      "jobs", 
+      "careers"
+    ], 
+    "atomics": {
+      "count": 50, 
+      "nones": 0, 
+      "ints": 44, 
+      "booleans": 0, 
+      "longs": 0, 
+      "unknown": 0, 
+      "strings": 1, 
+      "floats": 5
+    }, 
+    "lists": {
+      "count": 1, 
+      "lengths": 517, 
+      "complex": 1
+    }, 
+    "heights": 4, 
+    "unions": {
+      "count": 0, 
+      "keys": {}, 
+      "sizes": 0
+    }, 
+    "length": 517, 
+    "indexes": [
+      2
+    ], 
+    "locals": 0, 
+    "size": 961916
+  }
+}

@@ -1,0 +1,835 @@
+
+
+
+    <script>
+/*$(document).ready(function() {
+    log('load', 'Energy');
+});*/
+</script>
+<div class="page-header">
+    
+    <img class="img-rounded pull-right" src="energy_splash.png" alt="energy_splash.png" style="max-width: 256px; max-height: 256px;">
+    
+    <h1>Energy JSON Library</h1>
+    <p class="lead">From the <a href="../index.html">CORGIS Dataset Project</a></p>
+    <span class="text-muted">By Austin Cory Bart (<a href="mailto:acbart@vt.edu">acbart@vt.edu</a>)</span><br>
+    <span class="text-muted">Version 1, created 11/1/2015</span><br>
+    <span class="text-muted">Tags: energy, renewable, united states, us, nuclear, fossil fuels, power</span><br>
+</div>
+    
+    <h3 id="overview">Overview</h3>
+<p>
+United States Government reports on consumption, production, expenditures, and prices of various fuel sources. This data comes from the US Energy Information Administration, which has historical data from 1960 to 2014. Information was not always available, in which case 0 was reported instead. In some cases, very tiny values were rounded down to zero.
+
+</p>
+
+<p>
+<i>http://www.eia.gov/tools/faqs/</i>
+</p>
+
+    
+    <h3 id="downloads">Downloads</h3>
+    
+<p>Download all of the following files.</p>
+
+<div class='row'>
+<div class="well col-md-6 col-md-offset-1">
+
+<ol>
+    
+    
+    <li><a href="energy.json?forcedownload=1" download="energy.json" target="_blank">
+        <strong>energy.json</strong>
+        <span class='glyphicon glyphicon-download-alt' aria-hidden="true"></span>
+    </a></li>
+    
+</ol>
+</div>
+</div>
+    
+    
+    
+    <h3 id="field">Field Descriptions</h3>
+    
+    <table class='table table-condensed table-striped table-bordered table-hover'>
+    <tr>
+        <th class='col-md-2'>JSON Path</th>
+        <th class='col-md-2'>Type</th>
+        <th class='col-md-5'>Comment</th>
+        <th class='col-md-3'>Example Value</th>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Consumption.Industrial</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Coal': 70489.0, u'Kerosene': 167.0, u'Natural Gas': 34662.0, u'Hydropower': 2.0, u'Other Petroleum Products': 11571.0, u'Geothermal': 0.0, u'Wood': 344.0, u'Solar': 0.0, u'Distillate Fuel Oil': 5768.0, u'Wind': 0.0, u'Liquefied Petroleum Gases': 515.0}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Transportation</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Coal': 1188.0, u'Distillate Fuel Oil': 13466.0, u'Liquefied Petroleum Gases': 134.0, u'Natural Gas': 92.0}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Residential</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Natural Gas': 23398.0, u'Kerosene': 5.0, u'Coal': 3805.0, u'Geothermal': 0.0, u'Wood': 1840.0, u'Distillate Fuel Oil': 580.0, u'Liquefied Petroleum Gases': 673.0}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Commercial</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Natural Gas': 10482.0, u'Kerosene': 33.0, u'Hydropower': 0.0, u'Coal': 2644.0, u'Geothermal': 0.0, u'Wood': 35.0, u'Solar': 0.0, u'Distillate Fuel Oil': 2110.0, u'Wind': 0.0, u'Liquefied Petroleum Gases': 450.0}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Refinery</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Coal': 0, u'Distillate Fuel Oil': 0, u'Liquefied Petroleum Gases': 0, u'Natural Gas': 0}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Electric Power</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Coal': 12840.0, u'Distillate Fuel Oil': 67.0, u'Wood': 0.0, u'Natural Gas': 3806.0}</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Consumption.Industrial.Other Petroleum Products</td>
+        <td>float</td> 
+        <td>Other petroleum products consumed by the industrial sector in billion BTU.</td>
+        <td>11571.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Industrial.Kerosene</td>
+        <td>float</td> 
+        <td>Kerosene consumed by the industrial sector in billion BTU.</td>
+        <td>167.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Industrial.Natural Gas</td>
+        <td>float</td> 
+        <td>Natural gas consumed by (delivered to) the industrial sector (including supplemental gaseous fuels) in billion BTU.</td>
+        <td>34662.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Industrial.Hydropower</td>
+        <td>float</td> 
+        <td>Hydropower consumed by the industrial sector in billion BTU.</td>
+        <td>2.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Industrial.Coal</td>
+        <td>float</td> 
+        <td>Coal consumed by the industrial sector in billion BTU.</td>
+        <td>70489.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Industrial.Geothermal</td>
+        <td>float</td> 
+        <td>Geothermal energy consumed by the industrial sector in billion BTU.</td>
+        <td>0.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Industrial.Wood</td>
+        <td>float</td> 
+        <td>Wood and waste consumed in the industrial sector, total, in billion BTU.</td>
+        <td>344.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Industrial.Solar</td>
+        <td>float</td> 
+        <td>Photovoltaic and solar thermal energy consumed by the industrial sector (except portion included in SOHCB) in billion BTU.</td>
+        <td>0.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Industrial.Distillate Fuel Oil</td>
+        <td>float</td> 
+        <td>Distillate fuel oil consumed by the industrial sector in billion BTU.</td>
+        <td>5768.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Industrial.Wind</td>
+        <td>float</td> 
+        <td>Wind energy consumed by the industrial sector in billion BTU.</td>
+        <td>0.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Industrial.Liquefied Petroleum Gases</td>
+        <td>float</td> 
+        <td>LPG consumed by the industrial sector in billion BTU.</td>
+        <td>515.0</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Expenditure.Commercial</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Coal': 0, u'Kerosene': 0, u'Liquefied Petroleum Gases': 0, u'Distillate Fuel Oil': 0, u'Natural Gas': 0}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Industrial</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Coal': 0, u'Kerosene': 0, u'Natural Gas': 0, u'Other Petroleum Products': 0, u'Distillate Fuel Oil': 0, u'Liquefied Petroleum Gases': 0}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Transportation</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Coal': 0, u'Distillate Fuel Oil': 0, u'Liquefied Petroleum Gases': 0, u'Natural Gas': 0}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Residential</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Natural Gas': 0, u'Kerosene': 0, u'Coal': 0, u'Wood': 0, u'Distillate Fuel Oil': 0, u'Liquefied Petroleum Gases': 0}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Electric Power</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Coal': 0, u'Distillate Fuel Oil': 0, u'Natural Gas': 0}</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Price.Commercial</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Coal': 0, u'Kerosene': 0, u'Liquefied Petroleum Gases': 0, u'Distillate Fuel Oil': 0, u'Natural Gas': 0}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Industrial</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Coal': 0, u'Kerosene': 0, u'Natural Gas': 0, u'Other Petroleum Products': 0, u'Distillate Fuel Oil': 0, u'Liquefied Petroleum Gases': 0}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Transportation</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Coal': 0, u'Distillate Fuel Oil': 0, u'Liquefied Petroleum Gases': 0, u'Natural Gas': 0}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Electric Power</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Coal': 0, u'Distillate Fuel Oil': 0, u'Natural Gas': 0}</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Consumption</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Industrial': {u'Coal': 70489.0, u'Kerosene': 167.0, u'Natural Gas': 34662.0, u'Hydropower': 2.0, u'Other Petroleum Products': 11571.0, u'Geothermal': 0.0, u'Wood': 344.0, u'Solar': 0.0, u'Distillate Fuel Oil': 5768.0, u'Wind': 0.0, u'Liquefied Petroleum Gases': 515.0}, u'Transportation': {u'Coal': 1188.0, u'Distillate Fuel Oil': 13466.0, u'Liquefied Petroleum Gases': 134.0, u'Natural Gas': 92.0}, u'Residential': {u'Natural Gas': 23398.0, u'Kerosene': 5.0, u'Coal': 3805.0, u'Geothermal': 0.0, u'Wood': 1840.0, u'Distillate Fuel Oil': 580.0, u'Liquefied Petroleum Gases': 673.0}, u'Commercial': {u'Natural Gas': 10482.0, u'Kerosene': 33.0, u'Hydropower': 0.0, u'Coal': 2644.0, u'Geothermal': 0.0, u'Wood': 35.0, u'Solar': 0.0, u'Distillate Fuel Oil': 2110.0, u'Wind': 0.0, u'Liquefied Petroleum Gases': 450.0}, u'Refinery': {u'Coal': 0, u'Distillate Fuel Oil': 0, u'Liquefied Petroleum Gases': 0, u'Natural Gas': 0}, u'Electric Power': {u'Coal': 12840.0, u'Distillate Fuel Oil': 67.0, u'Wood': 0.0, u'Natural Gas': 3806.0}}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Transportation': {u'Coal': 0, u'Distillate Fuel Oil': 0, u'Liquefied Petroleum Gases': 0, u'Natural Gas': 0}, u'Industrial': {u'Coal': 0, u'Kerosene': 0, u'Natural Gas': 0, u'Other Petroleum Products': 0, u'Distillate Fuel Oil': 0, u'Liquefied Petroleum Gases': 0}, u'Commercial': {u'Coal': 0, u'Kerosene': 0, u'Liquefied Petroleum Gases': 0, u'Distillate Fuel Oil': 0, u'Natural Gas': 0}, u'Electric Power': {u'Coal': 0, u'Distillate Fuel Oil': 0, u'Natural Gas': 0}}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].State</td>
+        <td>unicode</td> 
+        <td>The state that this report was made for.</td>
+        <td>Utah</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Production</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Coal': 114689.0}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'Transportation': {u'Coal': 0, u'Distillate Fuel Oil': 0, u'Liquefied Petroleum Gases': 0, u'Natural Gas': 0}, u'Electric Power': {u'Coal': 0, u'Distillate Fuel Oil': 0, u'Natural Gas': 0}, u'Industrial': {u'Coal': 0, u'Kerosene': 0, u'Natural Gas': 0, u'Other Petroleum Products': 0, u'Distillate Fuel Oil': 0, u'Liquefied Petroleum Gases': 0}, u'Commercial': {u'Coal': 0, u'Kerosene': 0, u'Liquefied Petroleum Gases': 0, u'Distillate Fuel Oil': 0, u'Natural Gas': 0}, u'Residential': {u'Natural Gas': 0, u'Kerosene': 0, u'Coal': 0, u'Wood': 0, u'Distillate Fuel Oil': 0, u'Liquefied Petroleum Gases': 0}}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Year</td>
+        <td>int</td> 
+        <td>The year that this report was made.</td>
+        <td>1960</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Price.Commercial.Coal</td>
+        <td>int</td> 
+        <td>Coal price in the commercial sector in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Commercial.Kerosene</td>
+        <td>int</td> 
+        <td>Kerosene price in the commercial sector in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Commercial.Natural Gas</td>
+        <td>int</td> 
+        <td>Natural gas price in the commercial sector (including supplemental gaseous fuels) in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Commercial.Distillate Fuel Oil</td>
+        <td>int</td> 
+        <td>Distillate fuel oil price in the commercial sector in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Commercial.Liquefied Petroleum Gases</td>
+        <td>int</td> 
+        <td>LPG price in the commercial sector in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Consumption.Commercial.Natural Gas</td>
+        <td>float</td> 
+        <td>Natural gas consumed by (delivered to) the commercial sector (including supplemental gaseous fuels) in billion BTU.</td>
+        <td>10482.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Commercial.Kerosene</td>
+        <td>float</td> 
+        <td>Kerosene consumed by the commercial sector in billion BTU.</td>
+        <td>33.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Commercial.Hydropower</td>
+        <td>float</td> 
+        <td>Hydropower consumed by the commercial sector in billion BTU.</td>
+        <td>0.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Commercial.Coal</td>
+        <td>float</td> 
+        <td>Coal consumed by the commercial sector in billion BTU.</td>
+        <td>2644.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Commercial.Geothermal</td>
+        <td>float</td> 
+        <td>Geothermal energy consumed by the commercial sector in billion BTU.</td>
+        <td>0.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Commercial.Wood</td>
+        <td>float</td> 
+        <td>Wood consumed by the commercial sector in billion BTU.</td>
+        <td>35.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Commercial.Solar</td>
+        <td>float</td> 
+        <td>Photovoltaic and solar thermal energy consumed by the commercial sector (except portion included in SOHCB) in billion BTU.</td>
+        <td>0.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Commercial.Distillate Fuel Oil</td>
+        <td>float</td> 
+        <td>Distillate fuel oil consumed by the commercial sector in billion BTU.</td>
+        <td>2110.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Commercial.Wind</td>
+        <td>float</td> 
+        <td>Wind energy consumed by the commercial sector in billion BTU.</td>
+        <td>0.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Commercial.Liquefied Petroleum Gases</td>
+        <td>float</td> 
+        <td>LPG consumed by the commercial sector in billion BTU.</td>
+        <td>450.0</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Expenditure.Transportation.Coal</td>
+        <td>int</td> 
+        <td>Coal expenditures in the transportation sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Transportation.Distillate Fuel Oil</td>
+        <td>int</td> 
+        <td>Distillate fuel oil expenditures in the transportation sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Transportation.Natural Gas</td>
+        <td>int</td> 
+        <td>Natural gas expenditures in the transportation sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Transportation.Liquefied Petroleum Gases</td>
+        <td>int</td> 
+        <td>LPG expenditures in the transportation sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Price.Electric Power.Coal</td>
+        <td>int</td> 
+        <td>Coal price in the electric power sector in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Electric Power.Distillate Fuel Oil</td>
+        <td>int</td> 
+        <td>Distillate fuel oil price in the electric power sector in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Electric Power.Natural Gas</td>
+        <td>int</td> 
+        <td>Natural gas price in the electric power sector (including supplemental gaseous fuels) in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Expenditure.Industrial.Other Petroleum Products</td>
+        <td>int</td> 
+        <td>Other petroleum products total expenditures in the industrial sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Industrial.Kerosene</td>
+        <td>int</td> 
+        <td>Kerosene expenditures in the industrial sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Industrial.Natural Gas</td>
+        <td>int</td> 
+        <td>Natural gas expenditures in the industrial sector (including supplemental gaseous fuels) in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Industrial.Coal</td>
+        <td>int</td> 
+        <td>Coal expenditures in the industrial sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Industrial.Distillate Fuel Oil</td>
+        <td>int</td> 
+        <td>Distillate fuel oil expenditures in the industrial sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Industrial.Liquefied Petroleum Gases</td>
+        <td>int</td> 
+        <td>LPG expenditures in the industrial sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Expenditure.Electric Power.Coal</td>
+        <td>int</td> 
+        <td>Coal expenditures in the electric power sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Electric Power.Distillate Fuel Oil</td>
+        <td>int</td> 
+        <td>Distillate fuel oil expenditures in the electric power sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Electric Power.Natural Gas</td>
+        <td>int</td> 
+        <td>Natural gas expenditures in the electric power sector (including supplemental gaseous fuels) in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Price.Industrial.Other Petroleum Products</td>
+        <td>int</td> 
+        <td>Other petroleum products average price in the industrial sector in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Industrial.Kerosene</td>
+        <td>int</td> 
+        <td>Kerosene price in the industrial sector in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Industrial.Natural Gas</td>
+        <td>int</td> 
+        <td>Natural gas price in the industrial sector (including supplemental gaseous fuels) in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Industrial.Coal</td>
+        <td>int</td> 
+        <td>Coal price in the industrial sector in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Industrial.Distillate Fuel Oil</td>
+        <td>int</td> 
+        <td>Distillate fuel oil price in the industrial sector in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Industrial.Liquefied Petroleum Gases</td>
+        <td>int</td> 
+        <td>LPG price in the industrial sector in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Consumption.Refinery.Coal</td>
+        <td>int</td> 
+        <td>Coal consumed as refinery fuel in billion BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Refinery.Distillate Fuel Oil</td>
+        <td>int</td> 
+        <td>Distillate fuel oil consumed as refinery fuel in billion BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Refinery.Natural Gas</td>
+        <td>int</td> 
+        <td>Natural gas consumed as refinery fuel (including supplemental gaseous fuels) in billion BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Refinery.Liquefied Petroleum Gases</td>
+        <td>int</td> 
+        <td>LPG consumed as refinery fuel in billion BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Expenditure.Commercial.Coal</td>
+        <td>int</td> 
+        <td>Coal expenditures in the industrial sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Commercial.Kerosene</td>
+        <td>int</td> 
+        <td>Kerosene expenditures in the industrial sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Commercial.Natural Gas</td>
+        <td>int</td> 
+        <td>Natural gas expenditures in the industrial sector (including supplemental gaseous fuels) in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Commercial.Distillate Fuel Oil</td>
+        <td>int</td> 
+        <td>Distillate fuel oil expenditures in the industrial sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Commercial.Liquefied Petroleum Gases</td>
+        <td>int</td> 
+        <td>LPG expenditures in the industrial sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Production.Coal</td>
+        <td>float</td> 
+        <td>Coal production in billion BTU. Unfortunately, the other energy sources produced by the United States (including Natural Gas and Petroleum) could not be incorporated.</td>
+        <td>114689.0</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Consumption.Residential.Natural Gas</td>
+        <td>float</td> 
+        <td>Natural gas consumed by (delivered to) the residential sector (including supplemental gaseous fuels) in billion BTU.</td>
+        <td>23398.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Residential.Kerosene</td>
+        <td>float</td> 
+        <td>Kerosene consumed by the residential sector in billion BTU.</td>
+        <td>5.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Residential.Coal</td>
+        <td>float</td> 
+        <td>Coal consumed by the residential sector in billion BTU.</td>
+        <td>3805.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Residential.Geothermal</td>
+        <td>float</td> 
+        <td>Geothermal energy consumed by the residential sector in billion BTU.</td>
+        <td>0.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Residential.Wood</td>
+        <td>float</td> 
+        <td>Wood consumed by the residential sector in billion BTU.</td>
+        <td>1840.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Residential.Distillate Fuel Oil</td>
+        <td>float</td> 
+        <td>Distillate fuel oil consumed by the residential sector in billion BTU.</td>
+        <td>580.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Residential.Liquefied Petroleum Gases</td>
+        <td>float</td> 
+        <td>LPG consumed by the residential sector in billion BTU.</td>
+        <td>673.0</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Consumption.Transportation.Coal</td>
+        <td>float</td> 
+        <td>Coal consumed by the transportation sector in billion BTU.</td>
+        <td>1188.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Transportation.Distillate Fuel Oil</td>
+        <td>float</td> 
+        <td>Distillate fuel oil consumed by the transportation sector in billion BTU.</td>
+        <td>13466.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Transportation.Natural Gas</td>
+        <td>float</td> 
+        <td>Natural gas consumed by the transportation sector in billion BTU.</td>
+        <td>92.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Transportation.Liquefied Petroleum Gases</td>
+        <td>float</td> 
+        <td>LPG consumed by the transportation sector in billion BTU.</td>
+        <td>134.0</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Price.Transportation.Coal</td>
+        <td>int</td> 
+        <td>Coal price in the transportation sector in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Transportation.Distillate Fuel Oil</td>
+        <td>int</td> 
+        <td>Distillate fuel oil price in the transportation sector in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Transportation.Natural Gas</td>
+        <td>int</td> 
+        <td>Natural gas price in the transportation sector in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Price.Transportation.Liquefied Petroleum Gases</td>
+        <td>int</td> 
+        <td>LPG price in the transportation sector in dollars per million BTU.</td>
+        <td>0</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Consumption.Electric Power.Coal</td>
+        <td>float</td> 
+        <td>Coal consumed by the electric power sector in billion BTU.</td>
+        <td>12840.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Electric Power.Distillate Fuel Oil</td>
+        <td>float</td> 
+        <td>Distillate fuel oil consumed by the electrical power sector in billion BTU.</td>
+        <td>67.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Electric Power.Wood</td>
+        <td>float</td> 
+        <td>Wood and waste consumed by the electric power sector in billion BTU.</td>
+        <td>0.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Consumption.Electric Power.Natural Gas</td>
+        <td>float</td> 
+        <td>Natural gas consumed by the electric power sector (including supplemental gaseous fuels) in billion BTU.</td>
+        <td>3806.0</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].Expenditure.Residential.Natural Gas</td>
+        <td>int</td> 
+        <td>Natural gas expenditures in the residential sector (including supplemental gaseous fuels) in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Residential.Kerosene</td>
+        <td>int</td> 
+        <td>Kerosene expenditures in the residential sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Residential.Coal</td>
+        <td>int</td> 
+        <td>Coal expenditures in the residential sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Residential.Wood</td>
+        <td>int</td> 
+        <td>Wood expenditures in the residential sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Residential.Distillate Fuel Oil</td>
+        <td>int</td> 
+        <td>Distillate fuel oil expenditures in the residential sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].Expenditure.Residential.Liquefied Petroleum Gases</td>
+        <td>int</td> 
+        <td>LPG expenditures in the residential sector in million dollars.</td>
+        <td>0</td>
+    </tr>
+    
+    
+    
+    </table>
+
+    
+

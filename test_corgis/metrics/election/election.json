@@ -1,0 +1,58 @@
+{
+  "election": {
+    "description": "Data about the results was collected from CNN's 2016 election center.  Each county has the breakdown of how many votes each candidate recieved in that county and what percentage of the total vote from that county that the candidate recieved.  The candidate's political party is also represented.  \n", 
+    "dicts": {
+      "count": 19, 
+      "levels": {
+        "1": {
+          "lengths": 2, 
+          "key lengths": 6
+        }, 
+        "2": {
+          "lengths": 9, 
+          "key lengths": 8
+        }, 
+        "3": {
+          "lengths": 3, 
+          "key lengths": 11
+        }
+      }, 
+      "inconsistent": {}, 
+      "average branching factor": 3
+    }, 
+    "tags": [
+      "politics", 
+      "election", 
+      "votes", 
+      "counties", 
+      "candidate"
+    ], 
+    "atomics": {
+      "count": 51, 
+      "nones": 0, 
+      "ints": 16, 
+      "booleans": 0, 
+      "longs": 0, 
+      "unknown": 0, 
+      "strings": 19, 
+      "floats": 16
+    }, 
+    "lists": {
+      "count": 1, 
+      "lengths": 4216, 
+      "complex": 1
+    }, 
+    "heights": 4, 
+    "unions": {
+      "count": 0, 
+      "keys": {}, 
+      "sizes": 0
+    }, 
+    "length": 4216, 
+    "indexes": [
+      0
+    ], 
+    "locals": 0, 
+    "size": 6419880
+  }
+}

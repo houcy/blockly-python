@@ -1,0 +1,57 @@
+{
+  "tate": {
+    "description": "Tate holds the national collection of British art from 1500 to the present day and international modern and contemporary art. The collection embraces all media, from painting, drawing, sculpture and prints to photography, video and film, installation and performance. This dataset is not ordered in any particular way.\nThis dataset has metadata about many pieces from their collection.\n", 
+    "dicts": {
+      "count": 7, 
+      "levels": {
+        "1": {
+          "lengths": 4, 
+          "key lengths": 7
+        }, 
+        "2": {
+          "lengths": 4, 
+          "key lengths": 7
+        }, 
+        "3": {
+          "lengths": 2, 
+          "key lengths": 5
+        }
+      }, 
+      "inconsistent": {}, 
+      "average branching factor": 3
+    }, 
+    "tags": [
+      "artwork", 
+      "art", 
+      "sculpture", 
+      "tate"
+    ], 
+    "atomics": {
+      "count": 18, 
+      "nones": 0, 
+      "ints": 5, 
+      "booleans": 0, 
+      "longs": 0, 
+      "unknown": 0, 
+      "strings": 10, 
+      "floats": 3
+    }, 
+    "lists": {
+      "count": 1, 
+      "lengths": 3332, 
+      "complex": 1
+    }, 
+    "heights": 4, 
+    "unions": {
+      "count": 0, 
+      "keys": {}, 
+      "sizes": 0
+    }, 
+    "length": 3332, 
+    "indexes": [
+      2
+    ], 
+    "locals": 0, 
+    "size": 2093646
+  }
+}

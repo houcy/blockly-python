@@ -1,0 +1,56 @@
+{
+  "publishers": {
+    "description": "From a newspaper article about analyzing amazon e-book sales by genre and publisher. Unfortunately, they do not have information on the book's title or author. This collection includes 54,000 titles spanning across several genres and types of publishing companies, practically every book on every Amazon bestseller list. Along with publisher information, it also includes the book's overall Amazon Kindle store sales ranking. This ranking is used to sort the books. Keep in mind that this data is NOT time-oriented; it is a collection of a bunch of different books, not a book over time.\n", 
+    "dicts": {
+      "count": 4, 
+      "levels": {
+        "1": {
+          "lengths": 5, 
+          "key lengths": 4
+        }, 
+        "2": {
+          "lengths": 3, 
+          "key lengths": 10
+        }
+      }, 
+      "inconsistent": {}, 
+      "average branching factor": 4
+    }, 
+    "tags": [
+      "publishers", 
+      "amazon", 
+      "books", 
+      "sales", 
+      "genres", 
+      "literature", 
+      "english"
+    ], 
+    "atomics": {
+      "count": 13, 
+      "nones": 0, 
+      "ints": 3, 
+      "booleans": 0, 
+      "longs": 0, 
+      "unknown": 0, 
+      "strings": 4, 
+      "floats": 6
+    }, 
+    "lists": {
+      "count": 1, 
+      "lengths": 27027, 
+      "complex": 1
+    }, 
+    "heights": 3, 
+    "unions": {
+      "count": 0, 
+      "keys": {}, 
+      "sizes": 0
+    }, 
+    "length": 27027, 
+    "indexes": [
+      3
+    ], 
+    "locals": 0, 
+    "size": 10177939
+  }
+}
