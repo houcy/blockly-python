@@ -15,7 +15,7 @@
             <li>
                 <a href="javascript:;" onclick="clickUpload()" style="color: #ffffee; font-size: 16px;">
                     <span class='glyphicon glyphicon-upload'></span>
-                    <strong>上传</strong>
+                    <strong>从本地打开</strong>
                     <input id="_upload" class="blockpy-toolbar-upload" type="file" style="display: none;">
                 </a>
             </li>
@@ -28,7 +28,7 @@
             <li>
                 <a class='blockpy-toolbar-import'
                    data-bind="visible: settings.instructor() || (!assignment.upload() && assignment.importable())"
-                   style="color: #ffffee; font-size: 16px">
+                   style="color: #ffffee; font-size: 16px;cursor:pointer;">
                     <span class='glyphicon glyphicon-cloud-download'></span>
                     <strong>导入数据集</strong>
                 </a>
@@ -57,7 +57,7 @@
     </div>
   </nav>
 <div class='blockpy-content container-fluid' style='background-color :#fcf8e3; border: 1px solid #faebcc; '>
-    <!--<div class='blockpy-popup modal' style='display:none'>
+    <div class='blockpy-popup modal' style='display:none'>
         <div class='modal-dialog' style='width:750px'>
             <div class='modal-content' id='modal-message' >
                 <div class='modal-header'>
@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
     <canvas id='capture-canvas' style='display:none'></canvas>
 
     <div class='row blockpy-content-bottom ' style='height: 100%;padding-bottom: 10px; border: 1px solid #faebcc'>
@@ -165,7 +165,7 @@
                                 </li>
                             </ul>
 
-                            <label>Available Modules</lable>
+                            <label>Available Modules</label>
                             <select class='blockpy-available-modules' multiple='multiple'
                                     data-bind="selectedOptions: assignment.modules">
                                 <option>Variables</option>
@@ -289,6 +289,10 @@
                     <span class='glyphicon glyphicon-pencil'></span>
                     <input type="radio" name="blockpy-mode-set" autocomplete="off"> 文本模式
                 </label>
+                <button type='button' class='btn btn-default blockpy-toolbar-import'
+                    data-bind="visible: settings.instructor() || (!assignment.upload() && assignment.importable())">
+                <span class='glyphicon glyphicon-cloud-download'></span> 导入数据集
+            </button>
             </div>
             <!--<button type='button' class='btn btn-default blockpy-toolbar-history'>
                 <span class='glyphicon glyphicon-hourglass'></span> 历史记录

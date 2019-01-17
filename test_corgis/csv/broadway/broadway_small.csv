@@ -1,0 +1,1001 @@
+Attendance,Capacity,Day,Full,Gross,Gross Potential,Month,Name,Performances,Theatre,Type,Year
+5500,88,26,08/26/1990,134456,0,8,Tru,8,Booth,Play,1990
+1737,100,24,03/24/1991,100647,0,3,Miss Saigon,0,Broadway,Musical,1991
+12160,100,31,03/31/1991,634424,0,3,Miss Saigon,0,Broadway,Musical,1991
+13921,100,7,04/07/1991,713353,0,4,Miss Saigon,0,Broadway,Musical,1991
+10973,90,14,04/14/1991,573981,0,4,Miss Saigon,4,Broadway,Musical,1991
+14076,101,21,04/21/1991,706793,0,4,Miss Saigon,8,Broadway,Musical,1991
+14065,101,28,04/28/1991,714968,0,4,Miss Saigon,8,Broadway,Musical,1991
+14064,101,5,05/05/1991,730765,0,5,Miss Saigon,8,Broadway,Musical,1991
+13896,100,12,05/12/1991,766713,0,5,Miss Saigon,8,Broadway,Musical,1991
+13738,99,19,05/19/1991,763332,0,5,Miss Saigon,8,Broadway,Musical,1991
+13897,100,26,05/26/1991,769137,0,5,Miss Saigon,8,Broadway,Musical,1991
+14016,101,2,06/02/1991,774412,0,6,Miss Saigon,8,Broadway,Musical,1991
+14088,101,9,06/09/1991,771767,0,6,Miss Saigon,8,Broadway,Musical,1991
+14088,101,16,06/16/1991,770819,0,6,Miss Saigon,8,Broadway,Musical,1991
+14088,101,23,06/23/1991,771192,0,6,Miss Saigon,8,Broadway,Musical,1991
+14088,101,30,06/30/1991,777088,0,6,Miss Saigon,8,Broadway,Musical,1991
+14088,101,7,07/07/1991,779802,0,7,Miss Saigon,8,Broadway,Musical,1991
+14084,101,14,07/14/1991,782314,0,7,Miss Saigon,8,Broadway,Musical,1991
+14088,101,21,07/21/1991,781413,0,7,Miss Saigon,8,Broadway,Musical,1991
+14088,101,28,07/28/1991,786612,0,7,Miss Saigon,8,Broadway,Musical,1991
+14088,101,4,08/04/1991,782060,0,8,Miss Saigon,8,Broadway,Musical,1991
+14088,101,11,08/11/1991,781332,0,8,Miss Saigon,8,Broadway,Musical,1991
+14088,101,18,08/18/1991,784392,0,8,Miss Saigon,8,Broadway,Musical,1991
+14088,101,25,08/25/1991,786452,0,8,Miss Saigon,8,Broadway,Musical,1991
+14088,101,1,09/01/1991,786995,0,9,Miss Saigon,8,Broadway,Musical,1991
+14088,101,8,09/08/1991,783503,0,9,Miss Saigon,8,Broadway,Musical,1991
+14088,101,15,09/15/1991,781614,0,9,Miss Saigon,8,Broadway,Musical,1991
+14088,101,22,09/22/1991,780148,0,9,Miss Saigon,8,Broadway,Musical,1991
+14088,101,29,09/29/1991,776172,0,9,Miss Saigon,8,Broadway,Musical,1991
+14088,101,6,10/06/1991,775124,0,10,Miss Saigon,8,Broadway,Musical,1991
+14088,101,13,10/13/1991,776901,0,10,Miss Saigon,8,Broadway,Musical,1991
+14088,101,20,10/20/1991,771361,0,10,Miss Saigon,8,Broadway,Musical,1991
+14088,101,27,10/27/1991,777898,0,10,Miss Saigon,8,Broadway,Musical,1991
+14088,101,3,11/03/1991,784499,0,11,Miss Saigon,8,Broadway,Musical,1991
+14088,101,10,11/10/1991,780494,0,11,Miss Saigon,8,Broadway,Musical,1991
+14088,101,17,11/17/1991,781617,0,11,Miss Saigon,8,Broadway,Musical,1991
+14088,101,24,11/24/1991,779435,0,11,Miss Saigon,8,Broadway,Musical,1991
+14088,101,1,12/01/1991,784733,0,12,Miss Saigon,8,Broadway,Musical,1991
+14088,101,8,12/08/1991,782279,0,12,Miss Saigon,8,Broadway,Musical,1991
+14088,101,15,12/15/1991,780343,0,12,Miss Saigon,8,Broadway,Musical,1991
+14088,101,22,12/22/1991,778474,0,12,Miss Saigon,8,Broadway,Musical,1991
+14088,101,29,12/29/1991,800315,0,12,Miss Saigon,8,Broadway,Musical,1991
+14088,101,5,01/05/1992,837851,0,1,Miss Saigon,8,Broadway,Musical,1992
+14088,101,12,01/12/1992,773439,0,1,Miss Saigon,8,Broadway,Musical,1992
+14082,101,19,01/19/1992,735927,0,1,Miss Saigon,8,Broadway,Musical,1992
+14088,101,26,01/26/1992,759192,0,1,Miss Saigon,8,Broadway,Musical,1992
+14088,101,2,02/02/1992,741472,0,2,Miss Saigon,8,Broadway,Musical,1992
+14088,101,9,02/09/1992,741091,0,2,Miss Saigon,8,Broadway,Musical,1992
+14088,101,16,02/16/1992,750398,0,2,Miss Saigon,8,Broadway,Musical,1992
+14088,101,23,02/23/1992,756909,0,2,Miss Saigon,8,Broadway,Musical,1992
+14088,101,1,03/01/1992,746225,0,3,Miss Saigon,8,Broadway,Musical,1992
+14088,101,8,03/08/1992,708433,0,3,Miss Saigon,8,Broadway,Musical,1992
+14088,101,15,03/15/1992,708315,0,3,Miss Saigon,8,Broadway,Musical,1992
+7849,90,22,03/22/1992,321851,84,3,A Streetcar Named Desire 92,0,Ethel Barrymore,Play,1992
+14088,101,22,03/22/1992,710345,0,3,Miss Saigon,8,Broadway,Musical,1992
+8333,95,29,03/29/1992,338536,88,3,A Streetcar Named Desire 92,0,Ethel Barrymore,Play,1992
+14088,101,29,03/29/1992,712946,0,3,Miss Saigon,8,Broadway,Musical,1992
+7774,89,5,04/05/1992,313611,82,4,A Streetcar Named Desire 92,0,Ethel Barrymore,Play,1992
+14088,101,5,04/05/1992,710415,0,4,Miss Saigon,8,Broadway,Musical,1992
+7656,87,12,04/12/1992,314028,82,4,A Streetcar Named Desire 92,1,Ethel Barrymore,Play,1992
+13773,99,12,04/12/1992,699688,0,4,Miss Saigon,8,Broadway,Musical,1992
+8381,96,19,04/19/1992,354794,92,4,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+14019,101,19,04/19/1992,700167,0,4,Miss Saigon,8,Broadway,Musical,1992
+8663,99,26,04/26/1992,368407,96,4,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+14088,101,26,04/26/1992,705154,0,4,Miss Saigon,8,Broadway,Musical,1992
+7875,90,3,05/03/1992,332830,87,5,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+13953,100,3,05/03/1992,699304,0,5,Miss Saigon,8,Broadway,Musical,1992
+7070,81,10,05/10/1992,293613,76,5,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+13938,100,10,05/10/1992,697606,0,5,Miss Saigon,8,Broadway,Musical,1992
+7673,88,17,05/17/1992,328716,86,5,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+14025,101,17,05/17/1992,704589,0,5,Miss Saigon,8,Broadway,Musical,1992
+6958,79,24,05/24/1992,289457,75,5,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+14088,101,24,05/24/1992,706406,0,5,Miss Saigon,8,Broadway,Musical,1992
+6062,69,31,05/31/1992,249238,65,5,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+13912,100,31,05/31/1992,706526,0,5,Miss Saigon,8,Broadway,Musical,1992
+6059,69,7,06/07/1992,250416,65,6,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+13596,98,7,06/07/1992,691925,0,6,Miss Saigon,8,Broadway,Musical,1992
+6142,70,14,06/14/1992,248778,65,6,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+13956,100,14,06/14/1992,703465,0,6,Miss Saigon,8,Broadway,Musical,1992
+6111,70,21,06/21/1992,243197,63,6,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+13916,100,21,06/21/1992,701832,0,6,Miss Saigon,8,Broadway,Musical,1992
+6009,69,28,06/28/1992,242339,63,6,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+13930,100,28,06/28/1992,709530,0,6,Miss Saigon,8,Broadway,Musical,1992
+4612,53,5,07/05/1992,177043,46,7,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+13409,96,5,07/05/1992,681135,0,7,Miss Saigon,8,Broadway,Musical,1992
+6065,69,12,07/12/1992,236411,62,7,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+13337,96,12,07/12/1992,681649,0,7,Miss Saigon,8,Broadway,Musical,1992
+5996,68,19,07/19/1992,226232,59,7,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+13303,95,19,07/19/1992,676548,0,7,Miss Saigon,8,Broadway,Musical,1992
+6570,75,26,07/26/1992,241848,63,7,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+13546,97,26,07/26/1992,689763,0,7,Miss Saigon,8,Broadway,Musical,1992
+6874,78,2,08/02/1992,263971,69,8,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+13447,96,2,08/02/1992,685791,0,8,Miss Saigon,8,Broadway,Musical,1992
+7836,89,9,08/09/1992,312031,81,8,A Streetcar Named Desire 92,8,Ethel Barrymore,Play,1992
+13665,98,9,08/09/1992,699232,0,8,Miss Saigon,8,Broadway,Musical,1992
+13963,100,16,08/16/1992,712610,0,8,Miss Saigon,8,Broadway,Musical,1992
+13797,99,23,08/23/1992,705498,0,8,Miss Saigon,8,Broadway,Musical,1992
+13465,97,30,08/30/1992,691377,0,8,Miss Saigon,8,Broadway,Musical,1992
+13158,94,6,09/06/1992,666784,0,9,Miss Saigon,8,Broadway,Musical,1992
+13105,94,13,09/13/1992,670350,0,9,Miss Saigon,8,Broadway,Musical,1992
+13100,94,20,09/20/1992,667858,0,9,Miss Saigon,8,Broadway,Musical,1992
+12919,93,27,09/27/1992,652488,0,9,Miss Saigon,8,Broadway,Musical,1992
+12700,91,4,10/04/1992,646625,0,10,Miss Saigon,8,Broadway,Musical,1992
+13194,95,11,10/11/1992,661180,0,10,Miss Saigon,8,Broadway,Musical,1992
+13529,97,18,10/18/1992,683698,0,10,Miss Saigon,8,Broadway,Musical,1992
+13313,95,25,10/25/1992,654515,0,10,Miss Saigon,8,Broadway,Musical,1992
+13120,94,1,11/01/1992,651594,0,11,Miss Saigon,8,Broadway,Musical,1992
+12968,93,8,11/08/1992,639435,0,11,Miss Saigon,8,Broadway,Musical,1992
+13642,98,15,11/15/1992,681526,0,11,Miss Saigon,8,Broadway,Musical,1992
+12888,92,22,11/22/1992,633370,0,11,Miss Saigon,8,Broadway,Musical,1992
+13539,97,29,11/29/1992,685666,0,11,Miss Saigon,8,Broadway,Musical,1992
+12958,93,6,12/06/1992,657157,0,12,Miss Saigon,8,Broadway,Musical,1992
+13478,97,13,12/13/1992,674234,0,12,Miss Saigon,8,Broadway,Musical,1992
+12555,90,20,12/20/1992,642710,0,12,Miss Saigon,8,Broadway,Musical,1992
+13723,98,27,12/27/1992,703292,0,12,Miss Saigon,8,Broadway,Musical,1992
+14086,101,3,01/03/1993,761443,0,1,Miss Saigon,8,Broadway,Musical,1993
+13378,96,10,01/10/1993,671574,0,1,Miss Saigon,8,Broadway,Musical,1993
+12016,86,17,01/17/1993,589070,0,1,Miss Saigon,8,Broadway,Musical,1993
+10874,78,24,01/24/1993,536214,0,1,Miss Saigon,8,Broadway,Musical,1993
+10546,76,31,01/31/1993,512563,0,1,Miss Saigon,8,Broadway,Musical,1993
+10833,78,7,02/07/1993,509955,0,2,Miss Saigon,8,Broadway,Musical,1993
+12068,87,14,02/14/1993,568632,0,2,Miss Saigon,8,Broadway,Musical,1993
+13206,95,21,02/21/1993,621309,0,2,Miss Saigon,8,Broadway,Musical,1993
+12962,93,28,02/28/1993,588610,0,2,Miss Saigon,8,Broadway,Musical,1993
+12206,88,7,03/07/1993,553998,0,3,Miss Saigon,8,Broadway,Musical,1993
+6346,97,7,03/07/1993,210560,78,3,The Sisters Rosensweig,0,Ethel Barrymore,Play,1993
+12552,90,14,03/14/1993,570125,0,3,Miss Saigon,8,Broadway,Musical,1993
+8420,96,14,03/14/1993,296596,83,3,The Sisters Rosensweig,0,Ethel Barrymore,Play,1993
+12312,88,21,03/21/1993,565549,0,3,Miss Saigon,8,Broadway,Musical,1993
+7228,82,21,03/21/1993,251618,70,3,The Sisters Rosensweig,4,Ethel Barrymore,Play,1993
+13531,97,28,03/28/1993,619592,0,3,Miss Saigon,8,Broadway,Musical,1993
+8583,98,28,03/28/1993,290840,81,3,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13353,96,4,04/04/1993,603463,0,4,Miss Saigon,8,Broadway,Musical,1993
+8591,98,4,04/04/1993,317779,89,4,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13908,100,11,04/11/1993,676307,0,4,Miss Saigon,8,Broadway,Musical,1993
+8646,99,11,04/11/1993,325603,91,4,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13924,100,18,04/18/1993,644975,0,4,Miss Saigon,8,Broadway,Musical,1993
+8652,99,18,04/18/1993,321028,90,4,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13757,99,25,04/25/1993,633524,0,4,Miss Saigon,8,Broadway,Musical,1993
+8579,98,25,04/25/1993,318494,89,4,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13438,96,2,05/02/1993,628406,0,5,Miss Saigon,8,Broadway,Musical,1993
+8689,99,2,05/02/1993,331872,93,5,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13492,97,9,05/09/1993,630932,0,5,Miss Saigon,8,Broadway,Musical,1993
+8588,98,9,05/09/1993,331250,93,5,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13159,94,16,05/16/1993,628993,0,5,Miss Saigon,8,Broadway,Musical,1993
+8548,97,16,05/16/1993,331251,93,5,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+14021,101,23,05/23/1993,688323,0,5,Miss Saigon,8,Broadway,Musical,1993
+8574,98,23,05/23/1993,338581,95,5,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13716,98,30,05/30/1993,647086,0,5,Miss Saigon,8,Broadway,Musical,1993
+8593,98,30,05/30/1993,341255,95,5,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13386,96,6,06/06/1993,625804,0,6,Miss Saigon,8,Broadway,Musical,1993
+8634,98,6,06/06/1993,340862,95,6,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13870,99,13,06/13/1993,651025,0,6,Miss Saigon,8,Broadway,Musical,1993
+8716,99,13,06/13/1993,346414,97,6,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13853,99,20,06/20/1993,648784,0,6,Miss Saigon,8,Broadway,Musical,1993
+8731,100,20,06/20/1993,346624,97,6,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13713,98,27,06/27/1993,633514,0,6,Miss Saigon,8,Broadway,Musical,1993
+8719,99,27,06/27/1993,353646,99,6,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13595,97,4,07/04/1993,596972,0,7,Miss Saigon,8,Broadway,Musical,1993
+8740,100,4,07/04/1993,355128,99,7,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13196,95,11,07/11/1993,590545,0,7,Miss Saigon,8,Broadway,Musical,1993
+8723,99,11,07/11/1993,352134,98,7,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13658,98,18,07/18/1993,612295,0,7,Miss Saigon,8,Broadway,Musical,1993
+8733,100,18,07/18/1993,351757,98,7,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13742,99,25,07/25/1993,608814,0,7,Miss Saigon,8,Broadway,Musical,1993
+8723,99,25,07/25/1993,351725,98,7,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13925,100,1,08/01/1993,619202,0,8,Miss Saigon,8,Broadway,Musical,1993
+8731,100,1,08/01/1993,360077,101,8,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13969,100,8,08/08/1993,641020,0,8,Miss Saigon,8,Broadway,Musical,1993
+8756,100,8,08/08/1993,364650,102,8,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+14026,101,15,08/15/1993,660301,0,8,Miss Saigon,8,Broadway,Musical,1993
+8725,100,15,08/15/1993,365146,102,8,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+14029,101,22,08/22/1993,659943,0,8,Miss Saigon,8,Broadway,Musical,1993
+8721,99,22,08/22/1993,360052,101,8,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+14029,101,29,08/29/1993,632019,0,8,Miss Saigon,8,Broadway,Musical,1993
+8000,91,29,08/29/1993,327304,91,8,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13655,98,5,09/05/1993,606371,0,9,Miss Saigon,8,Broadway,Musical,1993
+7240,83,5,09/05/1993,298172,73,9,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13276,95,12,09/12/1993,624574,0,9,Miss Saigon,8,Broadway,Musical,1993
+7432,85,12,09/12/1993,305100,75,9,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+12729,91,19,09/19/1993,605308,0,9,Miss Saigon,8,Broadway,Musical,1993
+7186,82,19,09/19/1993,283422,70,9,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13365,96,26,09/26/1993,626809,0,9,Miss Saigon,8,Broadway,Musical,1993
+7036,80,26,09/26/1993,273342,67,9,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13629,98,3,10/03/1993,634943,0,10,Miss Saigon,8,Broadway,Musical,1993
+8145,93,3,10/03/1993,335198,82,10,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13815,99,10,10/10/1993,650645,0,10,Miss Saigon,8,Broadway,Musical,1993
+8353,95,10,10/10/1993,344344,85,10,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+14025,101,17,10/17/1993,667721,0,10,Miss Saigon,8,Broadway,Musical,1993
+8339,95,17,10/17/1993,346642,85,10,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13751,99,24,10/24/1993,655615,0,10,Miss Saigon,8,Broadway,Musical,1993
+8295,95,24,10/24/1993,347809,86,10,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13098,94,31,10/31/1993,615399,0,10,Miss Saigon,8,Broadway,Musical,1993
+7508,86,31,10/31/1993,312152,77,10,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+12711,91,7,11/07/1993,595922,0,11,Miss Saigon,8,Broadway,Musical,1993
+7492,85,7,11/07/1993,312269,77,11,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13025,93,14,11/14/1993,604762,0,11,Miss Saigon,8,Broadway,Musical,1993
+7815,89,14,11/14/1993,325958,80,11,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13034,93,21,11/21/1993,620387,0,11,Miss Saigon,8,Broadway,Musical,1993
+7798,89,21,11/21/1993,322909,79,11,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13970,100,28,11/28/1993,682887,0,11,Miss Saigon,8,Broadway,Musical,1993
+8535,97,28,11/28/1993,344759,85,11,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+12925,93,5,12/05/1993,615524,0,12,Miss Saigon,8,Broadway,Musical,1993
+7894,90,5,12/05/1993,324558,80,12,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13319,96,12,12/12/1993,644538,0,12,Miss Saigon,8,Broadway,Musical,1993
+7540,86,12,12/12/1993,314423,77,12,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+12015,86,19,12/19/1993,575625,0,12,Miss Saigon,8,Broadway,Musical,1993
+6923,79,19,12/19/1993,272259,67,12,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+13487,97,26,12/26/1993,631806,0,12,Miss Saigon,8,Broadway,Musical,1993
+6369,73,26,12/26/1993,236215,58,12,The Sisters Rosensweig,8,Ethel Barrymore,Play,1993
+14088,101,2,01/02/1994,763535,0,1,Miss Saigon,8,Broadway,Musical,1994
+8220,94,2,01/02/1994,349517,89,1,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+13583,97,9,01/09/1994,650811,0,1,Miss Saigon,8,Broadway,Musical,1994
+5800,66,9,01/09/1994,223688,55,1,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+12263,88,16,01/16/1994,562189,0,1,Miss Saigon,8,Broadway,Musical,1994
+6047,69,16,01/16/1994,229553,56,1,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+10466,75,23,01/23/1994,494369,0,1,Miss Saigon,8,Broadway,Musical,1994
+5379,61,23,01/23/1994,207831,51,1,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+10374,74,30,01/30/1994,469106,0,1,Miss Saigon,8,Broadway,Musical,1994
+4876,56,30,01/30/1994,190051,47,1,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+10366,74,6,02/06/1994,439099,0,2,Miss Saigon,8,Broadway,Musical,1994
+5042,58,6,02/06/1994,190222,47,2,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+11256,81,13,02/13/1994,476201,0,2,Miss Saigon,8,Broadway,Musical,1994
+4090,47,13,02/13/1994,155438,38,2,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+12534,90,20,02/20/1994,559483,0,2,Miss Saigon,8,Broadway,Musical,1994
+5553,63,20,02/20/1994,200340,49,2,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+13347,96,27,02/27/1994,530019,0,2,Miss Saigon,8,Broadway,Musical,1994
+5135,59,27,02/27/1994,171422,42,2,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+10022,72,6,03/06/1994,421757,0,3,Miss Saigon,8,Broadway,Musical,1994
+4122,47,6,03/06/1994,145023,36,3,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+9018,86,13,03/13/1994,410334,0,3,Beauty And The Beast,0,Palace,Musical,1994
+12114,87,13,03/13/1994,478881,0,3,Miss Saigon,8,Broadway,Musical,1994
+5133,59,13,03/13/1994,162131,40,3,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+1999,33,20,03/20/1994,42000,33,3,A Little More Magic,3,Belasco,Special,1994
+11072,80,20,03/20/1994,514041,0,3,Beauty And The Beast,0,Palace,Musical,1994
+13286,95,20,03/20/1994,535016,0,3,Miss Saigon,8,Broadway,Musical,1994
+5199,59,20,03/20/1994,161765,40,3,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+2665,33,27,03/27/1994,58000,45,3,A Little More Magic,8,Belasco,Special,1994
+11845,85,27,03/27/1994,539446,0,3,Beauty And The Beast,0,Palace,Musical,1994
+13560,97,27,03/27/1994,557699,0,3,Miss Saigon,8,Broadway,Musical,1994
+4037,46,27,03/27/1994,125996,31,3,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+3232,40,3,04/03/1994,60000,47,4,A Little More Magic,8,Belasco,Special,1994
+13809,99,3,04/03/1994,664043,0,4,Beauty And The Beast,0,Palace,Musical,1994
+13792,99,3,04/03/1994,608806,0,4,Miss Saigon,8,Broadway,Musical,1994
+5587,64,3,04/03/1994,176874,43,4,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+12456,89,10,04/10/1994,602833,0,4,Beauty And The Beast,0,Palace,Musical,1994
+13431,96,10,04/10/1994,601215,0,4,Miss Saigon,8,Broadway,Musical,1994
+5542,63,10,04/10/1994,178818,44,4,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+10486,75,17,04/17/1994,517176,0,4,Beauty And The Beast,0,Palace,Musical,1994
+4693,73,17,04/17/1994,101439,37,4,Broken Glass,0,Booth,Play,1994
+11837,85,17,04/17/1994,529194,0,4,Miss Saigon,8,Broadway,Musical,1994
+5184,59,17,04/17/1994,175720,43,4,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+11756,84,24,04/24/1994,579078,0,4,Beauty And The Beast,8,Palace,Musical,1994
+4350,67,24,04/24/1994,110828,40,4,Broken Glass,1,Booth,Play,1994
+13724,98,24,04/24/1994,621247,0,4,Miss Saigon,8,Broadway,Musical,1994
+5653,64,24,04/24/1994,184197,45,4,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+12819,92,1,05/01/1994,640515,0,5,Beauty And The Beast,8,Palace,Musical,1994
+4611,72,1,05/01/1994,130235,47,5,Broken Glass,8,Booth,Play,1994
+12643,91,1,05/01/1994,565687,0,5,Miss Saigon,8,Broadway,Musical,1994
+5366,61,1,05/01/1994,163688,40,5,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+13810,99,8,05/08/1994,680557,0,5,Beauty And The Beast,8,Palace,Musical,1994
+4820,75,8,05/08/1994,137387,50,5,Broken Glass,8,Booth,Play,1994
+13106,94,8,05/08/1994,597026,0,5,Miss Saigon,8,Broadway,Musical,1994
+5752,66,8,05/08/1994,175704,43,5,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+13339,96,15,05/15/1994,670497,0,5,Beauty And The Beast,8,Palace,Musical,1994
+5375,83,15,05/15/1994,144713,52,5,Broken Glass,8,Booth,Play,1994
+12762,92,15,05/15/1994,581270,0,5,Miss Saigon,8,Broadway,Musical,1994
+6055,69,15,05/15/1994,182854,45,5,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+14135,102,22,05/22/1994,699159,0,5,Beauty And The Beast,8,Palace,Musical,1994
+4422,69,22,05/22/1994,128673,46,5,Broken Glass,8,Booth,Play,1994
+13129,94,22,05/22/1994,608810,0,5,Miss Saigon,8,Broadway,Musical,1994
+6573,75,22,05/22/1994,199905,49,5,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+14071,101,29,05/29/1994,706051,0,5,Beauty And The Beast,8,Palace,Musical,1994
+4568,71,29,05/29/1994,134999,49,5,Broken Glass,8,Booth,Play,1994
+13237,95,29,05/29/1994,603264,0,5,Miss Saigon,8,Broadway,Musical,1994
+6570,75,29,05/29/1994,179420,44,5,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+13922,100,5,06/05/1994,700153,0,6,Beauty And The Beast,8,Palace,Musical,1994
+3668,57,5,06/05/1994,110708,40,6,Broken Glass,8,Booth,Play,1994
+12410,89,5,06/05/1994,550033,0,6,Miss Saigon,8,Broadway,Musical,1994
+4569,52,5,06/05/1994,140373,35,6,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+14118,101,12,06/12/1994,703643,0,6,Beauty And The Beast,8,Palace,Musical,1994
+4752,74,12,06/12/1994,134698,49,6,Broken Glass,8,Booth,Play,1994
+12748,91,12,06/12/1994,573191,0,6,Miss Saigon,8,Broadway,Musical,1994
+5491,63,12,06/12/1994,154988,38,6,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+14120,101,19,06/19/1994,711816,0,6,Beauty And The Beast,8,Palace,Musical,1994
+3655,57,19,06/19/1994,103884,37,6,Broken Glass,8,Booth,Play,1994
+12287,88,19,06/19/1994,554559,0,6,Miss Saigon,8,Broadway,Musical,1994
+4374,50,19,06/19/1994,118313,29,6,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+14134,102,26,06/26/1994,714442,0,6,Beauty And The Beast,8,Palace,Musical,1994
+5046,78,26,06/26/1994,155897,56,6,Broken Glass,8,Booth,Play,1994
+13507,97,26,06/26/1994,614889,0,6,Miss Saigon,8,Broadway,Musical,1994
+5314,61,26,06/26/1994,153316,38,6,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+14120,101,3,07/03/1994,716084,0,7,Beauty And The Beast,8,Palace,Musical,1994
+12978,93,3,07/03/1994,552597,0,7,Miss Saigon,8,Broadway,Musical,1994
+6264,71,3,07/03/1994,155138,38,7,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+14088,101,10,07/10/1994,714565,0,7,Beauty And The Beast,8,Palace,Musical,1994
+11405,82,10,07/10/1994,489894,0,7,Miss Saigon,8,Broadway,Musical,1994
+5761,66,10,07/10/1994,155918,38,7,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+14144,102,17,07/17/1994,715101,0,7,Beauty And The Beast,8,Palace,Musical,1994
+13088,94,17,07/17/1994,574035,0,7,Miss Saigon,8,Broadway,Musical,1994
+7357,84,17,07/17/1994,196097,48,7,The Sisters Rosensweig,8,Ethel Barrymore,Play,1994
+14106,101,24,07/24/1994,716171,0,7,Beauty And The Beast,8,Palace,Musical,1994
+13364,96,24,07/24/1994,587439,0,7,Miss Saigon,8,Broadway,Musical,1994
+14071,101,31,07/31/1994,710046,0,7,Beauty And The Beast,8,Palace,Musical,1994
+13079,94,31,07/31/1994,572411,0,7,Miss Saigon,8,Broadway,Musical,1994
+14117,101,7,08/07/1994,710021,0,8,Beauty And The Beast,8,Palace,Musical,1994
+13038,94,7,08/07/1994,569929,0,8,Miss Saigon,8,Broadway,Musical,1994
+14100,101,14,08/14/1994,711107,0,8,Beauty And The Beast,8,Palace,Musical,1994
+13815,99,14,08/14/1994,608772,0,8,Miss Saigon,8,Broadway,Musical,1994
+14091,101,21,08/21/1994,713730,0,8,Beauty And The Beast,8,Palace,Musical,1994
+13846,99,21,08/21/1994,626867,0,8,Miss Saigon,8,Broadway,Musical,1994
+14134,102,28,08/28/1994,715215,0,8,Beauty And The Beast,8,Palace,Musical,1994
+13014,93,28,08/28/1994,568870,0,8,Miss Saigon,8,Broadway,Musical,1994
+14106,101,4,09/04/1994,716171,0,9,Beauty And The Beast,8,Palace,Musical,1994
+12946,93,4,09/04/1994,547750,0,9,Miss Saigon,8,Broadway,Musical,1994
+13707,98,11,09/11/1994,697165,0,9,Beauty And The Beast,8,Palace,Musical,1994
+12870,92,11,09/11/1994,541079,0,9,Miss Saigon,8,Broadway,Musical,1994
+13691,98,18,09/18/1994,703344,0,9,Beauty And The Beast,8,Palace,Musical,1994
+12193,87,18,09/18/1994,541776,0,9,Miss Saigon,8,Broadway,Musical,1994
+13811,99,25,09/25/1994,701730,0,9,Beauty And The Beast,8,Palace,Musical,1994
+13062,94,25,09/25/1994,575295,0,9,Miss Saigon,8,Broadway,Musical,1994
+8580,89,25,09/25/1994,462220,0,9,Show Boat,0,Gershwin,Musical,1994
+13632,98,2,10/02/1994,703883,0,10,Beauty And The Beast,8,Palace,Musical,1994
+13205,95,2,10/02/1994,585716,0,10,Miss Saigon,8,Broadway,Musical,1994
+14408,94,2,10/02/1994,618920,0,10,Show Boat,1,Gershwin,Musical,1994
+14130,102,9,10/09/1994,702222,0,10,Beauty And The Beast,8,Palace,Musical,1994
+13516,97,9,10/09/1994,616562,0,10,Miss Saigon,8,Broadway,Musical,1994
+14689,96,9,10/09/1994,842636,0,10,Show Boat,8,Gershwin,Musical,1994
+14059,101,16,10/16/1994,707331,0,10,Beauty And The Beast,8,Palace,Musical,1994
+12904,93,16,10/16/1994,617530,0,10,Miss Saigon,8,Broadway,Musical,1994
+15079,98,16,10/16/1994,908553,0,10,Show Boat,8,Gershwin,Musical,1994
+14104,101,23,10/23/1994,706158,0,10,Beauty And The Beast,8,Palace,Musical,1994
+13345,96,23,10/23/1994,625615,0,10,Miss Saigon,8,Broadway,Musical,1994
+15296,100,23,10/23/1994,914673,0,10,Show Boat,8,Gershwin,Musical,1994
+13833,99,30,10/30/1994,701827,0,10,Beauty And The Beast,8,Palace,Musical,1994
+12505,90,30,10/30/1994,572688,0,10,Miss Saigon,8,Broadway,Musical,1994
+15343,100,30,10/30/1994,921160,0,10,Show Boat,8,Gershwin,Musical,1994
+13873,100,6,11/06/1994,706730,0,11,Beauty And The Beast,8,Palace,Musical,1994
+12012,86,6,11/06/1994,557494,0,11,Miss Saigon,8,Broadway,Musical,1994
+15117,99,6,11/06/1994,900007,0,11,Show Boat,8,Gershwin,Musical,1994
+11872,99,6,11/06/1994,717236,0,11,Sunset Boulevard,0,Minskoff,Musical,1994
+2218,77,6,11/06/1994,45338,0,11,The Shadow Box,0,Circle In The Square,Play,1994
+13853,100,13,11/13/1994,702281,0,11,Beauty And The Beast,8,Palace,Musical,1994
+12182,87,13,11/13/1994,562780,0,11,Miss Saigon,8,Broadway,Musical,1994
+15039,98,13,11/13/1994,923908,0,11,Show Boat,8,Gershwin,Musical,1994
+13470,98,13,11/13/1994,810629,0,11,Sunset Boulevard,0,Minskoff,Musical,1994
+4016,69,13,11/13/1994,83349,37,11,The Shadow Box,0,Circle In The Square,Play,1994
+13791,99,20,11/20/1994,701398,0,11,Beauty And The Beast,8,Palace,Musical,1994
+11999,86,20,11/20/1994,537849,0,11,Miss Saigon,8,Broadway,Musical,1994
+15154,99,20,11/20/1994,924317,0,11,Show Boat,8,Gershwin,Musical,1994
+10362,87,20,11/20/1994,632053,0,11,Sunset Boulevard,5,Minskoff,Musical,1994
+3145,54,20,11/20/1994,66822,30,11,The Shadow Box,1,Circle In The Square,Play,1994
+14133,102,27,11/27/1994,719312,0,11,Beauty And The Beast,8,Palace,Musical,1994
+13333,96,27,11/27/1994,625612,0,11,Miss Saigon,8,Broadway,Musical,1994
+15344,100,27,11/27/1994,969783,0,11,Show Boat,8,Gershwin,Musical,1994
+12829,94,27,11/27/1994,798619,0,11,Sunset Boulevard,8,Minskoff,Musical,1994
+2933,51,27,11/27/1994,75918,34,11,The Shadow Box,8,Circle In The Square,Play,1994
+13883,100,4,12/04/1994,700173,0,12,Beauty And The Beast,8,Palace,Musical,1994
+11702,84,4,12/04/1994,548468,0,12,Miss Saigon,8,Broadway,Musical,1994
+15344,100,4,12/04/1994,933366,0,12,Show Boat,8,Gershwin,Musical,1994
+13673,100,4,12/04/1994,817830,0,12,Sunset Boulevard,8,Minskoff,Musical,1994
+3153,54,4,12/04/1994,74327,33,12,The Shadow Box,8,Circle In The Square,Play,1994
+13927,100,11,12/11/1994,701289,0,12,Beauty And The Beast,8,Palace,Musical,1994
+12754,91,11,12/11/1994,614740,0,12,Miss Saigon,8,Broadway,Musical,1994
+15344,100,11,12/11/1994,941369,0,12,Show Boat,8,Gershwin,Musical,1994
+13678,100,11,12/11/1994,822596,0,12,Sunset Boulevard,8,Minskoff,Musical,1994
+3074,53,11,12/11/1994,72292,32,12,The Shadow Box,8,Circle In The Square,Play,1994
+13880,100,18,12/18/1994,701316,0,12,Beauty And The Beast,8,Palace,Musical,1994
+11559,83,18,12/18/1994,534433,0,12,Miss Saigon,8,Broadway,Musical,1994
+15275,100,18,12/18/1994,942129,0,12,Show Boat,8,Gershwin,Musical,1994
+13680,100,18,12/18/1994,822605,0,12,Sunset Boulevard,8,Minskoff,Musical,1994
+2911,50,18,12/18/1994,64222,28,12,The Shadow Box,8,Circle In The Square,Play,1994
+13757,99,25,12/25/1994,705365,0,12,Beauty And The Beast,8,Palace,Musical,1994
+11473,82,25,12/25/1994,481346,0,12,Miss Saigon,8,Broadway,Musical,1994
+14733,96,25,12/25/1994,946144,0,12,Show Boat,8,Gershwin,Musical,1994
+13485,99,25,12/25/1994,828109,0,12,Sunset Boulevard,8,Minskoff,Musical,1994
+2136,37,25,12/25/1994,41348,18,12,The Shadow Box,8,Circle In The Square,Play,1994
+14175,102,1,01/01/1995,749153,0,1,Beauty And The Beast,8,Palace,Musical,1995
+13943,89,1,01/01/1995,758960,0,1,Miss Saigon,9,Broadway,Musical,1995
+15344,100,1,01/01/1995,1021211,0,1,Show Boat,8,Gershwin,Musical,1995
+11970,100,1,01/01/1995,793957,0,1,Sunset Boulevard,7,Minskoff,Musical,1995
+4370,75,1,01/01/1995,112982,50,1,The Shadow Box,8,Circle In The Square,Play,1995
+13942,100,8,01/08/1995,707347,0,1,Beauty And The Beast,8,Palace,Musical,1995
+13382,96,8,01/08/1995,624288,0,1,Miss Saigon,8,Broadway,Musical,1995
+14375,94,8,01/08/1995,900038,0,1,Show Boat,8,Gershwin,Musical,1995
+13680,100,8,01/08/1995,826740,0,1,Sunset Boulevard,8,Minskoff,Musical,1995
+14029,101,15,01/15/1995,705869,0,1,Beauty And The Beast,8,Palace,Musical,1995
+13587,97,15,01/15/1995,519030,0,1,Miss Saigon,8,Broadway,Musical,1995
+14556,95,15,01/15/1995,900149,0,1,Show Boat,8,Gershwin,Musical,1995
+13680,100,15,01/15/1995,830400,0,1,Sunset Boulevard,8,Minskoff,Musical,1995
+13066,94,22,01/22/1995,647039,0,1,Beauty And The Beast,8,Palace,Musical,1995
+13015,93,22,01/22/1995,498017,0,1,Miss Saigon,8,Broadway,Musical,1995
+14420,94,22,01/22/1995,855121,0,1,Show Boat,8,Gershwin,Musical,1995
+11970,100,22,01/22/1995,726430,0,1,Sunset Boulevard,7,Minskoff,Musical,1995
+12684,91,29,01/29/1995,643300,0,1,Beauty And The Beast,8,Palace,Musical,1995
+13358,96,29,01/29/1995,505514,0,1,Miss Saigon,8,Broadway,Musical,1995
+14157,92,29,01/29/1995,848081,0,1,Show Boat,8,Gershwin,Musical,1995
+13680,100,29,01/29/1995,829905,0,1,Sunset Boulevard,8,Minskoff,Musical,1995
+11347,82,5,02/05/1995,567876,0,2,Beauty And The Beast,8,Palace,Musical,1995
+12120,87,5,02/05/1995,453838,0,2,Miss Saigon,8,Broadway,Musical,1995
+13279,87,5,02/05/1995,800193,0,2,Show Boat,8,Gershwin,Musical,1995
+13680,100,5,02/05/1995,821043,0,2,Sunset Boulevard,8,Minskoff,Musical,1995
+1540,53,5,02/05/1995,31152,24,2,Uncle Vanya,0,Circle In The Square,Play,1995
+13012,93,12,02/12/1995,648339,0,2,Beauty And The Beast,8,Palace,Musical,1995
+11835,85,12,02/12/1995,448814,0,2,Miss Saigon,8,Broadway,Musical,1995
+13157,86,12,02/12/1995,758329,0,2,Show Boat,8,Gershwin,Musical,1995
+5774,79,12,02/12/1995,101075,0,2,Smokey Joe'S Cafe,0,Virginia,Musical,1995
+13411,98,12,02/12/1995,804959,0,2,Sunset Boulevard,8,Minskoff,Musical,1995
+3379,58,12,02/12/1995,66361,25,2,Uncle Vanya,0,Circle In The Square,Play,1995
+13779,99,19,02/19/1995,674874,0,2,Beauty And The Beast,8,Palace,Musical,1995
+12920,93,19,02/19/1995,519955,0,2,Miss Saigon,8,Broadway,Musical,1995
+14573,95,19,02/19/1995,841911,0,2,Show Boat,8,Gershwin,Musical,1995
+7969,82,19,02/19/1995,166231,0,2,Smokey Joe'S Cafe,0,Virginia,Musical,1995
+13306,97,19,02/19/1995,803175,0,2,Sunset Boulevard,8,Minskoff,Musical,1995
+3800,66,19,02/19/1995,80760,31,2,Uncle Vanya,0,Circle In The Square,Play,1995
+14030,101,26,02/26/1995,676483,0,2,Beauty And The Beast,8,Palace,Musical,1995
+13809,99,26,02/26/1995,541097,0,2,Miss Saigon,8,Broadway,Musical,1995
+15182,99,26,02/26/1995,873122,0,2,Show Boat,8,Gershwin,Musical,1995
+9570,113,26,02/26/1995,186108,0,2,Smokey Joe'S Cafe,0,Virginia,Musical,1995
+13680,100,26,02/26/1995,819104,0,2,Sunset Boulevard,8,Minskoff,Musical,1995
+2994,52,26,02/26/1995,70129,27,2,Uncle Vanya,5,Circle In The Square,Play,1995
+13038,94,5,03/05/1995,672365,0,3,Beauty And The Beast,8,Palace,Musical,1995
+12655,91,5,03/05/1995,495556,0,3,Miss Saigon,8,Broadway,Musical,1995
+13650,89,5,03/05/1995,796472,0,3,Show Boat,8,Gershwin,Musical,1995
+8806,91,5,03/05/1995,185723,0,3,Smokey Joe'S Cafe,4,Virginia,Musical,1995
+13680,100,5,03/05/1995,792596,0,3,Sunset Boulevard,8,Minskoff,Musical,1995
+1232,21,5,03/05/1995,51045,20,3,Uncle Vanya,8,Circle In The Square,Play,1995
+12778,92,12,03/12/1995,659195,0,3,Beauty And The Beast,8,Palace,Musical,1995
+12335,88,12,03/12/1995,513554,0,3,Miss Saigon,8,Broadway,Musical,1995
+14007,91,12,03/12/1995,804972,0,3,Show Boat,8,Gershwin,Musical,1995
+7864,81,12,03/12/1995,250386,0,3,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12996,95,12,03/12/1995,569720,0,3,Sunset Boulevard,8,Minskoff,Musical,1995
+2481,43,12,03/12/1995,58827,23,3,Uncle Vanya,8,Circle In The Square,Play,1995
+13300,96,19,03/19/1995,676357,0,3,Beauty And The Beast,8,Palace,Musical,1995
+2105,54,19,03/19/1995,49791,35,3,Having Our Say,0,Booth,Play,1995
+13285,95,19,03/19/1995,541098,0,3,Miss Saigon,8,Broadway,Musical,1995
+14073,92,19,03/19/1995,846722,0,3,Show Boat,8,Gershwin,Musical,1995
+7632,79,19,03/19/1995,265786,0,3,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,19,03/19/1995,575001,0,3,Sunset Boulevard,8,Minskoff,Musical,1995
+2542,44,19,03/19/1995,63573,24,3,Uncle Vanya,8,Circle In The Square,Play,1995
+12958,93,26,03/26/1995,654917,0,3,Beauty And The Beast,8,Palace,Musical,1995
+3910,31,26,03/26/1995,87787,31,3,Having Our Say,8,Booth,Play,1995
+13199,95,26,03/26/1995,548346,0,3,Miss Saigon,8,Broadway,Musical,1995
+14026,91,26,03/26/1995,832693,0,3,Show Boat,8,Gershwin,Musical,1995
+6914,71,26,03/26/1995,272501,0,3,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,26,03/26/1995,816353,0,3,Sunset Boulevard,8,Minskoff,Musical,1995
+12496,90,2,04/02/1995,633756,0,4,Beauty And The Beast,8,Palace,Musical,1995
+3465,55,2,04/02/1995,77778,27,4,Having Our Say,0,Booth,Play,1995
+12990,93,2,04/02/1995,524958,0,4,Miss Saigon,8,Broadway,Musical,1995
+14061,92,2,04/02/1995,841368,0,4,Show Boat,8,Gershwin,Musical,1995
+6575,68,2,04/02/1995,265436,0,4,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,2,04/02/1995,827432,0,4,Sunset Boulevard,8,Minskoff,Musical,1995
+12874,92,9,04/09/1995,646656,0,4,Beauty And The Beast,8,Palace,Musical,1995
+4275,68,9,04/09/1995,109030,38,4,Having Our Say,5,Booth,Play,1995
+12781,92,9,04/09/1995,526333,0,4,Miss Saigon,8,Broadway,Musical,1995
+14133,92,9,04/09/1995,832961,0,4,Show Boat,8,Gershwin,Musical,1995
+6661,69,9,04/09/1995,272551,0,4,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,9,04/09/1995,823706,0,4,Sunset Boulevard,8,Minskoff,Musical,1995
+13903,100,16,04/16/1995,698661,0,4,Beauty And The Beast,8,Palace,Musical,1995
+3408,87,16,04/16/1995,172544,90,4,Hamlet 95,0,Belasco,Play,1995
+5929,95,16,04/16/1995,153547,54,4,Having Our Say,8,Booth,Play,1995
+13532,97,16,04/16/1995,599230,0,4,Miss Saigon,8,Broadway,Musical,1995
+14581,95,16,04/16/1995,901095,0,4,Show Boat,8,Gershwin,Musical,1995
+6760,70,16,04/16/1995,258973,0,4,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,16,04/16/1995,831350,0,4,Sunset Boulevard,8,Minskoff,Musical,1995
+13907,100,23,04/23/1995,694389,0,4,Beauty And The Beast,8,Palace,Musical,1995
+7356,94,23,04/23/1995,345016,90,4,Hamlet 95,0,Belasco,Play,1995
+4970,80,23,04/23/1995,164527,58,4,Having Our Say,8,Booth,Play,1995
+13651,98,23,04/23/1995,639911,0,4,Miss Saigon,8,Broadway,Musical,1995
+15174,99,23,04/23/1995,929967,0,4,Show Boat,8,Gershwin,Musical,1995
+8675,89,23,04/23/1995,357175,0,4,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,23,04/23/1995,828493,0,4,Sunset Boulevard,8,Minskoff,Musical,1995
+1149,53,23,04/23/1995,22162,0,4,The Rose Tattoo,0,Circle In The Square,Play,1995
+13219,95,30,04/30/1995,669176,0,4,Beauty And The Beast,8,Palace,Musical,1995
+6028,88,30,04/30/1995,271658,81,4,Hamlet 95,0,Belasco,Play,1995
+4433,71,30,04/30/1995,133919,47,4,Having Our Say,8,Booth,Play,1995
+13220,95,30,04/30/1995,556451,0,4,Miss Saigon,8,Broadway,Musical,1995
+14437,94,30,04/30/1995,848034,0,4,Show Boat,8,Gershwin,Musical,1995
+7415,76,30,04/30/1995,298361,0,4,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,30,04/30/1995,825082,0,4,Sunset Boulevard,8,Minskoff,Musical,1995
+2607,45,30,04/30/1995,61479,63,4,The Rose Tattoo,1,Circle In The Square,Play,1995
+13227,95,7,05/07/1995,665357,0,5,Beauty And The Beast,8,Palace,Musical,1995
+6538,83,7,05/07/1995,296818,77,5,Hamlet 95,8,Belasco,Play,1995
+4032,65,7,05/07/1995,126171,44,5,Having Our Say,8,Booth,Play,1995
+12744,91,7,05/07/1995,558840,0,5,Miss Saigon,8,Broadway,Musical,1995
+14578,95,7,05/07/1995,848683,0,5,Show Boat,8,Gershwin,Musical,1995
+7518,78,7,05/07/1995,291037,0,5,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,7,05/07/1995,825171,0,5,Sunset Boulevard,8,Minskoff,Musical,1995
+3688,64,7,05/07/1995,94699,97,5,The Rose Tattoo,8,Circle In The Square,Play,1995
+12754,92,14,05/14/1995,644291,0,5,Beauty And The Beast,8,Palace,Musical,1995
+6751,99,14,05/14/1995,285521,85,5,Hamlet 95,7,Belasco,Play,1995
+4674,75,14,05/14/1995,166293,58,5,Having Our Say,8,Booth,Play,1995
+11941,86,14,05/14/1995,522820,0,5,Miss Saigon,8,Broadway,Musical,1995
+14131,92,14,05/14/1995,837428,0,5,Show Boat,8,Gershwin,Musical,1995
+8409,87,14,05/14/1995,349459,0,5,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,14,05/14/1995,828232,0,5,Sunset Boulevard,8,Minskoff,Musical,1995
+4111,71,14,05/14/1995,108295,62,5,The Rose Tattoo,8,Circle In The Square,Play,1995
+13611,98,21,05/21/1995,678223,0,5,Beauty And The Beast,8,Palace,Musical,1995
+7719,99,21,05/21/1995,360116,93,5,Hamlet 95,8,Belasco,Play,1995
+4971,80,21,05/21/1995,171435,60,5,Having Our Say,8,Booth,Play,1995
+12628,91,21,05/21/1995,564672,0,5,Miss Saigon,8,Broadway,Musical,1995
+15028,98,21,05/21/1995,893924,0,5,Show Boat,8,Gershwin,Musical,1995
+8806,91,21,05/21/1995,367681,0,5,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,21,05/21/1995,813579,0,5,Sunset Boulevard,8,Minskoff,Musical,1995
+4336,75,21,05/21/1995,111942,64,5,The Rose Tattoo,8,Circle In The Square,Play,1995
+13551,97,28,05/28/1995,684431,0,5,Beauty And The Beast,8,Palace,Musical,1995
+6780,99,28,05/28/1995,324495,96,5,Hamlet 95,7,Belasco,Play,1995
+4634,74,28,05/28/1995,153289,54,5,Having Our Say,8,Booth,Play,1995
+13308,95,28,05/28/1995,591314,0,5,Miss Saigon,8,Broadway,Musical,1995
+15007,98,28,05/28/1995,906860,0,5,Show Boat,8,Gershwin,Musical,1995
+9077,94,28,05/28/1995,371958,0,5,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,28,05/28/1995,830880,0,5,Sunset Boulevard,8,Minskoff,Musical,1995
+3858,67,28,05/28/1995,101137,58,5,The Rose Tattoo,8,Circle In The Square,Play,1995
+3992,100,4,06/04/1995,156955,79,6,A Month In The Country,8,Criterion,Play,1995
+5644,66,4,06/04/1995,223340,64,6,Arcadia,8,Vivian Beaumont,Play,1995
+12165,87,4,06/04/1995,649179,0,6,Beauty And The Beast,8,Palace,Musical,1995
+8443,71,4,06/04/1995,365355,55,6,Cats,8,Winter Garden,Musical,1995
+4973,61,4,06/04/1995,103769,54,6,Chronicle Of A Death Foretold,0,Plymouth,Musical,1995
+7786,99,4,06/04/1995,384043,100,6,Hamlet 95,8,Belasco,Play,1995
+4226,68,4,06/04/1995,135211,47,6,Having Our Say,8,Booth,Play,1995
+8197,75,4,06/04/1995,426492,100,6,How To Succeed In Business Without Really Trying,8,Richard Rodgers,Musical,1995
+6549,75,4,06/04/1995,280896,62,6,Indiscretions,8,Ethel Barrymore,Play,1995
+2343,42,4,06/04/1995,57491,25,6,Jackie Mason:  Politically Incorrect,7,Golden,Play,1995
+4537,50,4,06/04/1995,186660,35,6,Kiss Of The Spider Woman,8,Broadhurst,Musical,1995
+10327,91,4,06/04/1995,436174,79,6,Les Misrables,8,Imperial,Musical,1995
+4154,55,4,06/04/1995,120573,41,6,Love! Valour! Compassion!,8,Walter Kerr,Play,1995
+12408,89,4,06/04/1995,532785,74,6,Miss Saigon,8,Broadway,Musical,1995
+13890,91,4,06/04/1995,841201,0,6,Show Boat,8,Gershwin,Musical,1995
+8595,89,4,06/04/1995,344624,61,6,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,4,06/04/1995,830699,0,6,Sunset Boulevard,8,Minskoff,Musical,1995
+3558,61,4,06/04/1995,98592,57,6,The Rose Tattoo,8,Circle In The Square,Play,1995
+6007,47,4,06/04/1995,229369,35,6,Tommy,8,St. James,Musical,1995
+3489,100,11,06/11/1995,164039,82,6,A Month In The Country,7,Criterion,Play,1995
+5862,68,11,06/11/1995,237959,68,6,Arcadia,8,Vivian Beaumont,Play,1995
+12634,91,11,06/11/1995,660900,0,6,Beauty And The Beast,8,Palace,Musical,1995
+1684,25,11,06/11/1995,27020,9,6,Buttons On Broadway,3,Ambassador,Special,1995
+8000,102,11,06/11/1995,395935,103,6,Hamlet 95,8,Belasco,Play,1995
+4026,64,11,06/11/1995,139511,49,6,Having Our Say,8,Booth,Play,1995
+12611,90,11,06/11/1995,549940,0,6,Miss Saigon,8,Broadway,Musical,1995
+14843,97,11,06/11/1995,914980,0,6,Show Boat,8,Gershwin,Musical,1995
+9695,100,11,06/11/1995,425706,0,6,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,11,06/11/1995,831263,0,6,Sunset Boulevard,8,Minskoff,Musical,1995
+3851,66,11,06/11/1995,104038,60,6,The Rose Tattoo,8,Circle In The Square,Play,1995
+5598,65,18,06/18/1995,224376,64,6,Arcadia,8,Vivian Beaumont,Play,1995
+13253,95,18,06/18/1995,694791,0,6,Beauty And The Beast,8,Palace,Musical,1995
+7016,102,18,06/18/1995,343377,102,6,Hamlet 95,7,Belasco,Play,1995
+4170,67,18,06/18/1995,140144,49,6,Having Our Say,8,Booth,Play,1995
+12816,92,18,06/18/1995,555539,0,6,Miss Saigon,8,Broadway,Musical,1995
+15169,99,18,06/18/1995,945355,0,6,Show Boat,8,Gershwin,Musical,1995
+9684,100,18,06/18/1995,449962,0,6,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,18,06/18/1995,831416,0,6,Sunset Boulevard,8,Minskoff,Musical,1995
+1240,83,18,06/18/1995,32682,0,6,The Play'S The Thing,0,Criterion,Play,1995
+4308,74,18,06/18/1995,110597,64,6,The Rose Tattoo,8,Circle In The Square,Play,1995
+5727,67,25,06/25/1995,228509,65,6,Arcadia,8,Vivian Beaumont,Play,1995
+13452,97,25,06/25/1995,707501,0,6,Beauty And The Beast,8,Palace,Musical,1995
+7995,102,25,06/25/1995,397714,103,6,Hamlet 95,8,Belasco,Play,1995
+4822,77,25,06/25/1995,148142,52,6,Having Our Say,8,Booth,Play,1995
+12990,93,25,06/25/1995,563149,0,6,Miss Saigon,8,Broadway,Musical,1995
+15094,98,25,06/25/1995,942277,0,6,Show Boat,8,Gershwin,Musical,1995
+9737,100,25,06/25/1995,461366,0,6,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,25,06/25/1995,832134,0,6,Sunset Boulevard,8,Minskoff,Musical,1995
+4405,76,25,06/25/1995,103296,59,6,The Rose Tattoo,8,Circle In The Square,Play,1995
+5956,69,2,07/02/1995,229288,66,7,Arcadia,8,Vivian Beaumont,Play,1995
+13070,94,2,07/02/1995,691622,0,7,Beauty And The Beast,8,Palace,Musical,1995
+7011,102,2,07/02/1995,356271,106,7,Hamlet 95,7,Belasco,Play,1995
+4495,72,2,07/02/1995,136258,48,7,Having Our Say,8,Booth,Play,1995
+12650,91,2,07/02/1995,527770,0,7,Miss Saigon,8,Broadway,Musical,1995
+14355,94,2,07/02/1995,897318,0,7,Show Boat,8,Gershwin,Musical,1995
+9653,100,2,07/02/1995,450520,0,7,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13680,100,2,07/02/1995,838570,0,7,Sunset Boulevard,8,Minskoff,Musical,1995
+4930,85,2,07/02/1995,123711,71,7,The Rose Tattoo,8,Circle In The Square,Play,1995
+4367,51,9,07/09/1995,160324,46,7,Arcadia,8,Vivian Beaumont,Play,1995
+12855,92,9,07/09/1995,613880,0,7,Beauty And The Beast,8,Palace,Musical,1995
+8020,102,9,07/09/1995,401321,104,7,Hamlet 95,8,Belasco,Play,1995
+4412,71,9,07/09/1995,126339,44,7,Having Our Say,8,Booth,Play,1995
+12799,92,9,07/09/1995,529161,0,7,Miss Saigon,8,Broadway,Musical,1995
+13368,87,9,07/09/1995,784546,0,7,Show Boat,8,Gershwin,Musical,1995
+8926,92,9,07/09/1995,431618,0,7,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+11756,86,9,07/09/1995,722906,0,7,Sunset Boulevard,8,Minskoff,Musical,1995
+5983,70,16,07/16/1995,206882,59,7,Arcadia,8,Vivian Beaumont,Play,1995
+12807,92,16,07/16/1995,682685,0,7,Beauty And The Beast,8,Palace,Musical,1995
+7016,102,16,07/16/1995,359707,107,7,Hamlet 95,7,Belasco,Play,1995
+4123,66,16,07/16/1995,116019,41,7,Having Our Say,8,Booth,Play,1995
+12462,89,16,07/16/1995,533135,0,7,Miss Saigon,8,Broadway,Musical,1995
+13547,88,16,07/16/1995,822836,0,7,Show Boat,8,Gershwin,Musical,1995
+9083,94,16,07/16/1995,435314,0,7,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12889,94,16,07/16/1995,795120,0,7,Sunset Boulevard,8,Minskoff,Musical,1995
+6551,76,23,07/23/1995,211324,60,7,Arcadia,8,Vivian Beaumont,Play,1995
+13449,97,23,07/23/1995,710681,0,7,Beauty And The Beast,8,Palace,Musical,1995
+7964,102,23,07/23/1995,400400,104,7,Hamlet 95,8,Belasco,Play,1995
+4099,66,23,07/23/1995,119005,42,7,Having Our Say,8,Booth,Play,1995
+13044,94,23,07/23/1995,547300,0,7,Miss Saigon,8,Broadway,Musical,1995
+13684,89,23,07/23/1995,834240,0,7,Show Boat,8,Gershwin,Musical,1995
+9509,98,23,07/23/1995,446152,0,7,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12545,92,23,07/23/1995,764033,0,7,Sunset Boulevard,8,Minskoff,Musical,1995
+6023,70,30,07/30/1995,199709,57,7,Arcadia,8,Vivian Beaumont,Play,1995
+13733,99,30,07/30/1995,725939,0,7,Beauty And The Beast,8,Palace,Musical,1995
+4665,75,30,07/30/1995,135927,48,7,Having Our Say,8,Booth,Play,1995
+13272,95,30,07/30/1995,557607,0,7,Miss Saigon,8,Broadway,Musical,1995
+13612,89,30,07/30/1995,816331,0,7,Show Boat,8,Gershwin,Musical,1995
+9337,96,30,07/30/1995,448330,0,7,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12770,93,30,07/30/1995,788005,0,7,Sunset Boulevard,8,Minskoff,Musical,1995
+6342,74,6,08/06/1995,203739,58,8,Arcadia,8,Vivian Beaumont,Play,1995
+13282,95,6,08/06/1995,704174,0,8,Beauty And The Beast,8,Palace,Musical,1995
+3550,57,6,08/06/1995,105741,37,8,Having Our Say,8,Booth,Play,1995
+12383,89,6,08/06/1995,517937,0,8,Miss Saigon,8,Broadway,Musical,1995
+12766,83,6,08/06/1995,747484,0,8,Show Boat,8,Gershwin,Musical,1995
+8963,92,6,08/06/1995,431516,0,8,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12320,90,6,08/06/1995,756292,0,8,Sunset Boulevard,8,Minskoff,Musical,1995
+7776,91,13,08/13/1995,254443,73,8,Arcadia,8,Vivian Beaumont,Play,1995
+13883,100,13,08/13/1995,731120,0,8,Beauty And The Beast,8,Palace,Musical,1995
+4686,75,13,08/13/1995,131436,46,8,Having Our Say,8,Booth,Play,1995
+13662,98,13,08/13/1995,587475,0,8,Miss Saigon,8,Broadway,Musical,1995
+14341,93,13,08/13/1995,845042,0,8,Show Boat,8,Gershwin,Musical,1995
+9756,101,13,08/13/1995,480378,0,8,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+13232,97,13,08/13/1995,816443,0,8,Sunset Boulevard,8,Minskoff,Musical,1995
+8228,96,20,08/20/1995,278822,80,8,Arcadia,8,Vivian Beaumont,Play,1995
+13786,99,20,08/20/1995,728359,0,8,Beauty And The Beast,8,Palace,Musical,1995
+4162,67,20,08/20/1995,111216,39,8,Having Our Say,8,Booth,Play,1995
+13742,99,20,08/20/1995,587909,0,8,Miss Saigon,8,Broadway,Musical,1995
+13692,89,20,08/20/1995,801410,0,8,Show Boat,8,Gershwin,Musical,1995
+9546,98,20,08/20/1995,455580,0,8,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12857,94,20,08/20/1995,792915,0,8,Sunset Boulevard,8,Minskoff,Musical,1995
+8465,99,27,08/27/1995,327789,94,8,Arcadia,8,Vivian Beaumont,Play,1995
+13276,95,27,08/27/1995,705992,0,8,Beauty And The Beast,8,Palace,Musical,1995
+4538,73,27,08/27/1995,124627,44,8,Having Our Say,8,Booth,Play,1995
+13164,94,27,08/27/1995,549987,0,8,Miss Saigon,8,Broadway,Musical,1995
+13309,87,27,08/27/1995,774039,0,8,Show Boat,8,Gershwin,Musical,1995
+9056,93,27,08/27/1995,445989,0,8,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+11997,88,27,08/27/1995,740401,0,8,Sunset Boulevard,8,Minskoff,Musical,1995
+12590,90,3,09/03/1995,674299,0,9,Beauty And The Beast,8,Palace,Musical,1995
+3493,100,3,09/03/1995,173012,73,9,Company 95,0,Criterion,Musical,1995
+4069,65,3,09/03/1995,110385,39,9,Having Our Say,8,Booth,Play,1995
+12822,92,3,09/03/1995,536886,0,9,Miss Saigon,8,Broadway,Musical,1995
+13614,89,3,09/03/1995,777155,0,9,Show Boat,8,Gershwin,Musical,1995
+8846,91,3,09/03/1995,428881,0,9,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12155,89,3,09/03/1995,753461,0,9,Sunset Boulevard,8,Minskoff,Musical,1995
+12928,93,10,09/10/1995,666146,0,9,Beauty And The Beast,8,Palace,Musical,1995
+2280,36,10,09/10/1995,71868,25,9,Having Our Say,8,Booth,Play,1995
+11395,82,10,09/10/1995,501022,0,9,Miss Saigon,8,Broadway,Musical,1995
+13005,85,10,09/10/1995,751635,0,9,Show Boat,8,Gershwin,Musical,1995
+7714,80,10,09/10/1995,357929,0,9,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+11823,86,10,09/10/1995,733139,0,9,Sunset Boulevard,8,Minskoff,Musical,1995
+12674,91,17,09/17/1995,645502,0,9,Beauty And The Beast,8,Palace,Musical,1995
+3118,50,17,09/17/1995,97390,34,9,Having Our Say,8,Booth,Play,1995
+11915,85,17,09/17/1995,518014,0,9,Miss Saigon,8,Broadway,Musical,1995
+8376,92,17,09/17/1995,203836,41,9,Moon Over Buffalo,0,Martin Beck,Play,1995
+13502,88,17,09/17/1995,796676,0,9,Show Boat,8,Gershwin,Musical,1995
+8927,92,17,09/17/1995,412730,0,9,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12072,88,17,09/17/1995,745239,0,9,Sunset Boulevard,8,Minskoff,Musical,1995
+12925,93,24,09/24/1995,663088,0,9,Beauty And The Beast,8,Palace,Musical,1995
+1214,56,24,09/24/1995,28854,27,9,Garden District,0,Circle In The Square,Play,1995
+3416,55,24,09/24/1995,104626,37,9,Having Our Say,8,Booth,Play,1995
+12569,90,24,09/24/1995,559919,0,9,Miss Saigon,8,Broadway,Musical,1995
+7198,70,24,09/24/1995,208659,37,9,Moon Over Buffalo,0,Martin Beck,Play,1995
+14441,94,24,09/24/1995,854007,0,9,Show Boat,8,Gershwin,Musical,1995
+9173,95,24,09/24/1995,421587,0,9,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12575,92,24,09/24/1995,778134,0,9,Sunset Boulevard,8,Minskoff,Musical,1995
+12347,89,1,10/01/1995,633837,0,10,Beauty And The Beast,8,Palace,Musical,1995
+3176,55,1,10/01/1995,72218,40,10,Garden District,0,Circle In The Square,Play,1995
+3897,62,1,10/01/1995,114236,40,10,Having Our Say,8,Booth,Play,1995
+12331,88,1,10/01/1995,543587,0,10,Miss Saigon,8,Broadway,Musical,1995
+10311,100,1,10/01/1995,274274,52,10,Moon Over Buffalo,1,Martin Beck,Play,1995
+14245,93,1,10/01/1995,837503,0,10,Show Boat,8,Gershwin,Musical,1995
+8398,87,1,10/01/1995,390044,0,10,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12189,89,1,10/01/1995,753479,0,10,Sunset Boulevard,8,Minskoff,Musical,1995
+13300,96,8,10/08/1995,671027,0,10,Beauty And The Beast,8,Palace,Musical,1995
+3021,52,8,10/08/1995,69546,39,10,Garden District,0,Circle In The Square,Play,1995
+4335,69,8,10/08/1995,126768,44,10,Having Our Say,8,Booth,Play,1995
+12965,93,8,10/08/1995,564664,0,10,Miss Saigon,8,Broadway,Musical,1995
+9704,94,8,10/08/1995,355142,67,10,Moon Over Buffalo,8,Martin Beck,Play,1995
+1872,52,8,10/08/1995,83374,46,10,Patti Lupone On Broadway,0,Walter Kerr,Special,1995
+14100,92,8,10/08/1995,821028,0,10,Show Boat,8,Gershwin,Musical,1995
+9051,93,8,10/08/1995,416560,0,10,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12138,89,8,10/08/1995,752539,0,10,Sunset Boulevard,8,Minskoff,Musical,1995
+12895,101,8,10/08/1995,792398,0,10,Victor/Victoria,0,Marquis,Musical,1995
+13629,98,15,10/15/1995,689188,0,10,Beauty And The Beast,8,Palace,Musical,1995
+3684,73,15,10/15/1995,78405,44,10,Garden District,7,Circle In The Square,Play,1995
+4702,75,15,10/15/1995,128876,45,10,Having Our Say,8,Booth,Play,1995
+9049,90,15,10/15/1995,323839,53,10,"Hello, Dolly!",0,Lunt-Fontanne,Musical,1995
+13249,95,15,10/15/1995,607607,0,10,Miss Saigon,8,Broadway,Musical,1995
+9394,91,15,10/15/1995,438178,82,10,Moon Over Buffalo,8,Martin Beck,Play,1995
+14438,94,15,10/15/1995,857449,0,10,Show Boat,8,Gershwin,Musical,1995
+9222,95,15,10/15/1995,453329,0,10,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12358,90,15,10/15/1995,762251,0,10,Sunset Boulevard,8,Minskoff,Musical,1995
+6550,82,15,10/15/1995,321603,73,10,The Tempest,0,Broadhurst,Play,1995
+12836,100,15,10/15/1995,806787,0,10,Victor/Victoria,0,Marquis,Musical,1995
+13090,94,22,10/22/1995,666444,0,10,Beauty And The Beast,8,Palace,Musical,1995
+4131,71,22,10/22/1995,83833,47,10,Garden District,8,Circle In The Square,Play,1995
+4455,71,22,10/22/1995,124022,44,10,Having Our Say,8,Booth,Play,1995
+12977,93,22,10/22/1995,593347,0,10,Miss Saigon,8,Broadway,Musical,1995
+9543,92,22,10/22/1995,416123,78,10,Moon Over Buffalo,8,Martin Beck,Play,1995
+14397,94,22,10/22/1995,856441,0,10,Show Boat,8,Gershwin,Musical,1995
+9532,98,22,10/22/1995,450247,0,10,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12246,90,22,10/22/1995,755882,0,10,Sunset Boulevard,8,Minskoff,Musical,1995
+6760,74,22,10/22/1995,308285,62,10,The Tempest,0,Broadhurst,Play,1995
+12923,101,22,10/22/1995,795510,0,10,Victor/Victoria,0,Marquis,Musical,1995
+13165,95,29,10/29/1995,663339,0,10,Beauty And The Beast,8,Palace,Musical,1995
+3266,56,29,10/29/1995,75046,42,10,Garden District,8,Circle In The Square,Play,1995
+4511,72,29,10/29/1995,131067,46,10,Having Our Say,8,Booth,Play,1995
+3815,96,29,10/29/1995,117959,0,10,Master Class,0,Golden,Play,1995
+12647,91,29,10/29/1995,567215,0,10,Miss Saigon,8,Broadway,Musical,1995
+9680,94,29,10/29/1995,428099,81,10,Moon Over Buffalo,8,Martin Beck,Play,1995
+2355,46,29,10/29/1995,50389,27,10,Sacrilege,0,Belasco,Play,1995
+14349,94,29,10/29/1995,858485,0,10,Show Boat,8,Gershwin,Musical,1995
+9389,97,29,10/29/1995,464725,0,10,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12956,95,29,10/29/1995,800164,0,10,Sunset Boulevard,8,Minskoff,Musical,1995
+7066,77,29,10/29/1995,337611,68,10,The Tempest,0,Broadhurst,Play,1995
+11298,88,29,10/29/1995,639582,0,10,Victor/Victoria,7,Marquis,Musical,1995
+13120,94,5,11/05/1995,696326,0,11,Beauty And The Beast,8,Palace,Musical,1995
+3700,34,5,11/05/1995,34350,0,11,Danny Gans On Broadway,0,Neil Simon,Special,1995
+4515,78,5,11/05/1995,102772,57,11,Garden District,8,Circle In The Square,Play,1995
+4218,68,5,11/05/1995,123084,43,11,Having Our Say,8,Booth,Play,1995
+5550,87,5,11/05/1995,187789,0,11,Master Class,1,Golden,Play,1995
+11671,84,5,11/05/1995,536493,0,11,Miss Saigon,8,Broadway,Musical,1995
+9036,87,5,11/05/1995,392449,74,11,Moon Over Buffalo,8,Martin Beck,Play,1995
+4059,50,5,11/05/1995,100372,33,11,Sacrilege,5,Belasco,Play,1995
+13382,87,5,11/05/1995,771528,0,11,Show Boat,8,Gershwin,Musical,1995
+8532,88,5,11/05/1995,427291,0,11,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12171,89,5,11/05/1995,753290,0,11,Sunset Boulevard,8,Minskoff,Musical,1995
+7050,77,5,11/05/1995,345210,69,11,The Tempest,6,Broadhurst,Play,1995
+12936,101,5,11/05/1995,800731,0,11,Victor/Victoria,8,Marquis,Musical,1995
+12214,88,12,11/12/1995,638918,0,11,Beauty And The Beast,8,Palace,Musical,1995
+4571,38,12,11/12/1995,50012,0,11,Danny Gans On Broadway,6,Neil Simon,Special,1995
+4416,71,12,11/12/1995,128169,45,11,Having Our Say,8,Booth,Play,1995
+5981,94,12,11/12/1995,203405,0,11,Master Class,8,Golden,Play,1995
+11400,82,12,11/12/1995,515617,0,11,Miss Saigon,8,Broadway,Musical,1995
+8504,82,12,11/12/1995,377616,71,11,Moon Over Buffalo,8,Martin Beck,Play,1995
+4637,57,12,11/12/1995,110587,37,11,Sacrilege,8,Belasco,Play,1995
+13354,87,12,11/12/1995,771823,0,11,Show Boat,8,Gershwin,Musical,1995
+8290,85,12,11/12/1995,434176,0,11,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+11512,84,12,11/12/1995,714382,0,11,Sunset Boulevard,8,Minskoff,Musical,1995
+7866,86,12,11/12/1995,383491,77,11,The Tempest,8,Broadhurst,Play,1995
+12936,101,12,11/12/1995,821693,0,11,Victor/Victoria,8,Marquis,Musical,1995
+12067,87,19,11/19/1995,631152,0,11,Beauty And The Beast,8,Palace,Musical,1995
+4872,78,19,11/19/1995,128162,45,11,Having Our Say,8,Booth,Play,1995
+968,67,19,11/19/1995,21750,30,11,Holiday,0,Circle In The Square,Play,1995
+6298,99,19,11/19/1995,216747,0,11,Master Class,8,Golden,Play,1995
+11813,85,19,11/19/1995,532205,0,11,Miss Saigon,8,Broadway,Musical,1995
+8100,78,19,11/19/1995,370784,70,11,Moon Over Buffalo,8,Martin Beck,Play,1995
+4343,53,19,11/19/1995,96106,32,11,Sacrilege,8,Belasco,Play,1995
+1120,15,19,11/19/1995,27661,12,11,School For Scandal,1,Lyceum,Play,1995
+13535,88,19,11/19/1995,785770,0,11,Show Boat,8,Gershwin,Musical,1995
+8148,84,19,11/19/1995,421594,0,11,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12137,89,19,11/19/1995,745583,0,11,Sunset Boulevard,8,Minskoff,Musical,1995
+7733,84,19,11/19/1995,382764,77,11,The Tempest,8,Broadhurst,Play,1995
+12936,101,19,11/19/1995,820843,0,11,Victor/Victoria,8,Marquis,Musical,1995
+13838,99,26,11/26/1995,727014,0,11,Beauty And The Beast,8,Palace,Musical,1995
+3970,64,26,11/26/1995,137214,48,11,Having Our Say,8,Booth,Play,1995
+3304,57,26,11/26/1995,70534,24,11,Holiday,0,Circle In The Square,Play,1995
+5529,100,26,11/26/1995,205230,0,11,Master Class,7,Golden,Play,1995
+13510,97,26,11/26/1995,662062,0,11,Miss Saigon,8,Broadway,Musical,1995
+8281,80,26,11/26/1995,393236,74,11,Moon Over Buffalo,8,Martin Beck,Play,1995
+14008,91,26,11/26/1995,887399,0,11,Show Boat,8,Gershwin,Musical,1995
+9366,97,26,11/26/1995,490944,0,11,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+12767,93,26,11/26/1995,796183,0,11,Sunset Boulevard,8,Minskoff,Musical,1995
+8405,92,26,11/26/1995,435911,87,11,The Tempest,8,Broadhurst,Play,1995
+12936,101,26,11/26/1995,835853,0,11,Victor/Victoria,8,Marquis,Musical,1995
+13174,95,3,12/03/1995,684490,0,12,Beauty And The Beast,8,Palace,Musical,1995
+7837,66,3,12/03/1995,354913,0,12,Cats,8,Winter Garden,Musical,1995
+2790,78,3,12/03/1995,105996,0,12,Defending The Caveman,6,Helen Hayes,Play,1995
+7317,83,3,12/03/1995,390907,0,12,Grease,8,Eugene O'Neill,Musical,1995
+7996,82,3,12/03/1995,445455,0,12,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+7580,83,3,12/03/1995,390328,78,12,The Tempest,8,Broadhurst,Play,1995
+13862,100,10,12/10/1995,715003,0,12,Beauty And The Beast,8,Palace,Musical,1995
+9484,80,10,12/10/1995,433319,0,12,Cats,8,Winter Garden,Musical,1995
+2792,78,10,12/10/1995,108064,0,12,Defending The Caveman,6,Helen Hayes,Play,1995
+7681,87,10,12/10/1995,409963,0,12,Grease,8,Eugene O'Neill,Musical,1995
+8951,92,10,12/10/1995,492586,0,12,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+7571,83,10,12/10/1995,388676,78,12,The Tempest,8,Broadhurst,Play,1995
+13486,97,17,12/17/1995,701315,0,12,Beauty And The Beast,8,Palace,Musical,1995
+8666,73,17,12/17/1995,393551,0,12,Cats,8,Winter Garden,Musical,1995
+2527,71,17,12/17/1995,94250,0,12,Defending The Caveman,6,Helen Hayes,Play,1995
+7453,85,17,12/17/1995,398497,0,12,Grease,8,Eugene O'Neill,Musical,1995
+8400,87,17,12/17/1995,466181,0,12,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+7372,80,17,12/17/1995,380003,76,12,The Tempest,8,Broadhurst,Play,1995
+13375,96,24,12/24/1995,699409,0,12,Beauty And The Beast,8,Palace,Musical,1995
+11281,95,24,12/24/1995,435347,0,12,Cats,8,Winter Garden,Musical,1995
+2279,64,24,12/24/1995,76544,0,12,Defending The Caveman,6,Helen Hayes,Play,1995
+7470,85,24,12/24/1995,402643,0,12,Grease,8,Eugene O'Neill,Musical,1995
+7476,77,24,12/24/1995,384549,0,12,Smokey Joe'S Cafe,8,Virginia,Musical,1995
+7951,87,24,12/24/1995,407653,82,12,The Tempest,8,Broadhurst,Play,1995
+14104,101,31,12/31/1995,763143,0,12,Beauty And The Beast,8,Palace,Musical,1995
+12087,102,31,12/31/1995,701573,0,12,Cats,8,Winter Garden,Musical,1995
+4543,95,31,12/31/1995,188442,0,12,Defending The Caveman,8,Helen Hayes,Play,1995
+10082,102,31,12/31/1995,596650,0,12,Grease,9,Eugene O'Neill,Musical,1995
+10548,97,31,12/31/1995,735537,0,12,Smokey Joe'S Cafe,9,Virginia,Musical,1995
+9314,102,31,12/31/1995,527742,106,12,The Tempest,8,Broadhurst,Play,1995
+13608,98,7,01/07/1996,694157,0,1,Beauty And The Beast,8,Palace,Musical,1996
+8514,72,7,01/07/1996,391112,0,1,Cats,8,Winter Garden,Musical,1996
+2470,69,7,01/07/1996,88330,0,1,Defending The Caveman,6,Helen Hayes,Play,1996
+6671,87,7,01/07/1996,362386,0,1,Grease,7,Eugene O'Neill,Musical,1996
+7690,91,7,01/07/1996,365602,0,1,Smokey Joe'S Cafe,7,Virginia,Musical,1996
+12201,88,14,01/14/1996,614481,0,1,Beauty And The Beast,8,Palace,Musical,1996
+7712,74,14,01/14/1996,295292,0,1,Cats,7,Winter Garden,Musical,1996
+2476,69,14,01/14/1996,90734,0,1,Defending The Caveman,6,Helen Hayes,Play,1996
+7301,83,14,01/14/1996,354359,0,1,Grease,8,Eugene O'Neill,Musical,1996
+7540,78,14,01/14/1996,345309,0,1,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+12119,87,21,01/21/1996,621087,0,1,Beauty And The Beast,8,Palace,Musical,1996
+8862,75,21,01/21/1996,330317,0,1,Cats,8,Winter Garden,Musical,1996
+2805,78,21,01/21/1996,105532,0,1,Defending The Caveman,6,Helen Hayes,Play,1996
+7231,82,21,01/21/1996,335954,0,1,Grease,8,Eugene O'Neill,Musical,1996
+7231,75,21,01/21/1996,335954,0,1,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+12279,88,28,01/28/1996,627837,0,1,Beauty And The Beast,8,Palace,Musical,1996
+8006,68,28,01/28/1996,301075,0,1,Cats,8,Winter Garden,Musical,1996
+2978,83,28,01/28/1996,108075,0,1,Defending The Caveman,6,Helen Hayes,Play,1996
+7169,82,28,01/28/1996,313388,0,1,Grease,8,Eugene O'Neill,Musical,1996
+8319,86,28,01/28/1996,366422,0,1,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+10681,77,4,02/04/1996,543824,0,2,Beauty And The Beast,8,Palace,Musical,1996
+4000,277,4,02/04/1996,80000,28,2,Bus Stop,0,Circle In The Square,Play,1996
+6852,58,4,02/04/1996,254058,0,2,Cats,8,Winter Garden,Musical,1996
+2580,72,4,02/04/1996,91285,0,2,Defending The Caveman,6,Helen Hayes,Play,1996
+5804,66,4,02/04/1996,252375,0,2,Grease,8,Eugene O'Neill,Musical,1996
+7541,78,4,02/04/1996,311865,0,2,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+11818,85,11,02/11/1996,606989,0,2,Beauty And The Beast,8,Palace,Musical,1996
+4000,69,11,02/11/1996,80000,28,2,Bus Stop,0,Circle In The Square,Play,1996
+8184,69,11,02/11/1996,319997,0,2,Cats,8,Winter Garden,Musical,1996
+2898,81,11,02/11/1996,101945,0,2,Defending The Caveman,6,Helen Hayes,Play,1996
+6602,75,11,02/11/1996,300165,0,2,Grease,8,Eugene O'Neill,Musical,1996
+8455,87,11,02/11/1996,343801,0,2,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+13314,96,18,02/18/1996,678633,0,2,Beauty And The Beast,8,Palace,Musical,1996
+4369,76,18,02/18/1996,100181,35,2,Bus Stop,0,Circle In The Square,Play,1996
+10199,86,18,02/18/1996,423150,0,2,Cats,8,Winter Garden,Musical,1996
+3289,92,18,02/18/1996,125160,0,2,Defending The Caveman,6,Helen Hayes,Play,1996
+8431,96,18,02/18/1996,415489,0,2,Grease,8,Eugene O'Neill,Musical,1996
+8747,90,18,02/18/1996,418922,0,2,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+13920,100,25,02/25/1996,682934,0,2,Beauty And The Beast,8,Palace,Musical,1996
+4425,77,25,02/25/1996,96254,0,2,Bus Stop,5,Circle In The Square,Play,1996
+11557,97,25,02/25/1996,446492,0,2,Cats,8,Winter Garden,Musical,1996
+3150,66,25,02/25/1996,114056,0,2,Defending The Caveman,8,Helen Hayes,Play,1996
+8753,100,25,02/25/1996,447398,0,2,Grease,8,Eugene O'Neill,Musical,1996
+9466,98,25,02/25/1996,433331,0,2,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+12337,89,3,03/03/1996,618704,0,3,Beauty And The Beast,8,Palace,Musical,1996
+4927,85,3,03/03/1996,91120,0,3,Bus Stop,8,Circle In The Square,Play,1996
+8856,75,3,03/03/1996,349110,0,3,Cats,8,Winter Garden,Musical,1996
+2939,82,3,03/03/1996,104990,0,3,Defending The Caveman,6,Helen Hayes,Play,1996
+7002,80,3,03/03/1996,293102,0,3,Grease,8,Eugene O'Neill,Musical,1996
+8011,83,3,03/03/1996,354978,0,3,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+12266,88,10,03/10/1996,642211,0,3,Beauty And The Beast,8,Palace,Musical,1996
+4798,83,10,03/10/1996,92730,0,3,Bus Stop,8,Circle In The Square,Play,1996
+9954,84,10,03/10/1996,391022,0,3,Cats,8,Winter Garden,Musical,1996
+3028,85,10,03/10/1996,115117,0,3,Defending The Caveman,6,Helen Hayes,Play,1996
+6879,78,10,03/10/1996,326024,0,3,Grease,8,Eugene O'Neill,Musical,1996
+7817,81,10,03/10/1996,372043,0,3,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+12550,90,17,03/17/1996,649939,0,3,Beauty And The Beast,8,Palace,Musical,1996
+5323,92,17,03/17/1996,109821,0,3,Bus Stop,8,Circle In The Square,Play,1996
+10493,89,17,03/17/1996,427675,0,3,Cats,8,Winter Garden,Musical,1996
+2761,77,17,03/17/1996,103790,0,3,Defending The Caveman,6,Helen Hayes,Play,1996
+8263,94,17,03/17/1996,380904,0,3,Grease,8,Eugene O'Neill,Musical,1996
+9158,94,17,03/17/1996,414411,0,3,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+9241,71,24,03/24/1996,456395,64,3,A Funny Thing Happened On The Way To The Forum,0,St. James,Musical,1996
+6649,77,24,03/24/1996,252870,43,3,A Midsummer Night'S Dream,0,Lunt-Fontanne,Play,1996
+12572,90,24,03/24/1996,649436,0,3,Beauty And The Beast,8,Palace,Musical,1996
+10684,90,24,03/24/1996,456962,0,3,Cats,8,Winter Garden,Musical,1996
+3168,88,24,03/24/1996,115993,0,3,Defending The Caveman,6,Helen Hayes,Play,1996
+8585,98,24,03/24/1996,410195,0,3,Grease,8,Eugene O'Neill,Musical,1996
+2006,43,24,03/24/1996,63638,0,3,Love Thy Neighbor,1,Booth,Play,1996
+8637,89,24,03/24/1996,407154,0,3,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+8779,78,31,03/31/1996,445677,63,3,A Funny Thing Happened On The Way To The Forum,0,St. James,Musical,1996
+7810,67,31,03/31/1996,239596,40,3,A Midsummer Night'S Dream,1,Lunt-Fontanne,Play,1996
+12742,92,31,03/31/1996,657222,0,3,Beauty And The Beast,8,Palace,Musical,1996
+10762,91,31,03/31/1996,455856,0,3,Cats,8,Winter Garden,Musical,1996
+2866,80,31,03/31/1996,107042,0,3,Defending The Caveman,6,Helen Hayes,Play,1996
+8016,91,31,03/31/1996,380754,0,3,Grease,8,Eugene O'Neill,Musical,1996
+3227,69,31,03/31/1996,116562,0,3,Love Thy Neighbor,6,Booth,Play,1996
+8855,91,31,03/31/1996,423444,0,3,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+5652,65,7,04/07/1996,121477,36,4,A Delicate Balance,0,Plymouth,Play,1996
+9281,72,7,04/07/1996,482619,68,4,A Funny Thing Happened On The Way To The Forum,0,St. James,Musical,1996
+6813,59,7,04/07/1996,287747,48,4,A Midsummer Night'S Dream,8,Lunt-Fontanne,Play,1996
+13528,97,7,04/07/1996,705589,0,4,Beauty And The Beast,8,Palace,Musical,1996
+11652,98,7,04/07/1996,528879,0,4,Cats,8,Winter Garden,Musical,1996
+8798,100,7,04/07/1996,446966,0,4,Grease,8,Eugene O'Neill,Musical,1996
+2771,89,7,04/07/1996,101014,0,4,Love Thy Neighbor,4,Booth,Play,1996
+8056,83,7,04/07/1996,410710,0,4,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+7638,88,14,04/14/1996,171316,51,4,A Delicate Balance,0,Plymouth,Play,1996
+10435,81,14,04/14/1996,570047,80,4,A Funny Thing Happened On The Way To The Forum,0,St. James,Musical,1996
+7396,64,14,04/14/1996,346094,58,4,A Midsummer Night'S Dream,8,Lunt-Fontanne,Play,1996
+13250,95,14,04/14/1996,687935,0,4,Beauty And The Beast,8,Palace,Musical,1996
+8562,84,14,04/14/1996,358670,0,4,Big,0,Shubert,Musical,1996
+5962,80,14,04/14/1996,232109,0,4,"Bring In Da Noise, Bring In Da Funk",0,Ambassador,Musical,1996
+11785,99,14,04/14/1996,523922,0,4,Cats,8,Winter Garden,Musical,1996
+3236,90,14,04/14/1996,122179,0,4,Defending The Caveman,6,Helen Hayes,Play,1996
+8777,100,14,04/14/1996,453827,0,4,Grease,8,Eugene O'Neill,Musical,1996
+2974,63,14,04/14/1996,122846,0,4,Love Thy Neighbor,6,Booth,Play,1996
+9022,93,14,04/14/1996,458186,0,4,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+6431,75,21,04/21/1996,134999,40,4,A Delicate Balance,1,Plymouth,Play,1996
+8588,66,21,04/21/1996,466752,65,4,A Funny Thing Happened On The Way To The Forum,4,St. James,Musical,1996
+6496,56,21,04/21/1996,309387,52,4,A Midsummer Night'S Dream,8,Lunt-Fontanne,Play,1996
+12487,90,21,04/21/1996,643320,0,4,Beauty And The Beast,8,Palace,Musical,1996
+9614,83,21,04/21/1996,405525,0,4,Big,0,Shubert,Musical,1996
+6005,71,21,04/21/1996,219492,0,4,"Bring In Da Noise, Bring In Da Funk",0,Ambassador,Musical,1996
+4725,77,21,04/21/1996,101397,0,4,Buried Child,0,Brooks Atkinson,Play,1996
+10096,85,21,04/21/1996,426204,0,4,Cats,8,Winter Garden,Musical,1996
+2828,79,21,04/21/1996,106213,0,4,Defending The Caveman,6,Helen Hayes,Play,1996
+8143,93,21,04/21/1996,384473,0,4,Grease,8,Eugene O'Neill,Musical,1996
+2973,63,21,04/21/1996,122216,0,4,Love Thy Neighbor,6,Booth,Play,1996
+8220,85,21,04/21/1996,410245,0,4,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+7966,92,28,04/28/1996,204210,60,4,A Delicate Balance,8,Plymouth,Play,1996
+10092,78,28,04/28/1996,580998,82,4,A Funny Thing Happened On The Way To The Forum,8,St. James,Musical,1996
+5936,51,28,04/28/1996,276763,47,4,A Midsummer Night'S Dream,8,Lunt-Fontanne,Play,1996
+2810,51,28,04/28/1996,76744,19,4,An Ideal Husband,0,Ethel Barrymore,Play,1996
+12945,93,28,04/28/1996,671932,0,4,Beauty And The Beast,8,Palace,Musical,1996
+8282,71,28,04/28/1996,366822,0,4,Big,1,Shubert,Musical,1996
+6196,73,28,04/28/1996,243536,0,4,"Bring In Da Noise, Bring In Da Funk",8,Ambassador,Musical,1996
+6820,83,28,04/28/1996,136729,0,4,Buried Child,0,Brooks Atkinson,Play,1996
+10205,86,28,04/28/1996,438638,0,4,Cats,8,Winter Garden,Musical,1996
+2888,81,28,04/28/1996,107504,0,4,Defending The Caveman,6,Helen Hayes,Play,1996
+7465,85,28,04/28/1996,350993,0,4,Grease,8,Eugene O'Neill,Musical,1996
+3131,67,28,04/28/1996,130835,0,4,Love Thy Neighbor,6,Booth,Play,1996
+8715,90,28,04/28/1996,424599,0,4,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+7949,92,5,05/05/1996,218019,64,5,A Delicate Balance,8,Plymouth,Play,1996
+10285,80,5,05/05/1996,598550,84,5,A Funny Thing Happened On The Way To The Forum,8,St. James,Musical,1996
+5891,51,5,05/05/1996,239147,40,5,A Midsummer Night'S Dream,8,Lunt-Fontanne,Play,1996
+4217,55,5,05/05/1996,141200,35,5,An Ideal Husband,5,Ethel Barrymore,Play,1996
+12679,91,5,05/05/1996,660433,0,5,Beauty And The Beast,8,Palace,Musical,1996
+9131,79,5,05/05/1996,399001,0,5,Big,8,Shubert,Musical,1996
+6878,81,5,05/05/1996,299484,0,5,"Bring In Da Noise, Bring In Da Funk",8,Ambassador,Musical,1996
+7004,86,5,05/05/1996,145092,0,5,Buried Child,8,Brooks Atkinson,Play,1996
+10639,90,5,05/05/1996,445314,0,5,Cats,8,Winter Garden,Musical,1996
+2575,72,5,05/05/1996,92640,0,5,Defending The Caveman,6,Helen Hayes,Play,1996
+6868,78,5,05/05/1996,313363,0,5,Grease,8,Eugene O'Neill,Musical,1996
+2911,62,5,05/05/1996,126991,0,5,Love Thy Neighbor,6,Booth,Play,1996
+7650,79,5,05/05/1996,385091,0,5,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+8352,97,12,05/12/1996,245049,72,5,A Delicate Balance,8,Plymouth,Play,1996
+10616,82,12,05/12/1996,622545,87,5,A Funny Thing Happened On The Way To The Forum,8,St. James,Musical,1996
+6608,57,12,05/12/1996,255054,43,5,A Midsummer Night'S Dream,8,Lunt-Fontanne,Play,1996
+6369,83,12,05/12/1996,215379,53,5,An Ideal Husband,7,Ethel Barrymore,Play,1996
+11515,83,12,05/12/1996,610216,0,5,Beauty And The Beast,8,Palace,Musical,1996
+9621,83,12,05/12/1996,425940,0,5,Big,8,Shubert,Musical,1996
+8046,95,12,05/12/1996,365657,0,5,"Bring In Da Noise, Bring In Da Funk",8,Ambassador,Musical,1996
+5777,71,12,05/12/1996,108307,0,5,Buried Child,8,Brooks Atkinson,Play,1996
+9624,81,12,05/12/1996,398160,0,5,Cats,8,Winter Garden,Musical,1996
+2634,74,12,05/12/1996,100706,0,5,Defending The Caveman,6,Helen Hayes,Play,1996
+6800,77,12,05/12/1996,299188,0,5,Grease,8,Eugene O'Neill,Musical,1996
+3199,68,12,05/12/1996,135579,0,5,Love Thy Neighbor,6,Booth,Play,1996
+7205,74,12,05/12/1996,380499,0,5,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+8355,97,19,05/19/1996,242111,71,5,A Delicate Balance,8,Plymouth,Play,1996
+11007,85,19,05/19/1996,635556,89,5,A Funny Thing Happened On The Way To The Forum,8,St. James,Musical,1996
+6424,55,19,05/19/1996,254566,43,5,A Midsummer Night'S Dream,8,Lunt-Fontanne,Play,1996
+7470,97,19,05/19/1996,259057,64,5,An Ideal Husband,7,Ethel Barrymore,Play,1996
+12260,88,19,05/19/1996,650771,0,5,Beauty And The Beast,8,Palace,Musical,1996
+9522,82,19,05/19/1996,417129,0,5,Big,8,Shubert,Musical,1996
+7986,94,19,05/19/1996,375268,0,5,"Bring In Da Noise, Bring In Da Funk",8,Ambassador,Musical,1996
+4812,59,19,05/19/1996,110841,0,5,Buried Child,8,Brooks Atkinson,Play,1996
+10557,89,19,05/19/1996,448005,0,5,Cats,8,Winter Garden,Musical,1996
+3100,87,19,05/19/1996,112497,0,5,Defending The Caveman,6,Helen Hayes,Play,1996
+7726,88,19,05/19/1996,345469,0,5,Grease,8,Eugene O'Neill,Musical,1996
+3744,80,19,05/19/1996,146859,0,5,Love Thy Neighbor,6,Booth,Play,1996
+7602,78,19,05/19/1996,391713,0,5,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+8338,97,26,05/26/1996,262632,78,5,A Delicate Balance,8,Plymouth,Play,1996
+11292,87,26,05/26/1996,652304,92,5,A Funny Thing Happened On The Way To The Forum,8,St. James,Musical,1996
+7807,67,26,05/26/1996,270030,46,5,A Midsummer Night'S Dream,8,Lunt-Fontanne,Play,1996
+7474,85,26,05/26/1996,255508,63,5,An Ideal Husband,8,Ethel Barrymore,Play,1996
+12504,90,26,05/26/1996,664721,0,5,Beauty And The Beast,8,Palace,Musical,1996
+9206,79,26,05/26/1996,400137,0,5,Big,8,Shubert,Musical,1996
+7760,91,26,05/26/1996,367547,0,5,"Bring In Da Noise, Bring In Da Funk",8,Ambassador,Musical,1996
+4640,57,26,05/26/1996,105715,0,5,Buried Child,8,Brooks Atkinson,Play,1996
+10137,86,26,05/26/1996,429256,0,5,Cats,8,Winter Garden,Musical,1996
+2363,66,26,05/26/1996,88015,0,5,Defending The Caveman,6,Helen Hayes,Play,1996
+7315,83,26,05/26/1996,323864,0,5,Grease,8,Eugene O'Neill,Musical,1996
+2934,63,26,05/26/1996,119931,0,5,Love Thy Neighbor,6,Booth,Play,1996
+7429,77,26,05/26/1996,369005,0,5,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+8170,95,2,06/02/1996,248020,0,6,A Delicate Balance,8,Plymouth,Play,1996
+10250,79,2,06/02/1996,599347,0,6,A Funny Thing Happened On The Way To The Forum,8,St. James,Musical,1996
+7317,83,2,06/02/1996,257458,0,6,An Ideal Husband,8,Ethel Barrymore,Play,1996
+11588,83,2,06/02/1996,611246,0,6,Beauty And The Beast,8,Palace,Musical,1996
+8192,71,2,06/02/1996,359558,0,6,Big,8,Shubert,Musical,1996
+7590,89,2,06/02/1996,371996,0,6,"Bring In Da Noise, Bring In Da Funk",8,Ambassador,Musical,1996
+4565,56,2,06/02/1996,98603,0,6,Buried Child,8,Brooks Atkinson,Play,1996
+9612,81,2,06/02/1996,415345,0,6,Cats,8,Winter Garden,Musical,1996
+2366,66,2,06/02/1996,85971,0,6,Defending The Caveman,6,Helen Hayes,Play,1996
+6251,71,2,06/02/1996,281452,0,6,Grease,8,Eugene O'Neill,Musical,1996
+9036,83,2,06/02/1996,387194,0,6,How To Succeed In Business Without Really Trying,8,Richard Rodgers,Musical,1996
+10742,95,2,06/02/1996,479050,0,6,Les Misrables,8,Imperial,Musical,1996
+2908,62,2,06/02/1996,116961,0,6,Love Thy Neighbor,6,Booth,Play,1996
+5517,99,2,06/02/1996,235887,0,6,Master Class,7,Golden,Play,1996
+11645,84,2,06/02/1996,499896,0,6,Miss Saigon,8,Broadway,Musical,1996
+5980,58,2,06/02/1996,189079,0,6,Moon Over Buffalo,8,Martin Beck,Play,1996
+9560,102,2,06/02/1996,477038,0,6,Rent,8,Nederlander,Musical,1996
+4796,63,2,06/02/1996,164294,0,6,Seven Guitars,8,Walter Kerr,Play,1996
+11404,74,2,06/02/1996,586793,0,6,Show Boat,8,Gershwin,Musical,1996
+6592,68,2,06/02/1996,325207,0,6,Smokey Joe'S Cafe,8,Virginia,Musical,1996
+3526,45,2,06/02/1996,152905,0,6,State Fair,8,Music Box,Musical,1996
+9461,69,2,06/02/1996,529835,0,6,Sunset Boulevard,8,Minskoff,Musical,1996
+2323,40,2,06/02/1996,46534,0,6,Tartuffe 96,5,Circle In The Square,Play,1996
+9865,94,2,06/02/1996,481847,0,6,The King And I 96,8,Neil Simon,Musical,1996
+13080,102,2,06/02/1996,729838,0,6,The Phantom Of The Opera,8,Majestic,Musical,1996
+10659,83,2,06/02/1996,662138,0,6,Victor/Victoria,8,Marquis,Musical,1996
+8640,100,9,06/09/1996,277341,0,6,A Delicate Balance,8,Plymouth,Play,1996
+11258,87,9,06/09/1996,658588,0,6,A Funny Thing Happened On The Way To The Forum,8,St. James,Musical,1996
+6069,69,9,06/09/1996,231010,0,6,An Ideal Husband,8,Ethel Barrymore,Play,1996
+12202,88,9,06/09/1996,647302,0,6,Beauty And The Beast,8,Palace,Musical,1996
+8709,75,9,06/09/1996,384231,0,6,Big,8,Shubert,Musical,1996
+8472,100,9,06/09/1996,408313,0,6,"Bring In Da Noise, Bring In Da Funk",8,Ambassador,Musical,1996
+4361,53,9,06/09/1996,114164,0,6,Buried Child,8,Brooks Atkinson,Play,1996
+9180,77,9,06/09/1996,398961,0,6,Cats,8,Winter Garden,Musical,1996
+2585,72,9,06/09/1996,96760,0,6,Defending The Caveman,6,Helen Hayes,Play,1996
+6022,69,9,06/09/1996,273491,0,6,Grease,8,Eugene O'Neill,Musical,1996
+9769,89,9,06/09/1996,425434,0,6,How To Succeed In Business Without Really Trying,8,Richard Rodgers,Musical,1996
+10632,94,9,06/09/1996,488776,0,6,Les Misrables,8,Imperial,Musical,1996

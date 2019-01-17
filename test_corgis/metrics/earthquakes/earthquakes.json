@@ -1,0 +1,56 @@
+{
+  "earthquakes": {
+    "description": "Earthquake records from around the world collected from the United States Geological Survey.  Important details about the earthquake such as distance, gap, magnitude, depth and significance are included to properly describe the earthquake.  Additionally, data about exact geological coordinates and a relative description of the earthquake's location is included. The earthquakes collected are from the past month.\n", 
+    "dicts": {
+      "count": 4, 
+      "levels": {
+        "1": {
+          "lengths": 4, 
+          "key lengths": 10
+        }, 
+        "2": {
+          "lengths": 5, 
+          "key lengths": 6
+        }
+      }, 
+      "inconsistent": {}, 
+      "average branching factor": 5
+    }, 
+    "tags": [
+      "earthquakes", 
+      "nature", 
+      "disaster", 
+      "magnitude", 
+      "richter scale", 
+      "latitude", 
+      "longitude"
+    ], 
+    "atomics": {
+      "count": 18, 
+      "nones": 0, 
+      "ints": 8, 
+      "booleans": 0, 
+      "longs": 0, 
+      "unknown": 0, 
+      "strings": 4, 
+      "floats": 6
+    }, 
+    "lists": {
+      "count": 1, 
+      "lengths": 8394, 
+      "complex": 1
+    }, 
+    "heights": 3, 
+    "unions": {
+      "count": 0, 
+      "keys": {}, 
+      "sizes": 0
+    }, 
+    "length": 8394, 
+    "indexes": [
+      1
+    ], 
+    "locals": 0, 
+    "size": 3239120
+  }
+}

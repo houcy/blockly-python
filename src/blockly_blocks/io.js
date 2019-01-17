@@ -7,7 +7,7 @@ Blockly.Blocks['text_input'] = {
         .appendField(this.newQuote_(false));
     this.setOutput(true, "String");
     this.setColour(75);
-    this.setTooltip('');
+    this.setTooltip('输入模块');
     this.setHelpUrl('');
   },
   newQuote_: function(open) {

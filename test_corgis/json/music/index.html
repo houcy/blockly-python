@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>
+Music JSON Library (CORGIS Datasets Project)
+</title>
+    
+    <!-- JQuery UI CSS-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    
+    
+    
+    
+    <!-- JQuery JS -->
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    
+    <!-- JQuery UI JS -->
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    
+    <!-- Knockoutjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    
+    <!-- D3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    
+    
+    
+    
+    <style>
+    .dialog-opener {
+        cursor: pointer;
+    }
+    </style>
+    
+    <script>
+    $(document).ready(function() {
+        /*
+        function doPoll(){  
+            log('remain', '{ metadata.name }, '+$(document).scrollTop()+", "+$(document).height());
+        }
+        setInterval(doPoll, 5000);
+        */
+    });
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    </script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+
+    <script>
+/*$(document).ready(function() {
+    log('load', 'Music');
+});*/
+</script>
+<div class="page-header">
+    
+    <img class="img-rounded pull-right" src="music_splash.png" alt="music_splash.png" style="max-width: 256px; max-height: 256px;">
+    
+    <h1>Music JSON Library</h1>
+    <p class="lead">From the <a href="../index.html">CORGIS Dataset Project</a></p>
+    <span class="text-muted">By Ryan Whitcomb (<a href="mailto:rwhit94@vt.edu">rwhit94@vt.edu</a>)</span><br>
+    <span class="text-muted">Version 1, created 5-18-16</span><br>
+    <span class="text-muted">Tags: music, songs, artists, creativity, media</span><br>
+</div>
+    
+    <h3 id="overview">Overview</h3>
+<p>
+This library comes from the Million Song Dataset, which used a company called the Echo Nest to derive data points about one million popular contemporary songs.  The Million Song Dataset is a collaboration between the Echo Nest and LabROSA, a laboratory working towards intelligent machine listening.  The project was also funded in part by the National Science Foundation of America (NSF) to provide a large data set to evaluate research related to algorithms on a commercial size while promoting further research into the Music Information Retrieval field.  The data contains standard information about the songs such as artist name, title, and year released.  Additionally, the data contains more advanced information; for example, the length of the song, how many musical bars long the song is, and how long the fade in to the song was.
+
+</p>
+
+<p>
+<i>Thierry Bertin-Mahieux, Daniel P.W. Ellis, Brian Whitman, and Paul Lamere. <br> The Million Song Dataset. In Proceedings of the 12th International Society <br> for Music Information Retrieval Conference (ISMIR 2011), 2011.</i>
+</p>
+
+    
+    <h3 id="downloads">Downloads</h3>
+    
+<p>Download all of the following files.</p>
+
+<div class='row'>
+<div class="well col-md-6 col-md-offset-1">
+
+<ol>
+    
+    
+    <li><a href="music.json?forcedownload=1" download="music.json" target="_blank">
+        <strong>music.json</strong>
+        <span class='glyphicon glyphicon-download-alt' aria-hidden="true"></span>
+    </a></li>
+    
+</ol>
+</div>
+</div>
+    
+    
+    
+    <h3 id="field">Field Descriptions</h3>
+    
+    <table class='table table-condensed table-striped table-bordered table-hover'>
+    <tr>
+        <th class='col-md-2'>JSON Path</th>
+        <th class='col-md-2'>Type</th>
+        <th class='col-md-5'>Comment</th>
+        <th class='col-md-3'>Example Value</th>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].release</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'name': 0, u'id': 300848}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].artist</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'terms_freq': 1.0, u'terms': u'hip hop', u'name': u'Casual', u'familiarity': 0.581793766, u'longitude': 0, u'id': u'ARD7TVE1187B99BFB1', u'location': 0, u'latitude': 0, u'similar': 0.0, u'hotttnesss': 0.401997543}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'mode_confidence': 0.636, u'artist_mbtags_count': 0.0, u'key_confidence': 0.736, u'tatums_start': 0.28519, u'year': 0, u'duration': 218.93179, u'id': u'SOMZWCG12A8C13C480', u'end_of_fade_in': 0.247, u'beats_start': 0.58521, u'time_signature_confidence': 0.778, u'title': 0, u'bars_confidence': 0.643, u'hotttnesss': 0.60211999, u'bars_start': 0.58521, u'artist_mbtags': 0.0, u'start_of_fade_out': 218.932, u'tempo': 92.198, u'key': 1.0, u'beats_confidence': 0.834, u'tatums_confidence': 0.779, u'mode': 0, u'time_signature': 4.0, u'loudness': -11.197}</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].artist.terms_freq</td>
+        <td>float</td> 
+        <td>The frequency of this term.</td>
+        <td>1.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].artist.terms</td>
+        <td>unicode</td> 
+        <td>The term most associated with this artist.</td>
+        <td>hip hop</td>
+    </tr>
+    
+    <tr>
+        <td>[0].artist.name</td>
+        <td>unicode</td> 
+        <td>The name of the artist.</td>
+        <td>Casual</td>
+    </tr>
+    
+    <tr>
+        <td>[0].artist.familiarity</td>
+        <td>float</td> 
+        <td>A measure of 0..1 for how familiar the artist is to listeners.</td>
+        <td>0.581793766</td>
+    </tr>
+    
+    <tr>
+        <td>[0].artist.longitude</td>
+        <td>int</td> 
+        <td>The home location's longitude of this artist.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].artist.hotttnesss</td>
+        <td>float</td> 
+        <td>A measure of the artists's popularity, when downloaded (in December 2010). Measured on a scale of 0 to 1.</td>
+        <td>0.401997543</td>
+    </tr>
+    
+    <tr>
+        <td>[0].artist.location</td>
+        <td>int</td> 
+        <td>Unknown.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].artist.latitude</td>
+        <td>int</td> 
+        <td>The home location's latitude of this artist.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].artist.similar</td>
+        <td>float</td> 
+        <td>Unknown.</td>
+        <td>0.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].artist.id</td>
+        <td>unicode</td> 
+        <td>A unique ID for this artist.</td>
+        <td>ARD7TVE1187B99BFB1</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].song.mode_confidence</td>
+        <td>float</td> 
+        <td>Confidence value (between 0 and 1) of the mode estimation.</td>
+        <td>0.636</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.artist_mbtags_count</td>
+        <td>float</td> 
+        <td>Number of tags for the artist on mbtags.</td>
+        <td>0.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.key_confidence</td>
+        <td>float</td> 
+        <td>Confidence value (between 0 and 1) of the key estimation.</td>
+        <td>0.736</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.tatums_start</td>
+        <td>float</td> 
+        <td>Average start time of each tatum, measured in tatums.</td>
+        <td>0.28519</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.year</td>
+        <td>int</td> 
+        <td>Year when this song was released, according to musicbrainz.org.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.duration</td>
+        <td>float</td> 
+        <td>Duration of the track in seconds.</td>
+        <td>218.93179</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.hotttnesss</td>
+        <td>float</td> 
+        <td>A measure of the song's popularity, when downloaded (in December 2010). Measured on a scale of 0 to 1.</td>
+        <td>0.60211999</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.end_of_fade_in</td>
+        <td>float</td> 
+        <td>Time of the end of the fade in, at the beginning of the song.</td>
+        <td>0.247</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.beats_start</td>
+        <td>float</td> 
+        <td>Average start time of each beat, measured in beats.</td>
+        <td>0.58521</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.time_signature_confidence</td>
+        <td>float</td> 
+        <td>Confidence of the time signature estimation</td>
+        <td>0.778</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.title</td>
+        <td>int</td> 
+        <td>Name of the song.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.bars_confidence</td>
+        <td>float</td> 
+        <td>Confidence value (between 0 and 1) associated with each bar.</td>
+        <td>0.643</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.id</td>
+        <td>unicode</td> 
+        <td>A uniquely identifying number for the song.</td>
+        <td>SOMZWCG12A8C13C480</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.bars_start</td>
+        <td>float</td> 
+        <td>Average start time of each bar, measured in bars.</td>
+        <td>0.58521</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.artist_mbtags</td>
+        <td>float</td> 
+        <td>Unknown field.</td>
+        <td>0.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.start_of_fade_out</td>
+        <td>float</td> 
+        <td>Start time of the fade out, in seconds, at the end of the song.</td>
+        <td>218.932</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.tempo</td>
+        <td>float</td> 
+        <td>Tempo in BPM.</td>
+        <td>92.198</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.key</td>
+        <td>float</td> 
+        <td>Estimation of the key the song is in. Keys can be from 0 to 11.</td>
+        <td>1.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.beats_confidence</td>
+        <td>float</td> 
+        <td>Average confidence interval of the beats.</td>
+        <td>0.834</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.tatums_confidence</td>
+        <td>float</td> 
+        <td>Confidence value (between 0 and 1) associated with each tatum.</td>
+        <td>0.779</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.mode</td>
+        <td>int</td> 
+        <td>Estimation of the mode the song.</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.time_signature</td>
+        <td>float</td> 
+        <td>Time signature of the song, i.e. usual number of beats per bar.</td>
+        <td>4.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].song.loudness</td>
+        <td>float</td> 
+        <td>General loudness of the track</td>
+        <td>-11.197</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].release.name</td>
+        <td>int</td> 
+        <td>Unknown value</td>
+        <td>0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].release.id</td>
+        <td>int</td> 
+        <td>The ID of the release (album) on the service 7digital.com</td>
+        <td>300848</td>
+    </tr>
+    
+    
+    
+    </table>
+
+    
+
+
+</div>

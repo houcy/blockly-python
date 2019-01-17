@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>
+Publishers JSON Library (CORGIS Datasets Project)
+</title>
+    
+    <!-- JQuery UI CSS-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    
+    
+    
+    
+    <!-- JQuery JS -->
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    
+    <!-- JQuery UI JS -->
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    
+    <!-- Knockoutjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    
+    <!-- D3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    
+    
+    
+    
+    <style>
+    .dialog-opener {
+        cursor: pointer;
+    }
+    </style>
+    
+    <script>
+    $(document).ready(function() {
+        /*
+        function doPoll(){  
+            log('remain', '{ metadata.name }, '+$(document).scrollTop()+", "+$(document).height());
+        }
+        setInterval(doPoll, 5000);
+        */
+    });
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    </script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+
+    <script>
+/*$(document).ready(function() {
+    log('load', 'Publishers');
+});*/
+</script>
+<div class="page-header">
+    
+    <img class="img-rounded pull-right" src="publishers_splash.png" alt="publishers_splash.png" style="max-width: 256px; max-height: 256px;">
+    
+    <h1>Publishers JSON Library</h1>
+    <p class="lead">From the <a href="../index.html">CORGIS Dataset Project</a></p>
+    <span class="text-muted">By Austin Cory Bart (<a href="mailto:acbart@vt.edu">acbart@vt.edu</a>)</span><br>
+    <span class="text-muted">Version 1, created 11/1/2015</span><br>
+    <span class="text-muted">Tags: publishers, amazon, books, sales, genres, literature, english</span><br>
+</div>
+    
+    <h3 id="overview">Overview</h3>
+<p>
+From a newspaper article about analyzing amazon e-book sales by genre and publisher. Unfortunately, they do not have information on the book's title or author. This collection includes 54,000 titles spanning across several genres and types of publishing companies, practically every book on every Amazon bestseller list. Along with publisher information, it also includes the book's overall Amazon Kindle store sales ranking. This ranking is used to sort the books. Keep in mind that this data is NOT time-oriented; it is a collection of a bunch of different books, not a book over time.
+
+</p>
+
+<p>
+<i>http://authorearnings.com/report/september-2015-author-earnings-report/</i>
+</p>
+
+    
+    <h3 id="downloads">Downloads</h3>
+    
+<p>Download all of the following files.</p>
+
+<div class='row'>
+<div class="well col-md-6 col-md-offset-1">
+
+<ol>
+    
+    
+    <li><a href="publishers.json?forcedownload=1" download="publishers.json" target="_blank">
+        <strong>publishers.json</strong>
+        <span class='glyphicon glyphicon-download-alt' aria-hidden="true"></span>
+    </a></li>
+    
+</ol>
+</div>
+</div>
+    
+    
+    
+    <h3 id="field">Field Descriptions</h3>
+    
+    <table class='table table-condensed table-striped table-bordered table-hover'>
+    <tr>
+        <th class='col-md-2'>JSON Path</th>
+        <th class='col-md-2'>Type</th>
+        <th class='col-md-5'>Comment</th>
+        <th class='col-md-3'>Example Value</th>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].publisher.type</td>
+        <td>unicode</td> 
+        <td>The type, or size, of the publisher (e.g, "indie", "small", "big five", etc.)</td>
+        <td>big five</td>
+    </tr>
+    
+    <tr>
+        <td>[0].publisher.name</td>
+        <td>unicode</td> 
+        <td>The name of the publisher.</td>
+        <td>Katherine Tegen Books</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].statistics.sales rank</td>
+        <td>int</td> 
+        <td>The ranking of this book, compared to other books. A higher rank indicates a more popular book.</td>
+        <td>1</td>
+    </tr>
+    
+    <tr>
+        <td>[0].statistics.sale price</td>
+        <td>float</td> 
+        <td>The cost of this book on Amazon, in dollars.</td>
+        <td>4.88</td>
+    </tr>
+    
+    <tr>
+        <td>[0].statistics.total reviews</td>
+        <td>int</td> 
+        <td>The number of people who have reviewed this book.</td>
+        <td>9604</td>
+    </tr>
+    
+    <tr>
+        <td>[0].statistics.average rating</td>
+        <td>float</td> 
+        <td>The average rating of this book, on a five-point scale, as determined by customers.</td>
+        <td>4.57</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].genre</td>
+        <td>unicode</td> 
+        <td>The genre of the book, either "fiction", "nonfiction", "genre fiction", "children", "comics", or "foreign language". Some books originally had more than one genre, but this was simplified down to the most prominent genre.</td>
+        <td>genre fiction</td>
+    </tr>
+    
+    <tr>
+        <td>[0].publisher</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'type': u'big five', u'name': u'Katherine Tegen Books'}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].sold by</td>
+        <td>unicode</td> 
+        <td>The actual company that sold this book, as oppposed to the company that published it.</td>
+        <td>HarperCollins Publishers</td>
+    </tr>
+    
+    <tr>
+        <td>[0].statistics</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'sales rank': 1, u'sale price': 4.88, u'total reviews': 9604, u'average rating': 4.57}</td>
+    </tr>
+    
+    <tr>
+        <td>[0].daily average</td>
+        <td>dict</td> 
+        <td></td>
+        <td>{u'publisher revenue': 20496.0, u'amazon revenue': 6832.0, u'author revenue': 6832.0, u'units sold': 7000, u'gross sales': 34160.0}</td>
+    </tr>
+    
+    
+    
+    <tr>
+        <td>[0].daily average.publisher revenue</td>
+        <td>float</td> 
+        <td>The amount of money that the publisher made per day on this book, in dollars.</td>
+        <td>20496.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].daily average.amazon revenue</td>
+        <td>float</td> 
+        <td>The amount of money that Amazon made per day on this book, in dollars.</td>
+        <td>6832.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].daily average.author revenue</td>
+        <td>float</td> 
+        <td>The amount of money that the author made per day on this book, in dollars.</td>
+        <td>6832.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].daily average.gross sales</td>
+        <td>float</td> 
+        <td>The total amount of money that was made per day on this book, in dollars.</td>
+        <td>34160.0</td>
+    </tr>
+    
+    <tr>
+        <td>[0].daily average.units sold</td>
+        <td>int</td> 
+        <td>The number of books sold per day.</td>
+        <td>7000</td>
+    </tr>
+    
+    
+    
+    </table>
+
+    
+
+
+</div>

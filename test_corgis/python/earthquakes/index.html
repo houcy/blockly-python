@@ -1,0 +1,2856 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>
+Earthquakes Library (CORGIS Datasets Project)
+</title>
+    
+    <!-- JQuery UI CSS-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    
+    
+    
+    
+    <!-- JQuery JS -->
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    
+    <!-- JQuery UI JS -->
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    
+    <!-- Knockoutjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    
+    <!-- D3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    
+    
+    
+    
+    <style>
+    .dialog-opener {
+        cursor: pointer;
+    }
+    </style>
+    
+    <script>
+    $(document).ready(function() {
+        /*
+        function doPoll(){  
+            log('remain', '{ metadata.name }, '+$(document).scrollTop()+", "+$(document).height());
+        }
+        setInterval(doPoll, 5000);
+        */
+    });
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    </script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    
+    
+<style>
+pre .hll { background-color: #ffffcc }
+pre  { background: #f0f0f0; }
+pre .c { color: #60a0b0; font-style: italic } /* Comment */
+pre .err { border: 1px solid #FF0000 } /* Error */
+pre .k { color: #007020; font-weight: bold } /* Keyword */
+pre .o { color: #666666 } /* Operator */
+pre .ch { color: #60a0b0; font-style: italic } /* Comment.Hashbang */
+pre .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+pre .cp { color: #007020 } /* Comment.Preproc */
+pre .cpf { color: #60a0b0; font-style: italic } /* Comment.PreprocFile */
+pre .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+pre .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+pre .gd { color: #A00000 } /* Generic.Deleted */
+pre .ge { font-style: italic } /* Generic.Emph */
+pre .gr { color: #FF0000 } /* Generic.Error */
+pre .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+pre .gi { color: #00A000 } /* Generic.Inserted */
+pre .go { color: #888888 } /* Generic.Output */
+pre .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+pre .gs { font-weight: bold } /* Generic.Strong */
+pre .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+pre .gt { color: #0044DD } /* Generic.Traceback */
+pre .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+pre .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+pre .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+pre .kp { color: #007020 } /* Keyword.Pseudo */
+pre .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+pre .kt { color: #902000 } /* Keyword.Type */
+pre .m { color: #40a070 } /* Literal.Number */
+pre .s { color: #4070a0 } /* Literal.String */
+pre .na { color: #4070a0 } /* Name.Attribute */
+pre .nb { color: #007020 } /* Name.Builtin */
+pre .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+pre .no { color: #60add5 } /* Name.Constant */
+pre .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+pre .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+pre .ne { color: #007020 } /* Name.Exception */
+pre .nf { color: #06287e } /* Name.Function */
+pre .nl { color: #002070; font-weight: bold } /* Name.Label */
+pre .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+pre .nt { color: #062873; font-weight: bold } /* Name.Tag */
+pre .nv { color: #bb60d5 } /* Name.Variable */
+pre .ow { color: #007020; font-weight: bold } /* Operator.Word */
+pre .w { color: #bbbbbb } /* Text.Whitespace */
+pre .mb { color: #40a070 } /* Literal.Number.Bin */
+pre .mf { color: #40a070 } /* Literal.Number.Float */
+pre .mh { color: #40a070 } /* Literal.Number.Hex */
+pre .mi { color: #40a070 } /* Literal.Number.Integer */
+pre .mo { color: #40a070 } /* Literal.Number.Oct */
+pre .sb { color: #4070a0 } /* Literal.String.Backtick */
+pre .sc { color: #4070a0 } /* Literal.String.Char */
+pre .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+pre .s2 { color: #4070a0 } /* Literal.String.Double */
+pre .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+pre .sh { color: #4070a0 } /* Literal.String.Heredoc */
+pre .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+pre .sx { color: #c65d09 } /* Literal.String.Other */
+pre .sr { color: #235388 } /* Literal.String.Regex */
+pre .s1 { color: #4070a0 } /* Literal.String.Single */
+pre .ss { color: #517918 } /* Literal.String.Symbol */
+pre .bp { color: #007020 } /* Name.Builtin.Pseudo */
+pre .vc { color: #bb60d5 } /* Name.Variable.Class */
+pre .vg { color: #bb60d5 } /* Name.Variable.Global */
+pre .vi { color: #bb60d5 } /* Name.Variable.Instance */
+pre .il { color: #40a070 } /* Literal.Number.Integer.Long */.syntax pre .hll { background-color: #ffffcc }
+.syntax pre  { background: #f0f0f0; }
+.syntax pre .c { color: #60a0b0; font-style: italic } /* Comment */
+.syntax pre .err { border: 1px solid #FF0000 } /* Error */
+.syntax pre .k { color: #007020; font-weight: bold } /* Keyword */
+.syntax pre .o { color: #666666 } /* Operator */
+.syntax pre .ch { color: #60a0b0; font-style: italic } /* Comment.Hashbang */
+.syntax pre .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+.syntax pre .cp { color: #007020 } /* Comment.Preproc */
+.syntax pre .cpf { color: #60a0b0; font-style: italic } /* Comment.PreprocFile */
+.syntax pre .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+.syntax pre .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+.syntax pre .gd { color: #A00000 } /* Generic.Deleted */
+.syntax pre .ge { font-style: italic } /* Generic.Emph */
+.syntax pre .gr { color: #FF0000 } /* Generic.Error */
+.syntax pre .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.syntax pre .gi { color: #00A000 } /* Generic.Inserted */
+.syntax pre .go { color: #888888 } /* Generic.Output */
+.syntax pre .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.syntax pre .gs { font-weight: bold } /* Generic.Strong */
+.syntax pre .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.syntax pre .gt { color: #0044DD } /* Generic.Traceback */
+.syntax pre .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.syntax pre .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.syntax pre .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.syntax pre .kp { color: #007020 } /* Keyword.Pseudo */
+.syntax pre .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.syntax pre .kt { color: #902000 } /* Keyword.Type */
+.syntax pre .m { color: #40a070 } /* Literal.Number */
+.syntax pre .s { color: #4070a0 } /* Literal.String */
+.syntax pre .na { color: #4070a0 } /* Name.Attribute */
+.syntax pre .nb { color: #007020 } /* Name.Builtin */
+.syntax pre .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+.syntax pre .no { color: #60add5 } /* Name.Constant */
+.syntax pre .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.syntax pre .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+.syntax pre .ne { color: #007020 } /* Name.Exception */
+.syntax pre .nf { color: #06287e } /* Name.Function */
+.syntax pre .nl { color: #002070; font-weight: bold } /* Name.Label */
+.syntax pre .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.syntax pre .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.syntax pre .nv { color: #bb60d5 } /* Name.Variable */
+.syntax pre .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.syntax pre .w { color: #bbbbbb } /* Text.Whitespace */
+.syntax pre .mb { color: #40a070 } /* Literal.Number.Bin */
+.syntax pre .mf { color: #40a070 } /* Literal.Number.Float */
+.syntax pre .mh { color: #40a070 } /* Literal.Number.Hex */
+.syntax pre .mi { color: #40a070 } /* Literal.Number.Integer */
+.syntax pre .mo { color: #40a070 } /* Literal.Number.Oct */
+.syntax pre .sb { color: #4070a0 } /* Literal.String.Backtick */
+.syntax pre .sc { color: #4070a0 } /* Literal.String.Char */
+.syntax pre .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+.syntax pre .s2 { color: #4070a0 } /* Literal.String.Double */
+.syntax pre .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+.syntax pre .sh { color: #4070a0 } /* Literal.String.Heredoc */
+.syntax pre .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+.syntax pre .sx { color: #c65d09 } /* Literal.String.Other */
+.syntax pre .sr { color: #235388 } /* Literal.String.Regex */
+.syntax pre .s1 { color: #4070a0 } /* Literal.String.Single */
+.syntax pre .ss { color: #517918 } /* Literal.String.Symbol */
+.syntax pre .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.syntax pre .vc { color: #bb60d5 } /* Name.Variable.Class */
+.syntax pre .vg { color: #bb60d5 } /* Name.Variable.Global */
+.syntax pre .vi { color: #bb60d5 } /* Name.Variable.Instance */
+.syntax pre .il { color: #40a070 } /* Literal.Number.Integer.Long */
+</style>
+
+
+    <script>
+/*$(document).ready(function() {
+    log('load', 'Earthquakes');
+});*/
+</script>
+<div class="page-header">
+    
+    <img class="img-rounded pull-right" src="earthquakes_splash.png" alt="earthquakes_splash.png" style="max-width: 256px; max-height: 256px;">
+    
+    <h1>Earthquakes Python Library</h1>
+    <p class="lead">From the <a href="../index.html">CORGIS Dataset Project</a></p>
+    <span class="text-muted">By Ryan Whitcomb</span><br>
+    <span class="text-muted">Version 1, created 6/7/2016</span><br>
+    <span class="text-muted">Tags: earthquakes, nature, disaster, magnitude, richter scale, latitude, longitude</span><br>
+</div>
+    
+    <!--
+    <h3>Table of Contents</h3>
+    <ol>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#downloads">Downloads</a></li>
+        <li><a href="#usage">Usage</a></li>
+        <li><a href="#documentation">Documentation</a><ol>
+        <li><a href='#get_earthquakes'>get_earthquakes</a></li>
+        
+        </ol></li>
+        
+    </ol>
+    -->
+    
+    <h3 id="overview">Overview</h3>
+<p>
+Earthquake records from around the world collected from the United States Geological Survey.  Important details about the earthquake such as distance, gap, magnitude, depth and significance are included to properly describe the earthquake.  Additionally, data about exact geological coordinates and a relative description of the earthquake's location is included. The earthquakes collected are from the past month.
+
+</p>
+
+<p>
+<i>http://earthquake.usgs.gov/earthquakes/</i>
+</p>
+
+    
+    
+<h3 id="structure">Explore Structure</h3>
+
+
+<div class='row'>
+    <div class='col-md-2'>
+        <button class='btn btn-default' id='btn-explore-earthquakes'>Explore earthquakes data</button>
+    </div>
+    
+    <br><br><br>
+</div>
+
+<script>
+$(document).ready(function() {
+    $("#btn-explore-earthquakes").click(function() {
+        $( "#explore-earthquakes" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;;
+        $('.ui-dialog :button').blur();
+    });
+});
+</script>
+
+
+    <div id='explore-earthquakes' title='List'>
+        
+        <table class='table table-condensed table-striped table-bordered' >
+            <tr> <th>Index</th> <th>Type</th> <th>Example Value</th></tr>
+            <tr> <td>0</td> <td><span data-toggle="tooltip" title="Dictionary">dict</span></td> 
+                 <td><a class='dialog-opener' id='btn-explore-earthquakes-__0__'>{ <span class='glyphicon glyphicon-new-window' aria-hidden='true'></span> }</a></td></tr>
+            <tr> <td>...</td> <td>...</td> <td>...</td></tr>
+        </table>
+    </div>
+    <script>
+    $(document).ready(function() {
+        $( "#explore-earthquakes" ).dialog({
+          autoOpen: false,
+          width: 600
+        });
+        $("#btn-explore-earthquakes-__0__").click(function() {
+            $( "#explore-earthquakes-__0__" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;;
+            $('.ui-dialog :button').blur();
+        });
+    });
+    </script>
+
+
+
+    <div id='explore-earthquakes-__0__-location' title='Dictionary (6 keys)'>
+        <table class='table table-condensed table-striped table-bordered' >
+            <tr> <th>Key</th> <th>Type</th> <th>Example Value</th> <th>Comment</th></tr>
+            
+            <tr> <td><code>"longitude"</code></td> 
+                 <td><span data-toggle="tooltip" title="Float (decimal number)">float</span></td> 
+                 <td>
+                    <code>-121.619</code>
+                    
+                 </td> 
+                 <td>Decimal degrees longitude (east and west on the globe). Negative values for western latitudes. Ranges from -180 to 180.</td> </tr>
+            
+            <tr> <td><code>"distance"</code></td> 
+                 <td><span data-toggle="tooltip" title="Float (decimal number)">float</span></td> 
+                 <td>
+                    <code>0.1034</code>
+                    
+                 </td> 
+                 <td>The rough distance that this earthquake occurred away from the reporting station, measured in degrees between. 1 degree is approximately 111.2 kilometers. In general, the smaller this number, the more reliable is the calculated depth of the earthquake. In general, this number is between 0.4-7.1.</td> </tr>
+            
+            <tr> <td><code>"latitude"</code></td> 
+                 <td><span data-toggle="tooltip" title="Float (decimal number)">float</span></td> 
+                 <td>
+                    <code>37.6723333</code>
+                    
+                 </td> 
+                 <td>Decimal degrees latitude (up and down on the globe). Negative values for southern latitudes. Ranges from -90 to 90.</td> </tr>
+            
+            <tr> <td><code>"depth"</code></td> 
+                 <td><span data-toggle="tooltip" title="Float (decimal number)">float</span></td> 
+                 <td>
+                    <code>15.12</code>
+                    
+                 </td> 
+                 <td>Depth of the event in kilometers.</td> </tr>
+            
+            <tr> <td><code>"name"</code></td> 
+                 <td><span data-toggle="tooltip" title="String (text)">str</span></td> 
+                 <td>
+                    <code>"California"</code>
+                    
+                    <a class='dialog-opener' id='btn-explore-earthquakes-__0__-location-name'><br>
+                    <sup><i>[Preview <span class='glyphicon glyphicon-zoom-in'></span>]</i></sup></a>
+                    
+                 </td> 
+                 <td>A best guess for the name of the state (or country, in some cases) that this earthquake was reported in.</td> </tr>
+            
+            <tr> <td><code>"full"</code></td> 
+                 <td><span data-toggle="tooltip" title="String (text)">str</span></td> 
+                 <td>
+                    <code>"13km E of Livermore, California"</code>
+                    
+                    <a class='dialog-opener' id='btn-explore-earthquakes-__0__-location-full'><br>
+                    <sup><i>[Preview <span class='glyphicon glyphicon-zoom-in'></span>]</i></sup></a>
+                    
+                 </td> 
+                 <td></td> </tr>
+            
+        </table>
+    </div>
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <div id='explore-earthquakes-__0__-location-name' title='Previewing Values'>
+        <table class='table table-condensed table-striped table-bordered' >
+            <tr> <th>Value</th> <th>Count</th></tr>
+            
+                <tr>
+                    <td><code>"California"</code></td>
+                    <td>3609</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Alaska"</code></td>
+                    <td>2195</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Nevada"</code></td>
+                    <td>712</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Hawaii"</code></td>
+                    <td>225</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Washington"</code></td>
+                    <td>171</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Puerto Rico"</code></td>
+                    <td>156</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"British Virgin Islands"</code></td>
+                    <td>98</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Montana"</code></td>
+                    <td>96</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Oregon"</code></td>
+                    <td>81</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Oklahoma"</code></td>
+                    <td>66</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Indonesia"</code></td>
+                    <td>63</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Canada"</code></td>
+                    <td>57</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Utah"</code></td>
+                    <td>56</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Northern Mariana Islands"</code></td>
+                    <td>53</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Mexico"</code></td>
+                    <td>42</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Japan"</code></td>
+                    <td>40</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"U.S. Virgin Islands"</code></td>
+                    <td>38</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Wyoming"</code></td>
+                    <td>37</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Chile"</code></td>
+                    <td>35</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"New Caledonia"</code></td>
+                    <td>32</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Dominican Republic"</code></td>
+                    <td>31</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Papua New Guinea"</code></td>
+                    <td>28</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Russia"</code></td>
+                    <td>27</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Kansas"</code></td>
+                    <td>21</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"South Georgia and the South Sandwich Islands"</code></td>
+                    <td>20</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Tennessee"</code></td>
+                    <td>20</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"New Zealand"</code></td>
+                    <td>19</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Idaho"</code></td>
+                    <td>18</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Philippines"</code></td>
+                    <td>18</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Fiji"</code></td>
+                    <td>17</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"South of the Fiji Islands"</code></td>
+                    <td>17</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"South Georgia Island region"</code></td>
+                    <td>16</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Italy"</code></td>
+                    <td>14</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"China"</code></td>
+                    <td>14</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Tonga"</code></td>
+                    <td>14</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Peru"</code></td>
+                    <td>14</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Tajikistan"</code></td>
+                    <td>12</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Missouri"</code></td>
+                    <td>12</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Argentina"</code></td>
+                    <td>11</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Solomon Islands"</code></td>
+                    <td>10</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Afghanistan"</code></td>
+                    <td>10</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Kyrgyzstan"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Southwest Indian Ridge"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Vanuatu"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Colorado"</code></td>
+                    <td>8</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Guatemala"</code></td>
+                    <td>6</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"South Indian Ocean"</code></td>
+                    <td>5</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Burma"</code></td>
+                    <td>4</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Costa Rica"</code></td>
+                    <td>4</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Nicaragua"</code></td>
+                    <td>4</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"South Sandwich Islands"</code></td>
+                    <td>4</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Bolivia"</code></td>
+                    <td>3</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Southern Mid-Atlantic Ridge"</code></td>
+                    <td>3</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Illinois"</code></td>
+                    <td>3</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Portugal"</code></td>
+                    <td>3</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Northern California"</code></td>
+                    <td>3</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Arizona"</code></td>
+                    <td>3</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Iran"</code></td>
+                    <td>3</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Australia"</code></td>
+                    <td>3</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Arkansas"</code></td>
+                    <td>3</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"New Jersey"</code></td>
+                    <td>3</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Panama"</code></td>
+                    <td>3</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Southern East Pacific Rise"</code></td>
+                    <td>3</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Fiji region"</code></td>
+                    <td>3</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Off the coast of Oregon"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Turkey"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"North of Ascension Island"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Colombia"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Greece"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Japan region"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Pacific-Antarctic Ridge"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Ecuador"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Northern Mid-Atlantic Ridge"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Venezuela"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"India"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Western Xizang"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"El Salvador"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Guam"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Vanuatu region"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Reykjanes Ridge"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"South of Panama"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Georgia"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Uzbekistan"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Pakistan"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Central East Pacific Rise"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Virginia"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Anguilla"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"East of the Kuril Islands"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Kiribati region"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Central Mid-Atlantic Ridge"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Ukraine"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"East Timor"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"North Carolina"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Palau"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Western Indian-Antarctic Ridge"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Virgin Islands region"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"New Hampshire"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Ascension Island region"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Azerbaijan"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Taiwan"</code></td>
+                    <td>1</td>
+                </tr>
+            
+            
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+            
+        </table>
+        </div>
+        
+    
+        
+        <div id='explore-earthquakes-__0__-location-full' title='Previewing Values'>
+        <table class='table table-condensed table-striped table-bordered' >
+            <tr> <th>Value</th> <th>Count</th></tr>
+            
+                <tr>
+                    <td><code>"31km SSW of Hawthorne, Nevada"</code></td>
+                    <td>94</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"31km SE of Janesville, California"</code></td>
+                    <td>87</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"22km E of Little Lake, CA"</code></td>
+                    <td>74</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"30km SSW of Hawthorne, Nevada"</code></td>
+                    <td>70</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"6km NW of The Geysers, California"</code></td>
+                    <td>67</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"7km ESE of Mammoth Lakes, California"</code></td>
+                    <td>62</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"22km WNW of Chester, California"</code></td>
+                    <td>54</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"31km ESE of Janesville, California"</code></td>
+                    <td>42</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"14km ESE of Anza, CA"</code></td>
+                    <td>38</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"6km WNW of The Geysers, California"</code></td>
+                    <td>38</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"23km E of Little Lake, CA"</code></td>
+                    <td>34</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"20km NNE of Upper Lake, California"</code></td>
+                    <td>33</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"9km WNW of Cobb, California"</code></td>
+                    <td>33</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"3km SE of Mammoth Lakes, California"</code></td>
+                    <td>33</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"32km SSW of Hawthorne, Nevada"</code></td>
+                    <td>32</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"15km ESE of Anza, CA"</code></td>
+                    <td>31</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"24km SE of Mammoth Lakes, California"</code></td>
+                    <td>31</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"9km NW of The Geysers, California"</code></td>
+                    <td>28</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"30km SE of Janesville, California"</code></td>
+                    <td>26</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"7km E of Mammoth Lakes, California"</code></td>
+                    <td>26</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"6km NNW of Little Lake, CA"</code></td>
+                    <td>25</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"19km NNE of Upper Lake, California"</code></td>
+                    <td>25</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"7km W of Cobb, California"</code></td>
+                    <td>24</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"13km WSW of Niland, CA"</code></td>
+                    <td>24</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"30km ESE of Janesville, California"</code></td>
+                    <td>23</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"5km S of Volcano, Hawaii"</code></td>
+                    <td>23</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"3km ESE of Mammoth Lakes, California"</code></td>
+                    <td>21</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"20km NW of Hawthorne, Nevada"</code></td>
+                    <td>20</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"32km SE of Janesville, California"</code></td>
+                    <td>19</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"39km ESE of Goldfield, Nevada"</code></td>
+                    <td>18</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"7km NW of The Geysers, California"</code></td>
+                    <td>18</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"South of the Fiji Islands"</code></td>
+                    <td>17</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"25km SE of Mammoth Lakes, California"</code></td>
+                    <td>17</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"29km SSW of Hawthorne, Nevada"</code></td>
+                    <td>17</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"South Georgia Island region"</code></td>
+                    <td>16</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"12km SE of Mammoth Lakes, California"</code></td>
+                    <td>16</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"32km ESE of Janesville, California"</code></td>
+                    <td>16</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"25km NE of Thermal, CA"</code></td>
+                    <td>16</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"19km SE of Mammoth Lakes, California"</code></td>
+                    <td>16</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"20km ESE of Anza, CA"</code></td>
+                    <td>16</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"5km W of Cobb, California"</code></td>
+                    <td>14</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"37km NNE of Amboy, Washington"</code></td>
+                    <td>14</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"5km NW of The Geysers, California"</code></td>
+                    <td>14</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"7km NE of San Simeon, California"</code></td>
+                    <td>14</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"21km NE of Soledad, California"</code></td>
+                    <td>14</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"6km W of Cobb, California"</code></td>
+                    <td>13</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"68km ESE of Lakeview, Oregon"</code></td>
+                    <td>13</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"5km WSW of Volcano, Hawaii"</code></td>
+                    <td>13</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"25km ENE of Thermal, CA"</code></td>
+                    <td>13</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"6km WNW of Cobb, California"</code></td>
+                    <td>13</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"12km WNW of Calipatria, CA"</code></td>
+                    <td>12</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"13km SE of Mammoth Lakes, California"</code></td>
+                    <td>12</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"40km ESE of Goldfield, Nevada"</code></td>
+                    <td>12</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"10km S of Idyllwild, CA"</code></td>
+                    <td>12</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"7km WNW of The Geysers, California"</code></td>
+                    <td>12</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"14km SSE of Mammoth Lakes, California"</code></td>
+                    <td>11</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"21km NW of Hawthorne, Nevada"</code></td>
+                    <td>11</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"23km SW of Coalinga, California"</code></td>
+                    <td>11</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"7km WNW of Cobb, California"</code></td>
+                    <td>11</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"26km ENE of Thermal, CA"</code></td>
+                    <td>11</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"17km ESE of Julian, CA"</code></td>
+                    <td>11</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"14km N of Ocotillo Wells, CA"</code></td>
+                    <td>11</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"19km NW of Hawthorne, Nevada"</code></td>
+                    <td>11</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"26km E of Honaunau-Napoopoo, Hawaii"</code></td>
+                    <td>11</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"14km SE of Mammoth Lakes, California"</code></td>
+                    <td>10</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"12km ENE of Cloverdale, California"</code></td>
+                    <td>10</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2km SE of Mammoth Lakes, California"</code></td>
+                    <td>10</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"21km NNE of Upper Lake, California"</code></td>
+                    <td>10</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"11km E of Quarry near Portola Valley, CA"</code></td>
+                    <td>10</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"19km ESE of Anza, CA"</code></td>
+                    <td>10</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"24km ESE of Julian, CA"</code></td>
+                    <td>10</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"24km SW of Coalinga, California"</code></td>
+                    <td>10</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"17km S of Whitehall, Montana"</code></td>
+                    <td>10</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"4km W of Cobb, California"</code></td>
+                    <td>10</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"24km ESE of Honaunau-Napoopoo, Hawaii"</code></td>
+                    <td>10</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"3km W of Borrego Springs, CA"</code></td>
+                    <td>10</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"4km WNW of Cobb, California"</code></td>
+                    <td>10</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"21km ESE of Anza, CA"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"7km SSE of Mammoth Lakes, California"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"4km NW of The Geysers, California"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"16km NNE of Thousand Palms, CA"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"4km SE of The Geysers, California"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"29km SE of Mount Hood Village, Oregon"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"5km SSE of Mammoth Lakes, California"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"22km SSE of Mammoth Lakes, California"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"38km ESE of Goldfield, Nevada"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"Southwest Indian Ridge"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"41km ESE of Goldfield, Nevada"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"3km W of Cobb, California"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"8km S of Idyllwild, CA"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2km NNW of The Geysers, California"</code></td>
+                    <td>9</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2km E of The Geysers, California"</code></td>
+                    <td>8</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"22km SSW of La Quinta, CA"</code></td>
+                    <td>8</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"114km W of Cantwell, Alaska"</code></td>
+                    <td>8</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"23km WNW of Chester, California"</code></td>
+                    <td>8</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"58km N of Valdez, Alaska"</code></td>
+                    <td>8</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"18km ESE of Anza, CA"</code></td>
+                    <td>8</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"10km NE of Cabazon, CA"</code></td>
+                    <td>8</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"26km NE of Thermal, CA"</code></td>
+                    <td>8</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"1km NNE of The Geysers, California"</code></td>
+                    <td>8</td>
+                </tr>
+            
+            
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+            
+        </table>
+        </div>
+        
+    
+    <script>
+    $(document).ready(function() {
+        $( "#explore-earthquakes-__0__-location" ).dialog({
+          autoOpen: false,
+          width: 600
+        });
+        
+        $("#btn-explore-earthquakes-__0__-location-longitude").click(function() {
+            $( "#explore-earthquakes-__0__-location-longitude" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+        $("#btn-explore-earthquakes-__0__-location-distance").click(function() {
+            $( "#explore-earthquakes-__0__-location-distance" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+        $("#btn-explore-earthquakes-__0__-location-latitude").click(function() {
+            $( "#explore-earthquakes-__0__-location-latitude" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+        $("#btn-explore-earthquakes-__0__-location-depth").click(function() {
+            $( "#explore-earthquakes-__0__-location-depth" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+        $("#btn-explore-earthquakes-__0__-location-name").click(function() {
+            $( "#explore-earthquakes-__0__-location-name" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        $("#btn-explore-earthquakes-__0__-location-name").click(function() {
+            $( "#explore-earthquakes-__0__-location-name" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        $( "#explore-earthquakes-__0__-location-name" ).dialog({
+          autoOpen: false,
+          width: 600
+        });    
+        
+        
+        $("#btn-explore-earthquakes-__0__-location-full").click(function() {
+            $( "#explore-earthquakes-__0__-location-full" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        $("#btn-explore-earthquakes-__0__-location-full").click(function() {
+            $( "#explore-earthquakes-__0__-location-full" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        $( "#explore-earthquakes-__0__-location-full" ).dialog({
+          autoOpen: false,
+          width: 600
+        });    
+        
+        
+    });
+    </script>
+
+    <div id='explore-earthquakes-__0__-time' title='Dictionary (8 keys)'>
+        <table class='table table-condensed table-striped table-bordered' >
+            <tr> <th>Key</th> <th>Type</th> <th>Example Value</th> <th>Comment</th></tr>
+            
+            <tr> <td><code>"second"</code></td> 
+                 <td><span data-toggle="tooltip" title="Integer (whole number)">int</span></td> 
+                 <td>
+                    <code>43</code>
+                    
+                 </td> 
+                 <td></td> </tr>
+            
+            <tr> <td><code>"epoch"</code></td> 
+                 <td><span data-toggle="tooltip" title="Integer (whole number)">int</span></td> 
+                 <td>
+                    <code>1469593183550</code>
+                    
+                 </td> 
+                 <td>A number that represents the time that this earthquake occurred. Epoch's are the number of seconds since a particular date (January 1st, 1970), and are a convenient way to store date/times.</td> </tr>
+            
+            <tr> <td><code>"month"</code></td> 
+                 <td><span data-toggle="tooltip" title="Integer (whole number)">int</span></td> 
+                 <td>
+                    <code>7</code>
+                    
+                 </td> 
+                 <td></td> </tr>
+            
+            <tr> <td><code>"minute"</code></td> 
+                 <td><span data-toggle="tooltip" title="Integer (whole number)">int</span></td> 
+                 <td>
+                    <code>19</code>
+                    
+                 </td> 
+                 <td></td> </tr>
+            
+            <tr> <td><code>"year"</code></td> 
+                 <td><span data-toggle="tooltip" title="Integer (whole number)">int</span></td> 
+                 <td>
+                    <code>2016</code>
+                    
+                 </td> 
+                 <td></td> </tr>
+            
+            <tr> <td><code>"day"</code></td> 
+                 <td><span data-toggle="tooltip" title="Integer (whole number)">int</span></td> 
+                 <td>
+                    <code>27</code>
+                    
+                 </td> 
+                 <td></td> </tr>
+            
+            <tr> <td><code>"hour"</code></td> 
+                 <td><span data-toggle="tooltip" title="Integer (whole number)">int</span></td> 
+                 <td>
+                    <code>0</code>
+                    
+                 </td> 
+                 <td></td> </tr>
+            
+            <tr> <td><code>"full"</code></td> 
+                 <td><span data-toggle="tooltip" title="String (text)">str</span></td> 
+                 <td>
+                    <code>"2016-07-27 00:19:43"</code>
+                    
+                    <a class='dialog-opener' id='btn-explore-earthquakes-__0__-time-full'><br>
+                    <sup><i>[Preview <span class='glyphicon glyphicon-zoom-in'></span>]</i></sup></a>
+                    
+                 </td> 
+                 <td></td> </tr>
+            
+        </table>
+    </div>
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <div id='explore-earthquakes-__0__-time-full' title='Previewing Values'>
+        <table class='table table-condensed table-striped table-bordered' >
+            <tr> <th>Value</th> <th>Count</th></tr>
+            
+                <tr>
+                    <td><code>"2016-08-11 02:26:24"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-24 22:47:39"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-01 21:45:29"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-23 06:23:05"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-07-31 17:01:20"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-22 15:22:45"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-07-27 20:34:48"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-13 15:44:04"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-10 07:42:17"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-01 14:57:37"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-15 06:12:29"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-14 11:46:32"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-13 02:25:54"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-03 12:29:01"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-03 07:57:17"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-07-28 19:31:39"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-24 00:59:03"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-05 18:01:36"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-16 11:44:52"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-02 15:21:03"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-01 19:57:24"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-03 07:11:55"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-19 16:37:16"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-13 00:08:25"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-21 23:17:16"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-03 13:04:15"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-01 10:13:57"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-25 01:44:43"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-22 02:42:29"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-16 16:08:47"</code></td>
+                    <td>2</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-06 10:43:50"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-07 01:26:06"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-11 08:31:40"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-03 06:15:42"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-01 17:19:51"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-18 20:28:07"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-15 15:41:52"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-07-28 05:52:43"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-12 04:33:09"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-14 22:23:54"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-12 04:23:26"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-14 08:05:16"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-07-29 15:29:25"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-01 19:32:47"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-07-29 16:21:17"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-23 04:05:08"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-17 21:13:32"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-04 02:12:10"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-01 19:32:05"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-04 21:32:17"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-07 06:51:32"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-17 11:15:47"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-25 14:57:50"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-07-27 08:09:21"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-01 09:29:59"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-20 00:35:06"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-07 23:40:17"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-17 15:57:03"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-06 07:25:07"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-07-27 19:22:24"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-07-31 21:13:19"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-10 11:59:41"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-25 09:34:03"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-07 22:23:26"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-03 09:21:03"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-13 16:34:33"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-10 08:06:05"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-07-31 05:11:58"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-22 16:41:26"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-18 00:20:37"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-20 18:17:31"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-16 11:14:01"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-04 00:18:59"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-09 05:36:54"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-08 20:06:47"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-22 01:59:08"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-10 10:59:50"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-24 12:09:44"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-05 16:27:38"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-12 17:21:41"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-10 18:12:46"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-04 01:05:01"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-07 21:57:15"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-01 23:55:41"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-14 05:16:55"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-06 08:11:15"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-25 14:31:51"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-07-27 20:26:10"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-02 10:46:10"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-14 13:43:50"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-07-27 22:02:19"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-12 03:25:47"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-19 19:57:47"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-05 17:53:31"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-07-31 10:49:59"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-08 12:54:17"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-03 23:56:03"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-07-27 04:13:20"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-07 14:10:35"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"2016-08-14 14:57:44"</code></td>
+                    <td>1</td>
+                </tr>
+            
+            
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+            
+        </table>
+        </div>
+        
+    
+    <script>
+    $(document).ready(function() {
+        $( "#explore-earthquakes-__0__-time" ).dialog({
+          autoOpen: false,
+          width: 600
+        });
+        
+        $("#btn-explore-earthquakes-__0__-time-second").click(function() {
+            $( "#explore-earthquakes-__0__-time-second" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+        $("#btn-explore-earthquakes-__0__-time-epoch").click(function() {
+            $( "#explore-earthquakes-__0__-time-epoch" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+        $("#btn-explore-earthquakes-__0__-time-month").click(function() {
+            $( "#explore-earthquakes-__0__-time-month" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+        $("#btn-explore-earthquakes-__0__-time-minute").click(function() {
+            $( "#explore-earthquakes-__0__-time-minute" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+        $("#btn-explore-earthquakes-__0__-time-year").click(function() {
+            $( "#explore-earthquakes-__0__-time-year" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+        $("#btn-explore-earthquakes-__0__-time-day").click(function() {
+            $( "#explore-earthquakes-__0__-time-day" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+        $("#btn-explore-earthquakes-__0__-time-hour").click(function() {
+            $( "#explore-earthquakes-__0__-time-hour" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+        $("#btn-explore-earthquakes-__0__-time-full").click(function() {
+            $( "#explore-earthquakes-__0__-time-full" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        $("#btn-explore-earthquakes-__0__-time-full").click(function() {
+            $( "#explore-earthquakes-__0__-time-full" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        $( "#explore-earthquakes-__0__-time-full" ).dialog({
+          autoOpen: false,
+          width: 600
+        });    
+        
+        
+    });
+    </script>
+
+    <div id='explore-earthquakes-__0__-impact' title='Dictionary (3 keys)'>
+        <table class='table table-condensed table-striped table-bordered' >
+            <tr> <th>Key</th> <th>Type</th> <th>Example Value</th> <th>Comment</th></tr>
+            
+            <tr> <td><code>"gap"</code></td> 
+                 <td><span data-toggle="tooltip" title="Float (decimal number)">float</span></td> 
+                 <td>
+                    <code>122.0</code>
+                    
+                 </td> 
+                 <td>In general, the smaller this number, the more reliable is the calculated horizontal position of the earthquake. Specifically, this means the largest azimuthal gap between azimuthally adjacent stations (in degrees). Earthquake locations in which the azimuthal gap exceeds 180 degrees typically have large location and depth uncertainties. Ranges from 0 to 180.</td> </tr>
+            
+            <tr> <td><code>"significance"</code></td> 
+                 <td><span data-toggle="tooltip" title="Integer (whole number)">int</span></td> 
+                 <td>
+                    <code>31</code>
+                    
+                 </td> 
+                 <td>A number describing how significant the event is. Larger numbers indicate a more significant event. This value is determined on a number of factors, including magnitude, maximum MMI, felt reports, and estimated impact. Ranges from 0 to 1000.</td> </tr>
+            
+            <tr> <td><code>"magnitude"</code></td> 
+                 <td><span data-toggle="tooltip" title="Float (decimal number)">float</span></td> 
+                 <td>
+                    <code>1.43</code>
+                    
+                 </td> 
+                 <td>Earthquake magnitude is a measure of the size of an earthquake at its source. It is a logarithmic measure. At the same distance from the earthquake, the amplitude of the seismic waves from which the magnitude is determined are approximately 10 times as large during a magnitude 5 earthquake as during a magnitude 4 earthquake. The total amount of energy released by the earthquake usually goes up by a larger factor; for many commonly used magnitude types, the total energy of an average earthquake goes up by a factor of approximately 32 for each unit increase in magnitude. Typically ranges from -1 (very tiny) to 10 (incredibly powerful).</td> </tr>
+            
+        </table>
+    </div>
+    
+        
+    
+        
+    
+        
+    
+    <script>
+    $(document).ready(function() {
+        $( "#explore-earthquakes-__0__-impact" ).dialog({
+          autoOpen: false,
+          width: 600
+        });
+        
+        $("#btn-explore-earthquakes-__0__-impact-gap").click(function() {
+            $( "#explore-earthquakes-__0__-impact-gap" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+        $("#btn-explore-earthquakes-__0__-impact-significance").click(function() {
+            $( "#explore-earthquakes-__0__-impact-significance" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+        $("#btn-explore-earthquakes-__0__-impact-magnitude").click(function() {
+            $( "#explore-earthquakes-__0__-impact-magnitude" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+    });
+    </script>
+
+    <div id='explore-earthquakes-__0__' title='Dictionary (4 keys)'>
+        <table class='table table-condensed table-striped table-bordered' >
+            <tr> <th>Key</th> <th>Type</th> <th>Example Value</th> <th>Comment</th></tr>
+            
+            <tr> <td><code>"location"</code></td> 
+                 <td><span data-toggle="tooltip" title="Dictionary">dict</span></td> 
+                 <td>
+                    <a class='dialog-opener' id='btn-explore-earthquakes-__0__-location'>{ <span class='glyphicon glyphicon-new-window' aria-hidden='true'></span> }</a>
+                    
+                 </td> 
+                 <td></td> </tr>
+            
+            <tr> <td><code>"time"</code></td> 
+                 <td><span data-toggle="tooltip" title="Dictionary">dict</span></td> 
+                 <td>
+                    <a class='dialog-opener' id='btn-explore-earthquakes-__0__-time'>{ <span class='glyphicon glyphicon-new-window' aria-hidden='true'></span> }</a>
+                    
+                 </td> 
+                 <td></td> </tr>
+            
+            <tr> <td><code>"id"</code></td> 
+                 <td><span data-toggle="tooltip" title="String (text)">str</span></td> 
+                 <td>
+                    <code>"nc72666881"</code>
+                    
+                    <a class='dialog-opener' id='btn-explore-earthquakes-__0__-id'><br>
+                    <sup><i>[Preview <span class='glyphicon glyphicon-zoom-in'></span>]</i></sup></a>
+                    
+                 </td> 
+                 <td>A unique name for this earthquake.</td> </tr>
+            
+            <tr> <td><code>"impact"</code></td> 
+                 <td><span data-toggle="tooltip" title="Dictionary">dict</span></td> 
+                 <td>
+                    <a class='dialog-opener' id='btn-explore-earthquakes-__0__-impact'>{ <span class='glyphicon glyphicon-new-window' aria-hidden='true'></span> }</a>
+                    
+                 </td> 
+                 <td></td> </tr>
+            
+        </table>
+    </div>
+    
+        
+    
+        
+    
+        
+        <div id='explore-earthquakes-__0__-id' title='Previewing Values'>
+        <table class='table table-condensed table-striped table-bordered' >
+            <tr> <th>Value</th> <th>Count</th></tr>
+            
+                <tr>
+                    <td><code>"ak13878405"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nm60155466"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nn00555663"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13829741"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13859994"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ci37645560"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ld60050103"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ci37646968"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ci37671176"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nn00553557"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72666911"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nn00556391"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72668851"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13832369"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ci37443255"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"hv61377731"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ci37447831"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72671695"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nn00555624"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72681966"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nn00556270"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13842239"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"pr16238018"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13844658"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"us10006f6x"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72670256"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"us10006gau"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ci37669952"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"us10006ejj"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"pr16234002"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nn00554216"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nn00555376"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"uu60157152"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13848339"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13844780"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72683486"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72668051"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72670105"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13825310"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13876975"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"us10006fsj"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"uu60157807"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nn00555163"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nm60156491"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nn00554933"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ci37444823"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nn00557094"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"us10006aee"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ci37438847"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13875586"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"pr16221019"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ci37444903"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13827728"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72672485"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"us10006930"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"uw61181212"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ci37670360"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72669850"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72671115"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ci37447647"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nn00554681"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13873683"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13836983"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ci37440599"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nn00553820"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13805719"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72681366"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72671265"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72670720"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13824860"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13831391"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13878680"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72677381"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13878425"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72670330"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72676596"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13839202"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13840077"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13840227"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"hv61386736"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13840325"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"uw61179807"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ci37437223"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13867129"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"hv61379706"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13866266"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nn00554936"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72668266"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13847396"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"hv61375951"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13837630"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ci37447079"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72679616"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nn00556713"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"us10006acw"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13828260"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13824056"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"nc72670885"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"us10006g7q"</code></td>
+                    <td>1</td>
+                </tr>
+            
+                <tr>
+                    <td><code>"ak13856262"</code></td>
+                    <td>1</td>
+                </tr>
+            
+            
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+            
+        </table>
+        </div>
+        
+    
+        
+    
+    <script>
+    $(document).ready(function() {
+        $( "#explore-earthquakes-__0__" ).dialog({
+          autoOpen: false,
+          width: 600
+        });
+        
+        $("#btn-explore-earthquakes-__0__-location").click(function() {
+            $( "#explore-earthquakes-__0__-location" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+        $("#btn-explore-earthquakes-__0__-time").click(function() {
+            $( "#explore-earthquakes-__0__-time" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+        $("#btn-explore-earthquakes-__0__-id").click(function() {
+            $( "#explore-earthquakes-__0__-id" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        $("#btn-explore-earthquakes-__0__-id").click(function() {
+            $( "#explore-earthquakes-__0__-id" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        $( "#explore-earthquakes-__0__-id" ).dialog({
+          autoOpen: false,
+          width: 600
+        });    
+        
+        
+        $("#btn-explore-earthquakes-__0__-impact").click(function() {
+            $( "#explore-earthquakes-__0__-impact" ).dialog("open").css({'max-height':"400px", overflow:"auto"});;
+            $('.ui-dialog :button').blur();
+        });
+        
+        
+    });
+    </script>
+
+
+
+    
+    <h3 id="downloads">Downloads</h3>
+    
+<p>Download all of the following files.</p>
+
+<div class='row'>
+<div class="well col-md-6 col-md-offset-1">
+
+<ol>
+    
+    
+    <li><a href="earthquakes.py?forcedownload=1" download="earthquakes.py" target="_blank">
+        <strong>earthquakes.py</strong>
+        <span class='glyphicon glyphicon-download-alt' aria-hidden="true"></span>
+    </a></li>
+    
+    
+    <li><a href="earthquakes.db?forcedownload=1" download="earthquakes.db" target="_blank">
+        <strong>earthquakes.db</strong>
+        <span class='glyphicon glyphicon-download-alt' aria-hidden="true"></span>
+    </a></li>
+    
+</ol>
+</div>
+</div>
+    
+    
+    
+    <h3 id="usage">Usage</h3>
+    
+    This library has 1 function you can use.
+    
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">earthquakes</span>
+<span class="n">list_of_earthquake</span> <span class="o">=</span> <span class="n">earthquakes</span><span class="o">.</span><span class="n">get_earthquakes</span><span class="p">()</span>
+</pre></div>
+
+
+
+    
+    <h3 id="documentation">Documentation</h3>
+    
+<h4 id='get_earthquakes' style='font-family:monospace'    >&nbsp;earthquakes.get_earthquakes()</h4>
+
+<div class='row'>
+<div class='col-md-offset-1'>
+Returns earthquakes from the dataset.
+</div>
+<br>
+
+<ul class="list-group col-md-6 col-md-offset-1">
+
+
+</ul>
+
+</div>
+
+
+
+    
+
+
+</div>
