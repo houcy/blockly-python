@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "C:\Users\acbart\Projects\datasets\builder\build.py", line 46, in build_dir
-    output.write(data)
-TypeError: expected a string or other character buffer object
