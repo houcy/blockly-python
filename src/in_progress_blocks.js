@@ -202,7 +202,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
       // Block has been deleted.
       return;
     }
-    
+
     // Does it have valid returns?
     var hasReturns = false;
     var descendants = this.getDescendants();
@@ -211,7 +211,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
             hasReturns = true;
         }
     }
-    
+
     // Iterate through every block and fix the return state
     var functionName = this.getFieldValue('NAME');
     var blocks = this.workspace.getAllBlocks();
@@ -222,6 +222,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
             // Variable name may be null if the block is only half-built.
             if (callName && Blockly.Names.equals(functionName, callName)) {
                 blocks[i].setReturn(hasReturns);
+                blocks[i].type = 'procedures_callreturn';
             }
         }
     }
@@ -230,7 +231,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
 
 Blockly.Python['procedures_defreturn'] = function(block) {
   // Define a procedure with a return value.
-  
+
   // Get the function's name
   var funcName = Blockly.Python.variableDB_.getName(block.getFieldValue('NAME'),
       Blockly.Procedures.NAME_TYPE);

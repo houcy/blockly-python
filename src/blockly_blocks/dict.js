@@ -100,10 +100,8 @@ Blockly.Python['dicts_create_with'] = function(block) {
 
 Blockly.Blocks['dict_get_literal'] = {
   init: function() {
-       this.appendDummyInput()
-        .appendField("获取字典")
-        .appendField(new Blockly.FieldVariable(
-        "Dict"), 'VAR');
+       this.appendValueInput('VAR')
+        .appendField("访问字典");
     this.appendValueInput('VALUE')
         .appendField("中键")
         // .appendField(this.newQuote_(true))
@@ -126,27 +124,14 @@ Blockly.Blocks['dict_get_literal'] = {
       return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
           thisBlock.getFieldValue('VAR'));
     });*/
-  },
-    customContextMenu: function(options) {
-        if (!this.isCollapsed()) {
-          var option = {enabled: true};
-          var name = this.getFieldValue('VAR');
-          var workspace = this;
-          workspace.createVariable("count");
-          option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
-          var xmlField = goog.dom.createDom('field', null, name);
-          xmlField.setAttribute('name', 'VAR');
-          var xmlBlock = goog.dom.createDom('block', null, xmlField);
-          xmlBlock.setAttribute('type', 'variables_get');
-          option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
-          options.push(option);
-        }
-    }
+  }
 };
 
 Blockly.Python['dict_get_literal'] = function(block) {
-    var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
-      Blockly.Variables.NAME_TYPE);
+    // var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
+    //   Blockly.Variables.NAME_TYPE);
+    var variable = Blockly.Python.valueToCode(block, 'VAR',
+      Blockly.Python.ORDER_NONE) || '___';
     var key = Blockly.Python.valueToCode(block, 'VALUE',
       Blockly.Python.ORDER_NONE) || '___';
     var code = variable + '[' + key + ']';
@@ -155,10 +140,8 @@ Blockly.Python['dict_get_literal'] = function(block) {
 
 Blockly.Blocks['dict_add'] = {
     init: function() {
-        this.appendDummyInput()
-            .appendField("设置")
-            .appendField(new Blockly.FieldVariable(
-                "Dict"), 'VAR');
+        this.appendValueInput('VAR')
+            .appendField("设置");
         this.appendValueInput('ITEM')
             .appendField("键")
             .setCheck('String');
@@ -176,27 +159,12 @@ Blockly.Blocks['dict_add'] = {
           return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
               thisBlock.getFieldValue('VAR'));
         });*/
-    },
-    customContextMenu: function(options) {
-        if (!this.isCollapsed()) {
-            var option = {enabled: true};
-            var name = this.getFieldValue('VAR');
-            var workspace = this;
-            workspace.createVariable("count");
-            option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
-            var xmlField = goog.dom.createDom('field', null, name);
-            xmlField.setAttribute('name', 'VAR');
-            var xmlBlock = goog.dom.createDom('block', null, xmlField);
-            xmlBlock.setAttribute('type', 'variables_get');
-            option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
-            options.push(option);
-        }
     }
 };
 
 Blockly.Python['dict_add'] = function(block) {
-    var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
-      Blockly.Variables.NAME_TYPE);
+    var variable = Blockly.Python.valueToCode(block, 'VAR',
+      Blockly.Python.ORDER_NONE) || '___';
     var value = Blockly.Python.valueToCode(block, 'VALUE',
       Blockly.Python.ORDER_NONE) || '___';
     var key = Blockly.Python.valueToCode(block, 'ITEM',
