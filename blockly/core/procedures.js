@@ -281,9 +281,12 @@ Blockly.Procedures.mutateCallers = function(defBlock) {
 Blockly.Procedures.getDefinition = function(name, workspace) {
   // Assume that a procedure definition is a top block.
   var blocks = workspace.getTopBlocks(false);
+  console.log(blocks);
   for (var i = 0; i < blocks.length; i++) {
     if (blocks[i].getProcedureDef) {
       var tuple = blocks[i].getProcedureDef();
+      console.log(tuple);
+      console.log(name);
       if (tuple && Blockly.Names.equals(tuple[0], name)) {
         return blocks[i];
       }
