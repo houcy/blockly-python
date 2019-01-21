@@ -498,7 +498,7 @@ Blockly.Python['text_charAt'] = function(block) {
       var code = text + '[' + at + ']';
       return [code, Blockly.Python.ORDER_MEMBER];
     case 'FROM_END':
-      var at = Blockly.Python.getAdjustedInt(block, 'AT', 1, true);
+      var at = Blockly.Python.getAdjustedInt(block, 'AT', 0, true);
       var code = text + '[' + at + ']';
       return [code, Blockly.Python.ORDER_MEMBER];
     case 'RANDOM':
