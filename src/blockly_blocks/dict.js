@@ -472,7 +472,7 @@ Blockly.Python['dict_get'] = function(block) {
       Blockly.Variables.NAME_TYPE);
     var key = Blockly.Python.valueToCode(block, 'KEY',
         Blockly.Python.ORDER_NONE) || '___';
-    var code =  variable + '.get(' + key + ')\n';
+    var code =  variable + '.get(' + key + ')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
@@ -520,7 +520,7 @@ Blockly.Python['dict_pop'] = function(block) {
       Blockly.Variables.NAME_TYPE);
     var key = Blockly.Python.valueToCode(block, 'KEY',
         Blockly.Python.ORDER_NONE) || '___';
-    var code =  variable + '.pop(' + key + ')\n';
+    var code =  variable + '.pop(' + key + ')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
@@ -564,6 +564,6 @@ Blockly.Blocks['dict_clear'] = {
 Blockly.Python['dict_clear'] = function(block) {
     var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
       Blockly.Variables.NAME_TYPE);
-    var code =  variable + '.clear()';
+    var code =  variable + '.clear()\n';
     return code;
 };
