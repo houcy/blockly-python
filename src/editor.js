@@ -967,6 +967,7 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="loop_range"></block>'+
                 '</category>',
     'Variables': '<category name="变量" custom="VARIABLE" colour="240">'+
+                    //'<block type="func_global"></block>'+
                   '</category>',
     'Dictionaries': '<category name="字典" colour="280">'+
                     '<block type="dicts_create_with"></block>'+
@@ -981,11 +982,11 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="dict_keys"></block>'+
                     '<block type="dict_values"></block>'+
                     //'<block type="dict_items"></block>'+
-        '<block type="dict_clear"></block>'+
+                    '<block type="dict_clear"></block>'+
                     //'<block type="dict_keys"></block>'+
                 '</category>',
     'Functions': '<category name="函数" custom="PROCEDURE" colour="210">'+
-                    //'<block type="procedures_defnoreturn"></block>'+
+                    //'<block type="func_global"></block>'+
                 '</category>',
     'Turtle': '<category name="图形库" colour="180">'+
                     '<block type="turtle_create"></block>'+

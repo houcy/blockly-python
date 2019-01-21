@@ -567,3 +567,47 @@ Blockly.Python['dict_clear'] = function(block) {
     var code =  variable + '.clear()\n';
     return code;
 };
+
+Blockly.Blocks['func_global'] = {
+  init: function() {
+       this.appendDummyInput()
+        .appendField("令变量")
+        .appendField(new Blockly.FieldVariable(
+        "variable"), 'VAR');
+    this.appendDummyInput('VALUE')
+        .appendField("可以全局引用");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setColour(210);
+    //this.setOutput(true);
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    //var thisBlock = this;
+    /*this.setTooltip(function() {
+      return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
+    });*/
+  },
+    customContextMenu: function(options) {
+        if (!this.isCollapsed()) {
+          var option = {enabled: true};
+          var name = this.getFieldValue('VAR');
+          var workspace = this;
+          workspace.createVariable("count");
+          option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
+          var xmlField = goog.dom.createDom('field', null, name);
+          xmlField.setAttribute('name', 'VAR');
+          var xmlBlock = goog.dom.createDom('block', null, xmlField);
+          xmlBlock.setAttribute('type', 'variables_get');
+          option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
+          options.push(option);
+        }
+    }
+};
+
+Blockly.Python['func_global'] = function(block) {
+    var variable = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
+      Blockly.Variables.NAME_TYPE);
+    var code = 'global ' + variable + '\n';
+    return code;
+};
