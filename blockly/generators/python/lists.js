@@ -241,7 +241,7 @@ Blockly.Python['lists_setIndex'] = function(block) {
         }
       break;
     case 'FROM_END':
-      var at = Blockly.Python.getAdjustedInt(block, 'AT', 1, true);
+      var at = Blockly.Python.getAdjustedInt(block, 'AT', 0, true);
         if (mode == 'SET') {
           return list + '[' + at + '] = ' + value + '\n';
         } else if (mode == 'INSERT') {
@@ -280,7 +280,7 @@ Blockly.Python['lists_getSublist'] = function(block) {
       }
       break;
     case 'FROM_END':
-      var at1 = Blockly.Python.getAdjustedInt(block, 'AT1', 1, true);
+      var at1 = Blockly.Python.getAdjustedInt(block, 'AT1', 0, true);
       break;
     case 'FIRST':
       var at1 = '';

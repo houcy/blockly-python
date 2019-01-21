@@ -495,9 +495,9 @@ Blockly.Blocks['lists_getIndex'] = {
     // Create either a value 'AT' input or a dummy input.
     if (isAt) {
       this.appendValueInput('AT').setCheck('Number');
-      if (Blockly.Msg.ORDINAL_NUMBER_SUFFIX) {
+      if (Blockly.Msg.LISTS_GET_INDEX_END) {
         this.appendDummyInput('ORDINAL')
-            .appendField(Blockly.Msg.ORDINAL_NUMBER_SUFFIX);
+            .appendField(Blockly.Msg.LISTS_GET_INDEX_END);
       }
     } else {
       this.appendDummyInput('AT');
@@ -629,9 +629,9 @@ Blockly.Blocks['lists_setIndex'] = {
     // Create either a value 'AT' input or a dummy input.
     if (isAt) {
       this.appendValueInput('AT').setCheck('Number');
-      if (Blockly.Msg.ORDINAL_NUMBER_SUFFIX) {
+      if (Blockly.Msg.LISTS_GET_INDEX_END) {
         this.appendDummyInput('ORDINAL')
-            .appendField(Blockly.Msg.ORDINAL_NUMBER_SUFFIX);
+            .appendField(Blockly.Msg.LISTS_GET_INDEX_END);
       }
     } else {
       this.appendDummyInput('AT');
@@ -728,9 +728,9 @@ Blockly.Blocks['lists_getSublist'] = {
     // Create either a value 'AT' input or a dummy input.
     if (isAt) {
       this.appendValueInput('AT' + n).setCheck('Number');
-      if (Blockly.Msg.ORDINAL_NUMBER_SUFFIX) {
+      if (Blockly.Msg.LISTS_GET_INDEX_END) {
         this.appendDummyInput('ORDINAL' + n)
-            .appendField(Blockly.Msg.ORDINAL_NUMBER_SUFFIX);
+            .appendField(Blockly.Msg.LISTS_GET_INDEX_END);
       }
     } else {
       this.appendDummyInput('AT' + n);
