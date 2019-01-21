@@ -886,13 +886,11 @@ BlockPyEditor.CATEGORY_MAP = {
                 '</category>',
     'Text':   '<category name="字符串" colour="100">'+
                     '<block type="text_"></block>'+
-                    '<block type="text_join"></block>'+
                     //'<block type="text_create_join_container"></block>'+
                     //'<block type="text_create_join_item"></block>'+
-                    '<block type="text_append"></block>'+
+                    //'<block type="text_append"></block>'+
                     '<block type="text_length"></block>'+
-                    '<block type="text_isEmpty"></block>'+
-                    '<block type="text_indexOf"></block>'+
+                    //'<block type="text_indexOf"></block>'+
                     '<block type="text_charAt"></block>'+
                     '<block type="text_getSubstring_"></block>'+
                     '<block type="text_changeCase"></block>'+
@@ -901,6 +899,8 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="text_replace"></block>'+
                     '<block type="text_join"></block>'+
                     '<block type="text_three_quote"></block>'+
+                    '<block type="text_isEmpty"></block>'+
+                    '<block type="text_join"></block>'+
                     //'<block type="text_prompt_ext"></block>'+
                     //'<block type="text_prompt"></block>'+
                 '</category>',

@@ -660,37 +660,20 @@ PythonToBlocks.prototype.For = function(node) {
     {
         if(iter.args.length==1 && this.identifier(iter.func.id)=="range" )
         {
-            console.log("3333333333333333333333333");
+            //console.log("3333333333333333333333333");
             //console.log(this.identifier(iter.args[0].n));
             //console.log(this.identifier(target.id));
-            if(iter.args[0]._astname == 'Num')
-            {
-                console.log("555555555555555555555");
-                return block("controls_repeat", node.lineno, {
-                    "TIMES": this.identifier(iter.args[0].n),
-                    "VAR": this.identifier(target.id)
-                }, {}, {
-                    "inline": "true"
-                }, {}, {
-                    "DO": this.convertBody(body)
-                });
-            }
-            else if(iter.args[0]._astname == 'Name')
-            {
-                //console.log("4444444444444444444444444444444");
-                //console.log(this.convert(iter.args[0]));
-                return block("controls_repeat_ext", node.lineno, {
-                    "VAR": this.identifier(target.id)
-                }, {
-                    "TIMES": this.convert(iter.args[0])
-                }, {
-                    "inline": "true"
-                }, {}, {
-                    "DO": this.convertBody(body)
-                });
-            }
+            console.log("555555555555555555555");
+            return block("controls_repeat_ext", node.lineno, {
 
-
+                "VAR": this.identifier(target.id)
+            }, {
+                "TIMES": this.convert(iter.args[0])
+            }, {
+                "inline": "true"
+            }, {}, {
+                "DO": this.convertBody(body)
+            });
         }
     }
 
