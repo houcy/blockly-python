@@ -545,7 +545,7 @@ Blockly.Blocks['text_three_quote'] = {
 Blockly.Python['text_three_quote'] = function(block) {
   var text_body = block.getFieldValue('TEXT');
   // TODO: Assemble JavaScript into code variable.
-  var code = '"""'+text_body+'"""\n';
+  var code = '"""'+text_body+'"""';
   return [code, Blockly.Python.ORDER_ATOMIC];
   //return [code,;
 };

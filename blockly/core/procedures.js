@@ -161,10 +161,15 @@ Blockly.Procedures.rename = function(name) {
 Blockly.Procedures.flyoutCategory = function(workspace) {
   var xmlList = [];
   if (Blockly.Blocks['procedures_defnoreturn']) {
-    // <block type="procedures_defnoreturn" gap="16"></block>
+    // <block type="procedures_defnoreturn" gap="16"></block> +
+      //'<block type="func_global"></block>'+
     var block = goog.dom.createDom('block');
     block.setAttribute('type', 'procedures_defnoreturn');
     block.setAttribute('gap', 16);
+    xmlList.push(block);
+    var block = goog.dom.createDom('block');
+    block.setAttribute('type', 'func_global');
+    //block.setAttribute('gap', 16);
     xmlList.push(block);
   }
   /*if (Blockly.Blocks['procedures_defreturn']) {

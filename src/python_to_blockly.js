@@ -656,26 +656,26 @@ PythonToBlocks.prototype.For = function(node) {
     console.log("FOR node==============================");
     console.log(node);
 
-    if(iter.args != undefined && iter.func != undefined)
-    {
-        if(iter.args.length==1 && this.identifier(iter.func.id)=="range" )
-        {
-            //console.log("3333333333333333333333333");
-            //console.log(this.identifier(iter.args[0].n));
-            //console.log(this.identifier(target.id));
-            console.log("555555555555555555555");
-            return block("controls_repeat_ext", node.lineno, {
-
-                "VAR": this.identifier(target.id)
-            }, {
-                "TIMES": this.convert(iter.args[0])
-            }, {
-                "inline": "true"
-            }, {}, {
-                "DO": this.convertBody(body)
-            });
-        }
-    }
+    // if(iter.args != undefined && iter.func != undefined)
+    // {
+    //     if(iter.args.length==1 && this.identifier(iter.func.id)=="range" )
+    //     {
+    //         //console.log("3333333333333333333333333");
+    //         //console.log(this.identifier(iter.args[0].n));
+    //         //console.log(this.identifier(target.id));
+    //         console.log("555555555555555555555");
+    //         return block("controls_repeat_ext", node.lineno, {
+    //
+    //             "VAR": this.identifier(target.id)
+    //         }, {
+    //             "TIMES": this.convert(iter.args[0])
+    //         }, {
+    //             "inline": "true"
+    //         }, {}, {
+    //             "DO": this.convertBody(body)
+    //         });
+    //     }
+    // }
 
     return block("controls_forEach", node.lineno, {
     }, {
@@ -868,7 +868,15 @@ PythonToBlocks.prototype.Exec = function(node) {
 PythonToBlocks.prototype.Global = function(node)
 {
     var names = node.names;
-    throw new Error("Globals not implemented");
+    console.log("ggggggggggggggggggg")
+    console.log(node);
+    return block("func_global", node.lineno, {
+
+                "VAR": this.identifier(names[0])
+            }, {}, {
+                "inline": "true"
+            }, {}, {});
+    //throw new Error("Globals not implemented");
 }
 
 /*
@@ -1370,14 +1378,13 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
             //else
                 //throw new Error("Incorrect number of arguments to plt.plot");
         }
-        else if (module == "list") {
-            if(name == "index")
-            {
-                return block("lists_indexOf", node.lineno, {}, {"VALUE": this.convert(args[0]),"LIST": this.convert(func.value)});
-                //console.log("*********************");
+        else if (module == "random") {
+            if(name == "randint") {
+                return block("math_random_int", node.lineno,  {}, {"FROM": this.convert(args[0]),"TO": this.convert(args[1])});
             }
-            //else
-            //throw new Error("Incorrect number of arguments to plt.plot");
+            else if(name == "random") {
+                return block("math_random_float", node.lineno, {}, {});
+            }
         }
     }
     if (this.KNOWN_FUNCTIONS.indexOf(name) > -1) {
