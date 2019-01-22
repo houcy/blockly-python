@@ -554,6 +554,8 @@ Blockly.Blocks['text_changeCase'] = {
     this.setColour(Blockly.Blocks.texts.HUE);
     this.appendValueInput('TEXT')
         .setCheck('String')
+        .appendField('将');
+    this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown(OPERATORS), 'CASE');
     this.setOutput(true, 'String');
     this.setTooltip(Blockly.Msg.TEXT_CHANGECASE_TOOLTIP);
