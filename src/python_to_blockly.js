@@ -1288,7 +1288,7 @@ PythonToBlocks.KNOWN_MODULES = {
         "legend": ["*plot_legend"]
     }
 };
-PythonToBlocks.prototype.KNOWN_FUNCTIONS = ["append", "strip", "rstrip", "lstrip"];
+PythonToBlocks.prototype.KNOWN_FUNCTIONS = ["append", "strip", "rstrip", "lstrip", "upper","lower","title","index","pop"];
 PythonToBlocks.KNOWN_ATTR_FUNCTIONS = {};
 PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs, kwargs, node) {
     var name = this.identifier(func.attr);
@@ -1409,6 +1409,27 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
             case "rstrip":
                 return block("text_trim", func.lineno, { "MODE": "RIGHT" },
                     { "TEXT": this.convert(func.value) });
+            case "upper":
+                return block("text_changeCase", func.lineno, { "CASE": "UPPERCASE" },
+                    { "TEXT": this.convert(func.value) });
+            case "lower":
+                return block("text_changeCase", func.lineno, { "CASE": "LOWERCASE" },
+                    { "TEXT": this.convert(func.value) });
+            case "title":
+                return block("text_changeCase", func.lineno, { "CASE": "TITLECASE" },
+                    { "TEXT": this.convert(func.value) });
+            case "index":
+                return block("lists_indexOf", func.lineno, {},
+                    { "VALUE": this.convert(args[0]),
+                        "LIST": this.convert(func.value)
+                    });
+            case "pop":
+                return block("lists_getIndex", func.lineno, {
+                    "MODE": "GET_REMOVE"
+                    },
+                    { "AT": this.convert(args[0]),
+                        "VALUE": this.convert(func.value)
+                    });
             default: throw new Error("Unknown function call!");
         }
     } else if (name in PythonToBlocks.KNOWN_ATTR_FUNCTIONS) {
@@ -1689,6 +1710,8 @@ PythonToBlocks.prototype.Subscript = function(node)
     var slice = node.slice;
     var ctx = node.ctx;
 
+    console.log(node);
+
     if (slice._astname == "Index") {
         if (slice.value._astname == "Str") {
             console.log(node);
@@ -1699,8 +1722,8 @@ PythonToBlocks.prototype.Subscript = function(node)
             });
         } else if (slice.value._astname == "Num") {
             return block("lists_getIndex", node.lineno, {}, {
-                "ITEM": this.convert(slice.value),
-                "LIST": this.convert(value),
+                "AT": this.convert(slice.value),
+                "VALUE": this.convert(value),
             });
         }
     } else if (slice._astname == "Slice") {

@@ -35,7 +35,7 @@ Blockly.Blocks['conversion_float'] = {
     this.appendDummyInput("name")
         .appendField("变为浮点型");
     this.setInputsInline(true);
-    this.setOutput(true, 'string');
+    this.setOutput(true, 'String');
     this.setColour(125);
     this.setTooltip('');
     this.setHelpUrl('');
