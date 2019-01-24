@@ -57,7 +57,7 @@ Blockly.WorkspaceSvg = function(options) {
       options.getMetrics || Blockly.WorkspaceSvg.getTopLevelWorkspaceMetrics_;
   this.setMetrics =
       options.setMetrics || Blockly.WorkspaceSvg.setTopLevelWorkspaceMetrics_;
-  
+
   this.undo_stack = [];
   this.redo_stack = [];
   this.last_change_by_undo = false;
@@ -561,13 +561,13 @@ Blockly.WorkspaceSvg.prototype.saveUndo = function() {
         this.save_undo_flag = true;
     }
 };
-    
+
 Blockly.WorkspaceSvg.prototype.undo = function() {
     if (this.undo_stack.length > 0) {
         this.save_undo_flag = false;
         var state = this.undo_stack.pop();
         this.redo_stack.push(state);
-        if (!this.last_change_by_undo && 
+        if (!this.last_change_by_undo &&
             this.undo_stack.length > 0) {
             state = this.undo_stack.pop();
             this.redo_stack.push(state);
@@ -1018,13 +1018,14 @@ Blockly.WorkspaceSvg.prototype.pasteFromClipboard = function() {
     }
     Blockly.Events.setGroup(false);
 }
-      
+
 /**
  * Show the context menu for the workspace.
  * @param {!Event} e Mouse event.
  * @private
  */
 Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
+  console.log(e);
   if (this.options.readOnly || this.isFlyout) {
     return;
   }
@@ -1044,7 +1045,7 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
   redoOption.enabled = this.redoStack_.length > 0;
   redoOption.callback = this.undo.bind(this, true);
   menuOptions.push(redoOption);
-  
+
   // Options to copy all/paste previous action.
   var copyAllOption = {};
   copyAllOption.text = "Copy All Blocks";
@@ -1053,7 +1054,7 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
   menuOptions.push(copyAllOption);
   var pasteOption = {};
   pasteOption.text = "Paste Blocks";
-  var ls_xml = localStorage.getItem('_blockly_clipboardXml_'), 
+  var ls_xml = localStorage.getItem('_blockly_clipboardXml_'),
       cp_xml = Blockly.clipboardXml_;
   pasteOption.enabled = false;
   if (ls_xml) {
@@ -1133,29 +1134,29 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
     };
     menuOptions.push(expandOption);
   }
-  
+
   var _instance = this;
-  
+
   // Option to align the blocks
-  menuOptions.push({enabled: true, 
+  menuOptions.push({enabled: true,
                 text: "Align Blocks",
                 callback: function() {
                     _instance.align();
   }});
   /*
-  menuOptions.push({enabled: true, 
+  menuOptions.push({enabled: true,
                 text: "Undo",
                 callback: function() {
                     _instance.undo();
   }});
-  menuOptions.push({enabled: true, 
+  menuOptions.push({enabled: true,
                 text: "Redo",
                 callback: function() {
                     _instance.redo();
   }});
   */
-  
-  
+
+
   /*
   // Option to clear all the blocks.
   var clearOption = {enabled: true};
@@ -1217,7 +1218,7 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
     }
   };
   menuOptions.push(deleteOption);
-  
+
   if (Blockly.captureDialog_ != undefined) {
     var captureOption = {
       text: 'Screenshot',
