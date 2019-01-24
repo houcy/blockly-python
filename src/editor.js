@@ -865,6 +865,7 @@ BlockPyEditor.CATEGORY_MAP = {
                 '<block type="text_input"></block>'+
                 '<block type="text_print"></block>'+
                 '<block type="text_comma"></block>'+
+                '<block type="text_print_end"></block>'+
               '</category>',
     'Math': '<category name="数值" colour="270">'+
                     '<block type="math_number"></block>'+
