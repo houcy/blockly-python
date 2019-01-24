@@ -1493,9 +1493,18 @@ PythonToBlocks.prototype.Call = function(node) {
             switch (this.identifier(func.id)) {
                 case "print":
                     if (args.length == 1) {
+
                         return [block("text_print", node.lineno, {}, {
                             "TEXT": this.convert(args[0])})];
                     } else {
+                        if(keywords.length != 0)
+                        {
+                            return [block("text_print_multiple", node.lineno, {},
+                            this.convertElements_keywords("PRINT", args,"PRINT",keywords,args.length),
+                            {"inline": "true"
+                            }, { "@items": args.length+keywords.length})];
+                            //s
+                        }
                         return [block("text_print_multiple", node.lineno, {},
                             this.convertElements("PRINT", args),
                             {"inline": "true"
@@ -1805,6 +1814,19 @@ PythonToBlocks.prototype.convertElements = function(key, values, plusser) {
     return output;
 }
 
+PythonToBlocks.prototype.convertElements_keywords = function(key, values, newKey ,newValue ,plusser) {
+    if (plusser === undefined) {
+        plusser = 0;
+    }
+    var output = this.convertElements(key, values);
+    for (var i = 0; i < newValue.length; i++) {
+        output[newKey+(plusser+i)] = this.convert(newValue[i]);
+    }
+    console.log("output 22222222222222222");
+    console.log(output);
+    return output;
+}
+
 /*
  * elts: asdl_seq
  * ctx: expr_context_ty
@@ -1952,10 +1974,20 @@ PythonToBlocks.prototype.arguments_ = function(node)
  */
 PythonToBlocks.prototype.keyword = function(node)
 {
+    console.log(node);
     var arg = node.arg;
     var value = node.value;
+    //console.log(this.identifier(value.s));
+    if(this.identifier(arg) == 'end')
+    {
+       return block("text_print_end", node.lineno, {
+           "MESSAGE":this.identifier(value.s)
+       }, {},{
+        "inline": "true"
+    });
+    }
 
-    throw new Error("Keywords are not implemented");
+    //throw new Error("Keywords are not implemented");
 }
 
 /*

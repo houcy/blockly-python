@@ -115,7 +115,7 @@ Blockly.Events.fireNow_ = function() {
   for (var i = 0, event; event = queue[i]; i++) {
     var workspace = Blockly.Workspace.getById(event.workspaceId);
     if (workspace) {
-      console.log(workspace);
+      //console.log(workspace);
       workspace.fireChangeListener(event);
     }
   }

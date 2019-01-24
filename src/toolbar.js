@@ -92,8 +92,9 @@ BlockPyToolbar.prototype.activateToolbar = function() {
         var fr = new FileReader();
         var files = uploadButton[0].files;
         fr.onload = function(e) {
-            main.setCode(e.target.result)
-            main.components.server.logEvent('editor', 'upload')
+            main.setCode(e.target.result);
+            console.log(e.target.result);
+            main.components.server.logEvent('editor', 'upload');
             main.components.engine.on_run();
         };
         fr.readAsText(files[0]);
