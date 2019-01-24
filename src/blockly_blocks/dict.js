@@ -155,10 +155,10 @@ Blockly.Blocks['dict_add'] = {
         //this.setOutput(true);
         // Assign 'this' to a variable for use in the tooltip closure below.
         //var thisBlock = this;
-        /*this.setTooltip(function() {
-          return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
-              thisBlock.getFieldValue('VAR'));
-        });*/
+        // this.setTooltip(function() {
+        //   return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
+        //       thisBlock.getFieldValue('VAR'));
+        // });
     }
 };
 
@@ -202,8 +202,8 @@ Blockly.Blocks['dict_delete'] = {
         if (!this.isCollapsed()) {
           var option = {enabled: true};
           var name = this.getFieldValue('VAR');
-          var workspace = this;
-          workspace.createVariable("count");
+          //var workspace = this;
+          //workspace.createVariable("count");
           option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
           var xmlField = goog.dom.createDom('field', null, name);
           xmlField.setAttribute('name', 'VAR');
@@ -320,8 +320,8 @@ Blockly.Blocks['dict_keys'] = {
         if (!this.isCollapsed()) {
           var option = {enabled: true};
           var name = this.getFieldValue('VAR');
-          var workspace = this;
-          workspace.createVariable("count");
+          // var workspace = this;
+          // workspace.createVariable("count");
           option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
           var xmlField = goog.dom.createDom('field', null, name);
           xmlField.setAttribute('name', 'VAR');
@@ -364,8 +364,8 @@ Blockly.Blocks['dict_values'] = {
         if (!this.isCollapsed()) {
           var option = {enabled: true};
           var name = this.getFieldValue('VAR');
-          var workspace = this;
-          workspace.createVariable("count");
+          // var workspace = this;
+          // workspace.createVariable("count");
           option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
           var xmlField = goog.dom.createDom('field', null, name);
           xmlField.setAttribute('name', 'VAR');
@@ -408,8 +408,8 @@ Blockly.Blocks['dict_items'] = {
         if (!this.isCollapsed()) {
           var option = {enabled: true};
           var name = this.getFieldValue('VAR');
-          var workspace = this;
-          workspace.createVariable("count");
+          // var workspace = this;
+          // workspace.createVariable("count");
           option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
           var xmlField = goog.dom.createDom('field', null, name);
           xmlField.setAttribute('name', 'VAR');
@@ -454,8 +454,8 @@ Blockly.Blocks['dict_get'] = {
         if (!this.isCollapsed()) {
           var option = {enabled: true};
           var name = this.getFieldValue('VAR');
-          var workspace = this;
-          workspace.createVariable("count");
+          // var workspace = this;
+          // workspace.createVariable("count");
           option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
           var xmlField = goog.dom.createDom('field', null, name);
           xmlField.setAttribute('name', 'VAR');
@@ -502,8 +502,8 @@ Blockly.Blocks['dict_pop'] = {
         if (!this.isCollapsed()) {
           var option = {enabled: true};
           var name = this.getFieldValue('VAR');
-          var workspace = this;
-          workspace.createVariable("count");
+          // var workspace = this;
+          // workspace.createVariable("count");
           option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
           var xmlField = goog.dom.createDom('field', null, name);
           xmlField.setAttribute('name', 'VAR');
@@ -539,17 +539,17 @@ Blockly.Blocks['dict_clear'] = {
     //this.setOutput(true);
     // Assign 'this' to a variable for use in the tooltip closure below.
     //var thisBlock = this;
-    /*this.setTooltip(function() {
+    this.setTooltip(function() {
       return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
           thisBlock.getFieldValue('VAR'));
-    });*/
+    });
   },
     customContextMenu: function(options) {
         if (!this.isCollapsed()) {
           var option = {enabled: true};
           var name = this.getFieldValue('VAR');
-          var workspace = this;
-          workspace.createVariable("count");
+          // var workspace = this;
+          // workspace.createVariable("count");
           option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
           var xmlField = goog.dom.createDom('field', null, name);
           xmlField.setAttribute('name', 'VAR');
@@ -592,8 +592,8 @@ Blockly.Blocks['func_global'] = {
         if (!this.isCollapsed()) {
           var option = {enabled: true};
           var name = this.getFieldValue('VAR');
-          var workspace = this;
-          workspace.createVariable("count");
+          // var workspace = this;
+          // workspace.createVariable("count");
           option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
           var xmlField = goog.dom.createDom('field', null, name);
           xmlField.setAttribute('name', 'VAR');
