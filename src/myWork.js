@@ -132,15 +132,15 @@ MyLayer.prototype.openLayer = function () {
   main_table.appendChild(second_line);
 
 
-  //var content_area = document.createTextNode(this.options.content === undefined ? "暂时没有数据集" : this.options.content);
-  //div_content.appendChild(main_table);
+  var content_area = document.createTextNode(this.options.content === undefined ? "暂时没有数据集" : this.options.content);
+  div_content.appendChild(content_area);
   open_layer.appendChild(div_content);
   document.body.appendChild(open_layer);
   document.body.appendChild(background_layer);
   open_layer.style.display = "block" ;
   background_layer.style.display = "block";
 
-  first_3_button.addEventListener('click',airlinesClicked);
+  //first_3_button.addEventListener('click',airlinesClicked);
 
 }
 

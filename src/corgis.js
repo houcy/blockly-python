@@ -155,6 +155,45 @@ BlockPyCorgis.prototype.openDialog = function(name) {
     }
 };
 
+BlockPyCorgis.prototype.openWork = function(data) {
+    var corgis = this;
+    var main = this.main;
+    var body = $('<table></table>', {'class': 'table-bordered table-condensed table-striped', 'id': 'worklist'});
+                    Object.keys(data).sort().map(function(name) {
+                        var btn = $('<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" data-dismiss="modal">打开</button>');
+                        btn.click(function() {
+                                $.ajax({
+                                    url: '/openwork/',
+                                    type: 'POST',
+                                    headers:{"X-CSRFToken":$.cookie('csrftoken')},
+                                    data:{
+                                        "username": $.cookie('username'),
+                                        "name": name,
+                                    },
+                                    success: function (data) {
+                                        data = JSON.parse(data);
+                                        document.getElementById("production_name").value = data.name;
+                                        document.cookie="productid="+data.productid;
+                                        console.log(data.code + "qqqqqqqqqq");
+
+                                        main.setCode(data.code);
+                                        //main.model.programs['__main__'](data.code);
+                                    }
+                                })
+                            });
+                        $("<tr></tr>")
+                            .append($("<td>"+data[name]+"</td>"))
+                            .append($("<td class='col-md-2'></td>").append(btn))
+                            .appendTo(body);
+                    });
+                    // Show the actual dialog
+                    var editor = corgis.main.components.editor;
+                    corgis.main.components.dialog.show("我的作品", body, function() {
+                        if (editor.main.model.settings.editor() == "Blocks") {
+                            editor.updateBlocksFromModel();
+                        }
+                    });
+};
 /**
  * This is a very simplistic helper function that will transform
  * a given button into a "Loaded" state (disabled, pressed state, etc.).

@@ -7,6 +7,7 @@
  * @param {Object} main - The main BlockPy instance
  * @param {HTMLElement} tag - The HTML object this is attached to.
  */
+
 function BlockPyToolbar(main, tag) {
     this.main = main;
     this.tag = tag;
@@ -102,23 +103,132 @@ BlockPyToolbar.prototype.activateToolbar = function() {
     var downloadButton = this.tag.find('.blockpy-toolbar-download');
     downloadButton.click(function() {
         var data = main.model.programs['__main__']();
-        var filename='blockpy_'+main.model.assignment.name();
-        // Make safe
-        filename = filename.replace(/[^a-z0-9]/gi, '_').toLowerCase();
-        // Make the data download as a file
-        var blob = new Blob([data], {type: 'text/plain'});
-        if(window.navigator.msSaveOrOpenBlob) {
-            window.navigator.msSaveBlob(blob, filename);
+        var filename = document.getElementById("production_name").value;
+        if (filename == '') {
+            alert("作品名不能为空哦");
         }
         else{
-            var elem = window.document.createElement('a');
-            elem.href = window.URL.createObjectURL(blob);
-            elem.download = filename;
-            document.body.appendChild(elem);
-            elem.click();
-            document.body.removeChild(elem);
+            var blob = new Blob([data], {type: 'text/plain'});
+            if(window.navigator.msSaveOrOpenBlob) {
+                window.navigator.msSaveBlob(blob, filename);
+            }
+            else{
+                var elem = window.document.createElement('a');
+                elem.href = window.URL.createObjectURL(blob);
+                elem.download = filename;
+                document.body.appendChild(elem);
+                elem.click();
+                document.body.removeChild(elem);
+            }
+            main.components.server.logEvent('editor', 'download')
         }
-        main.components.server.logEvent('editor', 'download')
+    });
+
+    var uploadCloudButton = this.tag.find('.save');
+    uploadCloudButton.click(function() {
+            var filename = document.getElementById("production_name").value;
+            var username = $.cookie('username');
+            var token = $.cookie("token");
+            var sessionid = $.cookie("sessionid");
+            var code = main.model.programs['__main__']();
+            var pi = $.cookie("productid");
+            var flag = 0;
+            if (pi == ""){
+                flag = 1;
+            }
+            /*var flag = document.cookie.indexOf("productid=")
+            if (flag == -1){
+                console.log("aaaaaaaaaaaaa");
+            }*/
+            if(token != null && sessionid != null) {
+                if(filename == "" ||filename == "请输入作品名称"){
+                    alert("不要忘记输入作品名称哦");
+                }
+                else{
+                    $.ajax({
+                        url: '/upload/',
+                        type: 'POST',
+                        headers:{"X-CSRFToken":$.cookie('csrftoken')},
+                        data:{
+                            "name": filename,
+                            "username": username,
+                            "code": code,
+                            "productid": pi,
+                            "flag": flag,
+                        },
+                         success: function (data) {
+                            data = JSON.parse(data);
+                            //console.log(data.code);
+                            if (data.status) {
+                                document.cookie="productid="+data.productid;
+                                document.getElementById("production_name").value = data.name;
+                                alert("保存成功");
+                            }
+                            else {
+                                alert("好像出了点问题，保存失败");
+                            }
+                        }
+                    })
+                }
+            }
+            else{
+                alert("您未登录，无法上传作品到云端");
+            }
+    });
+
+    var copyButton = this.tag.find('.copy');
+    copyButton.click(function() {
+            var filename = document.getElementById("production_name").value;
+            var username = $.cookie('username');
+            var token = $.cookie("token");
+            var sessionid = $.cookie("sessionid");
+            var code = main.model.programs['__main__']();
+            var pi = $.cookie("productid");
+            var flag = 1;
+            if(token != null && sessionid != null) {
+                if(filename == "" ||filename == "请输入作品名称"){
+                    alert("不要忘记输入作品名称哦");
+                }
+                else{
+                    $.ajax({
+                        url: '/upload/',
+                        type: 'POST',
+                        headers:{"X-CSRFToken":$.cookie('csrftoken')},
+                        data:{
+                            "name": filename,
+                            "username": username,
+                            "code": code,
+                            "productid": pi,
+                            "flag": flag,
+                        },
+                         success: function (data) {
+                            data = JSON.parse(data);
+                            //console.log(data.code);
+                            if (data.status) {
+                                document.cookie="productid="+data.productid;
+                                document.getElementById("production_name").value = data.name;
+                                alert("保存成功");
+                            }
+                            else {
+                                alert("好像出了点问题，保存失败");
+                            }
+                        }
+                    })
+                }
+            }
+            else{
+                alert("您未登录，无法上传作品到云端");
+            }
+    });
+
+    var newButton = this.tag.find('.new');
+    newButton.click(function() {
+            var tmp = confirm("确保已经保存修改的内容，是否继续");
+            if(tmp){
+               document.getElementById("production_name").value = "请输入作品名称";
+               main.model.programs['__main__'](main.model.programs['starting_code']());
+               document.cookie="productid="+"";
+            }
     });
 
     this.tag.find('.blockpy-toolbar-filename-picker label').click(function() {
@@ -126,15 +236,32 @@ BlockPyToolbar.prototype.activateToolbar = function() {
     });
     var myWorkButton = this.tag.find('.blockpy-toolbar-myWork');
     myWorkButton.click(function() {
-        console.log("6666666666666666666666");
-        new MyLayer({
-        top:"15%",
-        left:"25%",
-        width:"50%",
-        height:"70%",
-        title:"我的作品"
-        //content:"暂时没有数据集"
-        }).openLayer();
+        var username = $.cookie('username');
+        var token = $.cookie("token");
+        var sessionid = $.cookie("sessionid");
+        if(token != null && sessionid != null) {
+            $.ajax({
+                url: '/myworklist/',
+                type: 'POST',
+                headers:{"X-CSRFToken":$.cookie('csrftoken')},
+                data:{
+                    "username": username,
+                },
+                success: function (data) {
+                    data = JSON.parse(data);
+                    //console.log(data['a']+"sssssssssssssss");
+
+                    main.components.corgis.openWork(data);
+                    //main.components.server.logEvent('editor', 'import')
+
+
+                }
+            })
+        }
+            else{
+                alert("您未登录，无法查看作品");
+            }
+
         /*var fr = new FileReader();
         var files = uploadButton[0].files;
         fr.onload = function(e) {
