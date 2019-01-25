@@ -19,6 +19,11 @@ Blockly.Blocks['text_input'] = {
     return new Blockly.FieldImage(file, 12, 12, '"');
   }
 };
+Blockly.Python['text_input'] = function(block) {
+  var message = block.getFieldValue('MESSAGE');
+  var code = 'input('+Blockly.Python.quote_(message)+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
 
 Blockly.Blocks['text_print_multiple'] = {
     /**
