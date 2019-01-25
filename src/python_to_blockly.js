@@ -1493,7 +1493,14 @@ PythonToBlocks.prototype.Call = function(node) {
             switch (this.identifier(func.id)) {
                 case "print":
                     if (args.length == 1) {
-
+                        if(keywords.length != 0)
+                        {
+                            return [block("text_print_multiple", node.lineno, {},
+                            this.convertElements_keywords("PRINT", args,"PRINT",keywords,args.length),
+                            {"inline": "true"
+                            }, { "@items": args.length+keywords.length})];
+                            //s
+                        }
                         return [block("text_print", node.lineno, {}, {
                             "TEXT": this.convert(args[0])})];
                     } else {

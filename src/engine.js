@@ -160,6 +160,7 @@ BlockPyEngine.prototype.inputMockFunction = function(promptMessage) {
 BlockPyEngine.prototype.openFile = function(name) {
     var filename = Sk.openFilenamePrefix || "";
     filename += name;
+    console.log(filename);
     elem = document.getElementById(filename);
     if (elem == null) {
         if (name in this.openedFiles) {
@@ -180,6 +181,8 @@ BlockPyEngine.prototype.openFile = function(name) {
 BlockPyEngine.prototype.openURL = function(url, type) {
     var server = this.main.components.server;
     var openedFiles = this.openedFiles;
+    console.log("184184184184184184184184184184184184")
+    console.log(openedFiles);
     return new Promise( function(resolve, reject) {
         if (url in openedFiles) {
             resolve(openedFiles[url]);

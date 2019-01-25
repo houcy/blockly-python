@@ -213,6 +213,8 @@ BlockPyPrinter.prototype.printInput = function(promptMessage) {
                     .append(inputForm)
                     .append(inputBtn);
             this.tag.append(inputBox);
+            this.tag.append("<br>");
+            this.tag.append($("<div class='blockpy-printer-border-bottom' >"));
             inputBox.tooltip();
             return {'input': inputForm, 'button': inputBtn, 'promise': true};
         }
