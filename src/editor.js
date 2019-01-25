@@ -317,6 +317,7 @@ BlockPyEditor.prototype.hideBlockMenu = function() {
     this.blocklyToolboxWidth = this.getToolbarWidth();
     this.blockTag.css('height', '0%');
     this.blockTag.css('width', '0%');
+    this.blocklyDiv.css('height', '0%');
     this.blockly.setVisible(false);
 }
 
@@ -864,6 +865,7 @@ BlockPyEditor.CATEGORY_MAP = {
                 '<block type="text_input"></block>'+
                 '<block type="text_print"></block>'+
                 '<block type="text_comma"></block>'+
+                '<block type="text_print_end"></block>'+
               '</category>',
     'Math': '<category name="数值" colour="270">'+
                     '<block type="math_number"></block>'+
@@ -885,13 +887,11 @@ BlockPyEditor.CATEGORY_MAP = {
                 '</category>',
     'Text':   '<category name="字符串" colour="100">'+
                     '<block type="text_"></block>'+
-                    '<block type="text_join"></block>'+
                     //'<block type="text_create_join_container"></block>'+
                     //'<block type="text_create_join_item"></block>'+
-                    '<block type="text_append"></block>'+
+                    //'<block type="text_append"></block>'+
                     '<block type="text_length"></block>'+
-                    '<block type="text_isEmpty"></block>'+
-                    '<block type="text_indexOf"></block>'+
+                    //'<block type="text_indexOf"></block>'+
                     '<block type="text_charAt"></block>'+
                     '<block type="text_getSubstring_"></block>'+
                     '<block type="text_changeCase"></block>'+
@@ -900,6 +900,8 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="text_replace"></block>'+
                     '<block type="text_join"></block>'+
                     '<block type="text_three_quote"></block>'+
+                    '<block type="text_isEmpty"></block>'+
+                    '<block type="text_join"></block>'+
                     //'<block type="text_prompt_ext"></block>'+
                     //'<block type="text_prompt"></block>'+
                 '</category>',
@@ -929,7 +931,11 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="lists_repeat"></block>'+
                     '<block type="lists_isEmpty"></block>'+
                     '<block type="lists_indexOf"></block>'+
-                    '<block type="lists_getIndex"></block>'+
+                    '<block type="lists_getIndex">' +
+                        '<value name="AT">'+
+                        '<block type="math_number"><field name="NUM">0</field></block>'+
+                        '</value>'+
+                    '</block>'+
                     '<block type="lists_setIndex"></block>'+
                     '<block type="lists_getSublist"></block>'+
                     '<block type="lists_split"></block>'+
@@ -962,25 +968,26 @@ BlockPyEditor.CATEGORY_MAP = {
                     '<block type="loop_range"></block>'+
                 '</category>',
     'Variables': '<category name="变量" custom="VARIABLE" colour="240">'+
+                    //'<block type="func_global"></block>'+
                   '</category>',
     'Dictionaries': '<category name="字典" colour="280">'+
                     '<block type="dicts_create_with"></block>'+
-                    '<block type="dict_get_literal"></block>'+
                     '<block type="dict_add"></block>'+
+                    '<block type="dict_get_literal"></block>'+
                     '<block type="dict_delete"></block>'+
+                    '<block type="dict_pop"></block>'+
+                    '<block type="dict_get"></block>'+
                     '<block type="dict_len"></block>'+
-                    '<block type="dict_max"></block>'+
                     '<block type="dict_min"></block>'+
-                    '<block type="dict_items"></block>'+
+                    '<block type="dict_max"></block>'+
                     '<block type="dict_keys"></block>'+
                     '<block type="dict_values"></block>'+
-                    '<block type="dict_get"></block>'+
-                    '<block type="dict_pop"></block>'+
+                    //'<block type="dict_items"></block>'+
                     '<block type="dict_clear"></block>'+
                     //'<block type="dict_keys"></block>'+
                 '</category>',
     'Functions': '<category name="函数" custom="PROCEDURE" colour="210">'+
-                    //'<block type="procedures_defnoreturn"></block>'+
+                    //'<block type="func_global"></block>'+
                 '</category>',
     'Turtle': '<category name="图形库" colour="180">'+
                     '<block type="turtle_create"></block>'+

@@ -25,7 +25,7 @@ Blockly.Blocks['controls_forEach'] = {
       "helpUrl": Blockly.Msg.CONTROLS_FOREACH_HELPURL
     });
     this.appendStatementInput('DO')
-        .appendField(Blockly.Msg.CONTROLS_FOREACH_INPUT_DO);
+        .appendField("重复执行");
     this.setInputsInline(true);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
@@ -291,7 +291,7 @@ Blockly.Blocks['controls_repeat_ext'] = {
    */
   init: function() {
     this.jsonInit({
-      "message0": "循环 %1 次 中",
+      "message0": "循环 %1 次",
       "args0": [
         {
           "type": "input_value",

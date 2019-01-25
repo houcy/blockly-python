@@ -7,7 +7,7 @@ Blockly.Blocks['comment_single'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(0);
-    this.setTooltip('This is a comment, which will be ignored when you execute your code.');
+    this.setTooltip('这是一段在程序执行时被忽略掉的注释。-.-');
     this.setHelpUrl('');
   }
 };
@@ -31,6 +31,7 @@ Blockly.Blocks['string_multiline'] = {
     this.setPreviousStatement(true, null);
     //this.setNextStatement(true, null);
     this.setNextStatement(true, null);
+    this.setTooltip('这是一段在程序执行时被忽略掉的多行注释。-.-');
     this.setColour(0);
     //this.setOutput(true, 'String');
   },
@@ -61,7 +62,7 @@ Blockly.Blocks['program_start'] = {
     //this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(0);
-    this.setTooltip('This is a comment, which will be ignored when you execute your code.');
+    this.setTooltip('主程序从此开始');
     this.setHelpUrl('');
   }
 };

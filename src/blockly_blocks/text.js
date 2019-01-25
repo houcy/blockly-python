@@ -381,6 +381,139 @@ Blockly.Python['text_join'] = function(block) {
     }, {"inline": "true"})];
 }*/
 
+Blockly.Blocks['text_charAt'] = {
+  /**
+   * Block for getting a character from the string.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.WHERE_OPTIONS =
+        [[Blockly.Msg.TEXT_CHARAT_FROM_START, 'FROM_START'],
+         [Blockly.Msg.TEXT_CHARAT_FROM_END, 'FROM_END'],
+         [Blockly.Msg.TEXT_CHARAT_FIRST, 'FIRST'],
+         [Blockly.Msg.TEXT_CHARAT_LAST, 'LAST'],
+         [Blockly.Msg.TEXT_CHARAT_RANDOM, 'RANDOM']];
+    this.setHelpUrl(Blockly.Msg.TEXT_CHARAT_HELPURL);
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.setOutput(true, 'String');
+    this.appendValueInput('VALUE')
+        .setCheck('String')
+        .appendField(Blockly.Msg.TEXT_CHARAT_INPUT_INTEXT);
+    this.appendDummyInput('AT');
+    this.setInputsInline(true);
+    this.updateAt_(true);
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    var thisBlock = this;
+    this.setTooltip(function() {
+      var where = thisBlock.getFieldValue('WHERE');
+      var tooltip = Blockly.Msg.TEXT_CHARAT_TOOLTIP;
+      if (where == 'FROM_START' || where == 'FROM_END') {
+        var msg = (where == 'FROM_START') ?
+            Blockly.Msg.LISTS_INDEX_FROM_START_TOOLTIP :
+            Blockly.Msg.LISTS_INDEX_FROM_END_TOOLTIP;
+        tooltip += '  ' + msg.replace('%1',
+            thisBlock.workspace.options.oneBasedIndex ? '#1' : '#0');
+      }
+      return tooltip;
+    });
+  },
+  /**
+   * Create XML to represent whether there is an 'AT' input.
+   * @return {!Element} XML storage element.
+   * @this Blockly.Block
+   */
+  mutationToDom: function() {
+    var container = document.createElement('mutation');
+    var isAt = this.getInput('AT').type == Blockly.INPUT_VALUE;
+    container.setAttribute('at', isAt);
+    return container;
+  },
+  /**
+   * Parse XML to restore the 'AT' input.
+   * @param {!Element} xmlElement XML storage element.
+   * @this Blockly.Block
+   */
+  domToMutation: function(xmlElement) {
+    // Note: Until January 2013 this block did not have mutations,
+    // so 'at' defaults to true.
+    var isAt = (xmlElement.getAttribute('at') != 'false');
+    this.updateAt_(isAt);
+  },
+  /**
+   * Create or delete an input for the numeric index.
+   * @param {boolean} isAt True if the input should exist.
+   * @private
+   * @this Blockly.Block
+   */
+  updateAt_: function(isAt) {
+    // Destroy old 'AT' and 'ORDINAL' inputs.
+    this.removeInput('AT');
+    this.removeInput('ORDINAL', true);
+    // Create either a value 'AT' input or a dummy input.
+    if (isAt) {
+      this.appendValueInput('AT').setCheck('Number');
+      if (Blockly.Msg.ORDINAL_NUMBER_SUFFIX) {
+        this.appendDummyInput('ORDINAL')
+            .appendField(Blockly.Msg.ORDINAL_NUMBER_SUFFIX);
+      }
+    } else {
+      this.appendDummyInput('AT');
+    }
+    if (Blockly.Msg.TEXT_CHARAT_TAIL) {
+      this.removeInput('TAIL', true);
+      this.appendDummyInput('TAIL')
+          .appendField(Blockly.Msg.TEXT_CHARAT_TAIL);
+    }
+    var menu = new Blockly.FieldDropdown(this.WHERE_OPTIONS, function(value) {
+      var newAt = (value == 'FROM_START') || (value == 'FROM_END');
+      // The 'isAt' variable is available due to this function being a closure.
+      if (newAt != isAt) {
+        var block = this.sourceBlock_;
+        block.updateAt_(newAt);
+        // This menu has been destroyed and replaced.  Update the replacement.
+        block.setFieldValue(value, 'WHERE');
+        return null;
+      }
+      return undefined;
+    });
+    this.getInput('AT').appendField(menu, 'WHERE');
+  }
+};
+
+Blockly.Python['text_charAt'] = function(block) {
+  // Get letter at index.
+  // Note: Until January 2013 this block did not have the WHERE input.
+  var where = block.getFieldValue('WHERE') || 'FROM_START';
+  var text = Blockly.Python.valueToCode(block, 'VALUE',
+      Blockly.Python.ORDER_MEMBER) || '___';
+  switch (where) {
+    case 'FIRST':
+      var code = text + '[0]';
+      return [code, Blockly.Python.ORDER_MEMBER];
+    case 'LAST':
+      var code = text + '[-1]';
+      return [code, Blockly.Python.ORDER_MEMBER];
+    case 'FROM_START':
+      var at = Blockly.Python.getAdjustedInt(block, 'AT');
+      var code = text + '[' + at + ']';
+      return [code, Blockly.Python.ORDER_MEMBER];
+    case 'FROM_END':
+      var at = Blockly.Python.getAdjustedInt(block, 'AT', 0, true);
+      var code = text + '[' + at + ']';
+      return [code, Blockly.Python.ORDER_MEMBER];
+    case 'RANDOM':
+      Blockly.Python.definitions_['import_random'] = 'import random';
+      var functionName = Blockly.Python.provideFunction_(
+          'text_random_letter',
+          ['def ' + Blockly.Python.FUNCTION_NAME_PLACEHOLDER_ + '(text):',
+           '  x = int(random.random() * len(text))',
+           '  return text[x];']);
+      code = functionName + '(' + text + ')';
+      return [code, Blockly.Python.ORDER_FUNCTION_CALL];
+  }
+  throw 'Unhandled option (text_charAt).';
+};
+
 Blockly.Blocks['text_three_quote'] = {
   // Container.
   init: function() {
@@ -412,7 +545,7 @@ Blockly.Blocks['text_three_quote'] = {
 Blockly.Python['text_three_quote'] = function(block) {
   var text_body = block.getFieldValue('TEXT');
   // TODO: Assemble JavaScript into code variable.
-  var code = '"""'+text_body+'"""\n';
+  var code = '"""'+text_body+'"""';
   return [code, Blockly.Python.ORDER_ATOMIC];
   //return [code,;
 };

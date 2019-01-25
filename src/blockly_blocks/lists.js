@@ -200,9 +200,9 @@ Blockly.Blocks['lists_getIndex_only'] = {
     // Create either a value 'AT' input or a dummy input.
     if (isAt) {
       this.appendValueInput('AT').setCheck('Number');
-      if (Blockly.Msg.ORDINAL_NUMBER_SUFFIX) {
+      if (Blockly.Msg.LISTS_GET_INDEX_END) {
         this.appendDummyInput('ORDINAL')
-            .appendField(Blockly.Msg.ORDINAL_NUMBER_SUFFIX);
+            .appendField(Blockly.Msg.LISTS_GET_INDEX_END);
       }
     } else {
       this.appendDummyInput('AT');
@@ -325,10 +325,8 @@ Blockly.Blocks['lists_getSublist'] = {
         .appendField(Blockly.Msg.LISTS_GET_SUBLIST_INPUT_IN_LIST);
     this.appendDummyInput('AT1');
     this.appendDummyInput('AT2');
-    if (Blockly.Msg.LISTS_GET_SUBLIST_TAIL) {
-      this.appendDummyInput('TAIL')
-          .appendField(Blockly.Msg.LISTS_GET_SUBLIST_TAIL);
-    }
+    this.appendDummyInput('TAIL')
+        .appendField(Blockly.Msg.LISTS_GET_SUBLIST_TAIL);
     this.setInputsInline(true);
     this.setOutput(true, 'Array');
     this.updateAt_(1, true);
@@ -375,9 +373,9 @@ Blockly.Blocks['lists_getSublist'] = {
     // Create either a value 'AT' input or a dummy input.
     if (isAt) {
       this.appendValueInput('AT' + n).setCheck('Number');
-      if (Blockly.Msg.ORDINAL_NUMBER_SUFFIX) {
+      if (Blockly.Msg.LISTS_GET_INDEX_END) {
         this.appendDummyInput('ORDINAL' + n)
-            .appendField(Blockly.Msg.ORDINAL_NUMBER_SUFFIX);
+            .appendField(Blockly.Msg.LISTS_GET_INDEX_END);
       }
     } else {
       this.appendDummyInput('AT' + n);
@@ -425,7 +423,7 @@ Blockly.Python['lists_getSublist'] = function(block) {
       }
       break;
     case 'FROM_END':
-      var at1 = Blockly.Python.getAdjustedInt(block, 'AT1', 1, true);
+      var at1 = Blockly.Python.getAdjustedInt(block, 'AT1', 0, true);
       break;
     case 'FIRST':
       var at1 = '';

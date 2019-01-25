@@ -355,6 +355,11 @@ Blockly.Blocks['procedures_defnoreturn'] = {
             // Variable name may be null if the block is only half-built.
             if (callName && Blockly.Names.equals(functionName, callName)) {
                 blocks[i].setReturn(hasReturns);
+                if(blocks[i].type == 'procedures_callreturn'&&hasReturns==false)
+                  blocks[i].type = 'procedures_callnoreturn';
+                else if(blocks[i].type == 'procedures_callnoreturn'&&hasReturns==true)
+                  blocks[i].type = 'procedures_callreturn';
+                //blocks[i].type = 'procedures_callreturn';
             }
         }
     }

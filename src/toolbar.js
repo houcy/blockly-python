@@ -7,7 +7,6 @@
  * @param {Object} main - The main BlockPy instance
  * @param {HTMLElement} tag - The HTML object this is attached to.
  */
-
 function BlockPyToolbar(main, tag) {
     this.main = main;
     this.tag = tag;

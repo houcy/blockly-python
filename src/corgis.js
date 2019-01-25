@@ -120,13 +120,15 @@ BlockPyCorgis.prototype.openDialog = function(name) {
     if (this.main.model.server_is_connected('import_datasets')) {
         var root = this.main.model.constants.urls.import_datasets;
         console.log("test insex.json=========================");
+        console.log(root);
         $.getJSON(root+'index.json', function(data) {
             // Make up the Body
-
+            console.log(data);
             var datasets = data.blockpy.datasets;
             var start = $("<p>Documentation is available at url</p>");
             var body = $('<table></table>', {'class': 'table-bordered table-condensed table-striped'});
             Object.keys(datasets).sort().map(function(name) {
+                console.log(name);
                 var title_name = name;
                 name = name.replace(/\s/g, '_').toLowerCase();
                 var btn = $('<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Load</button>');
@@ -147,6 +149,7 @@ BlockPyCorgis.prototype.openDialog = function(name) {
             // Show the actual dialog
             var editor = corgis.main.components.editor;
             corgis.main.components.dialog.show("Import Datasets", body, function() {
+                console.log("test insex.json=========================");
                 if (editor.main.model.settings.editor() == "Blocks") {
                     editor.updateBlocksFromModel();
                 }

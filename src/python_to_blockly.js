@@ -656,43 +656,26 @@ PythonToBlocks.prototype.For = function(node) {
     console.log("FOR node==============================");
     console.log(node);
 
-    if(iter.args != undefined && iter.func != undefined)
-    {
-        if(iter.args.length==1 && this.identifier(iter.func.id)=="range" )
-        {
-            console.log("3333333333333333333333333");
-            //console.log(this.identifier(iter.args[0].n));
-            //console.log(this.identifier(target.id));
-            if(iter.args[0]._astname == 'Num')
-            {
-                console.log("555555555555555555555");
-                return block("controls_repeat", node.lineno, {
-                    "TIMES": this.identifier(iter.args[0].n),
-                    "VAR": this.identifier(target.id)
-                }, {}, {
-                    "inline": "true"
-                }, {}, {
-                    "DO": this.convertBody(body)
-                });
-            }
-            else if(iter.args[0]._astname == 'Name')
-            {
-                //console.log("4444444444444444444444444444444");
-                //console.log(this.convert(iter.args[0]));
-                return block("controls_repeat_ext", node.lineno, {
-                    "VAR": this.identifier(target.id)
-                }, {
-                    "TIMES": this.convert(iter.args[0])
-                }, {
-                    "inline": "true"
-                }, {}, {
-                    "DO": this.convertBody(body)
-                });
-            }
-
-
-        }
-    }
+    // if(iter.args != undefined && iter.func != undefined)
+    // {
+    //     if(iter.args.length==1 && this.identifier(iter.func.id)=="range" )
+    //     {
+    //         //console.log("3333333333333333333333333");
+    //         //console.log(this.identifier(iter.args[0].n));
+    //         //console.log(this.identifier(target.id));
+    //         console.log("555555555555555555555");
+    //         return block("controls_repeat_ext", node.lineno, {
+    //
+    //             "VAR": this.identifier(target.id)
+    //         }, {
+    //             "TIMES": this.convert(iter.args[0])
+    //         }, {
+    //             "inline": "true"
+    //         }, {}, {
+    //             "DO": this.convertBody(body)
+    //         });
+    //     }
+    // }
 
     return block("controls_forEach", node.lineno, {
     }, {
@@ -885,7 +868,15 @@ PythonToBlocks.prototype.Exec = function(node) {
 PythonToBlocks.prototype.Global = function(node)
 {
     var names = node.names;
-    throw new Error("Globals not implemented");
+    console.log("ggggggggggggggggggg")
+    console.log(node);
+    return block("func_global", node.lineno, {
+
+                "VAR": this.identifier(names[0])
+            }, {}, {
+                "inline": "true"
+            }, {}, {});
+    //throw new Error("Globals not implemented");
 }
 
 /*
@@ -1297,7 +1288,7 @@ PythonToBlocks.KNOWN_MODULES = {
         "legend": ["*plot_legend"]
     }
 };
-PythonToBlocks.prototype.KNOWN_FUNCTIONS = ["append", "strip", "rstrip", "lstrip"];
+PythonToBlocks.prototype.KNOWN_FUNCTIONS = ["append", "strip", "rstrip", "lstrip", "upper","lower","title","index","pop"];
 PythonToBlocks.KNOWN_ATTR_FUNCTIONS = {};
 PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs, kwargs, node) {
     var name = this.identifier(func.attr);
@@ -1387,14 +1378,13 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
             //else
                 //throw new Error("Incorrect number of arguments to plt.plot");
         }
-        else if (module == "list") {
-            if(name == "index")
-            {
-                return block("lists_indexOf", node.lineno, {}, {"VALUE": this.convert(args[0]),"LIST": this.convert(func.value)});
-                //console.log("*********************");
+        else if (module == "random") {
+            if(name == "randint") {
+                return block("math_random_int", node.lineno,  {}, {"FROM": this.convert(args[0]),"TO": this.convert(args[1])});
             }
-            //else
-            //throw new Error("Incorrect number of arguments to plt.plot");
+            else if(name == "random") {
+                return block("math_random_float", node.lineno, {}, {});
+            }
         }
     }
     if (this.KNOWN_FUNCTIONS.indexOf(name) > -1) {
@@ -1419,6 +1409,27 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
             case "rstrip":
                 return block("text_trim", func.lineno, { "MODE": "RIGHT" },
                     { "TEXT": this.convert(func.value) });
+            case "upper":
+                return block("text_changeCase", func.lineno, { "CASE": "UPPERCASE" },
+                    { "TEXT": this.convert(func.value) });
+            case "lower":
+                return block("text_changeCase", func.lineno, { "CASE": "LOWERCASE" },
+                    { "TEXT": this.convert(func.value) });
+            case "title":
+                return block("text_changeCase", func.lineno, { "CASE": "TITLECASE" },
+                    { "TEXT": this.convert(func.value) });
+            case "index":
+                return block("lists_indexOf", func.lineno, {},
+                    { "VALUE": this.convert(args[0]),
+                        "LIST": this.convert(func.value)
+                    });
+            case "pop":
+                return block("lists_getIndex", func.lineno, {
+                    "MODE": "GET_REMOVE"
+                    },
+                    { "AT": this.convert(args[0]),
+                        "VALUE": this.convert(func.value)
+                    });
             default: throw new Error("Unknown function call!");
         }
     } else if (name in PythonToBlocks.KNOWN_ATTR_FUNCTIONS) {
@@ -1482,9 +1493,25 @@ PythonToBlocks.prototype.Call = function(node) {
             switch (this.identifier(func.id)) {
                 case "print":
                     if (args.length == 1) {
+                        if(keywords.length != 0)
+                        {
+                            return [block("text_print_multiple", node.lineno, {},
+                            this.convertElements_keywords("PRINT", args,"PRINT",keywords,args.length),
+                            {"inline": "true"
+                            }, { "@items": args.length+keywords.length})];
+                            //s
+                        }
                         return [block("text_print", node.lineno, {}, {
                             "TEXT": this.convert(args[0])})];
                     } else {
+                        if(keywords.length != 0)
+                        {
+                            return [block("text_print_multiple", node.lineno, {},
+                            this.convertElements_keywords("PRINT", args,"PRINT",keywords,args.length),
+                            {"inline": "true"
+                            }, { "@items": args.length+keywords.length})];
+                            //s
+                        }
                         return [block("text_print_multiple", node.lineno, {},
                             this.convertElements("PRINT", args),
                             {"inline": "true"
@@ -1699,6 +1726,8 @@ PythonToBlocks.prototype.Subscript = function(node)
     var slice = node.slice;
     var ctx = node.ctx;
 
+    console.log(node);
+
     if (slice._astname == "Index") {
         if (slice.value._astname == "Str") {
             console.log(node);
@@ -1709,8 +1738,8 @@ PythonToBlocks.prototype.Subscript = function(node)
             });
         } else if (slice.value._astname == "Num") {
             return block("lists_getIndex", node.lineno, {}, {
-                "ITEM": this.convert(slice.value),
-                "LIST": this.convert(value),
+                "AT": this.convert(slice.value),
+                "VALUE": this.convert(value),
             });
         }
     } else if (slice._astname == "Slice") {
@@ -1788,6 +1817,19 @@ PythonToBlocks.prototype.convertElements = function(key, values, plusser) {
         output[key+(plusser+i)] = this.convert(values[i]);
     }
     console.log("output ####################");
+    console.log(output);
+    return output;
+}
+
+PythonToBlocks.prototype.convertElements_keywords = function(key, values, newKey ,newValue ,plusser) {
+    if (plusser === undefined) {
+        plusser = 0;
+    }
+    var output = this.convertElements(key, values);
+    for (var i = 0; i < newValue.length; i++) {
+        output[newKey+(plusser+i)] = this.convert(newValue[i]);
+    }
+    console.log("output 22222222222222222");
     console.log(output);
     return output;
 }
@@ -1939,10 +1981,20 @@ PythonToBlocks.prototype.arguments_ = function(node)
  */
 PythonToBlocks.prototype.keyword = function(node)
 {
+    console.log(node);
     var arg = node.arg;
     var value = node.value;
+    //console.log(this.identifier(value.s));
+    if(this.identifier(arg) == 'end')
+    {
+       return block("text_print_end", node.lineno, {
+           "MESSAGE":this.identifier(value.s)
+       }, {},{
+        "inline": "true"
+    });
+    }
 
-    throw new Error("Keywords are not implemented");
+    //throw new Error("Keywords are not implemented");
 }
 
 /*
