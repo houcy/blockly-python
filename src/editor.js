@@ -989,7 +989,7 @@ BlockPyEditor.CATEGORY_MAP = {
     'Functions': '<category name="函数" custom="PROCEDURE" colour="210">'+
                     //'<block type="func_global"></block>'+
                 '</category>',
-    'Turtle': '<category name="图形库" colour="180">'+
+    'Turtle': '<category name="海龟库" colour="180">'+
                     '<block type="turtle_create"></block>'+
                     '<block type="turtle_shape"></block>'+
                     '<block type="turtle_move"></block>'+
