@@ -165,27 +165,34 @@ BlockPyCorgis.prototype.openWork = function(data) {
                     Object.keys(data).sort().map(function(name) {
                         var btn = $('<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" data-dismiss="modal">打开</button>');
                         btn.click(function() {
-                                $.ajax({
-                                    url: '/openwork/',
-                                    type: 'POST',
-                                    headers:{"X-CSRFToken":$.cookie('csrftoken')},
-                                    data:{
-                                        "username": $.cookie('username'),
-                                        "name": name,
-                                    },
-                                    success: function (data) {
-                                        data = JSON.parse(data);
-                                        document.getElementById("production_name").value = data.name;
-                                        document.cookie="productid="+data.productid;
-                                        console.log(data.code + "qqqqqqqqqq");
+                                var tmp = confirm("确保已经保存修改的内容，是否继续?");
+                                if(tmp){
+                                     $.ajax({
+                                        url: '/openwork/',
+                                        type: 'POST',
+                                        headers:{"X-CSRFToken":$.cookie('csrftoken')},
+                                        data:{
+                                            "username": $.cookie('username'),
+                                            "name": name,
+                                        },
+                                        success: function (data) {
+                                            var stateObject = {};
+                                            var newUrl = '/create/blockpy.html';
+                                            //修改地址栏中的地址
+                                            history.pushState(stateObject, "", newUrl);
 
-                                        main.setCode(data.code);
-                                        //main.model.programs['__main__'](data.code);
-                                    }
-                                })
+                                            data = JSON.parse(data);
+                                            document.getElementById("production_name").value = data.name;
+                                            document.cookie="productid="+data.productid;
+
+                                            main.setCode(data.code);
+                                            //main.model.programs['__main__'](data.code);
+                                        }
+                                    })
+                                }
                             });
                         $("<tr></tr>")
-                            .append($("<td>"+data[name]+"</td>"))
+                            .append($("<div style='padding: 10px;font-size: 16px;'><img src='/static/img/编辑修改.png'><td><strong>"+"   "+data[name]+"</strong></td></div>"))
                             .append($("<td class='col-md-2'></td>").append(btn))
                             .appendTo(body);
                     });

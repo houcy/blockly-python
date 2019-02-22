@@ -27,40 +27,6 @@ $(document).ready(function () {
                 '</div>'
             );
         }
-/*
-        $(".save").click(function () {
-            var filename = document.getElementById("production_name").value;
-            var username = $.cookie('username');
-            var code = this.main.model.programs['__main__']();
-
-            //console.log(code+"ssssssssss");
-            if(token != null && sessionid != null) {
-                $.ajax({
-                    url: '/upload/',
-                    type: 'POST',
-                    headers:{"X-CSRFToken":$.cookie('csrftoken')},
-                    data:{
-                        "name": filename,
-                        "username": username,
-                        "code": code,
-                    },
-
-                     success: function (data) {
-                        data = JSON.parse(data);
-                        if (data.status) {
-                            alert("保存成功");
-                        }
-                        else {
-                            alert("好像出了点问题，保存失败");
-                        }
-                    }
-                })
-            }
-            else{
-                alert("您未登录，无法上传作品到云端");
-            }
-        })*/
-
     });
 function sign_out() {
     var flag = confirm("系统可能不会保存您的修改，确定注销？");
