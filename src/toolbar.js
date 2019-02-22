@@ -7,6 +7,9 @@
  * @param {Object} main - The main BlockPy instance
  * @param {HTMLElement} tag - The HTML object this is attached to.
  */
+
+document.write("<script language=javascript src='src/alert.js'></script>");
+
 function BlockPyToolbar(main, tag) {
     this.main = main;
     this.tag = tag;
@@ -120,31 +123,33 @@ BlockPyToolbar.prototype.activateToolbar = function() {
     });
     var uploadButton = this.tag.find('.blockpy-toolbar-upload');
     uploadButton.change(function() {
-        var tmp = confirm("确保已经保存修改的内容，是否继续?");
-        if(tmp) {
-            var fr = new FileReader();
-            var files = uploadButton[0].files;
-            fr.onload = function (e) {
-                main.setCode(e.target.result)
-                main.components.server.logEvent('editor', 'upload')
-                //main.components.engine.on_run();
-            };
-            document.getElementById("production_name").value = files[0].name.substring(0,files[0].name.length-4);
-            fr.readAsText(files[0]);
-            uploadButton.val("");
+        my.confirm("温馨提醒", "确保已经保存修改的内容，是否继续？", function(flag) {
+            if(flag) {
+                var fr = new FileReader();
+                var files = uploadButton[0].files;
+                fr.onload = function (e) {
+                    main.setCode(e.target.result)
+                    main.components.server.logEvent('editor', 'upload')
+                    //main.components.engine.on_run();
+                };
+                var index = files[0].name.lastIndexOf("\.");
+                document.getElementById("production_name").value = files[0].name.substring(0,index);
+                fr.readAsText(files[0]);
+                uploadButton.val("");
 
-            var stateObject = {};
-            var newUrl = '/create/blockpy.html';
-            //修改地址栏中的地址
-            history.pushState(stateObject, "", newUrl);
-        }
+                var stateObject = {};
+                var newUrl = '/create/blockpy.html';
+                //修改地址栏中的地址
+                history.pushState(stateObject, "", newUrl);
+                }
+        });
     });
     var downloadButton = this.tag.find('.blockpy-toolbar-download');
     downloadButton.click(function() {
         var data = main.model.programs['__main__']();
         var filename = document.getElementById("production_name").value;
         if(filename == "" ||filename == "请输入作品名称"){
-                    alert("不要忘记输入作品名称哦");
+                    my.alert("系统提示", "不要忘记输入作品名称哦！");
         }
         else{
             var blob = new Blob([data], {type: 'text/plain'});
@@ -181,7 +186,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
             }*/
             if(token != null && sessionid != null) {
                 if(filename == "" ||filename == "请输入作品名称"){
-                    alert("不要忘记输入作品名称哦");
+                    my.alert("系统提示","不要忘记输入作品名称哦！");
                 }
                 else{
                     $.ajax({
@@ -200,12 +205,12 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                             //console.log(data.code);
                             if (data.status) {
                                 if(data.isExist) {
-                                    alert("作品名已存在，请重新填写");
+                                    my.alert("系统提示","作品名已存在，请重新填写！");
                                 }
                                 else{
                                     document.cookie="productid="+data.productid;
                                     document.getElementById("production_name").value = data.name;
-                                    alert("保存成功");
+                                    my.alert("系统提示","保存成功！");
                                     var stateObject = {};
                                     var newUrl = '/create/blockpy.html';
                                     //修改地址栏中的地址
@@ -214,14 +219,14 @@ BlockPyToolbar.prototype.activateToolbar = function() {
 
                             }
                             else {
-                                alert("好像出了点问题，保存失败");
+                                my.alert("系统提示","好像出了点问题，保存失败！");
                             }
                         }
                     })
                 }
             }
             else{
-                alert("您未登录，无法上传作品到云端");
+                my.alert("系统提示","您未登录，无法上传作品到云端！");
             }
     });
 
@@ -236,7 +241,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
             var flag = 1;
             if(token != null && sessionid != null) {
                 if(filename == "" ||filename == "请输入作品名称"){
-                    alert("不要忘记输入作品名称哦");
+                    my.alert("系统提示","不要忘记输入作品名称哦！");
                 }
                 else{
                     $.ajax({
@@ -255,12 +260,12 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                             //console.log(data.code);
                             if (data.status) {
                                 if(data.isExist) {
-                                    alert("作品名已存在，请重新填写");
+                                    my.alert("系统提示","作品名已存在，请重新填写！");
                                 }
                                 else{
                                     document.cookie="productid="+data.productid;
                                     document.getElementById("production_name").value = data.name;
-                                    alert("保存成功");
+                                    my.alert("系统提示","保存成功！");
 
                                     var stateObject = {};
                                     var newUrl = '/create/blockpy.html';
@@ -269,30 +274,31 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                                 }
                             }
                             else {
-                                alert("好像出了点问题，保存失败");
+                                my.alert("系统提示","好像出了点问题，保存失败！");
                             }
                         }
                     })
                 }
             }
             else{
-                alert("您未登录，无法上传作品到云端");
+                my.alert("系统提示","您未登录，无法上传作品到云端！");
             }
     });
 
     var newButton = this.tag.find('.new');
     newButton.click(function() {
-            var tmp = confirm("确保已经保存修改的内容，是否继续?");
-            if(tmp){
-                var stateObject = {};
-                var newUrl = '/create/blockpy.html';
-                //修改地址栏中的地址
-                history.pushState(stateObject, "", newUrl);
+            my.confirm("温馨提醒", "确保已经保存修改的内容，确定离开？", function(flag) {
+                    if(flag) {
+                        var stateObject = {};
+                        var newUrl = '/create/blockpy.html';
+                        //修改地址栏中的地址
+                        history.pushState(stateObject, "", newUrl);
 
-                document.getElementById("production_name").value = "请输入作品名称";
-                main.model.programs['__main__'](main.model.programs['starting_code']());
-                document.cookie="productid="+"";
-            }
+                        document.getElementById("production_name").value = "请输入作品名称";
+                        main.model.programs['__main__'](main.model.programs['starting_code']());
+                        document.cookie="productid="+"";
+                    }
+             });
     });
 
     this.tag.find('.blockpy-toolbar-filename-picker label').click(function() {
@@ -323,7 +329,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
             })
         }
             else{
-                alert("您未登录，无法查看作品");
+                my.alert("系统提示","您未登录，无法查看作品！");
             }
 
         /*var fr = new FileReader();

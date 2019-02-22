@@ -165,31 +165,32 @@ BlockPyCorgis.prototype.openWork = function(data) {
                     Object.keys(data).sort().map(function(name) {
                         var btn = $('<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" data-dismiss="modal">打开</button>');
                         btn.click(function() {
-                                var tmp = confirm("确保已经保存修改的内容，是否继续?");
-                                if(tmp){
-                                     $.ajax({
-                                        url: '/openwork/',
-                                        type: 'POST',
-                                        headers:{"X-CSRFToken":$.cookie('csrftoken')},
-                                        data:{
-                                            "username": $.cookie('username'),
-                                            "name": name,
-                                        },
-                                        success: function (data) {
-                                            var stateObject = {};
-                                            var newUrl = '/create/blockpy.html';
-                                            //修改地址栏中的地址
-                                            history.pushState(stateObject, "", newUrl);
+                                 my.confirm("温馨提醒", "确保已经保存修改的内容，是否继续？", function(flag) {
+                                        if(flag) {
+                                            $.ajax({
+                                                url: '/openwork/',
+                                                type: 'POST',
+                                                headers:{"X-CSRFToken":$.cookie('csrftoken')},
+                                                data:{
+                                                    "username": $.cookie('username'),
+                                                    "name": name,
+                                                },
+                                                success: function (data) {
+                                                    var stateObject = {};
+                                                    var newUrl = '/create/blockpy.html';
+                                                    //修改地址栏中的地址
+                                                    history.pushState(stateObject, "", newUrl);
 
-                                            data = JSON.parse(data);
-                                            document.getElementById("production_name").value = data.name;
-                                            document.cookie="productid="+data.productid;
+                                                    data = JSON.parse(data);
+                                                    document.getElementById("production_name").value = data.name;
+                                                    document.cookie="productid="+data.productid;
 
-                                            main.setCode(data.code);
-                                            //main.model.programs['__main__'](data.code);
+                                                    main.setCode(data.code);
+                                                    //main.model.programs['__main__'](data.code);
+                                                }
+                                            })
                                         }
-                                    })
-                                }
+                                 });
                             });
                         $("<tr></tr>")
                             .append($("<div style='padding: 10px;font-size: 16px;'><img src='/static/img/编辑修改.png'><td><strong>"+"   "+data[name]+"</strong></td></div>"))

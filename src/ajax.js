@@ -22,27 +22,23 @@ $(document).ready(function () {
                 '       ' + '未登录' + '<span class="caret"></span>' +
                 '   </button>' +
                 '   <ul class="dropdown-menu">' +
-                '       <li><a id="back" onclick="back()" >返回首页</a></li>' +
+                '       <li><a id="back" href="/" >返回首页</a></li>' +
                 '   </ul>' +
                 '</div>'
             );
         }
     });
+
 function sign_out() {
-    var flag = confirm("系统可能不会保存您的修改，确定注销？");
-    if(flag){
-        $.ajax({
-        type: 'get',
-        url: '/website/logout/',
-        success: function () {
-            window.location.reload();
-        }
-    })
-    }
-}
-function back() {
-    var flag = confirm("离开该页面可能不会保存您的修改，确定离开？");
-    if(flag){
-        window.location.href= '/';
-    }
+     my.confirm("温馨提醒", "确保已经保存修改的内容，确定注销？", function(flag) {
+            if(flag) {
+                $.ajax({
+                    type: 'get',
+                    url: '/website/logout/',
+                    success: function () {
+                        window.location.reload();
+                    }
+                })
+            }
+     });
 }
