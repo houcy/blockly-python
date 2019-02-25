@@ -148,7 +148,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
     downloadButton.click(function() {
         var data = main.model.programs['__main__']();
         var filename = document.getElementById("production_name").value;
-        if(filename == "" ||filename == "请输入作品名称"){
+        if(filename == ""){
                     my.alert("系统提示", "不要忘记输入作品名称哦！");
         }
         else{
@@ -185,7 +185,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                 console.log("aaaaaaaaaaaaa");
             }*/
             if(token != null && sessionid != null) {
-                if(filename == "" ||filename == "请输入作品名称"){
+                if(filename == ""){
                     my.alert("系统提示","不要忘记输入作品名称哦！");
                 }
                 else{
@@ -240,7 +240,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
             var pi = $.cookie("productid");
             var flag = 1;
             if(token != null && sessionid != null) {
-                if(filename == "" ||filename == "请输入作品名称"){
+                if(filename == ""){
                     my.alert("系统提示","不要忘记输入作品名称哦！");
                 }
                 else{
@@ -294,7 +294,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                         //修改地址栏中的地址
                         history.pushState(stateObject, "", newUrl);
 
-                        document.getElementById("production_name").value = "请输入作品名称";
+                        document.getElementById("production_name").value = "";
                         main.model.programs['__main__'](main.model.programs['starting_code']());
                         document.cookie="productid="+"";
                     }
