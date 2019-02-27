@@ -168,7 +168,7 @@ BlockPyCorgis.prototype.openWork = function(data) {
                                  my.confirm("温馨提醒", "确保已经保存修改的内容，是否继续？", function(flag) {
                                         if(flag) {
                                             $.ajax({
-                                                url: '/openwork/',
+                                                url: window.BLOCKPY + 'openwork/',
                                                 type: 'POST',
                                                 headers:{"X-CSRFToken":$.cookie('csrftoken')},
                                                 data:{
@@ -193,7 +193,7 @@ BlockPyCorgis.prototype.openWork = function(data) {
                                  });
                             });
                         $("<tr></tr>")
-                            .append($("<div style='padding: 10px;font-size: 16px;'><img src='/static/img/编辑修改.png'><td><strong>"+"   "+data[name]+"</strong></td></div>"))
+                            .append($("<div style='padding: 10px;font-size: 16px;'><img src='images/编辑修改.png'><td><strong>"+"   "+data[name]+"</strong></td></div>"))
                             .append($("<td class='col-md-2'></td>").append(btn))
                             .appendTo(body);
                     });

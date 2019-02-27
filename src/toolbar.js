@@ -47,7 +47,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
         var name = params["name"];
         document.getElementById("production_name").value = name;
             $.ajax({
-                url: '/openwork/',
+                url: window.BLOCKPY + 'openwork/',
                 type: 'POST',
                 headers:{"X-CSRFToken":$.cookie('csrftoken')},
                 data:{
@@ -190,7 +190,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                 }
                 else{
                     $.ajax({
-                        url: '/upload/',
+                        url: window.BLOCKPY + 'upload/',
                         type: 'POST',
                         headers:{"X-CSRFToken":$.cookie('csrftoken')},
                         data:{
@@ -245,7 +245,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                 }
                 else{
                     $.ajax({
-                        url: '/upload/',
+                        url: window.BLOCKPY + 'upload/',
                         type: 'POST',
                         headers:{"X-CSRFToken":$.cookie('csrftoken')},
                         data:{
@@ -311,7 +311,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
         var sessionid = $.cookie("sessionid");
         if(token != null && sessionid != null) {
             $.ajax({
-                url: '/myworklist/',
+                url: window.BLOCKPY + 'myworklist/',
                 type: 'POST',
                 headers:{"X-CSRFToken":$.cookie('csrftoken')},
                 data:{
