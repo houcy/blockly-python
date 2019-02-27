@@ -148,30 +148,36 @@ BlockPyToolbar.prototype.activateToolbar = function() {
     var downloadButton = this.tag.find('.blockpy-toolbar-download');
     downloadButton.click(function() {
         var data = main.model.programs['__main__']();
-        var filename = document.getElementById("production_name").value;
-        if(filename == ""){
-                    my.alert("系统提示", "不要忘记输入作品名称哦！");
+        var filename = document.getElementById("production_name").value.trim();
+        if(filename.length == 0){
+                    my.alert("系统提示", "作品名称不能为空或者为空格哦！");
         }
         else{
-            var blob = new Blob([data], {type: 'text/plain'});
-            if(window.navigator.msSaveOrOpenBlob) {
-                window.navigator.msSaveBlob(blob, filename);
+            reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
+            if ( !reg.test(filename) ){
+                my.alert("系统提示", "作品名称不符号规则哦！");
             }
             else{
-                var elem = window.document.createElement('a');
-                elem.href = window.URL.createObjectURL(blob);
-                elem.download = filename;
-                document.body.appendChild(elem);
-                elem.click();
-                document.body.removeChild(elem);
+                var blob = new Blob([data], {type: 'text/plain'});
+                if(window.navigator.msSaveOrOpenBlob) {
+                    window.navigator.msSaveBlob(blob, filename);
+                }
+                else{
+                    var elem = window.document.createElement('a');
+                    elem.href = window.URL.createObjectURL(blob);
+                    elem.download = filename;
+                    document.body.appendChild(elem);
+                    elem.click();
+                    document.body.removeChild(elem);
+                }
+                main.components.server.logEvent('editor', 'download');
             }
-            main.components.server.logEvent('editor', 'download')
         }
     });
 
     var uploadCloudButton = this.tag.find('.save');
     uploadCloudButton.click(function() {
-            var filename = document.getElementById("production_name").value;
+            var filename = document.getElementById("production_name").value.trim();
             var username = $.cookie('username');
             var token = $.cookie("token");
             var sessionid = $.cookie("sessionid");
@@ -186,44 +192,50 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                 console.log("aaaaaaaaaaaaa");
             }*/
             if(token != null && sessionid != null) {
-                if(filename == ""){
-                    my.alert("系统提示","不要忘记输入作品名称哦！");
+                if(filename.length == 0){
+                    my.alert("系统提示", "作品名称不能为空或者为空格哦！");
                 }
                 else{
-                    $.ajax({
-                        url: window.BLOCKPY + 'upload/',
-                        type: 'POST',
-                        headers:{"X-CSRFToken":$.cookie('csrftoken')},
-                        data:{
-                            "name": filename,
-                            "username": username,
-                            "code": code,
-                            "productid": pi,
-                            "flag": flag,
-                        },
-                         success: function (data) {
-                            data = JSON.parse(data);
-                            //console.log(data.code);
-                            if (data.status) {
-                                if(data.isExist) {
-                                    my.alert("系统提示","作品名已存在，请重新填写！");
-                                }
-                                else{
-                                    document.cookie="productid="+data.productid;
-                                    document.getElementById("production_name").value = data.name;
-                                    my.alert("系统提示","保存成功！");
-                                    var stateObject = {};
-                                    var newUrl = '/create/blockpy.html';
-                                    //修改地址栏中的地址
-                                    history.pushState(stateObject, "", newUrl);
-                                }
+                    reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
+                    if ( !reg.test(filename) ){
+                        my.alert("系统提示", "作品名称不符号规则哦！");
+                    }
+                    else{
+                        $.ajax({
+                            url: window.BLOCKPY + 'upload/',
+                            type: 'POST',
+                            headers:{"X-CSRFToken":$.cookie('csrftoken')},
+                            data:{
+                                "name": filename,
+                                "username": username,
+                                "code": code,
+                                "productid": pi,
+                                "flag": flag,
+                            },
+                             success: function (data) {
+                                data = JSON.parse(data);
+                                //console.log(data.code);
+                                if (data.status) {
+                                    if(data.isExist) {
+                                        my.alert("系统提示","作品名已存在哦！");
+                                    }
+                                    else{
+                                        document.cookie="productid="+data.productid;
+                                        document.getElementById("production_name").value = data.name;
+                                        my.alert("系统提示","保存成功！");
+                                        var stateObject = {};
+                                        var newUrl = '/create/blockpy.html';
+                                        //修改地址栏中的地址
+                                        history.pushState(stateObject, "", newUrl);
+                                    }
 
+                                }
+                                else {
+                                    my.alert("系统提示","好像出了点问题，保存失败！");
+                                }
                             }
-                            else {
-                                my.alert("系统提示","好像出了点问题，保存失败！");
-                            }
-                        }
-                    })
+                        })
+                    }
                 }
             }
             else{
@@ -233,7 +245,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
 
     var copyButton = this.tag.find('.copy');
     copyButton.click(function() {
-            var filename = document.getElementById("production_name").value;
+            var filename = document.getElementById("production_name").value.trim();
             var username = $.cookie('username');
             var token = $.cookie("token");
             var sessionid = $.cookie("sessionid");
@@ -241,44 +253,50 @@ BlockPyToolbar.prototype.activateToolbar = function() {
             var pi = $.cookie("productid");
             var flag = 1;
             if(token != null && sessionid != null) {
-                if(filename == ""){
-                    my.alert("系统提示","不要忘记输入作品名称哦！");
+                if(filename.length == 0){
+                    my.alert("系统提示", "作品名称不能为空或者为空格哦！");
                 }
                 else{
-                    $.ajax({
-                        url: window.BLOCKPY + 'upload/',
-                        type: 'POST',
-                        headers:{"X-CSRFToken":$.cookie('csrftoken')},
-                        data:{
-                            "name": filename,
-                            "username": username,
-                            "code": code,
-                            "productid": pi,
-                            "flag": flag,
-                        },
-                         success: function (data) {
-                            data = JSON.parse(data);
-                            //console.log(data.code);
-                            if (data.status) {
-                                if(data.isExist) {
-                                    my.alert("系统提示","作品名已存在，请重新填写！");
-                                }
-                                else{
-                                    document.cookie="productid="+data.productid;
-                                    document.getElementById("production_name").value = data.name;
-                                    my.alert("系统提示","保存成功！");
+                    reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
+                    if ( !reg.test(filename) ){
+                        my.alert("系统提示", "作品名称不符号规则哦！");
+                    }
+                    else {
+                        $.ajax({
+                            url: window.BLOCKPY + 'upload/',
+                            type: 'POST',
+                            headers:{"X-CSRFToken":$.cookie('csrftoken')},
+                            data:{
+                                "name": filename,
+                                "username": username,
+                                "code": code,
+                                "productid": pi,
+                                "flag": flag,
+                            },
+                             success: function (data) {
+                                data = JSON.parse(data);
+                                //console.log(data.code);
+                                if (data.status) {
+                                    if(data.isExist) {
+                                        my.alert("系统提示","作品名已存在哦！");
+                                    }
+                                    else{
+                                        document.cookie="productid="+data.productid;
+                                        document.getElementById("production_name").value = data.name;
+                                        my.alert("系统提示","保存成功！");
 
-                                    var stateObject = {};
-                                    var newUrl = '/create/blockpy.html';
-                                    //修改地址栏中的地址
-                                    history.pushState(stateObject, "", newUrl);
+                                        var stateObject = {};
+                                        var newUrl = '/create/blockpy.html';
+                                        //修改地址栏中的地址
+                                        history.pushState(stateObject, "", newUrl);
+                                    }
+                                }
+                                else {
+                                    my.alert("系统提示","好像出了点问题，保存失败！");
                                 }
                             }
-                            else {
-                                my.alert("系统提示","好像出了点问题，保存失败！");
-                            }
-                        }
-                    })
+                        })
+                    }
                 }
             }
             else{
