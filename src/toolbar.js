@@ -137,6 +137,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                 fr.readAsText(files[0]);
                 uploadButton.val("");
 
+                document.cookie="productid="+"";
                 var stateObject = {};
                 var newUrl = '/create/blockpy.html';
                 //修改地址栏中的地址
