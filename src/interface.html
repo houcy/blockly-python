@@ -1,4 +1,4 @@
-<script src="/static/Scratch/js/jquery.cookie.js"></script>
+<script src="src/jquery.cookie.js"></script>
 <script src="src/ajax.js"></script>
 <script>
     document.cookie="productid="+"";
@@ -32,8 +32,7 @@
                 <!--</a>-->
             <!--</li>-->
             <li>
-             <input size="15" type="text" id="production_name" name="production_name"
-                    value="请输入作品名称" onClick="if (this.value=='请输入作品名称'){this.value=''}"/>
+             <input size="15" type="text" id="production_name" name="production_name" placeholder="请输入作品名称" maxlength="20"/>
             </li>
               <li>
                 <a class="new" style="color: #ffffee; font-size: 16px" title="新建空作品">
