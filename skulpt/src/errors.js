@@ -41,12 +41,6 @@ Sk.builtin.BaseException = function (args) {
         this.traceback.push({lineno: this.args.v[2],
                              filename: this.args.v[1].v || "<unknown>"});
     }
-    
-    if (arguments.length >= 2) {
-        this.enhanced = arguments[1];
-    } else {
-        this.enhanced = "";
-    }
 };
 Sk.abstr.setUpInheritance("BaseException", Sk.builtin.BaseException, Sk.builtin.object);
 
@@ -72,10 +66,6 @@ Sk.builtin.BaseException.prototype.tp$str = function () {
         ret += "^\n";
     }
     
-    if (this.enhanced !== "") {
-        ret += "\n"+this.enhanced+"\n";
-    }
-
     /*for (i = 0; i < this.traceback.length; i++) {
         ret += "\n  at " + this.traceback[i].filename + " line " + this.traceback[i].lineno;
         if ("colno" in this.traceback[i]) {
@@ -88,6 +78,15 @@ Sk.builtin.BaseException.prototype.tp$str = function () {
 
 Sk.builtin.BaseException.prototype.toString = function () {
     return this.tp$str().v;
+};
+
+// Create a descriptor to return the 'args' of an exception.
+// This is a hack to get around a weird mismatch between builtin
+// objects and proper types
+Sk.builtin.BaseException.prototype.args = {
+    "tp$descr_get": function(self, clstype) {
+        return self.args;
+    }
 };
 
 goog.exportSymbol("Sk.builtin.BaseException", Sk.builtin.BaseException);
@@ -285,8 +284,30 @@ Sk.builtin.SyntaxError = function (args) {
         return o;
     }
     Sk.builtin.StandardError.apply(this, arguments);
+    if (arguments.length >= 3) {
+        this.lineno = Sk.ffi.remapToPy(arguments[2]);
+    } else {
+        this.lineno = Sk.ffi.remapToPy(null);
+    }
 };
 Sk.abstr.setUpInheritance("SyntaxError", Sk.builtin.SyntaxError, Sk.builtin.StandardError);
+Sk.builtin.SyntaxError.prototype.tp$getattr = function (name) {
+    if (name != null && (Sk.builtin.checkString(name) || typeof name === "string")) {
+        var _name = name;
+
+        // get javascript string
+        if (Sk.builtin.checkString(name)) {
+            _name = Sk.ffi.remapToJs(name);
+        }
+
+        if (_name === "lineno") {
+            return this[_name];
+        }
+    }
+
+    // if we have not returned yet, try the genericgetattr
+    return Sk.builtin.object.prototype.GenericGetAttr(name);
+};
 
 /**
  * @constructor
@@ -535,6 +556,51 @@ Sk.builtin.StopIteration = function (args) {
 };
 Sk.abstr.setUpInheritance("StopIteration", Sk.builtin.StopIteration, Sk.builtin.Exception);
 goog.exportSymbol("Sk.builtin.StopIteration", Sk.builtin.StopIteration);
+
+/**
+ * @constructor
+ * @param {Object} err
+ */
+Sk.builtin.traceback = function(err) {
+    if (!(this instanceof Sk.builtin.traceback)) {
+        return new Sk.builtin.traceback(err);
+    }
+    
+    var lineno = null;
+    if (err.traceback.length > 0) {
+        lineno = err.traceback[0].lineno;
+    }
+    
+    this.tb_lineno = new Sk.builtin.int_(lineno)
+    
+    //tb_frame, tb_lasti, tb_lineno, tb_next
+    
+    this.__class__ = Sk.builtin.traceback;
+    
+    return this;
+}
+Sk.abstr.setUpInheritance("traceback", Sk.builtin.traceback, Sk.builtin.object);
+Sk.builtin.traceback.prototype.tp$getattr = function (name) {
+    if (name != null && (Sk.builtin.checkString(name) || typeof name === "string")) {
+        var _name = name;
+
+        // get javascript string
+        if (Sk.builtin.checkString(name)) {
+            _name = Sk.ffi.remapToJs(name);
+        }
+
+        if (_name === "tb_lineno") {
+            return this[_name];
+        }
+    }
+
+    // if we have not returned yet, try the genericgetattr
+    return Sk.builtin.object.prototype.GenericGetAttr(name);
+};
+Sk.builtin.traceback.prototype["$r"] = function () {
+    return new Sk.builtin.str("<traceback>");
+};
+goog.exportSymbol("Sk.builtin.traceback", Sk.builtin.traceback);
 
 // TODO: Extract into sys.exc_info(). Work out how the heck
 // to find out what exceptions are being processed by parent stack frames...

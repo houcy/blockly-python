@@ -1,2 +1,3 @@
-from pprint import pprint
-pprint({1:2, "T": 5})
+import ast
+
+print(ast.dump(ast.parse('1 in 2')))

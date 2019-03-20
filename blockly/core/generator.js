@@ -172,7 +172,6 @@ Blockly.Generator.prototype.allNestedComments = function(block) {
  *     operator order value.  Returns '' if block is null.
  */
 Blockly.Generator.prototype.blockToCode = function(block) {
-  //console.log("block: "+block);
   if (!block) {
     return '';
   }
@@ -180,7 +179,6 @@ Blockly.Generator.prototype.blockToCode = function(block) {
     // Skip past this block if it is disabled.
     return this.blockToCode(block.getNextBlock());
   }
-
   var func = this[block.type];
   //console.log("block.type"+block.type);
   //console.log("func: "+func);

@@ -46,7 +46,7 @@ Blockly.Python['controls_forEach'] = function(block) {
   var branch = Blockly.Python.statementToCode(block, 'DO');
   branch = Blockly.Python.addLoopTrap(branch, block.id) ||
       Blockly.Python.PASS;
-  console.log("blockly_blocks loop python");
+  //console.log("blockly_blocks loop python");
   var code = 'for ' + variable0 + ' in ' + argument0 + ':\n' + branch;
   return code;
 };

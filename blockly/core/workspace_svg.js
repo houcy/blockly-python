@@ -638,6 +638,7 @@ Blockly.WorkspaceSvg.prototype.render = function() {
   var blocks = this.getAllBlocks();
   // Render each block.
   for (var i = blocks.length - 1; i >= 0; i--) {
+    //console.log(blocks[i]);
     blocks[i].render(false);
   }
 };
@@ -888,6 +889,7 @@ Blockly.WorkspaceSvg.prototype.moveDrag = function(e) {
   // Fix scale of mouse event.
   point.x /= this.scale;
   point.y /= this.scale;
+  console.log("****************moveDrag");
   return goog.math.Coordinate.sum(this.dragDeltaXY_, point);
 };
 
@@ -1025,7 +1027,6 @@ Blockly.WorkspaceSvg.prototype.pasteFromClipboard = function() {
  * @private
  */
 Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
-  console.log(e);
   if (this.options.readOnly || this.isFlyout) {
     return;
   }

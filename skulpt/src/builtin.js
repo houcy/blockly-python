@@ -211,41 +211,61 @@ Sk.builtin.asnum$nofloat = function (a) {
 goog.exportSymbol("Sk.builtin.asnum$nofloat", Sk.builtin.asnum$nofloat);
 
 Sk.builtin.round = function round (number, ndigits) {
-    var result, multiplier, special;
+    var special;
     Sk.builtin.pyCheckArgs("round", arguments, 1, 2);
 
     if (!Sk.builtin.checkNumber(number)) {
+        if (!Sk.builtin.checkFunction(number)) {
         throw new Sk.builtin.TypeError("a float is required");
+        } else {
+            if (!Sk.python3) {
+                throw new Sk.builtin.AttributeError(Sk.abstr.typeName(number) + " instance has no attribute '__float__'");
+            }
+        }
     }
 
     if ((ndigits !== undefined) && !Sk.misceval.isIndex(ndigits)) {
         throw new Sk.builtin.TypeError("'" + Sk.abstr.typeName(ndigits) + "' object cannot be interpreted as an index");
     }
 
-    if (ndigits === undefined) {
-        ndigits = 0;
-    }
-
-    // for built-in types round is delegated to number.__round__
-    if(number.__round__) {
-        return number.__round__(number, ndigits);
+    if (!Sk.python3 && number.round$) {
+        return number.round$(number, ndigits);
     }
 
     // try calling internal magic method
     special = Sk.abstr.lookupSpecial(number, "__round__");
     if (special != null) {
         // method on builtin, provide this arg
+        if (!Sk.builtin.checkFunction(number)) {
         return Sk.misceval.callsim(special, number, ndigits);
+        } else {
+            return Sk.misceval.callsim(special, number);
+        }
+    } else {
+        throw new Sk.builtin.TypeError("a float is required");
     }
 };
 
 Sk.builtin.len = function len (item) {
+    var intcheck;
+    var special;
     Sk.builtin.pyCheckArgs("len", arguments, 1, 1);
 
     var int_ = function(i) { return new Sk.builtin.int_(i); };
+    intcheck = function(j) {
+        if (Sk.builtin.checkInt(j)) {
+            return int_(j);
+        } else {
+            if (Sk.python3) {
+                throw new Sk.builtin.TypeError("'" + Sk.abstr.typeName(j) + "' object cannot be interpreted as an integer");
+            } else {
+                throw new Sk.builtin.TypeError("__len__() should return an int");
+            }
+        }
+    };
 
     if (item.sq$length) {
-        return Sk.misceval.chain(item.sq$length(true), int_);
+        return Sk.misceval.chain(item.sq$length(true), intcheck);
     }
 
     if (item.mp$length) {
@@ -253,7 +273,20 @@ Sk.builtin.len = function len (item) {
     }
 
     if (item.tp$length) {
-        return Sk.misceval.chain(item.tp$length(true), int_);
+        if (Sk.builtin.checkFunction(item)) {
+            special = Sk.abstr.lookupSpecial(item, "__len__");
+            if (special != null) {
+                return Sk.misceval.callsim(special, item);
+            } else {
+                if (Sk.python3) {
+                    throw new Sk.builtin.TypeError("object of type '" + Sk.abstr.typeName(item) + "' has no len()");
+                } else {
+                    throw new Sk.builtin.AttributeError(Sk.abstr.typeName(item) + " instance has no attribute '__len__'");
+                }
+            }
+        } else {
+            return Sk.misceval.chain(item.tp$length(true), intcheck);
+        }
     }
 
     throw new Sk.builtin.TypeError("object of type '" + Sk.abstr.typeName(item) + "' has no len()");
@@ -468,8 +501,8 @@ Sk.builtin.chr = function chr (x) {
     x = Sk.builtin.asnum$(x);
 
 
-    if ((x < 0) || (x > 65536)) {
-        throw new Sk.builtin.ValueError("chr() arg not in range(65536)");
+    if ((x < 0) || (x > 255)) {
+        throw new Sk.builtin.ValueError("chr() arg not in range(256)");
     }
 
     return new Sk.builtin.str(String.fromCharCode(x));
@@ -530,7 +563,11 @@ Sk.builtin.oct = function oct (x) {
     if (!Sk.misceval.isIndex(x)) {
         throw new Sk.builtin.TypeError("oct() argument can't be converted to hex");
     }
+    if (Sk.python3) {
+        return Sk.builtin.int2str_(x, 8, "0o");
+    } else {
     return Sk.builtin.int2str_(x, 8, "0");
+    }
 };
 
 Sk.builtin.bin = function bin (x) {
@@ -825,7 +862,16 @@ Sk.builtin.raw_input = function (prompt) {
 Sk.builtin.input = Sk.builtin.raw_input;
 
 Sk.builtin.jseval = function jseval (evalcode) {
-    goog.global["eval"](evalcode);
+    var result = goog.global["eval"](Sk.ffi.remapToJs(evalcode));
+    try {
+        return Sk.ffi.remapToPy(result);
+    } catch (err) {
+        if (err.constructor === goog.asserts.AssertionError) {
+            return Sk.builtin.none.none$;
+        }
+
+        throw err;
+    }
 };
 
 Sk.builtin.jsmillis = function jsmillis () {
@@ -1012,27 +1058,8 @@ Sk.builtin.hasattr = function hasattr (obj, attr) {
         if (obj.tp$getattr(attr.v)) {
             return Sk.builtin.bool.true$;
         } else {
-            special = Sk.abstr.lookupSpecial(obj, "__getattr__");
-            if (special) {
-                ret = Sk.misceval.tryCatch(function () {
-                    var val = Sk.misceval.callsim(special, obj, attr);
-                    if (val) {
-                        return Sk.builtin.bool.true$;
-                    } else {
                         return Sk.builtin.bool.false$;
                     }
-                }, function(e) {
-                    if (e instanceof Sk.builtin.AttributeError) {
-                        return Sk.builtin.bool.false$;
-                    } else {
-                        throw e;
-                    }
-                });
-                return ret;
-            } else {
-                return Sk.builtin.bool.false$;
-            }
-        }
     } else {
         throw new Sk.builtin.AttributeError("Object has no tp$getattr method");
     }
@@ -1091,9 +1118,15 @@ Sk.builtin.pow = function pow (a, b, c) {
             throw new Sk.builtin.TypeError("pow() 3rd argument not allowed unless all arguments are integers");
         }
         if (b_num < 0) {
+            if (Sk.python3) {
+                throw new Sk.builtin.ValueError("pow() 2nd argument cannot be negative when 3rd argument specified");
+            } else {
             throw new Sk.builtin.TypeError("pow() 2nd argument cannot be negative when 3rd argument specified");
         }
-
+        }
+        if (c_num === 0) {
+            throw new Sk.builtin.ValueError("pow() 3rd argument cannot be 0");
+        }
         if ((a instanceof Sk.builtin.lng || b instanceof Sk.builtin.lng || c instanceof Sk.builtin.lng) ||
             (Math.pow(a_num, b_num) === Infinity)) {
             // convert a to a long so that we can use biginteger's modPowInt method
@@ -1185,6 +1218,10 @@ Sk.builtin.divmod = function divmod (a, b) {
 Sk.builtin.format = function format (value, format_spec) {
     Sk.builtin.pyCheckArgs("format", arguments, 1, 2);
 
+    if (format_spec === undefined) {
+        format_spec = Sk.builtin.str.$emptystr;
+    }
+
     return Sk.abstr.objectFormat(value, format_spec);
 };
 
@@ -1207,7 +1244,11 @@ Sk.builtin.reversed = function reversed (seq) {
         var reverseIter = function (obj) {
             this.idx = obj.sq$length() - 1;
             this.myobj = obj;
+            this.ob$type = Sk.builtin.type.makeTypeObj("reversed", function _reversed(){});
             this.getitem = Sk.abstr.lookupSpecial(obj, "__getitem__");
+            this['$r'] = function() {
+                return new Sk.builtin.str("<reversed>");
+            },
             this.tp$iter = function() {
                 return this;
             },
@@ -1294,6 +1335,55 @@ Sk.builtin.delattr = function delattr (obj, attr) {
 
 Sk.builtin.execfile = function execfile () {
     throw new Sk.builtin.NotImplementedError("execfile is not yet implemented");
+};
+
+var extractDict = function(obj) {
+    var ret = {};
+    var k, v, kAsJs, iter;
+    for (iter = obj.tp$iter(), k = iter.tp$iternext();
+         k !== undefined;
+         k = iter.tp$iternext()) {
+        v = obj.mp$subscript(k);
+        if (v === undefined) {
+            v = null;
+        }
+        kAsJs = Sk.ffi.remapToJs(k);
+        // todo; assert that this is a reasonble lhs?
+        ret[kAsJs] = v;
+    }
+    return ret;
+}
+Sk.builtin.execf = function execf(python_code, new_globals) {
+    Sk.builtin.pyCheckArgs("execf", arguments, 1, 2);
+    var backupRG = Sk.retainGlobals;
+    Sk.retainGlobals = true;
+    var filename = 'test.py';
+    var new_globals_copy = extractDict(new_globals);
+    if (!new_globals_copy.__file__) {
+        new_globals_copy.__file__ = Sk.ffi.remapToPy(filename);
+    }
+    if (!new_globals_copy.__name__) {
+        new_globals_copy.__name__ = Sk.ffi.remapToPy(filename);
+    }
+    var backupGlobals = Sk.globals,
+        backupSysmodules = new Sk.builtin.dict([]);
+    Sk.misceval.iterFor(Sk.sysmodules.tp$iter(), function(key) { 
+        var value = Sk.sysmodules.mp$subscript(key);
+        backupSysmodules.mp$ass_subscript(key, value);
+    })
+    Sk.globals = new_globals_copy; // Possibly copy over some "default" ones?
+    python_code = Sk.ffi.remapToJs(python_code);
+    Sk.importMainWithBody(filename, false, python_code, true);
+    Sk.globals = backupGlobals;
+    Sk.misceval.iterFor(backupSysmodules.tp$iter(), function(key) { 
+        var value = backupSysmodules.mp$subscript(key);
+        Sk.sysmodules.mp$ass_subscript(key, value);
+    })
+    for (var key in new_globals_copy) {
+        var pykey = Sk.ffi.remapToPy(key);
+        Sk.builtin.dict.prototype.mp$ass_subscript.call(new_globals, pykey, new_globals_copy[key])
+    }
+    Sk.retainGlobals = backupRG;
 };
 
 Sk.builtin.frozenset = function frozenset () {

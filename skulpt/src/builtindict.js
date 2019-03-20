@@ -55,6 +55,7 @@ Sk.builtins = {
     "OverflowError"      : Sk.builtin.OverflowError,
     "OperationError"     : Sk.builtin.OperationError,
     "RuntimeError"       : Sk.builtin.RuntimeError,
+    "SyntaxError"       : Sk.builtin.SyntaxError,
     "StopIteration"      : Sk.builtin.StopIteration,
 
     "dict"      : Sk.builtin.dict,
@@ -90,8 +91,10 @@ Sk.builtins = {
     "bytearray" : Sk.builtin.bytearray,
     "callable"  : Sk.builtin.callable,
     "delattr"   : Sk.builtin.delattr,
+    "__import__": Sk.builtin.__import__Py,
     "eval_$rn$" : Sk.builtin.eval_,
     "execfile"  : Sk.builtin.execfile,
+    "execf"     : Sk.builtin.execf,
     "frozenset" : Sk.builtin.frozenset,
     "help"      : Sk.builtin.help,
     "locals"    : Sk.builtin.locals,

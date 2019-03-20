@@ -1115,6 +1115,7 @@ Blockly.Flyout.prototype.createBlockFunc_ = function(originBlock) {
     block.setDragging_(true);
     // Disable workspace resizing.  Reenable at the end of the drag.
     flyout.targetWorkspace_.setResizesEnabled(false);
+    console.log("*********"+block.type);
   };
 };
 

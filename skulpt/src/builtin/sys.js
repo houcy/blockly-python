@@ -64,11 +64,21 @@ var $builtinmodule = function (name) {
         return Sk.builtin.none.none$;
     });
 
-    sys.__stdout__ = new Sk.builtin.file(new Sk.builtin.str("/dev/stdout"), "w");
-    sys.__stdin__ = new Sk.builtin.file(new Sk.builtin.str("/dev/stdin"), "r");
+    sys.__stdout__ = new Sk.builtin.file(new Sk.builtin.str("/dev/stdout"), new Sk.builtin.str("w"));
+    sys.__stdin__ = new Sk.builtin.file(new Sk.builtin.str("/dev/stdin"), new Sk.builtin.str("r"));
 
     sys.stdout = sys.__stdout__;
     sys.stdin = sys.__stdin__;
+    
+    sys.exc_info = new Sk.builtin.func(function () {
+        var type = Sk.err.ob$type;
+        var value = Sk.builtin.none.none$;
+        var traceback = new Sk.builtin.traceback(Sk.err);
+        //print(traceback.tp$setattr)
+        //traceback.tp$setattr('tb_lineno', traceback.tb_lineno);
+        var vals = [type, Sk.err, traceback];
+        return new Sk.builtin.tuple(vals);
+    });
 
     return sys;
 };

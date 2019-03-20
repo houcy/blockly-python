@@ -18,42 +18,22 @@
                     <strong>首页</strong>
                 </a>
             </li>
+            <!--<li>-->
+                <!--<a href="javascript:;" onclick="clickUpload()" style="color: #ffffee; font-size: 16px;">-->
+                    <!--<span class='glyphicon glyphicon-open'></span>-->
+                    <!--<strong>从本地打开</strong>-->
+                    <!--<input id="_upload" class="blockpy-toolbar-upload" type="file" style="display: none;">-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<a class="blockpy-toolbar-download" style="color: #ffffee; font-size: 16px;cursor:pointer;">-->
+                    <!--<span class="glyphicon glyphicon-save"></span>-->
+                    <!--<strong>保存到本地</strong>-->
+                <!--</a>-->
+            <!--</li>-->
             <li>
-                <a href="javascript:;" onclick="clickUpload()" style="color: #ffffee; font-size: 16px;">
-                    <span class='glyphicon glyphicon-open'></span>
-                    <strong>从本地打开</strong>
-                    <input id="_upload" class="blockpy-toolbar-upload" type="file" style="display: none;">
-                </a>
-            </li>
-            <li>
-                <a class="blockpy-toolbar-download" style="color: #ffffee; font-size: 16px;cursor:pointer;">
-                    <span class="glyphicon glyphicon-save"></span>
-                    <strong>保存到本地</strong>
-                </a>
-            </li>
-            <li>
-                <a class='blockpy-toolbar-import'
-                   data-bind="visible: settings.instructor() || (!assignment.upload() && assignment.importable())"
-                   style="color: #ffffee; font-size: 16px;cursor:pointer;">
-                    <span class='glyphicon glyphicon-cloud-download'></span>
-                    <strong>导入数据集</strong>
-                </a>
-            </li>
-              <li>
-                     <input size="15" type="text" id="production_name" name="production_name"
-                            value="请输入作品名称" onClick="if (this.value=='请输入作品名称'){this.value=''}"/>
-              </li>
-              <li>
-                <a class="save" style="color: #ffffee; font-size: 16px" title="保存到云端">
-                    <span class="glyphicon glyphicon-floppy-saved"></span>
-                    <strong>保存</strong>
-                </a>
-            </li>
-              <li>
-                <a class="blockpy-toolbar-myWork" style="color: #ffffee; font-size: 16px;cursor:pointer;" title="从云端打开">
-                    <span class="glyphicon glyphicon-list"></span>
-                    <strong>打开</strong>
-                </a>
+             <input size="15" type="text" id="production_name" name="production_name"
+                    value="请输入作品名称" onClick="if (this.value=='请输入作品名称'){this.value=''}"/>
             </li>
               <li>
                 <a class="new" style="color: #ffffee; font-size: 16px" title="新建空作品">
@@ -62,11 +42,31 @@
                 </a>
             </li>
               <li>
-                <a class="copy" style="color: #ffffee; font-size: 16px" title="保存为新作品">
+                <a class="save" style="color: #ffffee; font-size: 16px" title="保存到云端">
+                    <span class="glyphicon glyphicon-floppy-saved"></span>
+                    <strong>保存</strong>
+                </a>
+            </li>
+              <li>
+                <a class="copy" style="color: #ffffee; font-size: 16px" title="保存为新程序">
                     <span class="glyphicon glyphicon-repeat"></span>
                     <strong>另存为</strong>
                 </a>
             </li>
+              <li>
+                <a class="blockpy-toolbar-myWork" style="color: #ffffee; font-size: 16px;cursor:pointer;" title="从云端打开">
+                    <span class="glyphicon glyphicon-list"></span>
+                    <strong>打开</strong>
+                </a>
+            </li>
+            <!--<li>
+                <a class='blockpy-toolbar-import'
+                   data-bind="visible: settings.instructor() || (!assignment.upload() && assignment.importable())"
+                   style="color: #ffffee; font-size: 16px;cursor:pointer;">
+                    <span class='glyphicon glyphicon-cloud-download'></span>
+                    <strong>导入数据集</strong>
+                </a>
+            </li>-->
               <li class="right">
                   <strong id="sign-up-in"></strong>
             </li>
@@ -75,7 +75,6 @@
     </div>
     </div>
 </nav>
-
 <div class='blockpy-content container-fluid' style='background-color :#fcf8e3; border: 1px solid #faebcc; '>
     <div class='blockpy-popup modal' style='display:none'>
         <div class='modal-dialog' style='width:750px'>
@@ -114,24 +113,25 @@
                     <div class='modal-content' id='modal-message' >
                         <div class='modal-header'>
                             <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-                            <h4 class='modal-title'>Assignment Settings</h4>
+                            <h4 class='modal-title'>文件系统</h4>
                         </div>
+
                         <div class='modal-body form-inline' style='width:100%'>
 
                             <!-- Name -->
-                            <form class="form-inline" style='display:inline-block'>
+                            <!--<form class="form-inline" style='display:inline-block'>
                                 <label>Name:</label>
                                 <input type='text' class='blockpy-presentation-name-editor form-control'
                                        data-bind='textInput: assignment.name'>
-                            </form><br>
+                            </form><br>-->
 
                             <!-- Introduction -->
-                            <label>Introduction:</label>
+                            <!--<label>Introduction:</label>
                             <div class='blockpy-presentation-body-editor'>
-                            </div>
+                            </div>-->
 
                             <!-- Initial mode -->
-                            <label class='blockpy-presentation-text-first'>
+                            <!--<label class='blockpy-presentation-text-first'>
                                 Initial View:
                                 <select data-bind="value: assignment.initial_view">
                                     <option value="Blocks" selected>Blocks</option>
@@ -141,40 +141,55 @@
                                     <option value="Upload">Upload</option>
                                 </select>
                             </label>
-                            <br>
+                            <br>-->
 
                             <!-- Parsons -->
-                            <label class='blockpy-presentation-parsons-check'>
-                                Parsons:
-                                <input type='checkbox' class='form-control' data-bind="checked:assignment.parsons">
-                            </label>
-                            <br>
+                            <!--<label class='blockpy-presentation-parsons-check'>-->
+                                <!--Parsons:-->
+                                <!--<input type='checkbox' class='form-control' data-bind="checked:assignment.parsons">-->
+                            <!--</label>-->
+                            <!--<br>-->
 
-                            <!-- Importable Datasets -->
-                            <label class='blockpy-presentation-importable-check'>
-                                Able to import datasets:
-                                <input type='checkbox' class='form-control' data-bind="checked:assignment.importable">
-                            </label>
-                            <br>
+                            <!--&lt;!&ndash; Importable Datasets &ndash;&gt;-->
+                            <!--<label class='blockpy-presentation-importable-check'>-->
+                                <!--Able to import datasets:-->
+                                <!--<input type='checkbox' class='form-control' data-bind="checked:assignment.importable">-->
+                            <!--</label>-->
+                            <!--<br>-->
 
-                            <!-- Importable Datasets -->
-                            <label class='blockpy-presentation-timeoutable-check'>
-                                Disable Timeouts:
-                                <input type='checkbox' class='form-control' data-bind="checked:assignment.disable_timeout">
-                            </label>
-                            <br>
+                            <!--&lt;!&ndash; Importable Datasets &ndash;&gt;-->
+                            <!--<label class='blockpy-presentation-timeoutable-check'>-->
+                                <!--Disable Timeouts:-->
+                                <!--<input type='checkbox' class='form-control' data-bind="checked:assignment.disable_timeout">-->
+                            <!--</label>-->
+                            <!--<br>-->
 
                             <!-- Filesystem -->
-                            <label class='blockpy-presentation-filesystem-controls'>
-                                Filesystem:
-                            </label>
+                            <!--<label class='blockpy-presentation-filesystem-controls'>-->
+                                <!--Filesystem:-->
+                            <!--</label>-->
                             <!--<label class="btn btn-sm btn-default btn-file">
                                 Upload <input class="blockpy-presentation-upload" type="file" style="display: none;">
                             </label>-->
                             <button type='button' class='btn btn-default'
                                     data-bind="click: addFile">
-                                <span class='glyphicon glyphicon-file'></span> Add
+                                <span class='glyphicon glyphicon-file'></span> 新建文件
                             </button>
+                            <!--<button type='button' class='btn btn-default'-->
+                                    <!--data-bind="click: uploadfile">-->
+                                <!--<span class='glyphicon glyphicon-file'></span> 上传文件-->
+                                <!--<input id="uploadfile" type="file" style="display: none;">-->
+                            <!--</button>-->
+                            <!--<a href="javascript:;" class='btn btn-default' onclick="clickUploadFile()" style="color: #000000;">-->
+                                <!--<span class='glyphicon glyphicon-open'></span>上传文件-->
+                                <!--<input id="_file" class="uploadfile" type="file" style="display: none;">-->
+                            <!--</a>-->
+                            <button type='button' class='btn btn-default' onclick="clickUploadFile()">
+                                <span class='glyphicon glyphicon-open'></span>上传文件
+                                <input id="_file" class="uploadfile" type="file" style="display: none;">
+                            </button>
+
+
                             <ul data-bind="foreach: assignment.files">
                                 <li>
                                     <a href="#" target="_blank"
@@ -182,28 +197,33 @@
                                     <button class='btn btn-sm btn-danger'
                                             data-bind="click: $parent.removeFile">
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                    <button type='button' class='btn btn-default' data-bind="event: { click: $parent.downloadFile.bind($data) }">
+                                        <span class='glyphicon glyphicon-file'></span> 下载文件
+                                    </button>
                                 </li>
                             </ul>
 
-                            <label>Available Modules</label>
-                            <select class='blockpy-available-modules' multiple='multiple'
-                                    data-bind="selectedOptions: assignment.modules">
-                                <option>Variables</option>
-                                <option>Decisions</option>
-                                <option>Iteration</option>
-                                <option>Functions</option>
-                                <option>Calculation</option>
-                                <option>Output</option>
-                                <option>Turtles</option>
-                                <option>Python</option>
-                                <option>Values</option>
-                                <option>Lists</option>
-                                <option>Dictionaries</option>
-                                <option>Data - Parking</option>
-                            </select>
+                            <!--<label>Available Modules</label>-->
+                            <!--<select class='blockpy-available-modules' multiple='multiple'-->
+                                    <!--data-bind="selectedOptions: assignment.modules">-->
+                                <!--<option>Variables</option>-->
+                                <!--<option>Decisions</option>-->
+                                <!--<option>Iteration</option>-->
+                                <!--<option>Functions</option>-->
+                                <!--<option>Calculation</option>-->
+                                <!--<option>Output</option>-->
+                                <!--<option>Turtles</option>-->
+                                <!--<option>Python</option>-->
+                                <!--<option>Values</option>-->
+                                <!--<option>Lists</option>-->
+                                <!--<option>Dictionaries</option>-->
+                                <!--<option>Data - Parking</option>-->
+                            <!--</select>-->
 
                         </div>
+
                         <div class='modal-footer'>
+
                             <button type='button' class='btn btn-white' data-dismiss='modal'>Close</button>
                         </div>
                     </div>
@@ -310,10 +330,9 @@
                     <span class='glyphicon glyphicon-pencil'></span>
                     <input type="radio" name="blockpy-mode-set" autocomplete="off"> 文本模式
                 </label>
-                <button type='button' class='btn btn-default blockpy-toolbar-import'
-                    data-bind="visible: settings.instructor() || (!assignment.upload() && assignment.importable())">
-                <span class='glyphicon glyphicon-cloud-download'></span> 导入数据集
-            </button>
+                <button type='button' class='btn btn-default blockpy-toolbar-instructor' data-bind="visible: settings.instructor">
+                    <span class='glyphicon glyphicon-list-alt'></span> 文件系统
+                </button>
             </div>
             <!--<button type='button' class='btn btn-default blockpy-toolbar-history'>
                 <span class='glyphicon glyphicon-hourglass'></span> 历史记录

@@ -317,7 +317,7 @@ Blockly.Workspace.prototype.deleteVariable = function(name) {
         return;
       }
     }
-    
+
     function doDeletion() {
       Blockly.Events.setGroup(true);
       for (var i = 0; i < uses.length; i++) {

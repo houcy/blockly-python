@@ -675,15 +675,10 @@ Sk.abstr.objectFormat = function (obj, format_spec) {
     var meth; // PyObject
     var result; // PyObject
 
-    // If no format_spec is provided, use an empty string
-    if(format_spec == null) {
-        format_spec = "";
-    }
-
     // Find the (unbound!) __format__ method (a borrowed reference)
     meth = Sk.abstr.lookupSpecial(obj, "__format__");
     if (meth == null) {
-        throw new Sk.builtin.TypeError("Type " + Sk.abstr.typeName(obj) + "doesn't define __format__");
+        throw new Sk.builtin.TypeError("Type " + Sk.abstr.typeName(obj) + " doesn't define __format__");
     }
 
     // And call it
@@ -866,7 +861,7 @@ Sk.abstr.iter = function(obj) {
     var iter;
     var getit;
     var ret;
-
+    
     /**
      * Builds an iterator around classes that have a __getitem__ method.
      *
@@ -914,7 +909,6 @@ Sk.abstr.iter = function(obj) {
         // create internal iterobject if __getitem__
         return new seqIter(obj);
     }
-    
     throw new Sk.builtin.TypeError("'" + Sk.abstr.typeName(obj) + "' object is not iterable");
 };
 goog.exportSymbol("Sk.abstr.iter", Sk.abstr.iter);

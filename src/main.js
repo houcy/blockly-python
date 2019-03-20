@@ -390,10 +390,29 @@ BlockPy.prototype.initModelMethods = function() {
         newWindow.document.body.innerHTML += "<pre>"+contents+"</pre>";
     }
     this.model.addFile = function() {
-        var name = prompt("Please enter the filename.");
+        var name = prompt("请输入文件名：");
         if (name !== null) {
             self.model.assignment.files.push(name);
             self.components.engine.openURL(name, 'file');
+        }
+    }
+    this.model.downloadFile = function(name) {
+        if(name !== null)
+        {
+            var data = self.components.engine.openedFiles[name];
+            var blob = new Blob([data], {type: 'text/plain'});
+            if(window.navigator.msSaveOrOpenBlob) {
+                window.navigator.msSaveBlob(blob, name);
+            }
+            else{
+                var elem = window.document.createElement('a');
+                elem.href = window.URL.createObjectURL(blob);
+                elem.download = name;
+                document.body.appendChild(elem);
+                elem.click();
+                document.body.removeChild(elem);
+            }
+            self.components.server.logEvent('editor', 'download')
         }
     }
 }

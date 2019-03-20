@@ -144,6 +144,7 @@ Blockly.BlockSvg.prototype.initSvg = function() {
  * Select this block.  Highlight it visually.
  */
 Blockly.BlockSvg.prototype.select = function() {
+  //console.log(this.isInFlyout);
   if (this.isShadow() && this.getParent()) {
     // Shadow blocks should not be selected.
     this.getParent().select();
@@ -530,7 +531,10 @@ Blockly.BlockSvg.prototype.onMouseDown_ = function(e) {
   if (this.workspace.options.readOnly) {
     return;
   }
+  //console.log(this.isInFlyout);
+  // console.log(this.isInMutator);
   if (this.isInFlyout) {
+    // console.log(this.type);
     // longStart's simulation of right-clicks for longpresses on touch devices
     // calls the onMouseDown_ function defined on the prototype of the object
     // the was longpressed (in this case, a Blockly.BlockSvg).  In this case
@@ -605,6 +609,7 @@ Blockly.BlockSvg.prototype.onMouseDown_ = function(e) {
  * @private
  */
 Blockly.BlockSvg.prototype.onMouseUp_ = function(e) {
+  //console.log("********onMouseUp_");
   Blockly.Touch.clearTouchIdentifier();
   if (Blockly.dragMode_ != Blockly.DRAG_FREE &&
       !Blockly.WidgetDiv.isVisible()) {
@@ -799,6 +804,8 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function(e) {
  * @private
  */
 Blockly.BlockSvg.prototype.moveConnections_ = function(dx, dy) {
+  if(this.isInFlyout==false)
+      console.log("block_svg "+this.type);
   if (!this.rendered) {
     // Rendering is required to lay out the blocks.
     // This is probably an invisible block attached to a collapsed block.
@@ -816,6 +823,7 @@ Blockly.BlockSvg.prototype.moveConnections_ = function(dx, dy) {
   // Recurse through all blocks attached under this one.
   for (var i = 0; i < this.childBlocks_.length; i++) {
     this.childBlocks_[i].moveConnections_(dx, dy);
+
   }
 };
 
@@ -825,6 +833,7 @@ Blockly.BlockSvg.prototype.moveConnections_ = function(dx, dy) {
  * @private
  */
 Blockly.BlockSvg.prototype.setDragging_ = function(adding) {
+  //console.log("*****************setDragging_");
   if (adding) {
     var group = this.getSvgRoot();
     group.translate_ = '';

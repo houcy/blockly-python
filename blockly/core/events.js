@@ -607,6 +607,8 @@ Blockly.Events.Move = function(block) {
   if (!block) {
     return;  // Blank event to be populated by fromJson.
   }
+  // if(!block.isInFlyout)
+  //   console.log(block.type);
   Blockly.Events.Move.superClass_.constructor.call(this, block);
   var location = this.currentLocation_();
   this.oldParentId = location.parentId;

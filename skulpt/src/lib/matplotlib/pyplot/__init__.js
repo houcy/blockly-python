@@ -88,7 +88,7 @@ var $builtinmodule = function(name) {
     var plot_f = function(kwa) {
         // Parse arguments
         Sk.builtin.pyCheckArgs("plotk", arguments, 1, Infinity, true, false);
-        args = Array.prototype.slice.call(arguments, 1);        
+        args = Array.prototype.slice.call(arguments, 1);
         kwargs = new Sk.builtins.dict(kwa); // is pretty useless for handling kwargs
         kwargs = Sk.ffi.remapToJs(kwargs); // create a proper dict
         
@@ -124,11 +124,6 @@ var $builtinmodule = function(name) {
                xdata.push(i);
             }
         }
-
-        
-        if (Sk.console.skipDrawing) {
-            return;
-        }
         
         // empty canvas from previous plots
         createChart('line');
@@ -162,6 +157,10 @@ var $builtinmodule = function(name) {
         // Update min/max
         updateMinMax("x", xdata)
         updateMinMax("y", ydata)
+        
+        if (Sk.console.skipDrawing) {
+            return;
+        }
     };
     plot_f.co_kwargs = true;
     mod.plot = new Sk.builtin.func(plot_f);
@@ -470,10 +469,6 @@ var $builtinmodule = function(name) {
             stylestring = Sk.ffi.remapToJs(args[1]);
         }
         
-        if (Sk.console.skipDrawing) {
-            return;
-        }
-        
         // empty canvas from previous plots
         createChart('hist');
 
@@ -501,6 +496,10 @@ var $builtinmodule = function(name) {
             }
         });
         updateMinMax("x", data);
+        
+        if (Sk.console.skipDrawing) {
+            return;
+        }
     }
     hist_f.co_kwargs = true;
     mod.hist = new Sk.builtin.func(hist_f);
@@ -547,10 +546,6 @@ var $builtinmodule = function(name) {
             ydata = ydataSampled;
         }
         
-        if (Sk.console.skipDrawing) {
-            return;
-        }
-        
         // empty canvas from previous plots
         createChart('scatter');
 
@@ -583,6 +578,9 @@ var $builtinmodule = function(name) {
         // Update min/max
         updateMinMax("x", xdata)
         updateMinMax("y", ydata)
+        if (Sk.console.skipDrawing) {
+            return;
+        }
     };
     scatter_f.co_kwargs = true;
     mod.scatter = new Sk.builtin.func(scatter_f);

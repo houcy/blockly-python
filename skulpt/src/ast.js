@@ -2252,6 +2252,10 @@ function astForStmt(c, n) {
 }
 
 Sk.astFromParse = function (n, filename, c_flags) {
+    if (Sk.parseCache.lastUnit == n) {
+        return Sk.parseCache.lastParse;
+    }
+    
     var j;
     var num;
     var ch;
@@ -2279,7 +2283,9 @@ Sk.astFromParse = function (n, filename, c_flags) {
                     }
                 }
             }
-            return new Module(stmts);
+            var result = new Module(stmts);
+            Sk.parseCache.lastParse = result;
+            return result;
         case SYM.eval_input:
             goog.asserts.fail("todo;");
         case SYM.single_input:
@@ -2371,5 +2377,32 @@ Sk.astDump = function (node) {
     return _format(node, "");
 };
 
+Sk.INHERITANCE_MAP = {
+    'mod': [Module, Interactive, Expression, Suite],
+    'stmt': [FunctionDef, ClassDef, Return_,
+              Delete_, Assign, AugAssign,
+              For_, While_, If_, With_,
+              Raise, TryExcept, TryFinally, Assert,
+              Import_, ImportFrom, Exec, Global, Expr, 
+              Pass, Break_, Continue_, Debugger_],
+    'expr': [BoolOp, BinOp, UnaryOp, Lambda, IfExp,
+             Dict, Set, ListComp, SetComp, DictComp,
+             GeneratorExp, Yield, Compare, Call, Repr,
+             Num, Str, Attribute, Subscript, Name, List, Tuple],
+    'expr_context': [Load, Store, Del, AugLoad, AugStore, Param],
+    'slice': [Ellipsis, Slice, ExtSlice, Index],
+    'boolop': [And, Or],
+    'operator': [Add, Sub, Mult, Div, Mod, Pow, LShift,
+                 RShift, BitOr, BitXor, BitAnd, FloorDiv],
+    'unaryop': [Invert, Not, UAdd, USub],
+    'cmpop': [Eq, NotEq, Lt, LtE, Gt, GtE, Is, IsNot, In_, NotIn],
+    'comprehension': [],
+    'excepthandler': [ExceptHandler],
+    'arguments_': [],
+    'keyword': [],
+    'alias': []
+};
+
 goog.exportSymbol("Sk.astFromParse", Sk.astFromParse);
 goog.exportSymbol("Sk.astDump", Sk.astDump);
+goog.exportSymbol("Sk.INHERITANCE_MAP", Sk.INHERITANCE_MAP);

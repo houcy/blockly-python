@@ -5,7 +5,7 @@
  */
 Sk.builtin.method = function (func, self, klass) {
     if (!(this instanceof Sk.builtin.method)) {
-        Sk.builtin.pyCheckArgs("method", arguments, 3, 3);
+        Sk.builtin.pyCheckArgs("method", arguments, 2, 3);
         if (!Sk.builtin.checkCallable(func)) {
             throw new Sk.builtin.TypeError("First argument must be callable");
         }
@@ -13,6 +13,9 @@ Sk.builtin.method = function (func, self, klass) {
             throw new Sk.builtin.TypeError("Second argument must be object of known type");
         }
         return new Sk.builtin.method(func, self, klass);
+    }
+    if (klass === undefined) {
+        klass = self.ob$type;
     }
     this.im_func = func;
     this.im_self = self;
@@ -41,7 +44,7 @@ Sk.builtin.method.prototype.tp$call = function (args, kw) {
 };
 
 Sk.builtin.method.prototype["$r"] = function () {
-    var name = (this.im_func.func_code && this.im_func.func_code["co_name"] && this.im_func.func_code["co_name"].v) || "<native JS>";
+    var name = (this.im_func.func_code && this.im_func.func_code["co_name"] && this.im_func.func_code["co_name"].v) || this.im_func.func_code.name || "<native JS>";
     return new Sk.builtin.str("<bound method " + this.im_self.ob$type.tp$name + "." + name +
         " of " + this.im_self["$r"]().v + ">");
 };

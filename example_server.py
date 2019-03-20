@@ -18,7 +18,7 @@ def submit_grade():
 
 @app.route('/')
 def index():
-    return render_template('blockpy_new.html')
+    return render_template('blockpy.html')
 
 if __name__ == "__main__":
     app.run(port=8000)

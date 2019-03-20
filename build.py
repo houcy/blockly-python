@@ -14,13 +14,13 @@ with open('src/interface.html', 'r') as inp:
      * we simply convert an HTML file to a JS string. Therefore,
      * relevant edits should be in interface.html instead.
      *
-     * The BlockPyInterface global can be seen as a constant
+     * The BlockPyInterface global can be seen as a constants
      * representation of the default interface.
      */
     BlockPyInterface = "{interface_code}";
     '''.format(interface_code=cleaned_contents)
         output.write(js_contents)
-    
+
 INSTRUCTOR_ROOT = 'src/instructor/'
 with open('src/sk_mod_instructor_extended.js', 'w') as output:
     output.write("""

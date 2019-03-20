@@ -149,7 +149,7 @@ Parser.prototype.addtoken = function (type, value, context) {
 
         //print("findInDfa: " + JSON.stringify(arcs)+" vs. " + tp.state);
         if (findInDfa(arcs, [0, tp.state])) {
-            // an accepting state, pop it and try somethign else
+            // an accepting state, pop it and try something else
             //print("WAA");
             this.pop();
             if (this.stack.length === 0) {
@@ -347,7 +347,36 @@ function makeParser(filename, style) {
     return parseFunc;
 }
 
+Sk.parseCache = {
+    'lastInput': null,
+    'lastParse': null,
+    'lastUnit': null
+}
+
+/*
+parseCache = {}; Sk.parse = function(filename, input) { 
+  if (filename in parseCache) { 
+console.log("REUSING parsed", filename); 
+    return parseCache[filename]; 
+  } else { 
+    if (filename.startsWith("src/lib/pedal/")) {
+console.log("Parsing", filename); 
+      parseCache[filename] = eparse(filename, input);
+      return parseCache[filename];
+    } else {
+console.log("Parsing", filename); 
+      return  eparse(filename, input);
+    }
+}
+                                                      };
+                                                      */
+
 Sk.parse = function parse(filename, input) {
+    
+    if (Sk.parseCache.lastInput == input) {
+        return Sk.parseCache.lastUnit;
+    }
+    
     var i;
     var ret;
     var lines;
@@ -364,7 +393,10 @@ Sk.parse = function parse(filename, input) {
     /*
      * Small adjustments here in order to return th flags and the cst
      */
-    return {"cst": ret, "flags": parseFunc.p_flags, "comments": parseFunc.comments};
+    var result = {"cst": ret, "flags": parseFunc.p_flags, "comments": parseFunc.comments};
+    Sk.parseCache.lastUnit = result;
+    Sk.parseCache.lastInput = input;
+    return result;
 };
 
 Sk.parseTreeDump = function parseTreeDump(n, indent) {

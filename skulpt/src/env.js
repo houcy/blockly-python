@@ -89,6 +89,8 @@ Sk.configure = function (options) {
     }
 
     Sk.misceval.softspace_ = false;
+
+    Sk.switch_version(Sk.python3);
 };
 goog.exportSymbol("Sk.configure", Sk.configure);
 
@@ -124,12 +126,20 @@ Sk.yieldLimit = Number.POSITIVE_INFINITY;
 Sk.output = function (x) {
 };
 
+/* By default, you can put any modules you like into this object. */
+Sk.builtinFiles = {};
+goog.exportSymbol("Sk.builtinFiles", Sk.builtinFiles);
+
 /*
  * Replacable function to load modules with (called via import, etc.)
  * todo; this should be an async api
  */
 Sk.read = function (x) {
-    throw "Sk.read has not been implemented";
+    if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined) {
+        throw "File not found: '" + x + "'";
+    }
+    
+    return Sk.builtinFiles["files"][x];
 };
 
 /*
@@ -186,6 +196,70 @@ if (!Sk.inBrowser) {
 Sk.python3 = false;
 Sk.inputfun = function (args) {
     return window.prompt(args);
+};
+
+// Information about method names and their internal functions for
+// methods that differ (in visibility or name) between Python 2 and 3.
+//
+// Format:
+//   internal function: {
+//     "classes" : <array of affected classes>,
+//     2 : <visible Python 2 method name> or null if none
+//     3 : <visible Python 3 method name> or null if none
+//   },
+//   ...
+
+Sk.setup_method_mappings = function () {
+    Sk.methodMappings = {
+        "round$": {
+            "classes": [Sk.builtin.float_,
+                        Sk.builtin.int_,
+                        Sk.builtin.nmber],
+            2: null,
+            3: "__round__"
+        },
+        "next$": {
+            "classes": [Sk.builtin.dict_iter_,
+                        Sk.builtin.list_iter_,
+                        Sk.builtin.set_iter_,
+                        Sk.builtin.str_iter_,
+                        Sk.builtin.tuple_iter_,
+                        Sk.builtin.generator,
+                        Sk.builtin.enumerate,
+                        Sk.builtin.iterator],
+            2: "next",
+            3: "__next__"
+        }
+    };
+};
+
+Sk.switch_version = function (python3) {
+    var internal, klass, classes, idx, len, newmeth, oldmeth;
+
+    if (!Sk.hasOwnProperty("methodMappings")) {
+        Sk.setup_method_mappings();
+    }
+
+    for (internal in Sk.methodMappings) {
+        if (python3) {
+            newmeth = Sk.methodMappings[internal][3];
+            oldmeth = Sk.methodMappings[internal][2];
+        } else {
+            newmeth = Sk.methodMappings[internal][2];
+            oldmeth = Sk.methodMappings[internal][3];
+        }
+        classes = Sk.methodMappings[internal]["classes"];
+        len = classes.length;
+        for (idx = 0; idx < len; idx++) {
+            klass = classes[idx];
+            if (oldmeth && klass.prototype.hasOwnProperty(oldmeth)) {
+                delete klass.prototype[oldmeth];
+            }
+            if (newmeth) {
+                klass.prototype[newmeth] = new Sk.builtin.func(klass.prototype[internal]);
+            }
+        }
+    }
 };
 
 goog.exportSymbol("Sk.python3", Sk.python3);

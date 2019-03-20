@@ -39,11 +39,16 @@ BlockPyEngine.prototype.configureSkulpt = function() {
         // Function to handle the text outputted by Skulpt
         output: printer.print.bind(printer),
         // Function to handle loading in new files
-        read: this.readFile.bind(this)
+        read: this.readFile.bind(this),
+        // filewrite: (pyFile, x) => {
+        //     console.log("*********************filewrite");
+        //     this._fileWrite(pyFile, x);
+        // },
     });
     // Allow file access
     Sk.openFilenamePrefix = "sk-filename-";
     Sk.inBrowser = this.openFile.bind(this);
+    Sk.filewrite = this._fileWrite.bind(this);
     // Proxy requests
     var engine = this;
     Sk.requestsGet = function(filename) { return engine.openURL(filename, 'url')};
@@ -107,6 +112,8 @@ BlockPyEngine.prototype.setInstructorEnvironment = function() {
  * @throws Will throw an error if the file isn't found.
  */
 BlockPyEngine.prototype.readFile = function(filename) {
+    console.log("********************readFile");
+    console.log(filename);
     if (Sk.builtinFiles === undefined ||
         Sk.builtinFiles["files"][filename] === undefined) {
         throw "File not found: '" + filename + "'";
@@ -114,6 +121,32 @@ BlockPyEngine.prototype.readFile = function(filename) {
     return Sk.builtinFiles["files"][filename];
 }
 
+BlockPyEngine.prototype._fileWrite = function(pyFile, str) {
+    var filename = pyFile.name;
+    console.log("********************_fileWrite");
+    console.log(pyFile);
+    if (pyFile.mode.v === 'r') {
+      throw new Sk.builtin.IOError('File is in readonly mode, cannot write');
+    }
+    // if (Sk.builtinFiles === undefined ||
+    //     Sk.builtinFiles["files"][filename] === undefined) {
+    //     throw "File not found: '" + filename + "'";
+    // }
+    else {
+        this.openedFiles[filename] += str;
+    }
+
+    // const name = pyFile.name.replace('./', '');
+    // const file = this.project.getFileForName(name);
+    //
+    // if (file != null) {
+    //   const value = file.getValue();
+    //   file.setValue(value + str);
+    // } else {
+    //   // error
+    //   throw new Sk.builtin.IOError('File has been deleted, cannot write.');
+    // }
+}
 /**
  * Creates and registers a Promise from the Input box
  * @param {String} promptMessage - Message to display to the user.
@@ -157,15 +190,20 @@ BlockPyEngine.prototype.inputMockFunction = function(promptMessage) {
 /**
  * @param {skulpt Str} name - The filename as a Skulpt string.
  */
-BlockPyEngine.prototype.openFile = function(name) {
+BlockPyEngine.prototype.openFile = function(name,mode) {
     var filename = Sk.openFilenamePrefix || "";
     filename += name;
     console.log(filename);
+    console.log("openedFilesopenedFilesopenedFilesopenedFilesopenedFiles");
+    console.log(mode);
     elem = document.getElementById(filename);
     if (elem == null) {
         if (name in this.openedFiles) {
+            console.log("name in this.openedFiles");
             return this.openedFiles[name];
         } else {
+            console.log("name not in this.openedFiles");
+            //return "aaaaa";
             throw new Sk.builtin.IOError("[Errno 2] No such file or directory: '" + name + "'");
         }
     } else {
@@ -192,6 +230,25 @@ BlockPyEngine.prototype.openURL = function(url, type) {
                 resolve(contents);
             }, function(message) {
                 reject(new Sk.builtin.IOError("Cannot access url: "+url+" because "+message));
+            })
+        }
+    });
+}
+
+BlockPyEngine.prototype.uploadFile = function(fileName, data) {
+    var server = this.main.components.server;
+    var openedFiles = this.openedFiles;
+    console.log("184184184184184184184184184184184184")
+    console.log(openedFiles);
+    return new Promise( function(resolve, reject) {
+        if (fileName in openedFiles) {
+            resolve(openedFiles[fileName]);
+        } else {
+            server.uploadFile(fileName, data, function(contents) {
+                openedFiles[fileName] = data;
+                resolve(contents);
+            }, function(message) {
+                reject(new Sk.builtin.IOError("Cannot access url: "+fileName+" because "+message));
             })
         }
     });
@@ -518,8 +575,6 @@ BlockPyEngine.prototype.runInstructorCode = function(filename, after) {
         //'complete': false // Actually, let's use undefined for now.
     };
     Sk.misceval.asyncToPromise(function() {
-        console.log("filename::::::::::::::");
-        console.log(filename);
         return Sk.importMainWithBody(filename, false, instructorCode, true);
     }).then(
         // Success

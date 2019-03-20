@@ -446,9 +446,9 @@ goog.require = function(rule) {
         goog.global.console['error'](errorMessage);
       }
 
-      
+
         throw Error(errorMessage);
-        
+
     }
   }
 };
@@ -2132,6 +2132,12 @@ var Sk = Sk || {};
 Sk.output = function(x) {};
 goog.exportSymbol("Sk.output", Sk.output);
 
+Sk.filewrite = function(x) {};
+goog.exportSymbol("Sk.filewrite", Sk.filewrite);
+
+// Sk.fileread = function(x) {};
+// goog.exportSymbol("Sk.fileread", Sk.fileread);
+
 /**
  * Replacable function to load modules with (called via import, etc.)
  */
@@ -2210,7 +2216,7 @@ Sk.builtin.len = function(item)
 {
     if (item.sq$length)
         return item.sq$length();
-    
+
     if (item.mp$length)
         return item.mp$length();
 
@@ -2368,7 +2374,7 @@ Sk.builtin.getattr = function(obj, name, default_)
 {
     // todo; try/catch is pretty awful. redo attr stuff to return undef and
     // throw at an outer scope as necessary rather than calling tp$getattr
-    // directly. 
+    // directly.
     try
     {
         return obj.tp$getattr(name.v, default_);
@@ -2846,7 +2852,7 @@ Sk.builtin.type.buildMRO_ = function(klass)
  *
  * Kind of complicated to explain, but not really that complicated in
  * implementation. Explanations:
- * 
+ *
  * http://people.csail.mit.edu/jrb/goo/manual.43/goomanual_55.html
  * http://www.python.org/download/releases/2.3/mro/
  * http://192.220.96.201/dylan/linearization-oopsla96.html
@@ -2854,7 +2860,7 @@ Sk.builtin.type.buildMRO_ = function(klass)
  * This implementation is based on a post by Samuele Pedroni on python-dev
  * (http://mail.python.org/pipermail/python-dev/2002-October/029176.html) when
  * discussing its addition to Python.
- */ 
+ */
 Sk.builtin.type.buildMRO = function(klass)
 {
     return new Sk.builtin.tuple(Sk.builtin.type.buildMRO_(klass));
@@ -2930,7 +2936,7 @@ Sk.builtin.func.prototype.tp$call = function(args, kw)
         }
     }
 
-    return this.func_code.apply(this.func_globals, args); 
+    return this.func_code.apply(this.func_globals, args);
 };
 
 Sk.builtin.func.prototype.ob$type = Sk.builtin.type.makeTypeObj('function', new Sk.builtin.func(null, null));
@@ -3437,7 +3443,7 @@ Sk.misceval.apply = function(func, kw, args)
             // closure ctors don't return this, so we have to do magic to have
             // them return the right thing.
             if (func.$isctor)
-            { 
+            {
                 // have i mentioned in the last 15 minutes how non-orthogonal
                 // and ugly javascript is? raaaar
                 if (args.length === 0)
@@ -3772,7 +3778,7 @@ Sk.abstr.sequenceContains = function(seq, ob)
     if (seq.sq$contains) return seq.sq$contains(ob);
 
     if (!seq.tp$iter) throw new TypeError("argument of type '" + seq.tp$name + "' is not iterable");
-    
+
     for (var it = seq.tp$iter(), i = it.tp$iternext(); i !== undefined; i = it.tp$iternext())
     {
         if (Sk.misceval.richCompareBool(i, ob, "Eq"))
@@ -3994,7 +4000,7 @@ Sk.builtin.list.prototype.tp$richcompare = function(w, op)
     // perhaps by trapping a stack overflow? otherwise i'm not sure for more
     // complicated cases. bleh
     if (this === w) return op === 'Eq';
-        
+
     var v = this.v;
     var w = w.v;
     var vl = v.length;
@@ -4405,7 +4411,7 @@ Sk.builtin.str.prototype.nb$remainder = function(rhs)
     // length modifier is ignored
 
     if (rhs.constructor !== Sk.builtin.tuple && (rhs.mp$subscript === undefined || rhs.constructor === Sk.builtin.str)) rhs = new Sk.builtin.tuple([rhs]);
-    
+
     // general approach is to use a regex that matches the format above, and
     // do an re.sub with a function as replacement to make the subs.
 
@@ -4581,7 +4587,7 @@ Sk.builtin.str.prototype.nb$remainder = function(rhs)
                 return '%';
         }
     };
-    
+
     var ret = this.v.replace(regex, replFunc);
     return new Sk.builtin.str(ret);
 };
@@ -4820,7 +4826,7 @@ Sk.builtin.tuple.prototype.tp$iter = function()
 Sk.builtin.tuple.prototype.tp$richcompare = function(w, op)
 {
     // todo; NotImplemented if either isn't a tuple
-        
+
     var v = this.v;
     var w = w.v;
     var vl = v.length;
@@ -5673,7 +5679,7 @@ Sk.builtin.generator.prototype.tp$iternext = function()
     var args = [ this ];
     if (this.func_closure)
         args.push(this.func_closure);
-    var ret = this.func_code.apply(this.func_globals, args); 
+    var ret = this.func_code.apply(this.func_globals, args);
     //print("ret", JSON.stringify(ret));
     this.gi$running = false;
     goog.asserts.assert(ret !== undefined);
@@ -6001,7 +6007,7 @@ Sk.Tokenizer.T_NT_OFFSET = 256;
 function group(x)
 {
     var args = Array.prototype.slice.call(arguments);
-    return '(' + args.join('|') + ')'; 
+    return '(' + args.join('|') + ')';
 }
 
 /** @param {...*} x */
@@ -7988,7 +7994,7 @@ Parser.prototype.shift = function(type, value, newstate, context)
     var node = this.stack[this.stack.length - 1].node;
     //print("context", context);
     var newnode = {
-        type: type, 
+        type: type,
         value: value,
         lineno: context[0][0],         // throwing away end here to match cpython
         col_offset: context[0][1],
@@ -8008,8 +8014,8 @@ Parser.prototype.shift = function(type, value, newstate, context)
 // push a nonterminal
 Parser.prototype.push = function(type, newdfa, newstate, context)
 {
-    var dfa = this.stack[this.stack.length - 1].dfa; 
-    var node = this.stack[this.stack.length - 1].node; 
+    var dfa = this.stack[this.stack.length - 1].dfa;
+    var node = this.stack[this.stack.length - 1].node;
     var newnode = {
         type: type,
         value: null,
@@ -9769,8 +9775,8 @@ function astForIfStmt(c, n)
     {
         return new If_(
                 astForExpr(c, CHILD(n, 1)),
-                astForSuite(c, CHILD(n, 3)), 
-                astForSuite(c, CHILD(n, 6)), 
+                astForSuite(c, CHILD(n, 3)),
+                astForSuite(c, CHILD(n, 6)),
                 n.lineno, n.col_offset);
     }
     else if (decider === 'i')
@@ -9778,7 +9784,7 @@ function astForIfStmt(c, n)
         var nElif = NCH(n) - 4;
         var hasElse = false;
         var orelse = [];
-        
+
         /* must reference the child nElif+1 since 'else' token is third, not
          * fourth child from the end. */
         if (CHILD(n, nElif + 1).type === TOK.T_NAME
@@ -9817,7 +9823,7 @@ function astForIfStmt(c, n)
                 astForSuite(c, CHILD(n, 3)),
                 orelse, n.lineno, n.col_offset);
     }
-    
+
     goog.asserts.fail("unexpected token in 'if' statement");
 }
 
@@ -10220,7 +10226,7 @@ function astForCall(c, n, func)
 
 function astForTrailer(c, n, leftExpr)
 {
-    /* trailer: '(' [arglist] ')' | '[' subscriptlist ']' | '.' NAME 
+    /* trailer: '(' [arglist] ')' | '[' subscriptlist ']' | '.' NAME
        subscriptlist: subscript (',' subscript)* [',']
        subscript: '.' '.' '.' | test | [test] ':' [test] [sliceop]
      */
@@ -10243,7 +10249,7 @@ function astForTrailer(c, n, leftExpr)
             return new Subscript(leftExpr, astForSlice(c, CHILD(n, 0)), Load, n.lineno, n.col_offset);
         else
         {
-            /* The grammar is ambiguous here. The ambiguity is resolved 
+            /* The grammar is ambiguous here. The ambiguity is resolved
                by treating the sequence as a tuple literal if there are
                no slice features.
             */
@@ -10604,7 +10610,7 @@ function astForAugassign(c, n)
 function astForBinop(c, n)
 {
     /* Must account for a sequence of expressions.
-        How should A op B op C by represented?  
+        How should A op B op C by represented?
         BinOp(BinOp(A, op, B), op, C).
     */
     var result = new BinOp(
@@ -10657,7 +10663,7 @@ function astForTestlist(c, n)
 function astForExprStmt(c, n)
 {
     REQ(n, SYM.expr_stmt);
-    /* expr_stmt: testlist (augassign (yield_expr|testlist) 
+    /* expr_stmt: testlist (augassign (yield_expr|testlist)
                 | ('=' (yield_expr|testlist))*)
        testlist: test (',' test)* [',']
        augassign: '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=' | '^='
@@ -10720,7 +10726,7 @@ function astForExprStmt(c, n)
 
 function astForIfexpr(c, n)
 {
-    /* test: or_test 'if' or_test 'else' test */ 
+    /* test: or_test 'if' or_test 'else' test */
     goog.asserts.assert(NCH(n) === 5);
     return new IfExp(
             astForExpr(c, CHILD(n, 0)),
@@ -10853,7 +10859,7 @@ function parsenumber(c, s)
         return parseFloat(s);
     }
 
-    // ugly gunk to placate an overly-nanny closure-compiler: 
+    // ugly gunk to placate an overly-nanny closure-compiler:
     // http://code.google.com/p/closure-compiler/issues/detail?id=111
     // this is all just to emulate "parseInt(s)" with no radix.
     var tmp = s;
@@ -11001,7 +11007,7 @@ function astForExpr(c, n)
 {
     /* handle the full range of simple expressions
        test: or_test ['if' or_test 'else' test] | lambdef
-       or_test: and_test ('or' and_test)* 
+       or_test: and_test ('or' and_test)*
        and_test: not_test ('and' not_test)*
        not_test: 'not' not_test | comparison
        comparison: expr (comp_op expr)*
@@ -11018,7 +11024,7 @@ function astForExpr(c, n)
        to explicitly allow:
        [ x for x in lambda: 0, lambda: 1 ]
        (which would be ambiguous without these extra rules)
-       
+
        old_test: or_test | old_lambdef
        old_lambdef: 'lambda' [vararglist] ':' old_test
 
@@ -11315,7 +11321,7 @@ var DEF_IMPORT = 2<<9;        /* assignment occurred via import */
 var DEF_BOUND = (DEF_LOCAL | DEF_PARAM | DEF_IMPORT);
 
 /* GLOBAL_EXPLICIT and GLOBAL_IMPLICIT are used internally by the symbol
-   table.  GLOBAL is returned from PyST_GetScope() for either of them. 
+   table.  GLOBAL is returned from PyST_GetScope() for either of them.
    It is stored in ste_symbols at bits 12-14.
 */
 var SCOPE_OFF = 11;
@@ -11921,7 +11927,7 @@ SymbolTable.prototype.visitAlias = function(names)
 {
     /* Compute store_name, the name actually bound by the import
         operation.  It is diferent than a->name when a->name is a
-        dotted package name (e.g. spam.eggs) 
+        dotted package name (e.g. spam.eggs)
     */
     for (var i = 0; i < names.length; ++i)
     {
@@ -12875,7 +12881,7 @@ Compiler.prototype.cif = function(s)
     var constant = this.exprConstant(s.test);
     if (constant === 0)
     {
-        if (s.orelse) 
+        if (s.orelse)
             this.vseqstmt(s.orelse);
     }
     else if (constant === 1)
@@ -12975,7 +12981,7 @@ Compiler.prototype.cfor = function(s)
 
     // execute body
     this.vseqstmt(s.body);
-    
+
     // jump to top of loop
     this._jump(start);
 
@@ -13265,7 +13271,7 @@ Compiler.prototype.buildcodeobj = function(n, coname, decorator_list, args, call
     // yields.
     //
     // todo; possibly this should be outside?
-    // 
+    //
     var frees = "";
     if (hasFree)
     {
@@ -13393,7 +13399,7 @@ Compiler.prototype.cclass = function(s)
 
     // decorators and bases need to be eval'd out here
     //this.vseqexpr(decos);
-    
+
     var bases = this.vseqexpr(s.bases);
 
     var scopename = this.enterScope(s.name, s, s.lineno);
@@ -13405,7 +13411,7 @@ Compiler.prototype.cclass = function(s)
     this.u.suffixCode = "}break;}}).apply(null,$rest);});";
 
     this.u.private_ = s.name;
-    
+
     this.cbody(s.body);
     out("break;");
 
@@ -13795,7 +13801,7 @@ Sk.importSearchPathForName = function(name, ext, failok)
             } catch (e) {};
         }
     }
-   
+
     if (!failok)
         throw new Sk.builtin.ImportError("No module named " + name);
     //print("import search, nothing found, but failure was ok");
@@ -15115,8 +15121,8 @@ function js_beautify(js_source_text, options) {
 
 // MIT-licensed
 function sprintf ( ) {
-    // Return a formatted string  
-    // 
+    // Return a formatted string
+    //
     // version: 909.322
     // discuss at: http://phpjs.org/functions/sprintf
     // +   original by: Ash Searle (http://hexmen.com/blog/)
@@ -15942,7 +15948,7 @@ function testRun(name, nocatch)
 {
     Sk.debugout("name is", name);
     try { var input = read(name + ".py"); }
-    catch (e) { 
+    catch (e) {
         try { read(name + ".py.disabled"); rundisabled += 1;}
         catch (e) {}
         return;

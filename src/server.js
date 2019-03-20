@@ -8,19 +8,19 @@
  */
 function BlockPyServer(main) {
     this.main = main;
-    
+
     // Add the LocalStorage connection
     // Presently deprecated, but we should investigate this
     this.storage = new LocalStorageWrapper("BLOCKPY");
-    
+
     this.saveTimer = {};
     this.presentationTimer = null;
-    
+
     this.overlay = null;
-    
+
     // For managing "walks" that let us rerun stored code
     this.inProgressWalks = [];
-    
+
     this.createSubscriptions();
 }
 
@@ -45,7 +45,7 @@ BlockPyServer.prototype.createSubscriptions = function() {
  * Some subscriptions have to happen after other things have been loaded.
  * Right now this is just after CORGIS libraries have been loaded, but maybe
  * we'll add more later and this will need to be refactored.
- * 
+ *
  */
 BlockPyServer.prototype.finalizeSubscriptions = function() {
     var server = this, model = this.main.model;
@@ -111,7 +111,7 @@ BlockPyServer.prototype.logEvent = function(event_name, action, body) {
         data['body'] = (body === undefined) ? '' : body;
         this.setStatus('Logging');
         // Trigger request
-        $.post(this.main.model.constants.urls.log_event, data, 
+        $.post(this.main.model.constants.urls.log_event, data,
                this.defaultResponse.bind(this))
          .fail(this.defaultFailure.bind(this));
     } else {
@@ -134,7 +134,7 @@ BlockPyServer.prototype.markSuccess = function(success, callback, hide_correctne
             }
             server.setStatus('Saving');
             // Trigger request
-            $.post(model.constants.urls.save_success, data, 
+            $.post(model.constants.urls.save_success, data,
                 function(response) {
                    if (response.success) {
                         if (response.submitted) {
@@ -162,7 +162,7 @@ BlockPyServer.prototype.markSuccess = function(success, callback, hide_correctne
 
 BlockPyServer.prototype.saveAssignment = function() {
     var model = this.main.model;
-    if (model.server_is_connected('save_assignment') && 
+    if (model.server_is_connected('save_assignment') &&
         model.settings.auto_upload()) {
         var data = this.createServerData();
         data['introduction'] = model.assignment.introduction();
@@ -174,13 +174,13 @@ BlockPyServer.prototype.saveAssignment = function() {
         data['name'] = model.assignment.name();
         data['modules'] = model.assignment.modules().join(','); // TODO: hackish, broken if ',' is in name
         data['files'] = model.assignment.files().join(','); // TODO: hackish, broken if ',' is in name
-        
+
         var server = this;
         this.setStatus('Saving');
         clearTimeout(this.presentationTimer);
         // Trigger request
         this.presentationTimer = setTimeout(function() {
-            $.post(model.constants.urls.save_assignment, data, 
+            $.post(model.constants.urls.save_assignment, data,
                    server.defaultResponseWithoutVersioning.bind(server))
              .fail(server.defaultFailure.bind(server));
         }, this.TIMER_DELAY);
@@ -191,20 +191,20 @@ BlockPyServer.prototype.saveAssignment = function() {
 
 BlockPyServer.prototype.saveCode = function() {
     var model = this.main.model;
-    if (model.server_is_connected('save_code') && 
+    if (model.server_is_connected('save_code') &&
         model.settings.auto_upload()) {
         var data = this.createServerData();
         var filename = model.settings.filename();
         data['filename'] = filename;
         data['code'] = model.programs[filename]();
-        
+
         var server = this;
         this.setStatus('Saving');
         if (this.saveTimer[filename]) {
             clearTimeout(this.saveTimer[filename]);
         }
         this.saveTimer[filename] = setTimeout(function() {
-            $.post(model.constants.urls.save_code, data, 
+            $.post(model.constants.urls.save_code, data,
                    filename == '__main__'
                     ? server.defaultResponse.bind(server)
                     : server.defaultResponseWithoutVersioning.bind(server))
@@ -217,12 +217,12 @@ BlockPyServer.prototype.saveCode = function() {
 
 BlockPyServer.prototype.getHistory = function(callback) {
     var model = this.main.model;
-    
+
     if (model.server_is_connected('get_history')) {
         var data = this.createServerData();
         var server = this;
         this.setStatus('Loading History');
-        $.post(model.constants.urls.get_history, data, 
+        $.post(model.constants.urls.get_history, data,
                function(response) {
                 if (response.success) {
                     server.setStatus('Saved');
@@ -263,7 +263,7 @@ BlockPyServer.prototype.walkOldCode = function() {
         var data = this.createServerData();
         this.setStatus('Retrieving');
         if (main.model.server_is_connected('walk_old_code')) {
-            $.post(server.main.model.constants.urls.walk_old_code, data, 
+            $.post(server.main.model.constants.urls.walk_old_code, data,
                    function (response) {
                        if (response.success) {
                            if (response.more_to_do) {
@@ -304,15 +304,15 @@ BlockPyServer.prototype.loadAssignment = function(assignment_id) {
     var model = this.main.model;
     var server = this;
     if (model.server_is_connected('load_assignment')) {
-        var data = this.createServerData();        
+        var data = this.createServerData();
         data['assignment_id'] = assignment_id;
         this.setStatus('Loading');
         this.showOverlay();
-        $.post(model.constants.urls.load_assignment, data, 
+        $.post(model.constants.urls.load_assignment, data,
                 function(response) {
                     if (response.success) {
                         server.main.setAssignment(response.settings,
-                                                  response.assignment, 
+                                                  response.assignment,
                                                   response.programs)
                         server.setStatus('Loaded');
                         server.hideOverlay();
@@ -341,12 +341,51 @@ BlockPyServer.prototype.loadFile = function(filename, type, callback, errorCallb
         data['filename'] = filename;
         data['type'] = type;
         this.setStatus('Loading');
-        $.post(model.constants.urls.load_file, data, 
+        $.post(model.constants.urls.load_file, data,
                 function(response) {
-                    if (response.success) {
-                        callback(response.data);
+                    data = JSON.parse(response);
+                    if (data.success) {
+                        callback(data.name);
                         server.setStatus('Loaded');
+                        //server.hideOverlay();
+                    } else {
+                        errorCallback(response.message);
+                        server.setStatus('Failure', response.message);
                         server.hideOverlay();
+                    }
+               })
+         .fail(function(e, textStatus, errorThrown) {
+            errorCallback("Server failure! Report to instructor");
+            console.error(errorThrown);
+            server.defaultFailure()
+         });
+    } else {
+        errorCallback("No file server available.");
+        this.setStatus('Offline', "Server is not connected! (Load File)");
+    }
+}
+
+/**
+ * This function can be used to upload files.
+ */
+BlockPyServer.prototype.uploadFile = function(filename, fileData, callback, errorCallback) {
+    var model = this.main.model;
+    var server = this;
+    console.log("***************"+filename);
+    if (model.server_is_connected('upload_file')) {
+        var data = this.createServerData();
+        data['filename'] = filename;
+        data['data'] = fileData;
+        this.setStatus('Loading');
+        $.post(model.constants.urls.upload_file, data,
+                function(response) {
+                    data = JSON.parse(response);
+                    if (data.success) {
+                        callback(data.name);
+                        server.setStatus('Loaded');
+                        // console.log("*****************data.success*");
+                        // console.log(data.name);
+                        //server.hideOverlay();
                     } else {
                         errorCallback(response.message);
                         server.setStatus('Failure', response.message);

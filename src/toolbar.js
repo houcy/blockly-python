@@ -89,16 +89,38 @@ BlockPyToolbar.prototype.activateToolbar = function() {
     });
     var uploadButton = this.tag.find('.blockpy-toolbar-upload');
     uploadButton.change(function() {
+        console.log("uploadButton.change(function() {uploadButton.change(function() {");
         var fr = new FileReader();
         var files = uploadButton[0].files;
         fr.onload = function(e) {
-            main.setCode(e.target.result)
-            main.components.server.logEvent('editor', 'upload')
+            console.log(e);
+            main.setCode(e.target.result);
+            main.components.server.logEvent('editor', 'upload');
             main.components.engine.on_run();
         };
         fr.readAsText(files[0]);
         uploadButton.val("");
     });
+    var f = document.getElementById("_file");
+    //var uploadFileButton = this.tag.find('.uploadfile');
+    //console.log("************************uploadFileButton.change(function()uploadFileButton.change(function()uploadFileButton.change(function()");
+    f.onchange=function() {
+        console.log("uploadFileButton.change(function()uploadFileButton.change(function()uploadFileButton.change(function()");
+        //var fr1 = new FileReader();
+        var files1 = f.files[0];
+        var fileName = files1.name;
+        console.log(files1);
+
+		var reader = new FileReader();//新建一个FileReader
+        reader.readAsText(files1, "UTF-8");//读取文件
+        reader.onload = function(e) { //读取完文件之后会回来这里
+            console.log(e);
+            var data = e.target.result; // 读取文件内容
+            main.model.assignment.files.push(fileName);
+            main.components.engine.uploadFile(fileName,data);
+        }
+
+    };
     var downloadButton = this.tag.find('.blockpy-toolbar-download');
     downloadButton.click(function() {
         var data = main.model.programs['__main__']();
@@ -248,12 +270,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                 },
                 success: function (data) {
                     data = JSON.parse(data);
-                    //console.log(data['a']+"sssssssssssssss");
-
                     main.components.corgis.openWork(data);
-                    //main.components.server.logEvent('editor', 'import')
-
-
                 }
             })
         }

@@ -22,7 +22,7 @@ $(document).ready(function () {
                 '       ' + '未登录' + '<span class="caret"></span>' +
                 '   </button>' +
                 '   <ul class="dropdown-menu">' +
-                '       <li><a id="back" onclick="back()" >返回首页</a></li>' +
+                '       <li><a id="back" href="/" >返回首页</a></li>' +
                 '   </ul>' +
                 '</div>'
             );

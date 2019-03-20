@@ -149,7 +149,6 @@ BlockPyCorgis.prototype.openDialog = function(name) {
             // Show the actual dialog
             var editor = corgis.main.components.editor;
             corgis.main.components.dialog.show("Import Datasets", body, function() {
-                console.log("test insex.json=========================");
                 if (editor.main.model.settings.editor() == "Blocks") {
                     editor.updateBlocksFromModel();
                 }
@@ -177,7 +176,6 @@ BlockPyCorgis.prototype.openWork = function(data) {
                                         data = JSON.parse(data);
                                         document.getElementById("production_name").value = data.name;
                                         document.cookie="productid="+data.productid;
-                                        console.log(data.code + "qqqqqqqqqq");
 
                                         main.setCode(data.code);
                                         //main.model.programs['__main__'](data.code);
