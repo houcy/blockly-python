@@ -7,6 +7,9 @@
  * @param {Object} main - The main BlockPy instance
  * @param {HTMLElement} tag - The HTML object this is attached to.
  */
+
+document.write("<script language=javascript src='src/alert.js'></script>");
+
 function BlockPyToolbar(main, tag) {
     this.main = main;
     this.tag = tag;
@@ -29,6 +32,35 @@ BlockPyToolbar.prototype.notifyFeedbackUpdate = function() {
  */
 BlockPyToolbar.prototype.activateToolbar = function() {
     var main = this.main;
+
+    //从作品页打开作品时执行
+    var url = decodeURI(window.location.href);
+    if ( url.indexOf( "?" ) != -1 ){
+        query_str = url.substr(url.indexOf('?')+1, url.length-1);
+        r_params = query_str.split('&');
+        params = {};
+        for(var i in r_params){
+            param = r_params[i].split('=');
+            params[ param[0] ] = param[1];
+        }
+        var name = params["name"];
+        document.getElementById("production_name").value = name;
+            $.ajax({
+                url: window.BLOCKPY + 'openwork/',
+                type: 'POST',
+                headers:{"X-CSRFToken":$.cookie('csrftoken')},
+                data:{
+                    "username": $.cookie('username'),
+                    "name": name,
+                },
+                success: function (data) {
+                    data = JSON.parse(data);
+                    document.cookie="productid="+data.productid;
+                    main.setCode(data.code);
+                }
+            })
+    }
+
     this.tag.find('.blockpy-run').click(function() {
         main.components.server.logEvent('editor', 'run')
         main.components.engine.on_run();
@@ -89,17 +121,27 @@ BlockPyToolbar.prototype.activateToolbar = function() {
     });
     var uploadButton = this.tag.find('.blockpy-toolbar-upload');
     uploadButton.change(function() {
-        console.log("uploadButton.change(function() {uploadButton.change(function() {");
-        var fr = new FileReader();
-        var files = uploadButton[0].files;
-        fr.onload = function(e) {
-            console.log(e);
-            main.setCode(e.target.result);
-            main.components.server.logEvent('editor', 'upload');
-            main.components.engine.on_run();
-        };
-        fr.readAsText(files[0]);
-        uploadButton.val("");
+        my.confirm("温馨提醒", "确保已经保存修改的内容，是否继续？", function(flag) {
+            if(flag) {
+                var fr = new FileReader();
+                var files = uploadButton[0].files;
+                fr.onload = function (e) {
+                    main.setCode(e.target.result)
+                    main.components.server.logEvent('editor', 'upload')
+                    //main.components.engine.on_run();
+                };
+                var index = files[0].name.lastIndexOf("\.");
+                document.getElementById("production_name").value = files[0].name.substring(0,index);
+                fr.readAsText(files[0]);
+                uploadButton.val("");
+
+                document.cookie="productid="+"";
+                var stateObject = {};
+                var newUrl = '/create/blockpy.html';
+                //修改地址栏中的地址
+                history.pushState(stateObject, "", newUrl);
+                }
+        });
     });
     var f = document.getElementById("_file");
     //var uploadFileButton = this.tag.find('.uploadfile');
@@ -124,30 +166,36 @@ BlockPyToolbar.prototype.activateToolbar = function() {
     var downloadButton = this.tag.find('.blockpy-toolbar-download');
     downloadButton.click(function() {
         var data = main.model.programs['__main__']();
-        var filename = document.getElementById("production_name").value;
-        if (filename == '') {
-            alert("作品名不能为空哦");
+        var filename = document.getElementById("production_name").value.trim();
+        if(filename.length == 0){
+                    my.alert("系统提示", "作品名称不能为空或者为空格哦！");
         }
         else{
-            var blob = new Blob([data], {type: 'text/plain'});
-            if(window.navigator.msSaveOrOpenBlob) {
-                window.navigator.msSaveBlob(blob, filename);
+            reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
+            if ( !reg.test(filename) ){
+                my.alert("系统提示", "作品名称不符号规则哦！");
             }
             else{
-                var elem = window.document.createElement('a');
-                elem.href = window.URL.createObjectURL(blob);
-                elem.download = filename;
-                document.body.appendChild(elem);
-                elem.click();
-                document.body.removeChild(elem);
+                var blob = new Blob([data], {type: 'text/plain'});
+                if(window.navigator.msSaveOrOpenBlob) {
+                    window.navigator.msSaveBlob(blob, filename);
+                }
+                else{
+                    var elem = window.document.createElement('a');
+                    elem.href = window.URL.createObjectURL(blob);
+                    elem.download = filename;
+                    document.body.appendChild(elem);
+                    elem.click();
+                    document.body.removeChild(elem);
+                }
+                main.components.server.logEvent('editor', 'download');
             }
-            main.components.server.logEvent('editor', 'download')
         }
     });
 
     var uploadCloudButton = this.tag.find('.save');
     uploadCloudButton.click(function() {
-            var filename = document.getElementById("production_name").value;
+            var filename = document.getElementById("production_name").value.trim();
             var username = $.cookie('username');
             var token = $.cookie("token");
             var sessionid = $.cookie("sessionid");
@@ -162,44 +210,60 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                 console.log("aaaaaaaaaaaaa");
             }*/
             if(token != null && sessionid != null) {
-                if(filename == "" ||filename == "请输入作品名称"){
-                    alert("不要忘记输入作品名称哦");
+                if(filename.length == 0){
+                    my.alert("系统提示", "作品名称不能为空或者为空格哦！");
                 }
                 else{
-                    $.ajax({
-                        url: '/upload/',
-                        type: 'POST',
-                        headers:{"X-CSRFToken":$.cookie('csrftoken')},
-                        data:{
-                            "name": filename,
-                            "username": username,
-                            "code": code,
-                            "productid": pi,
-                            "flag": flag,
-                        },
-                         success: function (data) {
-                            data = JSON.parse(data);
-                            //console.log(data.code);
-                            if (data.status) {
-                                document.cookie="productid="+data.productid;
-                                document.getElementById("production_name").value = data.name;
-                                alert("保存成功");
+                    reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
+                    if ( !reg.test(filename) ){
+                        my.alert("系统提示", "作品名称不符号规则哦！");
+                    }
+                    else{
+                        $.ajax({
+                            url: window.BLOCKPY + 'upload/',
+                            type: 'POST',
+                            headers:{"X-CSRFToken":$.cookie('csrftoken')},
+                            data:{
+                                "name": filename,
+                                "username": username,
+                                "code": code,
+                                "productid": pi,
+                                "flag": flag,
+                            },
+                             success: function (data) {
+                                data = JSON.parse(data);
+                                //console.log(data.code);
+                                if (data.status) {
+                                    if(data.isExist) {
+                                        my.alert("系统提示","作品名已存在哦！");
+                                    }
+                                    else{
+                                        document.cookie="productid="+data.productid;
+                                        document.getElementById("production_name").value = data.name;
+                                        my.alert("系统提示","保存成功！");
+                                        var stateObject = {};
+                                        var newUrl = '/create/blockpy.html';
+                                        //修改地址栏中的地址
+                                        history.pushState(stateObject, "", newUrl);
+                                    }
+
+                                }
+                                else {
+                                    my.alert("系统提示","好像出了点问题，保存失败！");
+                                }
                             }
-                            else {
-                                alert("好像出了点问题，保存失败");
-                            }
-                        }
-                    })
+                        })
+                    }
                 }
             }
             else{
-                alert("您未登录，无法上传作品到云端");
+                my.alert("系统提示","您未登录，无法上传作品到云端！");
             }
     });
 
-    var copyButton = this.tag.find('.copy');
+   var copyButton = this.tag.find('.copy');
     copyButton.click(function() {
-            var filename = document.getElementById("production_name").value;
+            var filename = document.getElementById("production_name").value.trim();
             var username = $.cookie('username');
             var token = $.cookie("token");
             var sessionid = $.cookie("sessionid");
@@ -207,62 +271,84 @@ BlockPyToolbar.prototype.activateToolbar = function() {
             var pi = $.cookie("productid");
             var flag = 1;
             if(token != null && sessionid != null) {
-                if(filename == "" ||filename == "请输入作品名称"){
-                    alert("不要忘记输入作品名称哦");
+                if(filename.length == 0){
+                    my.alert("系统提示", "作品名称不能为空或者为空格哦！");
                 }
                 else{
-                    $.ajax({
-                        url: '/upload/',
-                        type: 'POST',
-                        headers:{"X-CSRFToken":$.cookie('csrftoken')},
-                        data:{
-                            "name": filename,
-                            "username": username,
-                            "code": code,
-                            "productid": pi,
-                            "flag": flag,
-                        },
-                         success: function (data) {
-                            data = JSON.parse(data);
-                            //console.log(data.code);
-                            if (data.status) {
-                                document.cookie="productid="+data.productid;
-                                document.getElementById("production_name").value = data.name;
-                                alert("保存成功");
+                    reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
+                    if ( !reg.test(filename) ){
+                        my.alert("系统提示", "作品名称不符号规则哦！");
+                    }
+                    else {
+                        $.ajax({
+                            url: window.BLOCKPY + 'upload/',
+                            type: 'POST',
+                            headers:{"X-CSRFToken":$.cookie('csrftoken')},
+                            data:{
+                                "name": filename,
+                                "username": username,
+                                "code": code,
+                                "productid": pi,
+                                "flag": flag,
+                            },
+                             success: function (data) {
+                                data = JSON.parse(data);
+                                //console.log(data.code);
+                                if (data.status) {
+                                    if(data.isExist) {
+                                        my.alert("系统提示","作品名已存在哦！");
+                                    }
+                                    else{
+                                        document.cookie="productid="+data.productid;
+                                        document.getElementById("production_name").value = data.name;
+                                        my.alert("系统提示","保存成功！");
+
+                                        var stateObject = {};
+                                        var newUrl = '/create/blockpy.html';
+                                        //修改地址栏中的地址
+                                        history.pushState(stateObject, "", newUrl);
+                                    }
+                                }
+                                else {
+                                    my.alert("系统提示","好像出了点问题，保存失败！");
+                                }
                             }
-                            else {
-                                alert("好像出了点问题，保存失败");
-                            }
-                        }
-                    })
+                        })
+                    }
                 }
             }
             else{
-                alert("您未登录，无法上传作品到云端");
+                my.alert("系统提示","您未登录，无法上传作品到云端！");
             }
     });
 
     var newButton = this.tag.find('.new');
     newButton.click(function() {
-            var tmp = confirm("确保已经保存修改的内容，是否继续");
-            if(tmp){
-               document.getElementById("production_name").value = "请输入作品名称";
-               main.model.programs['__main__'](main.model.programs['starting_code']());
-               document.cookie="productid="+"";
-            }
+            my.confirm("温馨提醒", "确保已经保存修改的内容，确定离开？", function(flag) {
+                    if(flag) {
+                        var stateObject = {};
+                        var newUrl = '/create/blockpy.html';
+                        //修改地址栏中的地址
+                        history.pushState(stateObject, "", newUrl);
+
+                        document.getElementById("production_name").value = "";
+                        main.model.programs['__main__'](main.model.programs['starting_code']());
+                        document.cookie="productid="+"";
+                    }
+             });
     });
 
     this.tag.find('.blockpy-toolbar-filename-picker label').click(function() {
         main.model.settings.filename($(this).data('filename'))
     });
-    var myWorkButton = this.tag.find('.blockpy-toolbar-myWork');
+     var myWorkButton = this.tag.find('.blockpy-toolbar-myWork');
     myWorkButton.click(function() {
         var username = $.cookie('username');
         var token = $.cookie("token");
         var sessionid = $.cookie("sessionid");
         if(token != null && sessionid != null) {
             $.ajax({
-                url: '/myworklist/',
+                url: window.BLOCKPY + 'myworklist/',
                 type: 'POST',
                 headers:{"X-CSRFToken":$.cookie('csrftoken')},
                 data:{
@@ -270,12 +356,17 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                 },
                 success: function (data) {
                     data = JSON.parse(data);
+                    //console.log(data['a']+"sssssssssssssss");
+
                     main.components.corgis.openWork(data);
+                    //main.components.server.logEvent('editor', 'import')
+
+
                 }
             })
         }
             else{
-                alert("您未登录，无法查看作品");
+                my.alert("系统提示","您未登录，无法查看作品！");
             }
 
         /*var fr = new FileReader();
