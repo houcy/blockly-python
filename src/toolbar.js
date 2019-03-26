@@ -30,6 +30,7 @@ BlockPyToolbar.prototype.notifyFeedbackUpdate = function() {
 /**
  * Register click events for more complex toolbar actions.
  */
+
 BlockPyToolbar.prototype.activateToolbar = function() {
     var main = this.main;
 
@@ -56,6 +57,13 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                 success: function (data) {
                     data = JSON.parse(data);
                     document.cookie="productid="+data.productid;
+                    document.cookie="isTask="+data.isTask;
+                    classid = data.classid;         //获取作品的班级id
+                    lessonid = data.lessonid;       //获取作品的课程id
+                    taskid = data.taskid;           //获取作品的作业id
+                    if (data.isTask == "true") {
+                        $("#formatclass").val(classid);     //选中作品当前班级
+                    }
                     main.setCode(data.code);
                 }
             })
@@ -199,6 +207,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
             var username = $.cookie('username');
             var token = $.cookie("token");
             var sessionid = $.cookie("sessionid");
+            var istask = $.cookie("isTask");
             var code = main.model.programs['__main__']();
             var pi = $.cookie("productid");
             var flag = 0;
@@ -219,40 +228,82 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                         my.alert("系统提示", "作品名称不符号规则哦！");
                     }
                     else{
-                        $.ajax({
-                            url: window.BLOCKPY + 'upload/',
-                            type: 'POST',
-                            headers:{"X-CSRFToken":$.cookie('csrftoken')},
-                            data:{
-                                "name": filename,
-                                "username": username,
-                                "code": code,
-                                "productid": pi,
-                                "flag": flag,
-                            },
-                             success: function (data) {
-                                data = JSON.parse(data);
-                                //console.log(data.code);
-                                if (data.status) {
-                                    if(data.isExist) {
-                                        my.alert("系统提示","作品名已存在哦！");
-                                    }
-                                    else{
-                                        document.cookie="productid="+data.productid;
-                                        document.getElementById("production_name").value = data.name;
-                                        my.alert("系统提示","保存成功！");
-                                        var stateObject = {};
-                                        var newUrl = '/create/blockpy.html';
-                                        //修改地址栏中的地址
-                                        history.pushState(stateObject, "", newUrl);
-                                    }
-
+                        var format_classid = $("#formatclass").val();
+                        var courseid = $("#course").val();
+                        var taskid = $("#task").val();
+                        var format_class = $("#formatclass").find("option:selected").text();
+                        var course = $("#course").find("option:selected").text();
+                        var task = $("#task").find("option:selected").text();
+                        var prompt = "";
+                        if (flag){
+                            if (task == "=请选择作业=" || task == "=暂时没有作业="){
+                                prompt = "当前未选择作业，是否继续上传？";
+                            }
+                            else {
+                                prompt = "当前选择的作业：" + course + "—" + task + "（" + format_class + "），是否上传到该作业？";
+                            }
+                        }
+                        else {
+                            if (istask == "true") {
+                                my.alert("系统提示", "当前作品属于作业内容，无法修改！");
+                                return true;
+                            }
+                            else {
+                                if (task == "=请选择作业=" || task == "=暂时没有作业="){
+                                    prompt = "当前未选择作业，是否保存修改？";
                                 }
                                 else {
-                                    my.alert("系统提示","好像出了点问题，保存失败！");
+                                    prompt = "当前选择的作业：" + course + "—" + task + "（" + format_class + "），是否上传到该作业？";
                                 }
                             }
-                        })
+                        }
+                        my.confirm("温馨提醒", prompt, function(e) {
+                                if(e) {
+                                    $.ajax({
+                                        url: window.BLOCKPY + 'upload/',
+                                        type: 'POST',
+                                        headers:{"X-CSRFToken":$.cookie('csrftoken')},
+                                        data:{
+                                            "name": filename,
+                                            "username": username,
+                                            "code": code,
+                                            "productid": pi,
+                                            "flag": flag,
+                                            "format_classid":format_classid,
+                                            "lessonid":courseid,
+                                            "taskid":taskid,
+                                        },
+                                         success: function (data) {
+                                            data = JSON.parse(data);
+                                            //console.log(data.code);
+                                            if (data.status) {
+                                                if (data.taskIsExist) {
+                                                    my.alert("系统提示","你已经上传过作品到该作业，不能重复提交哦！");
+                                                    return true;
+                                                }
+                                                if(data.isExist) {
+                                                    my.alert("系统提示","作品名已存在哦！");
+                                                    return true;
+                                                }
+
+                                                document.cookie="productid="+data.productid;
+                                                document.cookie="isTask="+data.isTask;
+                                                document.getElementById("production_name").value = data.name;
+                                                my.alert("系统提示","保存成功！");
+                                                var stateObject = {};
+                                                var newUrl = '/create/blockpy.html';
+                                                //修改地址栏中的地址
+                                                history.pushState(stateObject, "", newUrl);
+
+                                            }
+                                            else {
+                                                my.alert("系统提示","好像出了点问题，保存失败！");
+                                            }
+                                        }
+                                    })
+                                }
+                         });
+
                     }
                 }
             }
@@ -334,6 +385,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                         document.getElementById("production_name").value = "";
                         main.model.programs['__main__'](main.model.programs['starting_code']());
                         document.cookie="productid="+"";
+                        document.cookie="isTask="+"";
                     }
              });
     });

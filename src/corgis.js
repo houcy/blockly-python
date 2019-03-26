@@ -183,11 +183,68 @@ BlockPyCorgis.prototype.openWork = function(data) {
                                                     data = JSON.parse(data);
                                                     document.getElementById("production_name").value = data.name;
                                                     document.cookie="productid="+data.productid;
-
+                                                    document.cookie="isTask="+data.isTask;
+                                                    classid = data.classid;         //获取作品的班级id
+                                                    lessonid = data.lessonid;       //获取作品的课程id
+                                                    taskid = data.taskid;           //获取作品的作业id
+                                                    if (data.isTask == "true") {
+                                                        $("#formatclass").val(classid);     //选中作品当前班级
+                                                        if ($.cookie("blockpy_class_id") != 0) {
+                                                            $("#course").val(lessonid);
+                                                        }
+                                                        else {
+                                                            $.ajax({
+                                                                url: window.BLOCKPY + 'blockpy_get_course/',
+                                                                type: 'POST',
+                                                                headers:{"X-CSRFToken":$.cookie('csrftoken')},
+                                                                data:{
+                                                                    "classid": classid,
+                                                                },
+                                                                success: function (lesson_list) {
+                                                                    var lessons = lesson_list;
+                                                                    var length = lessons.length;
+                                                                    if(length != 0) {
+                                                                        for(var i=0; i<length; i++){
+                                                                            var data = lessons[i];
+                                                                            var courseOpt = document.createElement(('option'));
+                                                                            courseOpt.innerText = data.lesson_name;
+                                                                            courseOpt.value = data.lesson_id;
+                                                                            $("#course").append(courseOpt);     //添加课程下拉框
+                                                                        }
+                                                                        $("#course").val(lessonid);         //选中作品当前课程
+                                                                    }
+                                                                }
+                                                            });
+                                                        }
+                                                        $.ajax({
+                                                            url: window.BLOCKPY + 'blockpy_get_task/',
+                                                            type: 'POST',
+                                                            headers:{"X-CSRFToken":$.cookie('csrftoken')},
+                                                            data:{
+                                                                "courseid": lessonid,
+                                                            },
+                                                            success: function (task_list) {
+                                                                var tasks = task_list;
+                                                                var length = tasks.length;
+                                                                if(length != 0) {
+                                                                    for(var i=0; i<length; i++){
+                                                                        var data = tasks[i];
+                                                                        var taskOpt = document.createElement(('option'));
+                                                                        taskOpt.innerText = data.task_name;
+                                                                        taskOpt.value = data.task_id;
+                                                                        $("#task").append(taskOpt);         //添加作业下拉框
+                                                                    }
+                                                                    $("#task").val(taskid);         //选中作品当前作业
+                                                                }
+                                                            }
+                                                        });
+                                                        $.cookie("blockpy_class_id", $("#formatclass").val(), {path: "/", domain: window.FONT_DOMAIN});
+                                                        $.cookie("blockpy_class_name", $("#formatclass").find("option:selected").text(), {path: "/", domain: window.FONT_DOMAIN});
+                                                    }
                                                     main.setCode(data.code);
                                                     //main.model.programs['__main__'](data.code);
                                                 }
-                                            })
+                                            });
                                         }
                                  });
                             });
