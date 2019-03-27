@@ -164,7 +164,7 @@ BlockPyCorgis.prototype.openWork = function(data) {
                     Object.keys(data).sort().map(function(name) {
                         var btn = $('<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" data-dismiss="modal">打开</button>');
                         btn.click(function() {
-                                 my.confirm("温馨提醒", "确保已经保存修改的内容，是否继续？", function(flag) {
+                                 my.confirm("温馨提醒", "确保已经保存修改的内容，<br>是否继续打开云端作品？", function(flag) {
                                         if(flag) {
                                             $.ajax({
                                                 url: window.BLOCKPY + 'openwork/',
@@ -184,65 +184,54 @@ BlockPyCorgis.prototype.openWork = function(data) {
                                                     document.getElementById("production_name").value = data.name;
                                                     document.cookie="productid="+data.productid;
                                                     document.cookie="isTask="+data.isTask;
-                                                    classid = data.classid;         //获取作品的班级id
-                                                    lessonid = data.lessonid;       //获取作品的课程id
+                                                    main.setCode(data.code);
                                                     taskid = data.taskid;           //获取作品的作业id
-                                                    if (data.isTask == "true") {
-                                                        $("#formatclass").val(classid);     //选中作品当前班级
-                                                        if ($.cookie("blockpy_class_id") != 0) {
-                                                            $("#course").val(lessonid);
-                                                        }
-                                                        else {
-                                                            $.ajax({
-                                                                url: window.BLOCKPY + 'blockpy_get_course/',
-                                                                type: 'POST',
-                                                                headers:{"X-CSRFToken":$.cookie('csrftoken')},
-                                                                data:{
-                                                                    "classid": classid,
-                                                                },
-                                                                success: function (lesson_list) {
-                                                                    var lessons = lesson_list;
-                                                                    var length = lessons.length;
-                                                                    if(length != 0) {
-                                                                        for(var i=0; i<length; i++){
-                                                                            var data = lessons[i];
-                                                                            var courseOpt = document.createElement(('option'));
-                                                                            courseOpt.innerText = data.lesson_name;
-                                                                            courseOpt.value = data.lesson_id;
-                                                                            $("#course").append(courseOpt);     //添加课程下拉框
-                                                                        }
-                                                                        $("#course").val(lessonid);         //选中作品当前课程
-                                                                    }
-                                                                }
-                                                            });
-                                                        }
-                                                        $.ajax({
-                                                            url: window.BLOCKPY + 'blockpy_get_task/',
-                                                            type: 'POST',
-                                                            headers:{"X-CSRFToken":$.cookie('csrftoken')},
-                                                            data:{
-                                                                "courseid": lessonid,
-                                                            },
-                                                            success: function (task_list) {
-                                                                var tasks = task_list;
-                                                                var length = tasks.length;
-                                                                if(length != 0) {
-                                                                    for(var i=0; i<length; i++){
-                                                                        var data = tasks[i];
-                                                                        var taskOpt = document.createElement(('option'));
-                                                                        taskOpt.innerText = data.task_name;
-                                                                        taskOpt.value = data.task_id;
-                                                                        $("#task").append(taskOpt);         //添加作业下拉框
-                                                                    }
-                                                                    $("#task").val(taskid);         //选中作品当前作业
-                                                                }
-                                                            }
-                                                        });
+                                                    $("#formatclass").html("");
+                                                    $("#course").html("");
+                                                    $("#task").html("");
+                                                    if (taskid != 0) {
+                                                        classid = data.classid;
+                                                        classname = data.classname;
+                                                        lessonid = data.lessonid;
+                                                        lessonname = data.lessonname;
+                                                        taskid = data.taskid;
+                                                        taskname = data.taskname;
+                                                        $("#formatclass").append("<option value="+ classid + ">" + classname + "</option>");
+                                                        $("#course").append("<option value="+ lessonid + ">" + lessonname + "</option>");
+                                                        $("#task").append("<option value="+ taskid + ">" + taskname + "</option>");
                                                         $.cookie("blockpy_class_id", $("#formatclass").val(), {path: "/", domain: window.FONT_DOMAIN});
                                                         $.cookie("blockpy_class_name", $("#formatclass").find("option:selected").text(), {path: "/", domain: window.FONT_DOMAIN});
                                                     }
-                                                    main.setCode(data.code);
-                                                    //main.model.programs['__main__'](data.code);
+                                                    else {
+                                                        $.ajax({
+                                                            url: window.BLOCKPY + 'blockpy_get_class/',
+                                                            type: 'POST',
+                                                            headers:{"X-CSRFToken":$.cookie('csrftoken')},
+                                                            data:{
+                                                                "username": $.cookie('username'),
+                                                            },
+                                                            success: function (class_list) {
+                                                                var classes = class_list;
+                                                                var length = classes.length;
+                                                                if(length != 0) {
+                                                                    $("#formatclass").append("<option value='0'>" + "=请选择班级=" + "</option>");
+                                                                    $("#course").append("<option value='0'>" + "=请选择课程=" + "</option>");
+                                                                    $("#task").append("<option value='0'>" + "=请选择作业=" + "</option>");
+                                                                    for(var i=0; i<classes.length; i++){
+                                                                        var data = classes[i];
+                                                                        $("#formatclass").append("<option value="+ data.class_id + ">" + data.class_name + "</option>");
+                                                                    }
+                                                                }
+                                                                else {
+                                                                    $("#formatclass").append("<option value='0'>" + "=暂时没有班级=" + "</option>");
+                                                                    $("#course").append("<option value='0'>" + "=暂时没有课程=" + "</option>");
+                                                                    $("#task").append("<option value='0'>" + "=暂时没有作业=" + "</option>");
+                                                                }
+                                                            }
+                                                        });
+                                                        $.cookie('blockpy_class_id', 0, {path: '/', domain: window.FONT_DOMAIN});
+                                                        $.cookie('blockpy_class_name', "=请选择班级=", {path: '/', domain: window.FONT_DOMAIN});
+                                                    }
                                                 }
                                             });
                                         }
