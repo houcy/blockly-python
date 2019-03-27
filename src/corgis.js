@@ -164,7 +164,7 @@ BlockPyCorgis.prototype.openWork = function(data) {
                     Object.keys(data).sort().map(function(name) {
                         var btn = $('<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" data-dismiss="modal">打开</button>');
                         btn.click(function() {
-                                 my.confirm("温馨提醒", "确保已经保存修改的内容，<br>是否继续打开云端作品？", function(flag) {
+                                 my.confirm("温馨提醒", "确保已经保存修改的内容，<br><br>是否继续打开云端作品？", function(flag) {
                                         if(flag) {
                                             $.ajax({
                                                 url: window.BLOCKPY + 'openwork/',

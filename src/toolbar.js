@@ -261,7 +261,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
             }*/
             if(token != null && sessionid != null) {
                 if(filename.length == 0){
-                    my.alert("系统提示", "作品名称不能为空或者为空格哦！");
+                    my.alert("系统提示", "作品名称不能为空或者空格哦！");
                 }
                 else{
                     reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
@@ -278,23 +278,23 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                         var prompt = "";
                         if (flag){
                             if (task == "=请选择作业=" || task == "=暂时没有作业="){
-                                prompt = "当前未选择作业，是否继续上传？";
+                                prompt = "当前未选择作业<br><br>是否继续上传作品？";
                             }
                             else {
-                                prompt = "当前选择的作业：" + course + "—" + task + "（" + format_class + "），是否上传到该作业？";
+                                prompt = "当前选择的作业：<br>" + course + "—" + task + "<br>（" + format_class + "）<br><br>是否提交作品到该作业？<br>（作业只允许提交一次哦！）";
                             }
                         }
                         else {
                             if (istask == "true") {
-                                my.alert("系统提示", "当前作品属于作业内容，无法修改！");
+                                my.alert("系统提示", "当前作品属于作业内容<br><br>无法修改！");
                                 return true;
                             }
                             else {
                                 if (task == "=请选择作业=" || task == "=暂时没有作业="){
-                                    prompt = "当前未选择作业，是否保存修改？";
+                                    prompt = "当前未选择作业<br><br>是否保存修改？";
                                 }
                                 else {
-                                    prompt = "当前选择的作业：" + course + "—" + task + "（" + format_class + "），是否上传到该作业？";
+                                    prompt = "当前选择的作业：<br>" + course + "—" + task + "<br>（" + format_class + "）<br><br>是否保存修改并提交作品到该作业？<br>（作业只允许提交一次哦！）";
                                 }
                             }
                         }
@@ -319,11 +319,11 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                                             //console.log(data.code);
                                             if (data.status) {
                                                 if (data.taskIsExist) {
-                                                    my.alert("系统提示","你已经上传过作品到该作业，不能重复提交哦！");
+                                                    my.alert("系统提示","保存失败！<br><br>你已经上传过作品到该作业<br>不能重复提交哦！");
                                                     return true;
                                                 }
                                                 if(data.isExist) {
-                                                    my.alert("系统提示","作品名已存在哦！");
+                                                    my.alert("系统提示","保存失败！<br><br>作品名已存在哦！");
                                                     return true;
                                                 }
 
@@ -331,6 +331,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                                                 document.cookie="isTask="+data.isTask;
                                                 document.getElementById("production_name").value = data.name;
                                                 my.alert("系统提示","保存成功！");
+
                                                 var stateObject = {};
                                                 var newUrl = '/create/blockpy.html';
                                                 //修改地址栏中的地址
@@ -360,8 +361,9 @@ BlockPyToolbar.prototype.activateToolbar = function() {
             var token = $.cookie("token");
             var sessionid = $.cookie("sessionid");
             var code = main.model.programs['__main__']();
-            var pi = $.cookie("productid");
+            var pi = "";
             var flag = 1;
+
             if(token != null && sessionid != null) {
                 if(filename.length == 0){
                     my.alert("系统提示", "作品名称不能为空或者为空格哦！");
@@ -372,41 +374,66 @@ BlockPyToolbar.prototype.activateToolbar = function() {
                         my.alert("系统提示", "作品名称不符号规则哦！");
                     }
                     else {
-                        $.ajax({
-                            url: window.BLOCKPY + 'upload/',
-                            type: 'POST',
-                            headers:{"X-CSRFToken":$.cookie('csrftoken')},
-                            data:{
-                                "name": filename,
-                                "username": username,
-                                "code": code,
-                                "productid": pi,
-                                "flag": flag,
-                            },
-                             success: function (data) {
-                                data = JSON.parse(data);
-                                //console.log(data.code);
-                                if (data.status) {
-                                    if(data.isExist) {
-                                        my.alert("系统提示","作品名已存在哦！");
-                                    }
-                                    else{
-                                        document.cookie="productid="+data.productid;
-                                        document.getElementById("production_name").value = data.name;
-                                        my.alert("系统提示","保存成功！");
+                        var format_classid = $("#formatclass").val();
+                        var courseid = $("#course").val();
+                        var taskid = $("#task").val();
+                        var format_class = $("#formatclass").find("option:selected").text();
+                        var course = $("#course").find("option:selected").text();
+                        var task = $("#task").find("option:selected").text();
+                        var prompt = "";
+                        if (task == "=请选择作业=" || task == "=暂时没有作业="){
+                            prompt = "当前未选择作业<br><br>是否继续另存为新作品？";
+                        }
+                        else {
+                            prompt = "当前选择的作业：<br>" + course + "—" + task + "<br>（" + format_class + "）<br><br>是否另存为新作品并提交到该作业？<br>（作业只允许提交一次哦！）";
+                        }
+                        my.confirm("温馨提醒", prompt, function(e) {
+                            if (e) {
+                                $.ajax({
+                                    url: window.BLOCKPY + 'upload/',
+                                    type: 'POST',
+                                    headers: {"X-CSRFToken": $.cookie('csrftoken')},
+                                    data: {
+                                        "name": filename,
+                                        "username": username,
+                                        "code": code,
+                                        "productid": pi,
+                                        "flag": flag,
+                                        "format_classid": format_classid,
+                                        "lessonid": courseid,
+                                        "taskid": taskid,
+                                    },
+                                    success: function (data) {
+                                        data = JSON.parse(data);
+                                        //console.log(data.code);
+                                        if (data.status) {
+                                            if (data.taskIsExist) {
+                                                my.alert("系统提示","保存失败！<br><br>你已经上传过作品到该作业<br>不能重复提交哦！");
+                                                return true;
+                                            }
+                                            if(data.isExist) {
+                                                my.alert("系统提示","保存失败！<br><br>作品名已存在哦！");
+                                                return true;
+                                            }
 
-                                        var stateObject = {};
-                                        var newUrl = '/create/blockpy.html';
-                                        //修改地址栏中的地址
-                                        history.pushState(stateObject, "", newUrl);
+                                            document.cookie = "productid=" + data.productid;
+                                            document.cookie="isTask="+data.isTask;
+                                            document.getElementById("production_name").value = data.name;
+                                            my.alert("系统提示", "保存成功！");
+
+                                            var stateObject = {};
+                                            var newUrl = '/create/blockpy.html';
+                                            //修改地址栏中的地址
+                                            history.pushState(stateObject, "", newUrl);
+                                        }
+                                        else {
+                                            my.alert("系统提示", "好像出了点问题，保存失败！");
+                                        }
                                     }
-                                }
-                                else {
-                                    my.alert("系统提示","好像出了点问题，保存失败！");
-                                }
+                                })
                             }
-                        })
-                    }
+                        });
+                        }
                 }
             }
             else{
@@ -416,7 +443,7 @@ BlockPyToolbar.prototype.activateToolbar = function() {
 
     var newButton = this.tag.find('.new');
     newButton.click(function() {
-            my.confirm("温馨提醒", "确保已经保存修改的内容,<br>是否继续新建作品？", function(flag) {
+            my.confirm("温馨提醒", "确保已经保存修改的内容<br><br>是否继续新建作品？", function(flag) {
                     if(flag) {
                         var stateObject = {};
                         var newUrl = '/create/blockpy.html';
